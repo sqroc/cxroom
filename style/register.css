@@ -1,0 +1,66 @@
+/*
+date:2012/2/1
+author:tgoooo
+*****************/
+
+/*
+common
+**********************/
+body{color:#333;font-size:13px;font-family:Verdana,Helvetica,Arial,sans-serif;text-align:center;margin:0;background:#f9f9f9;}
+
+h1,h2,h3,h4,h5{margin:0;padding:0;text-align:left;display:block;}
+.container{width:960px;margin:0 auto;}
+.clear{overflow:hidden;height:10px;}
+img{border:0;}
+
+/*
+header
+**********************/
+.register_bg{width:100%;background:#F5F5F5;height:58px;border-bottom:1px #CCC solid;overflow:hidden;}
+.bg{width:100%;background:url(../images/cate/bg_project_index.png) repeat-x 0 -250px;overflow:hidden;}
+#header_reg{width:960px;height:58px;margin:0 auto;}
+#header_reg h2{float:left;margin:10px 0;}
+#header_reg ul{float:right;width:740px;}
+#header_reg ul li{display:block;float:left;font-size:18px;width:180px;height:58px;line-height:22px;padding-top:8px;}
+#header_reg ul .current{background:url(../images/icons_register.gif) no-repeat 0px -4px;color:#ffffff;}
+#header_reg ul .other{background:url(../images/icons_register.gif) no-repeat -180px -4px;}
+#header_reg ul li span{clear:both;font-size:13px;}
+.shadow{overflow:hidden;height:5px;width:100%;background:url(../images/icons_register.gif) repeat-x 0px -66px;}
+
+/*
+left
+**********************/
+
+.box_shadow{border:2px #eee solid;width:650px;overflow:hidden;margin:0 auto;margin-top:40px;margin-bottom:40px;}
+
+.leftbox{border:1px #D7D7D7 solid;background:#fff;padding:10px 0 20px 30px;font-size:14px;background:url(../images/cate/angle_1.png) no-repeat 560px -38px #fff;}
+
+h3{color:#669900;font-size:18px;padding:20px 0 20px 0;}
+#registerform{}
+.item{overflow:hidden;padding-bottom:15px;padding-top:15px;clear:both;}
+    .item .label{width:60px;float:left;height:30px;line-height:38px;}
+    .item .item_info{width:550px;float:left;overflow:hidden;line-height:30px;}
+    .item .item_info .notice{color:#666;padding-left:15px;}
+    .item .item_info .warm{background:url(../images/icons_reg.png) no-repeat 15px -173px;padding-left:40px;}
+    .item .item_info .pass{background:url(../images/icons_reg.png) no-repeat 15px -133px;padding-left:40px;}
+    .item input{padding:10px;width:260px;}
+    .item .reg_button{font-size:14px;padding:0;border:none;width:138px;height:45px;line-height:44px;color:#fff;}
+    .item .reg_b_normal{background:url(../images/icons_reg.png) no-repeat 0 -3px;}
+    .item .reg_b_hover{background:url(../images/icons_reg.png) no-repeat 0 -60px;}
+    
+
+
+/*
+register succeed
+*************/
+.succeed{text-align:left;color:#87C442;margin:40px;background:url(../images/icons_reg_suc.gif) no-repeat 0 0;height:40px;line-height:40px;padding-left:60px;}
+.ml20{margin-left:21px;}
+.reg_startbox{float:left;width:306px;height:170px;}
+	.reg_bgpic{background:url(../images/icons_index.png) -2px 90px no-repeat;}
+	.reg_startbox h3{line-height:60px;height:60px;padding-left:54px;color:#DA1D14;position:relative;}
+	.reg_startbox .me{background:url(../images/icons_reg_suc.gif) no-repeat 20px -65px;}
+	.reg_startbox .home{background:url(../images/icons_reg_suc.gif) no-repeat 20px -145px;}
+	.reg_startbox .look{background:url(../images/icons_reg_suc.gif) no-repeat 20px -225px;}
+	.reg_startbox h3 .tabs{position:absolute;right:15px;top:0;font-size:13px;font-weight:normal}
+	.reg_startbox ul{text-align:left;padding:0 15px 0 15px;}
+	.reg_startbox ul li{line-height:25px;}

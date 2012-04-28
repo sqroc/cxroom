@@ -1,0 +1,62 @@
+/*
+通用的列表页面
+author:tgoooo
+*/
+
+
+/*
+page nav
+*********/
+#location{text-align:left;}
+#location a{color:#666;}
+
+/*
+left mainbox
+***************/
+.dark_menu{margin:0 10px 0 0;height:44px;border:1px #ccc solid;background:url(../images/cate/list_icons.gif) repeat-x 0 -132px;}
+	.dark_menu ul{text-align:center;color:#666;}
+	.dark_menu ul li{float:left;width:100px;height:44px;border-left:1px #fff solid;border-right:1px #ccc solid;line-height:44px;cursor:pointer;}
+	.dark_menu ul .current{background:#DCDCDC;border-left:none;}
+	
+.title{margin:30px 0;position:relative;width:100%;}
+	.title .scissors{position:absolute;right:10px;top:-11px;width:30px;height:30px;background:url(../images/cate/list_icons.gif) no-repeat 0 0;}
+	.bort{border-top:1px #ccc dashed;padding-top:40px;}
+	.title h3{float:left;color:#87C442;font-size:14px;}
+	.title span{padding-left:40px;color:#666;background:url(../images/cate/list_icons.gif) no-repeat 19px -210px;}
+	
+.projectbox{margin:20px 10px 0 0;color:#666;overflow:hidden;}
+	.project{float:left;width:210px;overflow:hidden;border:1px #ccc solid;}
+	.project img{width:210px;height:90px;clear:both;}
+	.project h4{border-bottom:1px #CCC dotted;padding:5px 10px;margin:0;line-height:28px;height:28px;font-size:13px;background:url(../images/cate/list_icons.gif) repeat-x 19px -250px;}
+	.project p{padding:0 10px;margin:0 0 5px 0;line-height:22px;}
+	.project .cate{clear:both;background:#F2F2F2;padding-left:10px;height:28px;line-height:28px;border-top:1px #EEE solid;}
+	.ml20{margin-left:20px;}
+	.cl30{height:20px;overflow:hidden;clear:both;}
+	
+	/*pages counter*/
+.pages{margin:20px 0 20px 0;}
+	.pages ul{line-height:28px;height:28px;}
+	.pages ul li{float:left;padding:0 10px;height:28px;}
+	.pages ul li a{color:#999;padding:10px 5px 10px 5px;}
+	.pages ul .current_page{border-bottom:2px #85CF28 solid;color:#85CF28;font-size:20px;}
+	
+	/*work*/
+	.work{margin:0 10px 0 0;border-top:1px #ccc solid;height:60px;line-height:60px;}
+	.work .wdate{float:left;width:15%;background:#ccc;height:30px;line-height:30px;text-align:center;color:#333;}
+	.work .warticle{float:left;width:50%;}
+	.work .wproject{float:left;width:20%;text-align:center;}	
+	.work .wcate{float:left;width:15%;text-align:center;}
+	
+/*
+sidebar
+***********/
+.borl{border-left:1px #eee solid;}
+	.counter{background:#F2F2F2;margin:0 0 20px 20px;padding:10px;height:45px;overflow:hidden;}
+	.counter .span{float:left;font-size:26px;color:#ccc;width:58px;padding:5px 0;}
+	.counter .p{float:right;font-size:13px;width:142px;padding:0;line-height:22px;color:#666;text-align:left;}
+	
+	.side_h3{margin:30px 0 0 20px;color:#666;font-weight:normal;}
+	.myproject{background:url(../images/cate/list_icons.gif) no-repeat 0 -40px;padding-left:20px;}
+	.mylove{background:url(../images/cate/list_icons.gif) no-repeat 0 -70px;padding-left:20px;}
+	.sidelist{padding:20px;}
+	.sidelist li{line-height:34px;}

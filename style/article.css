@@ -1,0 +1,26 @@
+/*
+author:tgoooo
+private blog:www.ctogo.net
+style file for article page
+**************************/
+.bg{width:100%;background:url(../images/cate/bg_project_index.png) repeat-x 0 -250px;overflow:hidden;}
+.a_content{width:660px;}
+	.a_content h2{font-size:26px;color:#6FBD00;border-bottom:2px #6FBD00 solid;padding:4px 0 20px 0;}
+	.a_content .tags{color:#999;padding:15px 0 15px 0;}
+	.a_content .content{}
+	.a_content .content p{line-height:22px;}
+
+.a_sidebar{width:270px;}
+	.a_sidebox{border-right:1px #e1e1e1 solid;border-top:4px #6FBD00 solid;margin:10px 0 10px 0;padding:15px;}
+	.a_sidebox h3{color:#6FBD00;line-height:30px}
+	.a_sidebox ul{}
+	.a_sidebox ul li{line-height:28px;}
+
+.p_intro{}
+.introbox{border-right:1px #e1e1e1 solid;overflow:hidden;}
+	.introbox .intro{padding:5px 0 5px 55px;margin-bottom:20px;}
+	.introbox .bg_team{background:url(../images/icons_index.png) no-repeat 0 0px;}
+	.introbox .bg_project{background:url(../images/icons_index.png) no-repeat 0 -90px;}
+	.introbox .bg_talent{background:url(../images/icons_index.png) no-repeat 8px -183px;}
+	.introbox .intro h3{font-size:14px;color:#6FBD00;padding:4px;}
+	.introbox .intro p{margin:0;padding:4px;color:#666;}
