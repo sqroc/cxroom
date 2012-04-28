@@ -173,7 +173,7 @@ main body
 	/*pages counter*/
 	.pages{padding:10px;overflow:hidden;}
 	.pages ul{}
-	.pages ul li{float:left;;padding:0;margin-right:10px;border:1px #ccc solid;background:#fff}
+	.pages ul li{float:left;padding:0;margin-right:10px;border:1px #ccc solid;background:#fff}
 	.pages ul .current_page{background:#66CC00;border:1px #669900 solid;color:#fff;padding:5px 10px 5px 10px;}
 	.pages ul li a{padding:5px 10px 5px 10px;display:block;}
 	.m0{margin:0;}
@@ -184,7 +184,7 @@ main body
 	.userinfo .tablist li a{color:#999;text-decoration:none;}
 	.userinfo .tablist .current{background:#85CF28;color:#fff;font-weight:bold;}
 	.userinfo .info_notice{margin:0 20px 0 20px;height:34px;line-height:34px;border:1px #eee solid;background:url(../images/space/bg.png) repeat-x 0 -50px #f9f9f9;}
-	.userinfo .info_notice span{;background:url(../images/space/icons_index.gif) no-repeat 15px -750px;padding-left:40px;}
+	.userinfo .info_notice span{background:url(../images/space/icons_index.gif) no-repeat 15px -750px;padding-left:40px;}
 	.userinfo .info_item{clear:both;overflow:hidden;margin:20px;padding:5px 0 5px 0;}
 	.userinfo .info_item .info_label{float:left;width:14%;text-align:right;}
 	.userinfo .info_item .info_content{float:left;width:82%;margin-left:10px;}
