@@ -38,6 +38,25 @@ class Articles_model extends CI_Model {
 		}
 	}
 
+	function article_update() {
+
+		$data['title'] = $this -> input -> post('title');
+		$data['content'] = $this -> input -> post('content');
+		$data['articleclass'] = $this -> input -> post('articleclass');
+		$data['adddate'] = time();
+		$where = "articleid = '" . $this -> input -> post('articleid') . "'";
+		$str = $this -> db -> update_string('article', $data, $where);
+		if ($data['title'] != NULL) {
+			if ($this -> db -> query($str)) {
+				return TRUE;
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+	}
+
 	function showLabsByLimitAll($offset, $num) {
 		$sql = "SELECT * FROM vocabulary order by vid desc limit " . $offset . "," . $num;
 		$query = $this -> db -> query($sql);
@@ -49,21 +68,29 @@ class Articles_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
-	
+
+	function showArticle($articleid) {
+		$sql = "SELECT * FROM article WHERE articleid = " . $articleid;
+		$query = $this -> db -> query($sql);
+		foreach ($query->result() as $row) {
+			return $row;
+		}
+	}
+
 	function show_article_notice_footer() {
 		$sql = "SELECT * FROM article where articleclass = '公告' order by articleid desc limit 3";
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
-	
+
 	function show_article_help_footer() {
 		$sql = "SELECT * FROM article where articleclass = '帮助' order by articleid desc limit 3";
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
-	
+
 	function show_article_by_id($articleid) {
-		$sql = "SELECT * FROM article where articleid = ".$articleid;
+		$sql = "SELECT * FROM article where articleid = " . $articleid;
 		$query = $this -> db -> query($sql);
 		foreach ($query->result() as $row) {
 			return $row;

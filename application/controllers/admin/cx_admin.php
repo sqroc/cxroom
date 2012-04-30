@@ -397,6 +397,18 @@ class Cx_admin extends CI_Controller {
 		$this -> load -> view('admin/admin_article_add');
 		//$this->load->view('footer');
 	}
+	
+	public function article_edit() {
+		$sta = $this -> session -> userdata('admin');
+		$data = array();
+		if (!isset($sta) || $sta != "login_ok") {
+			redirect('admin/cx_admin');
+		}
+		$data2['articlecontent'] = $this -> Articles_model -> showArticle($this -> uri -> segment(4, 0));
+		$this -> load -> view('admin/admin_header', $data2);
+		$this -> load -> view('admin/admin_article_edit');
+		//$this->load->view('footer');
+	}
 
 	public function article_add2() {
 		$sta = $this -> session -> userdata('admin');
@@ -413,6 +425,25 @@ class Cx_admin extends CI_Controller {
 
 		} else {
 			$data = array('title' => '友情提示', 'warm' => '对不起，由于某种原因本次注册失败了！您可以选择以下入口进入重新注册！', 'pic' => 'wrong.gif');
+			$this -> load -> view("wrong", $data);
+		}
+	}
+	
+	public function article_update() {
+		$sta = $this -> session -> userdata('admin');
+		$data = array();
+		if (!isset($sta) || $sta != "login_ok") {
+			redirect('admin/cx_admin');
+		}
+		if ($this -> Articles_model -> article_update()) {
+			$data_notice['information'] = "更新成功！该页面将在三秒后自动跳转...";
+			$data_notice['url'] = base_url() . "/admin/cx_admin/article_list";
+			$data_notice['title'] = "提示信息";
+			$data_notice['mode'] = "yes";
+			$this -> load -> view('common_notice', $data_notice);
+
+		} else {
+			$data = array('title' => '友情提示', 'warm' => '对不起，由于某种原因本次操作失败了！您可以选择以下入口进入重新注册！', 'pic' => 'wrong.gif');
 			$this -> load -> view("wrong", $data);
 		}
 	}

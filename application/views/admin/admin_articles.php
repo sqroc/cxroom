@@ -13,7 +13,7 @@
 					<td><?=$item->title?></td> 
 					<td><?= date('Y-m-d',$item->adddate);?></td> 
 				
-					<td><a href="admin/cx_admin/article_delete/<?=$item->articleid?>">删除</a> <a href="articles/getarticle/<?=$item->articleid?>">查看</a></td> 
+					<td><a href="admin/cx_admin/article_delete/<?=$item->articleid?>">删除</a> <a href="articles/getarticle/<?=$item->articleid?>">查看</a> <a href="admin/cx_admin/article_edit/<?=$item->articleid?>">修改</a></td> 
 				</tr>	
 				<?php endforeach; ?>				
 	</table> 

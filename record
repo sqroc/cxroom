@@ -1,3 +1,7 @@
 2012.04.30
 BUG修复，后台修改文章功能
-/models/projects_model.php
+models/projects_model.php
+models/article_model.php
+views/admin_article_edit.php
+views/admin_articles.php
+controllers/admin/cx_admin.php
