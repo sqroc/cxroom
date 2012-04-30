@@ -1,16 +1,17 @@
 <!--body-->
 <div class="admin_body">
-<br /><br /> <div>
+<div class="info">
 	<form action="admin/cx_admin/createcodes" method="post">
 		
 		<input type="submit" value="生成邀请码" />
 		
 	</form>
-</div><br /><br />
-	<table style="width:90%;line-height:40px;"> 
-				<tr> 
+</div>
+		<div class="content">
+			<table class="table"> 
+				<tr class="head"> 
 					<th style="width:25%" class="name">序号</th> 
-					<th style="width:25%" class="intro">邀请码</th> 
+					<th style="width:75%" class="intro">邀请码</th> 
 					
 					
 				</tr> 
@@ -22,7 +23,8 @@
 					
 				</tr>	
 				<?php endforeach; ?>				
-	</table> 
+			</table> 
+		</div>
 	
 	
 </div>

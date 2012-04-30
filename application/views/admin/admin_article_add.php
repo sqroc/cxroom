@@ -1,5 +1,6 @@
 <!--body-->
 <div class="admin_body">
+	<div class="content">
 	<form method="post" action="<?=base_url()?>admin/cx_admin/article_add2">
 		<div class="item">
 			<div class="label">
@@ -70,7 +71,7 @@
 			</div>
 		</div>
 	</form>
-	
+	</div>
 	
 </div>
 <!--#body-->

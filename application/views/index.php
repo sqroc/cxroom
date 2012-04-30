@@ -34,19 +34,19 @@
 	<div class="p_intro_line fl"></div>
 	<div class="introbox fl">
 		<div class="intro bg_team">
-			<h3>组建一支强大的团队</h3>
+			<h3 class="h_team"> </h3>
 			<p>
 				发布项目来吸引人才加入
 			</p>
 		</div>
 		<div class="intro bg_project">
-			<h3>加盟或投资项目</h3>
+			<h3 class="h_pro"></h3>
 			<p>
 				加盟或者投资感兴趣的项目
 			</p>
 		</div>
 		<div class="intro bg_talent">
-			<h3>让别人发现自己</h3>
+			<h3 class="h_talent"></h3>
 			<p>
 				让更多人发现自己的才华
 			</p>
@@ -54,25 +54,35 @@
 	</div>
 	
 	<div class="streets_box fl">
-		<div class="street">
-			<h3 class="name">
+		<div class="street mb35">
+			<div class="name">
 				黄金大道
-			</h3>
-			<p>
+			</div>
+			<div class="s_intro">
+				<p>
 				黄金大道位于城市最繁华的地段，作为商贸中心，这里坐落着人才中心和项目中心，每天都有无数的人来这里寻找机遇
-			</p>
-			<h3 class="name">
+				</p>
+			</div>
+		</div>
+		<div class="street mb35">
+			<div class="name">
 				未企路
-			</h3>
-			<p>
+			</div>
+			<div class="s_intro">
+				<p>
 				未企路虽然不是城市的主干道，但却坐落着无数的年轻企业，这里汇聚了大量的有为青年，希望开创自己的天地。作为新兴企业之谷，这里正在招纳潜力项目入驻。
-			</p>
-			<h3 class="name">
+				</p>
+			</div>
+		</div>
+		<div class="street">
+			<div class="name">
 				集贤区
-			</h3>
-			<p>
-				集贤区是城市人口居住最为集中的地方，大部分的精英人才都居住在这里，这里远离繁华的都市，是一个在工作之余放松的好地方。集贤区边上既是机场高速，可以快速到达想去的地方。
-			</p>
+			</div>
+			<div class="s_intro">
+				<p>
+				集贤区是城市人口居住最为集中的地方，大部分的精英人才都居住在这里，这里远离繁华的都市，是一个在工作之余放松的好地方。
+				</p>
+			</div>
 		</div>
 	</div>
 	<div class="p_intro_line fr"></div>
@@ -81,7 +91,7 @@
 
 
 <div class="container we_c">
-	<div class="we_say fl"><img src="<?=base_url()?>images/banners/say.png" /></div>
+	<div class="we_say fl"><img src="<?=base_url()?>images/banners/say.gif" /></div>
 	<div class="we_button fr">
 		<a href="<?= base_url() ?>projects" class="click_button">推广我的项目</a>
 		<a href="<?= base_url() ?>eggs" class="click_button">说说我的梦想</a>

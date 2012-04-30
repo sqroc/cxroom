@@ -236,6 +236,9 @@ class Projects_model extends CI_Model {
 	function showIdeascomment() {
 		$sql = "SELECT * FROM idea order by idea.ideaadddate desc limit 0,4";
 		$query = $this -> db -> query($sql);
+		if($query -> num_rows()<=0){
+			return NULL;
+		}
 		$ideaids = "";
 		foreach ($query->result() as $row) {
 			$ideaid = $row -> ideaid . '';

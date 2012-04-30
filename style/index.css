@@ -30,21 +30,27 @@ map
 street
 ********/
 .white_bg{background:#fff;overflow:hidden;padding-bottom:20px;}
-.p_intro{overflow:hidden;background:url(../images/bg_index_2.png) repeat-x 0 163px;border-bottom:1px #D7D7D7 solid;}
-.p_intro_line{width:1px;height:276px;margin:0;background:url(../images/bg_index_2.png) repeat-x 0 -140px;}
+.p_intro{overflow:hidden;background:url(../images/bg_index_2.gif) repeat-x 0 163px;border-bottom:1px #D7D7D7 solid;}
+.p_intro_line{width:1px;height:276px;margin:0;background:url(../images/bg_index_2.gif) repeat-x 0 -140px;}
 
 .introbox{width:260px;border-right:1px #fff solid;margin:30px 0 0 20px;}
-	.introbox .intro{padding:5px 0 5px 55px;margin-bottom:20px;}
-	.introbox .bg_team{background:url(../images/icons_index.png) no-repeat 0 0px;_background:url(../images/icons_index.gif) no-repeat 0 0px;}
-	.introbox .bg_project{background:url(../images/icons_index.png) no-repeat 0 -90px;_background:url(../images/icons_index.gif) no-repeat 0 -90px;}
-	.introbox .bg_talent{background:url(../images/icons_index.png) no-repeat 8px -183px;_background:url(../images/icons_index.gif) no-repeat 8px -183px;}
-	.introbox .intro h3{font-size:14px;color:#6FBD00;padding:4px;margin:0;}
-	.introbox .intro p{margin:0;padding:4px;}
+	.introbox .intro{padding:10px 0 5px 65px;margin-bottom:20px;}
+	.introbox .bg_team{background:url(../images/icons_index.gif) no-repeat 15px 10px;}
+	.introbox .bg_project{background:url(../images/icons_index.gif) no-repeat 5px -72px;}
+	.introbox .bg_talent{background:url(../images/icons_index.gif) no-repeat 8px -150px;}
+	.introbox .intro h3{font-size:14px;color:#6FBD00;height:15px;}
+	.introbox .intro .h_team{background:url(../images/icons_index.gif) no-repeat 4px -660px;}
+	.introbox .intro .h_pro{background:url(../images/icons_index.gif) no-repeat 4px -700px;}
+	.introbox .intro .h_talent{background:url(../images/icons_index.gif) no-repeat 4px -620px;}
+	.introbox .intro p{margin:0;padding:8px 4px;}
 
-.streets_box{width:647px;margin-top:30px;background:url(../images/bg_index_2.png) no-repeat -250px -170px;}
-	.street{margin-left:34px;}
-		.street .name{font-size:14px;color:#6FBD00;padding:5px 0 0 0;}
-		.street p{margin:12px 0 12px 0}
+.streets_box{width:647px;margin-top:40px;background:url(../images/bg_index_2.gif) no-repeat -250px -170px;}
+	.street{margin-left:34px;clear:both;padding:0;overflow:hidden;border:1px #fff solid;}
+	.mb35{margin-bottom:35px;}
+		.street .name{font-size:14px;font-weight:normal;background:url(../images/icons_index.gif) no-repeat 0 -485px;color:#444;text-align:center;line-height:38px;float:left;width:76px;height:38px;
+		      }
+		.street .s_intro{margin:0 0 0 20px;float:left;width:510px;overflow:hidden;}
+		.street .s_intro p{line-height:22px;margin:0;padding:0;}
 		
 /*
  * angle

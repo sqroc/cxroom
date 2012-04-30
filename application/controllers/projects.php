@@ -6,7 +6,7 @@ class Projects extends CI_Controller {
 
 	public function index() {
 		$sta = $this -> session -> userdata('user');
-		$data = array('title' => '项目列表-创新二场', 'css' => 'projects_list.css', 'js' => 'projects.js', );
+		$data = array('title' => '项目列表-创新空间', 'css' => 'projects_list.css', 'js' => 'projects.js', );
 		if (!isset($sta) || $sta != "login_ok") {
 			redirect('/projects/homepage');
 		} else {

@@ -1,10 +1,14 @@
 <!--body-->
 <div class="admin_body">
-	<p>
-		<span>总项目数<?=$projectnumber?></span> <span class="warm"><?=$noallow?>个项目未审核</span>
-	</p>
-	<table style="width:90%;line-height:40px;"> 
-				<tr> 
+	<div class="info">
+		<span><strong>基本统计：</strong></span>
+		<span>总项目数<?=$projectnumber?></span>
+		 <span class="warm"><?=$noallow?>个项目未审核</span>
+	
+	</div>
+	<div class="content">
+	<table class="table"> 
+				<tr class="head"> 
 					<th style="width:25%" class="name">名称</th> 
 					<th style="width:15%" class="intro">发布人ID</th> 
 					<th style="width:15%" class="intro">发布时间</th> 
@@ -27,10 +31,13 @@
 				
 				
 	</table> 
-	<ul class="admin_pages">
-		<?php echo $this->pagination->create_links();?>
-	
-	</ul>	
+	</div>
+<div class="page_counter">
+		
+			<?php echo $this->pagination->create_links();?>
+		
+		
+	</div>
 </div>
 <!--#body-->
 </body>

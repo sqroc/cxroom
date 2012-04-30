@@ -1,8 +1,8 @@
 <!--body-->
 <div class="admin_body">
-
-	<table style="width:90%;line-height:40px;"> 
-				<tr> 
+	<div class="content">
+	<table class="table"> 
+				<tr class="head"> 
 					<th style="width:25%" class="name">标题</th> 
 					<th style="width:25%" class="intro">发布时间</th> 
 					
@@ -17,6 +17,7 @@
 				</tr>	
 				<?php endforeach; ?>				
 	</table> 
+	</div>
 	<ul class="admin_pages">
 		<?php echo $this->pagination->create_links();?>
 	

@@ -3,9 +3,10 @@ author:tgoooo
 private blog:www.ctogo.net
 style file for article page
 **************************/
-.bg{width:100%;background:url(../images/cate/bg_project_index.png) repeat-x 0 -250px;overflow:hidden;}
-.a_content{width:660px;}
-	.a_content h2{font-size:26px;color:#6FBD00;border-bottom:2px #6FBD00 solid;padding:4px 0 20px 0;}
+.content_shadow{border:2px #eee solid;margin-top:30px;margin-bottom:30px;}
+.a_content{clear:both;border:1px #ccc solid;background:#fff;padding:20px;font-size:14px;
+background: #fff url(../images/bg_t.png) repeat-x 0px -63px;}
+	.a_content h2{font-size:26px;color:#444;border-bottom:1px #e1e1e1 solid;padding:4px 0 20px 0;}
 	.a_content .tags{color:#999;padding:15px 0 15px 0;}
 	.a_content .content{}
 	.a_content .content p{line-height:22px;}
