@@ -4,17 +4,15 @@
 <div id="space_footer">
 	<div class="l_f">
 		<p>
-			<a href="">关于我们</a>
-			<a href="">联系方式</a>
-			<a href="">合作洽谈</a>
-			<a href="">网站服务</a>
-			<a href="">服务条款</a>
+			<a href="http://www.cxroom.com/articles/getarticle/17">关于我们</a> <a href="http://www.cxroom.com/articles/getarticle/18">关于创新空间</a> <a href="http://lab.cxroom.com/volunteers">贡献者计划</a> <a href="http://www.cxroom.com/articles/getarticle/11">项目服务条款</a> <a href="http://www.cxroom.com/articles/getarticle/12">EGG服务条款</a>
+				<a href="http://www.cxroom.com/articles/getarticle/15">用户协议</a>
 		</p>
 		<p>
-			©2012- 创新空间版权所有
+			Copyright © 2012 创新空间 All Right Reserved. 浙ICP备12010459号
 		</p>	
 		
 	</div>
+	
 	<div class="logo_footer">
 		<img src="<?=base_url()?>images/space/icon_footer.gif" />
 	</div>

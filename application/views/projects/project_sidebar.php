@@ -1,5 +1,6 @@
 	<!--siede bar-->
 	<div class="sidebox fr borl">
+		<!--
 		<div class="counter">
 			<div class="span">发现</div>
 			<div class="p"><?=$attentionmembertotal?>人在这里发现了自己喜欢的项目！</div>
@@ -20,7 +21,7 @@
 			<div class="span">共赢</div>
 			<div class="p">0人在这里找到了工作</div>
 		</div>
-		
+		-->
 		<div class="cl30"></div>
 		<h3 class="side_h3 myproject">
 			我参加的项目

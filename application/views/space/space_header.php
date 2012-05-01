@@ -24,7 +24,7 @@ if(isset($js)):
 <!--第二行 导航-->
 <div class="header_bg">
 	<div id="header">
-		<h1><a href="<?=base_url() ?>" title="返回首页"><img src="<?=base_url()?>images/logo.png" /></a></h1>
+		<h1><a href="<?=base_url() ?>" title="返回首页"><img src="<?=base_url()?>images/logo.gif" /></a></h1>
 		<ul id="menu">
 		
 			<li><a href="<?=base_url() ?>/projects">项目中心</a><br><span>为项目插上翅膀</span></li>

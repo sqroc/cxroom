@@ -18,7 +18,7 @@
 			</div>
 			
 			<div class="banners">
-				<a href="">
+				<a href="http://www.cxroom.com/projects">
 				<img src="<?= base_url() ?>images/banners/index_map.png" onmouseover="this.src='<?=base_url()?>images/banners/index_map_hover.png'" onmouseout="this.src='<?=base_url()?>images/banners/index_map.png'"/>
 				</a>
 			</div>

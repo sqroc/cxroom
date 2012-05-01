@@ -1,29 +1,14 @@
-<div class="clear"></div>
-<div class="container">
-	<div id="location">
-		你的位置: <a href="<?=base_url() ?>">首页</a> > <a href="<?=base_url() ?>/projects">项目中心</a>
-	</div>
-</div><!--#container-->
-<div class="clear"></div>
+<div class="header_shadow"></div>
 
 <div class="container">
 	<!--left part-->
 	<div class="mainbox fl">
-		<div class="dark_menu">
-			<ul>
-				<li class="current">全部</li>
-				<li>互联网</li>
-				<li>平面设计</li>
-				<li>手机开发</li>
-			</ul>
-		</div>
+		
 		
 		<div class="title">
 			<h3>最新发布的项目</h3><span>发现潜力项目，你也许是第一个！</span>
 		</div>
 		
-		
-	
 		<div class="projectbox">
 			<?php if (count($projects) >= 1): ?>
 			<div class="project">

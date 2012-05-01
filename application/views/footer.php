@@ -21,7 +21,7 @@
 		</div>
 		<div class="col fl">
 			<div class="other weibo">
-				收听我们 <a href="">新浪微博</a>
+				收听我们 <a href="http://weibo.com/cxroom" target="_blank">新浪微博</a>
 			</div>
 			<!--
 			<div class="other join">
@@ -33,7 +33,7 @@
 			</div>
 			-->
 			<div class="other about">
-				<a href="">关于创新空间</a>
+				<a href="http://www.cxroom.com/articles/getarticle/18">关于创新空间</a>
 			</div>
 		</div>
 	</div>
@@ -43,7 +43,8 @@
 	
 		<div class="container">
 			<div class="fl">
-				<a href="">关于我们</a> <a href="">联系方式</a> <a href="">创新学院贡献者计划</a> <a href="">服务条款</a> <a href="">合作洽谈</a>
+				<a href="http://www.cxroom.com/articles/getarticle/17">关于我们</a> <a href="http://www.cxroom.com/articles/getarticle/18">关于创新空间</a> <a href="http://lab.cxroom.com/volunteers">贡献者计划</a> <a href="http://www.cxroom.com/articles/getarticle/11">项目服务条款</a> <a href="http://www.cxroom.com/articles/getarticle/12">EGG服务条款</a>
+				<a href="http://www.cxroom.com/articles/getarticle/15">用户协议</a>
 			</div>
 			<div class="fr">
 				Copyright © 2012 创新空间 All Right Reserved. 浙ICP备12010459号

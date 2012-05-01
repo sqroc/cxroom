@@ -2,8 +2,8 @@
 		
 		
 		<div class="spacecol" style="padding:0;">		
-				<h3>邀请码<span>已使用<?=$usedcodenumber?>个</span></h3>	
-				<h2>可使用的邀请码：</h2>
+				<h3>可使用的邀请码<span>已使用<?=$usedcodenumber?>个</span></h3>	
+				
 				<ul class="notice">		
 					<?php foreach($codes as $item): ?>	
 					<li>	

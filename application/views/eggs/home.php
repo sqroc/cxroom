@@ -23,7 +23,7 @@
 				
 				<h2><img src="<?=base_url() ?>images/cate/eggs_homepage_h2_3.png" /></h2>
 				<ul>
-					<li>- 首先需要 <a href="" target="_blank">获得邀请码</a></li>
+					<li>- 首先需要 <a href="http://www.cxroom.com/articles/getarticle/19" target="_blank">获得邀请码</a></li>
 					<li>- 用获取的邀请码 <a href="<?= base_url() ?>register" target="_blank">注册账号</a></li>
 					<li>- <a href="<?=base_url() ?>eggs/new_topic">提交你的项目</a>，审核通过后就可以对外展示了</li>
 				</ul>

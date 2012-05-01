@@ -1,4 +1,12 @@
 2012.04.30
+完善
+views/header.php
+views/footer.php
+views/index.php
+
+
+
+2012.04.30
 BUG修复，后台修改文章功能
 models/projects_model.php
 models/article_model.php

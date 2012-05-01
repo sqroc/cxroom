@@ -3,6 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title><?=$title ?></title>
+<meta name='keywords' content='创新空间,创新,空间,创新学院' />
+<meta name='description' content='成为首批用户，敲响梦想之门，欢迎入住创新空间。' />
 <link href="<?=base_url()?>style/common.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url()?>style/<?=$css ?>" rel="stylesheet" type="text/css" />
 <script src="<?=base_url()?>js/jquery.js" type="text/javascript"></script>

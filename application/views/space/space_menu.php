@@ -23,6 +23,7 @@
 			<li class="myfriends"><a href="<?=base_url() ?>/space/space_userlist/myuserlist">我的好友</a><span><?=$myfriendnumber?></span></li>
 			
 			<li class="find"><a href="<?=base_url() ?>/space/space_userlist/userlist">朋友天下</a></li>
-			<li class="func" style="border-bottom:none;"><a href="<?=base_url() ?>/user_info">修改资料</a></li>
+			<li class="func"><a href="<?=base_url() ?>/user_info">修改资料</a></li>
+			<li style="border-bottom:none;"><a href="<?=base_url() ?>/space/space_codelist">我的邀请码</a></li>
 		</ul>
 	</div>
