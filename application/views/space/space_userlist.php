@@ -1,7 +1,7 @@
 	<div class="mid fl">
 		<ul class="listmenu">
 			<li class="current">最新市民</li>
-			<li><a href="">我的好友</a></li>
+			<li><a href="<?=base_url()?>space/space_userlist/myuserlist">我的好友</a></li>
 			<li><a href="">相同爱好</a></li>
 		</ul>
 		<?php foreach($newuser as $item): ?>

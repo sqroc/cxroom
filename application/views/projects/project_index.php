@@ -62,7 +62,7 @@
 						<li><span class="num"><?= $days?></span>天</li>
 						<li><span class="num" id="cheer_counter"><?= $project->applaudnumber?></span>次掌声</li>
 						<li><span class="num" id="like_counter"><?= $project->attentionnumber?></span>人关注</li>
-						<li><span class="num">12</span>人加入</li>
+						<!--<li><span class="num">12</span>人加入</li>-->
 					</ul>
 				</div>
 				<div class="base fl">

@@ -66,6 +66,7 @@ class Space_projectlist extends CI_Controller {
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['person_pic2'] = $row2 -> person_pic;
 		$data['username2'] = $this -> session -> userdata('username');
+		$data['ismy'] = 1;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/projects_list');
@@ -135,6 +136,7 @@ class Space_projectlist extends CI_Controller {
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['person_pic2'] = $row2 -> person_pic;
 		$data['username2'] = $this -> session -> userdata('username');
+		$data['ismy'] = 1;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/projects_list');
@@ -205,6 +207,7 @@ class Space_projectlist extends CI_Controller {
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['person_pic2'] = $row2 -> person_pic;
 		$data['username2'] = $this -> session -> userdata('username');
+		$data['ismy'] = 0;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/projects_list');

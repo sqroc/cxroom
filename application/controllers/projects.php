@@ -138,7 +138,7 @@ class Projects extends CI_Controller {
 
 	public function home() {
 		$sta = $this -> session -> userdata('user');
-		$data = array('title' => '项目主页-创新二场', 'css' => 'projects.css', 'js' => 'projects.js', );
+		$data = array('title' => '项目主页-创新空间', 'css' => 'projects.css', 'js' => 'projects.js', );
 		if (!isset($sta) || $sta != "login_ok") {
 			redirect('/login');
 		} else {
@@ -156,7 +156,7 @@ class Projects extends CI_Controller {
 		}
 		$pid = $data['project'] -> pid;
 		$data['commentNumber'] = $this -> Messages_model -> getpcommentnumber($pid);
-
+        $data['title'] = $data['project'] -> name."-项目主页-创新空间";
 		//分页配置开始
 		$config['base_url'] = base_url() . 'projects/home/' . $this -> uri -> segment(3, 0) . '/';
 		$config['total_rows'] = $this -> Messages_model -> getpcommentnumber($pid);

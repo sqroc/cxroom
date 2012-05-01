@@ -24,7 +24,7 @@ class Space_userlist extends CI_Controller {
 		$data['person_pic'] = $row -> person_pic;
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
 		//分页配置开始
-		$config['base_url'] = base_url() . 'space/Space_userlist/userlist/';
+		$config['base_url'] = base_url() . 'space/space_userlist/userlist/';
 		$config['total_rows'] = 100;
 		$config['per_page'] = 5;
 		$config['uri_segment'] = 4;
@@ -78,7 +78,7 @@ class Space_userlist extends CI_Controller {
 		$data['person_pic'] = $row -> person_pic;
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
 		//分页配置开始
-		$config['base_url'] = base_url() . 'space/Space_userlist/userlist/';
+		$config['base_url'] = base_url() . 'space/space_userlist/userlist/';
 		$config['total_rows'] = $this -> Users_model -> select_num_rows();
 		$config['per_page'] = 5;
 		$config['uri_segment'] = 4;

@@ -19,9 +19,11 @@
 						<br>
 							
 						</p>
+						<?php if ($ismy == 1):
+		?>
 						<div class="edit">
 							<a href="<?=base_url()?>space/project_edit/edit/<?=$item->pid?>">修改信息</a>
-						</div>
+						</div><?php endif;?>
 					</div>
 				</div>
 					

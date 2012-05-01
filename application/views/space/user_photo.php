@@ -23,10 +23,6 @@
 		<?php else:?><img id="user_photo" src="images/user_head/head_default.gif" />
 		<?php endif;?>
 		
-		<?php if (isset($person_pic)):
-		?><img class="header_photo" src="<?=base_url()?><?=$person_pic?>" />
-		<?php else:?><img id="user_photo" src="images/user_head/head_default.gif" />
-		<?php endif;?>
 	</div>
 	<div class="pic_form">
 		<script src="<?=base_url() ?>js/check_info.js" type="text/javascript"></script>

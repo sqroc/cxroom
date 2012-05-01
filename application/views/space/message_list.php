@@ -23,15 +23,7 @@
 					</li>
 					<?php endif;?>
 				<?php endforeach; ?>
-						<li>	
-						<div class="n_box">
-							<h4 class="n_title">系统消息<span class="date">1天前</span></h4>
-							<div class="n_content" style="display:none;">
-								<p>有人回复了你的项目<a href="">test</a></p>
-								
-							</div>
-						</div>
-					</li>
+						
 					
 					
 				</ul>

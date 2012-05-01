@@ -64,9 +64,9 @@ class Messages_model extends CI_Model {
 		$data['myuid'] = $this -> session -> userdata('uid');
 		$data['isallow'] = 0;
 		$data['adddate'] = time();
-		$sql = "SELECT * FROM  friend where  youruid =" . $data['youruid'] . " and myuid = " .$data['myuid'];
+		$sql = "SELECT * FROM  friend where  youruid =" . $data['youruid'] . " and myuid = " . $data['myuid'];
 		$query = $this -> db -> query($sql);
-		if($query -> num_rows()>0){
+		if ($query -> num_rows() > 0) {
 			return FALSE;
 		}
 		if ($data['youruid'] != NULL) {
@@ -287,6 +287,11 @@ class Messages_model extends CI_Model {
 					$data2['youruid'] = $row -> myuid;
 					$data2['isallow'] = 1;
 					$data2['adddate'] = time();
+					$sql = "SELECT * FROM  friend where  youruid =" . $data2['youruid'] . " and myuid = " . $data2['myuid'];
+					$query = $this -> db -> query($sql);
+					if ($query -> num_rows() > 0) {
+						return TRUE;
+					}
 					$this -> db -> insert('friend', $data2);
 				}
 

@@ -11,6 +11,7 @@ class Objects_form extends CI_Controller {
 		}
 		$data = array('title' => '项目基本信息', 'css' => 'space.css', );
 		$data['email'] = $this -> session -> userdata('email');
+		$uid = $this -> session -> userdata('uid');
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
 		$row = $this -> Users_model -> queryuser($data['email']);
