@@ -480,6 +480,20 @@ class Cx_admin extends CI_Controller {
 			$this -> load -> view("wrong", $data);
 		}
 	}
+	
+	public function add_msg() {
+		$sta = $this -> session -> userdata('admin');
+		$data = array();
+		if (!isset($sta) || $sta != "login_ok") {
+			redirect('admin/cx_admin');
+		} else {
+			$data['usernumber'] = $this -> Users_model -> select_num_rows_users();
+			$data['projectnumber'] = $this -> Users_model -> select_num_rows_projects();
+			$data['noallow'] = $this -> Users_model -> select_num_rows_projects_noallow();
+			$this -> load -> view('admin/admin_header', $data);
+			$this -> load -> view('admin/admin_msg_add');
+		}
+	}
 
 }
 ?>

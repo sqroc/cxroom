@@ -12,6 +12,15 @@
 			<a href="">如何才能通过认证？</a>
 		</div>
 		-->
+		<div class="publish">
+			<div class="new_egg">
+				<a href="<?=base_url()?>eggs/new_topic"> </a>
+			</div>
+			<div class="new_project">
+				<a href="<?=base_url()?>space/objects_form"> </a>
+			</div>
+		</div>
+			
 		<div class="infobox">
 			<h3 class="side_title close">创业词条</h3>
 			<div class="slidebox">

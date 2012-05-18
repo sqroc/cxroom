@@ -47,6 +47,15 @@ function show_saying(){
 		
 	</div>
 	<div class="menu_box">
+		<h2>广播模块</h2>
+		<ul>
+			
+			<li class="bornone"><a href="<?=base_url()?>admin/cx_admin/add_msg">发布广播</a></li>
+			
+		
+		</ul>
+	</div>
+	<div class="menu_box">
 		<h2>会员模块</h2>
 		<ul>
 			

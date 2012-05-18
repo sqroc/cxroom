@@ -50,11 +50,17 @@
 				<?php endif; ?>
 			</div>
 			
-			<dl><?php $n=0;foreach($myskills as $item): ?>
-				<dt class="fcolor<?=$n%5?>"><?=$item->skillname?></dt>
-				<dd><?=$item->skillintro?></dd>
+			<?php $n=0;foreach($myskills as $item): ?>
+				<div class="dl">
+					<div class="fcolor<?=$n%5?> dt"><?=$item->skillname?></div>
+					<div class="dd"><?php if(isset($item->skillintro) && $item->skillintro!=''){
+						echo $item->skillintro;}else{
+							echo "不多说，你懂的";
+						}?>
+					</div>
+				</div>
 				<?php $n++;endforeach; ?>
-			</dl>
+			
 		</div>
 		
 		<div class="s_title">

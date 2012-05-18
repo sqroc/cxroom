@@ -9,6 +9,7 @@ class Users_model extends CI_Model {
 		$data['username'] = $this -> input -> post('name');
 		$data['email'] = $this -> input -> post('email');
 		$data['contact_email'] = $data['email'];
+		$data['person_pic'] = "images/user_head/head_default.gif";
 		if ($this -> Users_model -> check_invite_code()) {
 			$data10['isused'] = 1;
 			$where = "code = '" . $this -> input -> post('code') . "'";
