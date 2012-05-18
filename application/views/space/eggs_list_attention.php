@@ -18,11 +18,11 @@
 						<a href="<?=base_url() ?>eggs/topic/<?=$item->ideaid?>"><?=$item->ideaname?></a>
 						
 					</div>
-					
+					<!--
 					<div class="edit">
 						<a href="">取消收藏</a>
 					</div>
-					
+					-->
 					
 				</div>
 					

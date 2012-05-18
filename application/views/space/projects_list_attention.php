@@ -18,11 +18,11 @@
 						<a href="<?=base_url() ?>/projects/home/<?=$item->pid?>"><?=$item->name?></a>
 						
 					</div>
-					
+					<!--
 					<div class="edit">
 						<a href="">取消收藏</a>
 					</div>
-					
+					-->
 					
 				</div>
 					
