@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="keywords" content="创新空间, 创新, 空间, 创新学院" />
+<meta name="description" content="成为首批用户，敲响梦想之门，欢迎入住创新空间。" />
 <title><?=$title ?></title>
-<meta name='keywords' content='创新空间,创新,空间,创新学院' />
-<meta name='description' content='成为首批用户，敲响梦想之门，欢迎入住创新空间。' />
 <link href="<?=base_url()?>style/common.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url()?>style/<?=$css ?>" rel="stylesheet" type="text/css" />
 <script src="<?=base_url()?>js/jquery.js" type="text/javascript"></script>
@@ -30,12 +30,12 @@ $(document).ready(function(){
 <!--第二行 导航-->
 <div class="header_bg">
 	<div id="header">
-		<h1><a href="<?=base_url() ?>" title="返回首页"><img src="<?=base_url()?>images/logo.gif" /></a></h1>
+		<h1><a href="<?=base_url() ?>" title="创新空间"><img src="<?=base_url()?>images/logo.gif" /></a></h1>
 		<ul id="menu">
 		
-			<li><a href="<?=base_url() ?>/projects">项目中心</a><br><span>为项目插上翅膀</span></li>
-			<li style="border-right:none;"><a href="<?=base_url() ?>/eggs">Eggs</a><br><span>让创意不再流浪</span></li>
 			
+			<li><a href="<?=base_url() ?>/eggs" title="创意蛋">创意蛋</a><br><span>让创意不再流浪</span></li>
+			<li style="border-right:none;"><a href="<?=base_url() ?>/projects" title="项目窝">项目窝</a><br><span>为项目插上翅膀</span></li>
 		</ul>
 		<div class="mycount fr">
 			

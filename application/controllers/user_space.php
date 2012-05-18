@@ -59,6 +59,7 @@ class User_space extends CI_Controller {
 		$row = $this -> Users_model -> queryuser_byuid($uid);
 		$row2 = $this -> Users_model -> queryuser_byuid($this -> session -> userdata('uid'));
 		$this -> Users_model -> userclick($uid);
+		$data['nineaskinfo'] = $this -> Users_model -> queryusernineask_byuid($uid);
 		$data['clickdata'] = $this -> Users_model -> queryuserclick_byuid($uid);
 		$data['uid'] = $uid;
 		$data['intro'] = $row -> intro;

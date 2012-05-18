@@ -1,9 +1,11 @@
 	<div class="mid fl">
-		<ul class="listmenu">
-			<li class="current">最新市民</li>
-			<li><a href="<?=base_url()?>space/space_userlist/myuserlist">我的好友</a></li>
-			<li><a href="">相同爱好</a></li>
-		</ul>
+		<div class="space_tabs">
+			<ul>
+				<li class="current_tab">朋友天下</li>
+				<li><a href="<?=base_url() ?>/space/space_userlist/myuserlist">我的好友</a></li>
+			
+			</ul>
+		</div>
 		<?php foreach($newuser as $item): ?>
 		<div class="user_list_intro">
 			<div class="avatar">
@@ -11,17 +13,19 @@
 					<img src="<?=base_url()?><?=$item->person_pic?>" /> 
 				<?php else: ?>
 				<img src="images/user_head/head_default.gif" />
-				<?php endif; ?>
-				<p class="short_tags"><?=$item->username?><br>
-					群组<span>0</span>个,项目<span>0</span>个,掌握词条<span>0</span>条
-				</p>
-				<div class="visit">
-					<a href="user_space/uid/<?=$item->uid?>">访问客厅</a> | <a href="">交个朋友</a>
+				<?php endif; ?>	
+			</div>
+			<div class="user_list_info">
+				<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username?></a></span>
+				
+				
+				<div class="short_intro" style="margin:20px 0 0 0;">
+					<div class="j"></div>
+					<?php if (isset($item->intro) && $item->intro!=''): ?><?=$item->intro ?>
+					<?php else: ?>这家伙很懒，什么也没写。<?php endif; ?>
 				</div>
 			</div>
-			<p>
-				<?=$item->intro?>
-			</p>
+			
 		</div>
 		<?php endforeach; ?>
 		<div class="pages">

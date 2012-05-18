@@ -25,6 +25,15 @@ map
 	#map .green_r{background:url(../images/icons_map.png) no-repeat 0 -100px;}
 	#map .red_r{background:url(../images/icons_map.png) no-repeat 0 -150px;}
 	#map .yellow_r{background:url(../images/icons_map.png) no-repeat 0 -200px;}
+	#map .preview{position:absolute;left:260px;top:230px;width:240px;padding:5px;background:url(../images/common/opacity_bg.png) 0 0;border-radius:4px;}
+	#map .preview .arrow{position:absolute;left:30px;top:-12px;width:24px;height:18px;background:url(../images/common/opacity_arrow.png) no-repeat 0 0;}
+	#map .preview .pre_box{background:#fff;border:1px #ccc solid;text-align:left;overflow:hidden;}
+	#map .preview .pre_box .title{margin:5px 15px 5px 15px;font-size:14px;font-weight:normal;line-height:30px;}
+    #map .preview .pre_box .content{padding:10px 15px 15px 15px;border-top:1px #eee solid;line-height:22px;border-bottom:1px #eee solid;}
+	#map .preview .pre_box .bottom{padding:10px 15px 10px 15px;background:#f9f9f9;border-top:1px #fff solid;}
+    #map .preview .pre_box .bottom span{cursor:pointer;margin-right:15px;}
+    #map .preview .pre_box .slide{display:none;}
+    #map .preview .pre_box .article_list{margin:15px;}
 	
 /*
 street

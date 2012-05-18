@@ -12,7 +12,8 @@ h1,h2,h3,h4,h5{margin:0;padding:0;text-align:left;display:block;}
 .container{width:960px;margin:0 auto;}
 .clear{overflow:hidden;height:10px;}
 img{border:0;}
-
+.reg_shadow{border:2px #eee solid;margin-top:25px;}
+.main_box{background:#fff;border:1px #ccc solid;background: #fff url(../images/bg_t.png) repeat-x 0px -63px;}
 /*
 header
 **********************/
@@ -53,14 +54,14 @@ h3{color:#669900;font-size:18px;padding:20px 0 20px 0;}
 /*
 register succeed
 *************/
-.succeed{text-align:left;color:#87C442;margin:40px;background:url(../images/icons_reg_suc.gif) no-repeat 0 0;height:40px;line-height:40px;padding-left:60px;}
+.succeed{text-align:left;color:#669900;margin:20px;background:url(../images/icons_reg_suc.gif) no-repeat 0 0;height:40px;line-height:40px;padding-left:60px;}
 .ml20{margin-left:21px;}
-.reg_startbox{float:left;width:306px;height:170px;}
-	.reg_bgpic{background:url(../images/icons_index.png) -2px 90px no-repeat;}
-	.reg_startbox h3{line-height:60px;height:60px;padding-left:54px;color:#DA1D14;position:relative;}
+.reg_startbox{float:left;width:300px;height:170px;}
+
+	.reg_startbox h3{line-height:22px;height:22px;padding-left:54px;font-size:14px;color:#DA1D14;position:relative;}
 	.reg_startbox .me{background:url(../images/icons_reg_suc.gif) no-repeat 20px -65px;}
 	.reg_startbox .home{background:url(../images/icons_reg_suc.gif) no-repeat 20px -145px;}
 	.reg_startbox .look{background:url(../images/icons_reg_suc.gif) no-repeat 20px -225px;}
 	.reg_startbox h3 .tabs{position:absolute;right:15px;top:0;font-size:13px;font-weight:normal}
-	.reg_startbox ul{text-align:left;padding:0 15px 0 15px;}
+	.reg_startbox ul{text-align:left;padding:0 15px 0 25px;}
 	.reg_startbox ul li{line-height:25px;}

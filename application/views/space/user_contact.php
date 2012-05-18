@@ -4,6 +4,7 @@
 			<li><a href="user_info/skills">个人技能</a></li>
 			<li><a href="user_info/photo">个人头像</a></li>
 			<li class="current">联系方式</li>
+			<li><a href="user_info/nineask">九 问</a></li>
 		</ul>
 		<div class="info_notice">
 			<span>填写真实的信息才能确保别人能联系到你</span>

@@ -1,3 +1,29 @@
+2012.5.16
+CREATE TABLE  `innovation`.`question` (
+`qsid` INT NOT NULL AUTO_INCREMENT ,
+`uid` INT NOT NULL ,
+`q1` TEXT NOT NULL ,
+`q2` TEXT NOT NULL ,
+`q3` TEXT NOT NULL ,
+`q4` TEXT NOT NULL ,
+`q5` TEXT NOT NULL ,
+`q6` TEXT NOT NULL ,
+`q7` TEXT NOT NULL ,
+`q8` TEXT NOT NULL ,
+`q9` TEXT NOT NULL ,
+PRIMARY KEY (  `qsid` )
+) ENGINE = INNODB
+
+2012.5.14
+ALTER TABLE  `idea` ADD  `coverimage` VARCHAR( 250 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;
+
+
+2012.5.13
+
+ALTER TABLE  `idea` ADD  `commentnum` INT NOT NULL ;
+
+
+
 2012.04.30
 完善
 views/header.php

@@ -13,12 +13,12 @@ $(document).ready(function(){
 	});
 	
 	$('.support').hover(function(){
-		$(this).css('background','#f9f9f9');
+		$(this).addClass('support_hover');
 	}, function(){
-		$(this).css('background','#f2f2f2');
+		$(this).removeClass('support_hover');
 	});
 	
-	$('.author').css('height',$('.topic_box').height());
+	//$('.author').css('height',$('.topic_box').height());
 });
 
 $(document).ready(function(){
@@ -78,7 +78,7 @@ function add_comment(obj, tag, content){
 //support <br>
 function add_br(str){
 	var reg = new RegExp("\n","g"); 
-	str = str.replace(reg,"<br>");
+	str = str.replace(reg,"<br />");
 	return str; 
 }
 

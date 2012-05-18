@@ -181,7 +181,7 @@ function check_intro(obj){
 	i = trim(i);
 	if(i == ""){
 		return true;
-	} else if( i.length < 140){
+	} else if( i.length < 10){
 		return false;
 	} else {
 		return true;

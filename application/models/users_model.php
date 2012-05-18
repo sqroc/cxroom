@@ -128,6 +128,39 @@ class Users_model extends CI_Model {
 		}
 	}
 
+	function nineaskinfo() {
+		$uid = $this -> session -> userdata('uid');
+		$data['uid'] = $uid;
+		$data['q1'] = $this -> input -> post('q1');
+		$data['q2'] = $this -> input -> post('q2');
+		$data['q3'] = $this -> input -> post('q3');
+		$data['q4'] = $this -> input -> post('q4');
+		$data['q5'] = $this -> input -> post('q5');
+		$data['q6'] = $this -> input -> post('q6');
+		$data['q7'] = $this -> input -> post('q7');
+		$data['q8'] = $this -> input -> post('q8');
+		$data['q9'] = $this -> input -> post('q9');
+
+		$query = $this -> db -> query("SELECT * FROM question WHERE uid = '" . $data['uid'] . "'");
+		if ($query -> num_rows() <= 0) {
+			$this -> db -> insert("question", $data);
+			return TRUE;
+		} else {
+
+			$where = "uid = '" . $data['uid'] . "'";
+			$str = $this -> db -> update_string('question', $data, $where);
+			if ($data['uid'] != NULL) {
+				if ($this -> db -> query($str)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}
+			} else {
+				return FALSE;
+			}
+		}
+	}
+
 	function addskills() {
 		$data['uid'] = $this -> session -> userdata('uid');
 		$data['skillname'] = $this -> input -> post('skillname');
@@ -318,6 +351,15 @@ class Users_model extends CI_Model {
 	function queryuserclick_byuid($uid) {
 		$data['uid'] = $uid;
 		$sql = "SELECT * FROM userclick WHERE uid = ? ";
+		$query = $this -> db -> query($sql, $data);
+		foreach ($query->result() as $row) {
+			return $row;
+		}
+	}
+	
+	function queryusernineask_byuid($uid) {
+		$data['uid'] = $uid;
+		$sql = "SELECT * FROM question WHERE uid = ? ";
 		$query = $this -> db -> query($sql, $data);
 		foreach ($query->result() as $row) {
 			return $row;

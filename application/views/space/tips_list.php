@@ -1,8 +1,14 @@
 	<div class="mid fl">
 		
-		
+		<div class="space_tabs">
+			<ul>
+				<li><a href="<?=base_url()?>space/space_projectlist/attentionProjectlist">收藏的项目</a></li>
+				<li><a href="<?=base_url()?>space/space_projectlist/attentionegglist">收藏的创意蛋</a></li>
+				<li class="current_tab">收藏的词条</li>
+			</ul>
+		</div>
 		<div class="spacecol" style="padding:0;">		
-				<h3>词条收藏<span><a href="<?=site_url('tips')?>" title="查看更多词条">查看更多词条</a></span></h3>	
+				
 				<ul class="notice">		
 					<?php foreach($tips as $item): ?>	
 					<li>	

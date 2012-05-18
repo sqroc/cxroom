@@ -12,8 +12,7 @@ class Index_body extends CI_Controller {
 		//}
 		$data['username'] = $this -> session -> userdata('username');
 		$data['email'] = $this -> session -> userdata('email');
-		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
-		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
+		
 		if($data['email'] !=NULL)
 		{
 			$row = $this -> Users_model -> queryuser($data['email']);
@@ -25,13 +24,11 @@ class Index_body extends CI_Controller {
 			$data['telphone'] = $row -> telphone;
 			$data['phone'] = $row -> phone;
 			$data['person_pic'] = $row -> person_pic;
+			
 		}
+		$data['idea'] = $this -> Projects_model -> showIdeasrand();
+		$data = array_merge($data, $this -> Common_model -> global_data());
 		
-		if ($this -> session -> userdata('uid') != NULL) {
-			$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
-			$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
-		}
-
 		$this -> load -> view('header', $data);
 		$this -> load -> view('index');
 		$this -> load -> view('footer');

@@ -97,8 +97,7 @@ class Projects_model extends CI_Model {
 						$rolestr = "role_" . $i;
 						$data3['uid'] = $this -> input -> post($memberstr);
 						$data3['role'] = $this -> input -> post($rolestr);
-						$data3['pid'] = $this -> input -> post('pid');
-						;
+						$data3['pid'] = $this -> input -> post('pid'); ;
 						if ($this -> db -> insert('promember', $data3)) {
 
 						} else {
@@ -141,6 +140,13 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
+	
+	function showeggsByLimitByUid($offset, $num) {
+		$uid = $this -> session -> userdata('uid');
+		$sql = "SELECT * FROM idea where ideauid = " . $uid . " order by ideaid desc limit " . $offset . "," . $num;
+		$query = $this -> db -> query($sql);
+		return $query -> result();
+	}
 
 	function showProjectsByLimitByAttention($offset, $num) {
 		$uid = $this -> session -> userdata('uid');
@@ -152,6 +158,13 @@ class Projects_model extends CI_Model {
 	function showTipsByLimitByAttention($offset, $num) {
 		$uid = $this -> session -> userdata('uid');
 		$sql = "SELECT * FROM  vocabulary,vocabularyattention where vocabularyattention.vid =  vocabulary.vid and vocabularyattention.uid = " . $uid . " order by vocabularyattention.vocalattid desc limit " . $offset . "," . $num;
+		$query = $this -> db -> query($sql);
+		return $query -> result();
+	}
+	
+	function showeggsByLimitByAttention($offset, $num) {
+		$uid = $this -> session -> userdata('uid');
+		$sql = "SELECT * FROM  idea,ideaattentionmember where ideaattentionmember.ideaid =  idea.ideaid and ideaattentionmember.uid = " . $uid . " order by ideaattentionmember.ideaamid desc limit " . $offset . "," . $num;
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
@@ -167,6 +180,12 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query("SELECT * FROM project where uid =" . $uid);
 		return $query -> num_rows();
 	}
+	
+	function select_num_eggrowsByUid() {
+		$uid = $this -> session -> userdata('uid');
+		$query = $this -> db -> query("SELECT * FROM idea where ideauid =" . $uid);
+		return $query -> num_rows();
+	}
 
 	function select_num_rowsByAttention() {
 		$uid = $this -> session -> userdata('uid');
@@ -177,6 +196,12 @@ class Projects_model extends CI_Model {
 	function select_num_rowsTipsByAttention() {
 		$uid = $this -> session -> userdata('uid');
 		$query = $this -> db -> query("SELECT * FROM vocabularyattention where uid =" . $uid);
+		return $query -> num_rows();
+	}
+	
+	function select_num_rowseggsByAttention() {
+		$uid = $this -> session -> userdata('uid');
+		$query = $this -> db -> query("SELECT * FROM ideaattentionmember where uid =" . $uid);
 		return $query -> num_rows();
 	}
 
@@ -236,7 +261,7 @@ class Projects_model extends CI_Model {
 	function showIdeascomment() {
 		$sql = "SELECT * FROM idea order by idea.ideaadddate desc limit 0,4";
 		$query = $this -> db -> query($sql);
-		if($query -> num_rows()<=0){
+		if ($query -> num_rows() <= 0) {
 			return NULL;
 		}
 		$ideaids = "";
@@ -353,10 +378,34 @@ class Projects_model extends CI_Model {
 		$data['ideauid'] = $this -> session -> userdata('uid');
 		$data['ideaintro'] = $this -> input -> post('ideaintro');
 		$data['ideacontent'] = $this -> input -> post('pintro');
+		$data['coverimage'] = $this -> input -> post('coverimage');
 		$data['isallow'] = 0;
 		$data['ideaadddate'] = time();
 		if ($data['ideauid'] != NULL) {
 			if ($this -> db -> insert('idea', $data)) {
+				return TRUE;
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+	}
+	
+	function editidea() {
+
+	    $ideaid = $this -> input -> post('ideaid');
+		$data['ideaname'] = $this -> input -> post('ideaname');
+		$data['ideauid'] = $this -> session -> userdata('uid');
+		$data['ideaintro'] = $this -> input -> post('ideaintro');
+		$data['ideacontent'] = $this -> input -> post('pintro');
+		$data['coverimage'] = $this -> input -> post('coverimage');
+		$data['isallow'] = 0;
+		$data['ideaadddate'] = time();
+		$where = "ideaid = '" . $ideaid . "'";
+		$str = $this -> db -> update_string('idea', $data, $where);
+		if ($data['ideauid'] != NULL) {
+			if ($this -> db -> query($str)) {
 				return TRUE;
 			} else {
 				return FALSE;
@@ -520,7 +569,12 @@ class Projects_model extends CI_Model {
 		$data['comment_date'] = time();
 		if ($data['icommentideaid'] != NULL) {
 			if ($this -> db -> insert('idea_comments', $data)) {
-				return TRUE;
+				$this -> db -> where('ideaid', $data['icommentideaid']);
+				if ($this -> db -> set('commentnum', 'commentnum+1', false) -> update('idea')) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}
 			} else {
 				return FALSE;
 			}

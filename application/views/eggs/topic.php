@@ -7,13 +7,13 @@
 			<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$idea->uid?>" target="_blank" title="<?=$idea->username?>的空间"><?=$idea->username?></a></span>
 		</div>
 		<div class="support" id="join">
-				愿意加盟(<span><?=$idea->ijoinnumber?></span>)
+				愿意加盟<span><?=$idea->ijoinnumber?></span>
 		</div>
 		<div class="support" id="pay">
-				愿意出资(<span><?=$idea->icontributenumber?></span>)
+				愿意出资<span><?=$idea->icontributenumber?></span>
 		</div>
 		<div class="support" id="like">
-				收藏关注(<span><?=$idea->iattentionnumber?></span>)
+				收藏关注<span><?=$idea->iattentionnumber?></span>
 		</div>
 		
 	</div>
@@ -21,8 +21,33 @@
 	<div class="content_box fr">
 		<div class="jt"></div>
 		<div class="content">
+			<!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+        <span class="bds_more">分享到：</span>
+        <a class="bds_qzone"></a>
+        <a class="bds_tsina"></a>
+        <a class="bds_tqq"></a>
+        <a class="bds_renren"></a>
+		<a class="shareCount"></a>
+    </div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=692572" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script>
+<!-- Baidu Button END -->
 			<h2><?=$idea->ideaname?></h2>
+			
 			<p><?=$idea->ideacontent?></p>
+			
+			<!--未登录时显示内容
+			<p>
+				摘要内容
+			</p>
+			<p class="summary">	
+			 当前仅显示摘要内容，如果想查看完整内容请 <a href="<?=base_url()?>login" title="登录创新空间">马上登录</a> &nbsp; &nbsp; &nbsp;还没有账号？<a href="<?=base_url()?>register" title="注册创新空间账号">马上注册</a><br/>
+			</p>
+			-->
 		</div>
 		<div class="list">
 			<ul class="person" id="j">
@@ -61,8 +86,8 @@
 <div class="container2 t20" style="padding-bottom:20px;">
 	<div class="group_box active fl">
 	 	<div class="group_name">
-			<h3 class="name c1">创新派</h3>
-			<span class="gitem">宣言:创新改变世界！</span>
+			<h3 class="name c1 name1"> </h3>
+			
 			<span class="gitem support_a sitem">支持(<span><?=$idea->supportnumber?></span>)</span>
 			<div class="clear0"></div>
 		</div>
@@ -74,6 +99,9 @@
 				<input type="hidden" name="pid" id="comment_pid" value=""/>
 			</div>
 			<div class="c_bottom">
+				<div class="tag">
+					支持该创意，创新改变世界！
+				</div>
 				<input type="button" value="发表评论" class="small_button submit send_comment" id="l_a"/>
 			</div>
 			
@@ -119,11 +147,12 @@
 	
 	<div class="group_box disagree fl ml22">
 	 	<div class="group_name">
-			<h3 class="name c2">吐槽派</h3>
-			<span class="gitem">宣言:批判成就创新！</span>
+			<h3 class="name c2 name2"> </h3>
+		
 			<span class="gitem support_d sitem">支持(<span><?=$idea->criticizenumber?></span>)</span>
 			<div class="clear0"></div>
 		</div>
+		
 		<div class="leave_reply">
 			
 			<div class="lcontent">
@@ -132,6 +161,9 @@
 				<input type="hidden" name="pid" id="comment_pid" value=""/>
 			</div>
 			<div class="c_bottom">
+				<div class="tag">
+					吐槽该创意，批判成就创新！
+				</div>
 				<input type="button" value="发表评论" class="small_button submit send_comment" id="l_d"/>
 			</div>
 			
@@ -178,8 +210,8 @@
 	
 	<div class="group_box passby fr">
 	 	<div class="group_name">
-			<h3 class="name c3">酱油派</h3>
-			<span class="gitem">宣言:生来就为打酱油！</span>
+			<h3 class="name c3 name3"> </h3>
+		
 			<span class="gitem support_p sitem">支持(<span><?=$idea->neutralnumber?></span>)</span>
 			<div class="clear0"></div>
 		</div>
@@ -191,6 +223,9 @@
 				<input type="hidden" name="pid" id="comment_pid" value=""/>
 			</div>
 			<div class="c_bottom">
+				<div class="tag">
+					纯路过，打个酱油支持！
+				</div>
 				<input type="button" value="发表评论" class="small_button submit send_comment" id="l_p"/>
 			</div>
 			
@@ -469,3 +504,9 @@ $(document).ready(function(){
 	});
 });
 </script>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb6d68dba0015ee3ea4ac4c65196a6cd1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

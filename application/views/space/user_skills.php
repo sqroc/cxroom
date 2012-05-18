@@ -4,6 +4,7 @@
 			<li class="current">个人技能</li>
 			<li><a href="user_info/photo">个人头像</a></li>
 			<li><a href="user_info/contact">联系方式</a></li>
+			<li><a href="user_info/nineask">九 问</a></li>
 		</ul>
 		
 		<div class="spacecol" style="margin-top:0;padding:0;">
@@ -18,7 +19,7 @@
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('#all_skills').toggle(function(){
-					$(this).text('关闭全部技能 -').next().slideDown('fast');
+					$(this).text('收起全部技能 -').next().slideDown('fast');
 					auto_height();
 					
 				}, function(){

@@ -5,7 +5,7 @@
 	<div class="leftbox">
 		
 		<h3>只需30秒，让创意不再流浪</h3>
-		
+		还没有邀请码？ <a href="http://www.cxroom.com/articles/getarticle/19" title="如何获得创新空间邀请码">如何获得邀请码</a>
 		<form name="register" method="post" action="<?=site_url('register/reg')?>" id="registerform" onsubmit="return reg_check()">
 			<input name="randvalue" type="hidden" value="<?=$randvalue ?>"/>	
 			

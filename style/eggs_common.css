@@ -79,16 +79,17 @@ cols
 .ibox{border:1px #D7D7D7 solid;overflow:hidden;margin:0;background:#fff;}
 .bor_fnormal{}
 .bor_c{border:1px #8FD333 solid;}
-    
-	.ibox .title{margin:5px 15px 5px 15px;border-bottom:1px #e1e1e1 solid;font-size:14px;line-height:30px;}
+    .ibox .faceimg{overflow:hidden;}
+    .ibox .faceimg img{margin:15px 15px 0 15px;width:195px;}
+	.ibox .title{margin:5px 15px 5px 15px;border-bottom:1px #e1e1e1 solid;font-size:14px;font-weight:normal;line-height:30px;}
 	.ibox .content{margin:5px 15px 15px 15px;line-height:22px;}
 	.ibox .author{margin:0 15px 15px 15px;overflow:hidden;line-height:22px;}
 	.ibox .author .avatar{width:38px;height:38px;float:left;border:1px #e1e1e1 solid;padding:2px;margin-right:15px;}
 	.ibox .comments{clear:both;background:#f9f9f9;border-top:1px #eee solid;}
 	.ibox .comments .commentslist{line-height:22px;}
 	.ibox .comments .commentslist li{border-bottom:1px #e1e1e1 solid;border-top:1px #fff solid;padding:15px;}
-	.ibox .bottom{text-align:right;padding:5px 15px 15px 15px;background:#f9f9f9;}
-	.ibox .bottom .r{float:right;line-height:32px;margin-top:15px;}
+	.ibox .bottom{padding:10px 15px 10px 15px;background:#f9f9f9;}
+	.ibox .bottom span{cursor:pointer;margin-right:15px;}
 	.more{font-size:14px;background:#66CC00;border:1px #669900 solid;line-height:40px;height:40px;width:200px;color:#fff;}
 	
 #warm_dialog{width:300px;overflow:hidden;left:50%;top:50%;position:absolute;padding:6px;border-radius:4px 4px;z-index:999;background:url(../images/space/bg_dialog.png) repeat 0 0;}

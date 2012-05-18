@@ -1,17 +1,21 @@
-.topic_box{border:1px #D7D7D7 solid;background:#fff;overflow:hidden;text-align:left;}
+.topic_box{border:1px #D7D7D7 solid;background:#fff;overflow:hidden;text-align:left;background:url(../images/cate/bg_menu_project.png) repeat-y 0px 0 #fff;}
 .con_shadow{border:2px #f2f2f2 solid;width:980px;margin:0 auto;}
 
-.author{width:165px;overflow:hidden;height:100%;background:#f2f2f2;border-top:1px #fff solid;border-left:1px #fff solid;border-right:1px #eee solid;}
+.author{width:165px;overflow:hidden;height:100%;border-top:1px #fff solid;border-left:1px #fff solid;}
 	.author .avatar{text-align:center;border-bottom:1px #e1e1e1 solid;padding-top:20px;}
 	.author .avatar img{width:115px;border:1px #e1e1e1 solid;padding:4px;margin:0 auto;background:#fff;}
 	.author .avatar .name{font-size:14px;margin:0 auto;display:block;padding:10px;}
 	
-.support{text-align:center;padding:15px;cursor:pointer;border-top:1px #fff solid;border-bottom:1px #e1e1e1 solid;}
+.support{text-align:left;padding:15px 15px 15px 44px;margin-right:2px;cursor:pointer;border-top:1px #fff solid;border-bottom:1px #e1e1e1 solid;background:url(../images/eggs/icons_egg.gif) no-repeat 24px -272px}
+.support span{background:#FF9900;color:#fff;padding:0 5px 0 5px;margin-left:10px;border-radius:2px;}
+.support_hover{background:url(../images/eggs/icons_egg.gif) no-repeat 24px -272px #f9f9f9;}
 
-.content_box{width:810px;height:100%;border-left:1px #D7D7D7 solid;background:#fff;position:relative;}
-	.content_box .jt{position:absolute;left:-18px;top:60px;width:19px;height:34px;background:url(../images/eggs/jt.gif) no-repeat 0 0;}
+.content_box{width:810px;height:100%;background:#fff;position:relative;}
+	.content_box .jt{position:absolute;left:-17px;top:60px;width:15px;height:30px;background:url(../images/eggs/icons_egg.gif) no-repeat 0 -230px;}
 	.content{padding:15px;}
+	.content h2{clear:both;border-bottom:1px #eee solid;padding:10px 0 15px 0;}
 	.content p{padding:10px 0 10px 0;}
+	.content .summary{border:1px #e1e1e1 solid;padding:15px;background:url(../images/eggs/icons_egg.gif) no-repeat 600px -146px #f9f9f9;}
 	.list{border-top:1px #eee solid;padding-top:15px}
 		.list .person{padding:0 15px 15px 15px;}
 		.list .person li{display:inline;padding-right:10px;}
@@ -26,13 +30,16 @@
 	.active{border-top:2px #87D02A solid;}
 	.disagree{border-top:2px #FFCC00 solid;}
 	.passby{border-top:2px #3399CC solid;}
-	.group_name{padding:15px;overflow:hidden;}
-	.group_name .name{float:left;font-size:16px;}
+	.group_name{padding:10px 10px 0 10px;overflow:hidden;}
+	.group_name .name{float:left;width:70px;height:24px;}
+	.group_name .name1{background:url(../images/eggs/icons_egg.gif) no-repeat -2px -48px;}
+	.group_name .name2{background:url(../images/eggs/icons_egg.gif) no-repeat -2px -78px;}
+	.group_name .name3{background:url(../images/eggs/icons_egg.gif) no-repeat -2px -108px;}
 	.group_name .c1{color:#87D02A;}
 	.group_name .c2{color:#FFCC00;}
 	.group_name .c3{color:#3399CC;}
-	.group_name .gitem{margin-left:5px;}
-	.group_name .sitem{background:#f2f2f2;border:1px #e1e1e1 solid;padding:4px;cursor:pointer;}
+	.group_name .gitem{margin-left:15px;float:right;}
+	.group_name .sitem{background:#f2f2f2;border:1px #e1e1e1 solid;padding:4px 10px 4px 10px;cursor:pointer;}
 		
 	/*comments*/
 	.list_box{padding:10px 0 0 0;}
@@ -51,20 +58,22 @@
 	.dis_box .reply span{font-size:13px;padding-right:10px;}
 	.dis_box .reply .reply_button{cursor:pointer;}
 	.dis_box .reply .date{color:#999;}
-	.dis_box .reply p{margin:0;padding:0 10px 0 0;line-height:28px;word-break:break-all;}
+	.dis_box .reply p{margin:0;padding:0 10px 0 0;line-height:22px;word-break:break-all;}
 	.pl40{padding-left:60px;}
 	.t10{margin-top:10px;}
 	.clear_comment{height:0;overflow:hidden;clear:both;}
 	.clear10_comment{height:10px;overflow:hidden;clear:both;}
 	.leave_reply{clear:both;border-bottom:1px #eee solid;clear:both;width:100%;}
 	.leave_reply .lcontent{margin:10px;}
-	.leave_reply .lcontent textarea{width:280px;}
+	.leave_reply .lcontent textarea{width:280px;overflow:auto;}
 	.leave_reply .c_bottom{}
+	.leave_reply .c_bottom .tag{float:left;display:inline;width:180px;height:30px;margin-left:10px;line-height:34px;padding-left:5px;background:url(../images/eggs/icons_egg.gif) no-repeat 0 -2px;}
 	.leave_reply .c_bottom .submit{margin:0 10px 10px 0;float:right;padding:0;}
 	
 /*
 form
 ******/
+.item_h{clear:both;border-bottom:1px #eee solid;padding:10px 15px 15px 15px;}
 .item{overflow:hidden;padding:15px 0 15px 15px;border-bottom:1px #eee solid;width:100%;}
 	.item .label{width:80px;float:left;height:28px;line-height:30px;}
 	.item .label span{color:#FF0000;}

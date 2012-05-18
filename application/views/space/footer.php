@@ -17,57 +17,9 @@
 		<img src="<?=base_url()?>images/space/icon_footer.gif" />
 	</div>
 </div>
-
-<!--dialog-->
-<div id="t_dialog" style="display:none;">
-	<div class="box">
-		<div class="box_top">
-			<span class="replyto">回复框</span>
-			<span id="close_dialog" class="close_dialog"> </span>
-		</div>
-		<form action="<?=base_url()?>user_space/replycomment" method="post">
-	
-			<input type="hidden" value="" id="reply_comment_id" name="comment_id" />
-			<input type="hidden" name="uid" id="reply_uid" value="<?=$uid ?>"/>
-			<input type="hidden" name="replyspace" id="reply_replyspace" value="<?=$replyspace ?>"/>
-			
-			<div class="item_box">
-				<textarea rows="4"  name="comment_content" id="reply_content"></textarea>
-			</div>
-			
-			<div class="item_box">
-				<input type="button" class="small_button" id="send_reply" value="提交内容" />
-			</div>
-			
-		</form>
-		<div class="clear0"></div>
-	</div>
-</div>
-
-
-<div id="t2_dialog" style="display:none;">
-	<div class="box">
-		<div class="box_top">
-			<span>给 <?=$username ?> 发送站内信</span>
-			<span id="close_dialog2" class="close_dialog"> </span>
-		</div>
-		<form action="<?=base_url()?>user_space/replycomment" method="post">
-	
-		
-			<input type="hidden" name="uid" id="reply_uid2" value="<?=$uid ?>"/>
-
-			
-			<div class="item_box">
-				<textarea rows="4"  name="comment_content" id="reply_content2"></textarea>
-			</div>
-			
-			<div class="item_box">
-				<input type="button" class="small_button" id="send_reply2" value="发送消息" />
-			</div>
-			
-		</form>
-		<div class="clear0"></div>
-	</div>
-</div>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb6d68dba0015ee3ea4ac4c65196a6cd1' type='text/javascript'%3E%3C/script%3E"));
+</script>
 </body>
 </html>

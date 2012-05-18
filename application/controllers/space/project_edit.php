@@ -51,6 +51,7 @@ class Project_edit extends CI_Controller {
 		if (!isset($sta) || $sta != "login_ok") {
 			//redirect('/login');
 		}
+		$uid = $this -> session -> userdata('uid');
 		$data = array('title' => '项目基本信息', 'css' => 'space.css', );
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
@@ -74,13 +75,12 @@ class Project_edit extends CI_Controller {
 		$data['myprojectnumber'] = $this -> Projects_model -> select_num_rowsByUid();
 		$data['myattentionprojectnumber'] = $this -> Projects_model -> select_num_rowsByAttention();
 		$data['myfriendnumber'] = $this -> Users_model -> select_friends_num_rows($this -> session -> userdata('uid'));
-		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($uid);
-		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($uid);
 		$data['clickdata'] = $this -> Users_model -> queryuserclick_byuid($uid);
 		$row2 = $this -> Users_model -> queryuser_byuid($this -> session -> userdata('uid'));
 		$data['username2'] = $this -> session -> userdata('username');
+		$data['uid'] = $this -> session -> userdata('uid');
 		$data['person_pic2'] = $row2 -> person_pic;
-		$data['username2'] = $this -> session -> userdata('username');
+		$data = array_merge($data, $this -> Common_model -> global_data());
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/project_edit');
@@ -88,6 +88,8 @@ class Project_edit extends CI_Controller {
 		//$this -> load -> view('space/user_sidebar');
 		$this -> load -> view('space/footer');
 	}
+
+	
 
 	public function update() {
 		$sta = $this -> session -> userdata('user');

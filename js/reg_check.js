@@ -26,7 +26,7 @@ function reg_check(){
 	check_name('name');
 	check_psd('password');
 	
-	if(TAG_MAIL && TAG_AJAX_MAIL && TAG_NAME && TAG_PSD && TAG_INVITE && TAG_AJAX_INVITE){
+	if(TAG_MAIL && TAG_AJAX_MAIL &&　TAG_NAME && TAG_PSD && TAG_INVITE && TAG_AJAX_INVITE){
 		return true;
 	} else {
 		return false;

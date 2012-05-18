@@ -1,5 +1,11 @@
 <div class="ibox_shadow">
 	<div class="ibox">
+		<!--封面图片-->
+		<?php if($idea->coverimage!=NULL):?>
+		<div class="faceimg">
+			<img src="<?=base_url()?><?=$idea->coverimage?>"  />
+		</div>
+			<?php endif; ?>
 		<h2 class="title"><a href="<?=base_url()?>eggs/topic/<?=$idea->ideaid?>"><?=$idea->ideaname?></a></h2>
 		<div class="content">
 			<?=$idea->ideaintro?>
@@ -17,7 +23,7 @@
 				</ul>
 		</div>
 		<div class="bottom">
-		<span><?=$idea->iattentionnumber?>人参与</span>
+		<span>支持<?=$idea->supportnumber?>人</span><span>吐槽<?=$idea->criticizenumber?>人</span><span>酱油<?=$idea->neutralnumber?>人</span>
 		</div>
 	</div>
 </div><!--#shadow-->

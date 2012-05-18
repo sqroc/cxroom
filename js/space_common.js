@@ -8,6 +8,8 @@ $(document).ready(function() {
 	$('.s_m').mouseout(function(){
 		$(this).css('color','#999');
 	});
+	
+	space_tabs();
 });
 
 function auto_height(){
@@ -163,7 +165,7 @@ function add_comment(tag, content) {
 //support <br>
 function add_br(str){
 	var reg = new RegExp("\n","g"); 
-	str = str.replace(reg,"<br>");
+	str = str.replace(reg,"<br />");
 	return str; 
 }
 
@@ -173,8 +175,7 @@ $(document).ready(function(){
 	var reg_home = /user_space/;
 	var reg_favpro = /attention/;
 	var reg_mypro = /projectlist/;
-	var reg_myf = /myuserlist/;
-	var reg_f = /userlist/;
+	var reg_myf = /userlist/;
 	var reg_info = /user_info/;
 	var reg_tips = /Tiplist/;
 	
@@ -188,8 +189,6 @@ $(document).ready(function(){
 		$('.my_pro').removeClass('my_pro').addClass('cur_my_pro current')
 	} else if(reg_myf.test(url)) {
 		$('.myfriends').removeClass('myfriends').addClass('cur_myfriends current')
-	} else if(reg_f.test(url)) {
-		$('.find').removeClass('find').addClass('cur_find current')
 	} else if(reg_info.test(url)) {
 		$('.func').removeClass('func').addClass('cur_func current')
 	} 
@@ -218,3 +217,21 @@ $(document).ready(function(){
     //$("#t_dialog").fadeTo("fast", 1);
   });
 });
+
+//tabs
+function space_tabs(){
+	$('#tab_msg').click(function(){
+		$(this).addClass('current_tab');
+		$('#tab_reply').removeClass('current_tab');
+		$('#s_1').css('display', 'block');
+		$('#s_2').css('display', 'none');
+		auto_height();
+	});
+	$('#tab_reply').click(function(){
+		$(this).addClass('current_tab');
+		$('#tab_msg').removeClass('current_tab');
+		$('#s_2').css('display', 'block');
+		$('#s_1').css('display', 'none');
+		auto_height();
+	});
+}

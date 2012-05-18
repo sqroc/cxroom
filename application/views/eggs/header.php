@@ -40,9 +40,8 @@ $(document).ready(function(){
 		<h1><a href="<?=base_url() ?>" title="返回首页"><img src="<?=base_url()?>images/logo.gif" /></a></h1>
 		<ul id="menu">
 		
-			<li><a href="<?=base_url() ?>/projects">项目中心</a><br><span>为项目插上翅膀</span></li>
-			<li style="border-right:none;"><a href="<?=base_url() ?>/eggs">Eggs</a><br><span>让创意不再流浪</span></li>
-			
+			<li><a href="<?=base_url() ?>/eggs" title="创意蛋">创意蛋</a><br><span>让创意不再流浪</span></li>
+			<li style="border-right:none;"><a href="<?=base_url() ?>/projects" title="项目窝">项目窝</a><br><span>为项目插上翅膀</span></li>
 		</ul>
 		<div class="mycount fr">
 			
@@ -72,8 +71,8 @@ $(document).ready(function(){
 					<li class="droptab">消息
 						<ul class="dropmenu" style="display:none;">
 							
-							<li><a href="<?=base_url() ?>user_space">站内信(43)</a></li>
-							<li><a href="<?=base_url() ?>user_info">好友请求</a></li>
+							<li><a href="<?=base_url() ?>user_space">站内信(<?=$unreadmessage?>)</a></li>
+							<li><a href="<?=base_url() ?>user_info">好友请求(<?=$unreadnotice?>)</a></li>
 							
 						</ul>		
 					</li>
@@ -91,16 +90,3 @@ $(document).ready(function(){
 </div><!--#header_bg-->
 <div class="header_shadow"></div>
 
-<div id="eheader">
-	<div class="container ebg">
-		<div class="eintro fl">
-			<p>
-				<span>更低的门槛：</span>只要你有梦想和创意就可以在这里发起，全世界都会来帮你。<br>
-				<span>更低的风险：</span>试探市场和人气，条件成熟再入驻项目中心！规避风险，创业从此简单无忧。
-			</p>
-		</div>
-		<div class="newone fr">
-			<a href="<?=base_url()?>eggs/new_topic" title="发布一个新的创意"></a>
-		</div>
-	</div>
-</div>

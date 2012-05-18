@@ -56,10 +56,137 @@
 				<?php $n++;endforeach; ?>
 			</dl>
 		</div>
+		
+		<div class="s_title">
+			<h3>九 问<span>人与人，每一次的相识都源自对彼此的好奇</span></h3>
+		</div>
+		<div class="ask">
+			<?php if (isset($nineaskinfo->q1) && $nineaskinfo->q1 !=NULL): ?>
+			<h4 class="question finish"><span class="icon">Q1</span>你小时候或者现在的梦想是什么？</h4>
+				<?php else: ?>
+			<h4 class="question"><span class="icon">Q1</span>你小时候或者现在的梦想是什么？</h4>
+			<?php endif; ?>
+			
+			<p><?php if (isset($nineaskinfo->q1) && $nineaskinfo->q1 !=NULL): ?>
+				<?=$nineaskinfo->q1 ?>
+				<?php else: ?>
+			儿时的梦想是长大该多好，现在的梦想是当小孩子多好...
+			<?php endif; ?></p>
+		</div>
+		<div class="ask">
+				<?php if (isset($nineaskinfo->q2) && $nineaskinfo->q2 !=NULL): ?>
+				<h4 class="question finish"><span class="icon">Q2</span>自己都做过或者想过些啥有创意的事？</h4>
+				<?php else: ?>
+			<h4 class="question"><span class="icon">Q2</span>自己都做过或者想过些啥有创意的事？</h4>
+			<?php endif; ?>
+			
+			<p><?php if (isset($nineaskinfo->q2) && $nineaskinfo->q2 !=NULL): ?>
+				<?=$nineaskinfo->q2 ?>
+				<?php else: ?>
+			一天背500多单词，这应该属于创意型自虐...
+			<?php endif; ?></p>
+		</div>
+		<div class="ask">
+			<?php if (isset($nineaskinfo->q3) && $nineaskinfo->q3 !=NULL): ?>
+						<h4 class="question  finish"><span class="icon">Q3</span>长这么大，你最勇敢的尝试是什么？</h4>
+				<?php else: ?>
+					<h4 class="question"><span class="icon">Q3</span>长这么大，你最勇敢的尝试是什么？</h4>
+			<?php endif; ?>
+	
+			<p><?php if (isset($nineaskinfo->q3) && $nineaskinfo->q3 !=NULL): ?>
+				<?=$nineaskinfo->q3 ?>
+				<?php else: ?>
+			对着镜子里的自己说，我喜欢你！
+			<?php endif; ?></p>
+		</div>
+		<div class="ask">
+			<?php if (isset($nineaskinfo->q4) && $nineaskinfo->q4 !=NULL): ?>
+				<h4 class="question finish"><span class="icon">Q4</span>你朋友圈子里有什么怪才？</h4>
+				<?php else: ?>
+			<h4 class="question"><span class="icon">Q4</span>你朋友圈子里有什么怪才？</h4>
+			<?php endif; ?>
+			
+			<p><?php if (isset($nineaskinfo->q4) && $nineaskinfo->q4 !=NULL): ?>
+				<?=$nineaskinfo->q4 ?>
+				<?php else: ?>
+			怪才？这问题真怪。
+			<?php endif; ?></p>
+		</div>
+		<div class="ask">
+			<?php if (isset($nineaskinfo->q5) && $nineaskinfo->q5 !=NULL): ?>
+				<h4 class="question finish"><span class="icon">Q5</span>你是否有过参与某支团队的经历？哪怕只是为了完成很小的事情？
+</h4>
+				<?php else: ?>
+			<h4 class="question"><span class="icon">Q5</span>你是否有过参与某支团队的经历？哪怕只是为了完成很小的事情？
+</h4>
+			<?php endif; ?>
+			<p>
+<?php if (isset($nineaskinfo->q5) && $nineaskinfo->q5 !=NULL): ?>
+				<?=$nineaskinfo->q5 ?>
+				<?php else: ?>
+			曾今和队友步行1000公里到很远的地方。
+			<?php endif; ?></p>
+		</div>
+		<div class="ask">
+			<?php if (isset($nineaskinfo->q6) && $nineaskinfo->q6 !=NULL): ?>
+				<h4 class="question  finish"><span class="icon">Q6</span>你是否想过要创业？如果有你想象中的创业是怎样的？</h4>
+				<?php else: ?>
+			<h4 class="question"><span class="icon">Q6</span>你是否想过要创业？如果有你想象中的创业是怎样的？</h4>
+			<?php endif; ?>
+			
+			<p><?php if (isset($nineaskinfo->q6) && $nineaskinfo->q6 !=NULL): ?>
+				<?=$nineaskinfo->q6 ?>
+				<?php else: ?>
+			大概在梦里。
+			<?php endif; ?></p>
+		</div>
+		<div class="ask">
+			<?php if (isset($nineaskinfo->q7) && $nineaskinfo->q7 !=NULL): ?>
+				<h4 class="question finish"><span class="icon">Q7</span>你是否会放弃一份优越的工作选择去创业？</h4>
+				<?php else: ?>
+			<h4 class="question"><span class="icon">Q7</span>你是否会放弃一份优越的工作选择去创业？</h4>
+			<?php endif; ?>
+			
+			<p><?php if (isset($nineaskinfo->q7) && $nineaskinfo->q7 !=NULL): ?>
+				<?=$nineaskinfo->q7 ?>
+				<?php else: ?>
+			平平淡淡才是真啊！
+			<?php endif; ?></p>
+		</div>
+		<div class="ask">
+			<?php if (isset($nineaskinfo->q8) && $nineaskinfo->q8 !=NULL): ?>
+			<h4 class="question finish"><span class="icon">Q8</span>给你一个亿你会怎么花？存起来还是搞投资？</h4>
+				<?php else: ?>
+			<h4 class="question"><span class="icon">Q8</span>给你一个亿你会怎么花？存起来还是搞投资？</h4>
+			<?php endif; ?>
+			
+			<p><?php if (isset($nineaskinfo->q8) && $nineaskinfo->q8 !=NULL): ?>
+				<?=$nineaskinfo->q8 ?>
+				<?php else: ?>
+			恩，先把钱给我转到卡里，我再慢慢想想这个问题。
+			<?php endif; ?></p>
+		</div>
+		<div class="ask">
+			<?php if (isset($nineaskinfo->q9) && $nineaskinfo->q9 !=NULL): ?>
+				<h4 class="question finish"><span class="icon">Q9</span>列举几个理由来证明你可以获得成功！</h4>
+				<?php else: ?>
+			<h4 class="question"><span class="icon">Q9</span>列举几个理由来证明你可以获得成功！</h4>
+			<?php endif; ?>
+			
+			<p><?php if (isset($nineaskinfo->q9) && $nineaskinfo->q9 !=NULL): ?>
+				<?=$nineaskinfo->q9 ?>
+				<?php else: ?>
+			还没想出来自己能成功的理由。
+			<?php endif; ?></p>
+		</div>
+		
+		
+		
 		<div class="spacecol">
-			<h3>留言交流<span><a href="<?=base_url()?>space/commentslist/uid/<?=$uid ?>">查看全部留言<?php if($commentNumber>0):?>[<?=$commentNumber?>条]<?php endif; ?></a></span></h3>
+			<h3>留言交流</h3>
 			<div class="clear"></div>
 				<ul class="comments">
+					
 					<?php foreach($comment as $item): ?>
 					<li>
 						
@@ -73,7 +200,7 @@
 							</div>
 						</div>
 						<div class="clear10_comment"></div>
-							<!--回复开始--><?php foreach($commentReply as $itemReply): ?>
+							<?php foreach($commentReply as $itemReply): ?>
 								<?php if($item->scommentid == $itemReply->comment_parent):?>
 							<div class="comment_box comment_reply">
 								<div class="avatar2">
@@ -88,12 +215,11 @@
 							<?php endif; ?>
 							<?php endforeach; ?>
 						
-							<!--回复结束-->
 						
 							<div class="clear_comment"></div>
 					</li>
 					<?php endforeach; ?>
-					
+				
 					
 					
 				</ul>
@@ -114,6 +240,58 @@
 		</div>
 		
 	</div><!--#mid-->
+	
+<!--dialog-->
+<div id="t_dialog" style="display:none;">
+	<div class="box">
+		<div class="box_top">
+			<span class="replyto">回复框</span>
+			<span id="close_dialog" class="close_dialog"> </span>
+		</div>
+		<form action="<?=base_url()?>user_space/replycomment" method="post">
+	
+			<input type="hidden" value="" id="reply_comment_id" name="comment_id" />
+			<input type="hidden" name="uid" id="reply_uid" value="<?=$uid ?>"/>
+			<input type="hidden" name="replyspace" id="reply_replyspace" value="<?=$replyspace ?>"/>
+			
+			<div class="item_box">
+				<textarea rows="4"  name="comment_content" id="reply_content"></textarea>
+			</div>
+			
+			<div class="item_box">
+				<input type="button" class="small_button" id="send_reply" value="提交内容" />
+			</div>
+			
+		</form>
+		<div class="clear0"></div>
+	</div>
+</div>
+
+
+<div id="t2_dialog" style="display:none;">
+	<div class="box">
+		<div class="box_top">
+			<span>给 <?=$username ?> 发送站内信</span>
+			<span id="close_dialog2" class="close_dialog"> </span>
+		</div>
+		<form action="<?=base_url()?>user_space/replycomment" method="post">
+	
+		
+			<input type="hidden" name="uid" id="reply_uid2" value="<?=$uid ?>"/>
+
+			
+			<div class="item_box">
+				<textarea rows="4"  name="comment_content" id="reply_content2"></textarea>
+			</div>
+			
+			<div class="item_box">
+				<input type="button" class="small_button" id="send_reply2" value="发送消息" />
+			</div>
+			
+		</form>
+		<div class="clear0"></div>
+	</div>
+</div>
 	<script type="text/javascript">
 //发送回复
 $(document).ready(function() {

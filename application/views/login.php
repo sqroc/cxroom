@@ -6,51 +6,59 @@
 <base href="<?=base_url()?>"/>
 <link href="style/common.css" rel="stylesheet" type="text/css" />
 <style>
-.loginbox{width:960px;margin-top:100px;text-align:center;}
-	.saying{float:left;width:600px;font-size:22px;text-align:left;border-right:1px #EEE solid;color:#85CF28;}
-	.saying p{margin:0 20px;line-height:58px;}
-	.saying span{color:#999;padding:40px 0 0 0;}
-	.login{float:right;width:340px;height:300px;}
-	.login h3{line-height:50px;height:50px;padding:0 0 0 20px;}
-	.login .input{line-height:30px;width:220px;height:30px;padding:0 10px 0 10px;}
-	.login .label{line-height:32px;height:30px;float:left;}
+.login_header{padding:30px 0 40px 0;}
+.login_shadow{border:2px #f2f2f2 solid;}
+.loginbox{text-align:center;background:#fff;overflow:hidden;border:1px #e1e1e1 solid;}
+	.saying{float:left;width:600px;height:340px;font-size:22px;text-align:left;border-right:1px #e1e1e1 solid;color:#85CF28;}
+	.saying img{margin:5px;width:590px;height:330px;}
 	
-	.login .submit{padding:0;margin-left:66px;float:left;font-size:14px;background:url(<?=base_url()?>images/icons_form.png) no-repeat 0 -50px;_background:url(<?=base_url()?>images/icons_form.jpg) no-repeat 0 -50px;border:none;width:120px;height:42px;line-height:42px;color:#fff;}
-	.login .submit:hover{background:url(<?=base_url()?>images/icons_form.png) no-repeat 0 0px;_background:url(<?=base_url()?>images/icons_form.jpg) no-repeat 0 0px;}
+	.login{float:left;width:354px;height:340px;border-left:2px #f2f2f2 solid;border-top:1px #fff solid;background:#f9f9f9}
+	.login h3{line-height:50px;height:50px;font-size:14px;padding:0 0 0 20px;border-bottom:1px #e1e1e1 solid;}
+	.login .item{clear:both;}
+	.login .item .input{line-height:30px;width:220px;height:30px;padding:0 10px 0 10px;}
+	.login .item .label{line-height:32px;height:30px;float:left;}
+	.login .item .reg{padding:20px 0 0 72px;text-align:left;line-height:26px;}
+	
+	.login .submit{padding:0;margin-left:72px;float:left;font-size:14px;background:url(<?=base_url()?>images/login_buttons.gif) no-repeat 0 0;_background:url(<?=base_url()?>images/icons_form.jpg) no-repeat 0 -50px;border:none;width:176px;height:39px;line-height:42px;color:#fff;}
+	.login .submit:hover{background:url(<?=base_url()?>images/login_buttons.gif) no-repeat 0 -50px;_background:url(<?=base_url()?>images/icons_form.jpg) no-repeat 0 0px;}
 	.name,.psd,.check{margin:20px;line-height:30px;}
 </style>
 <script type="text/javascript">
 function show_saying(){
 	var n;
-		n = Math.floor(Math.random()*10/3);
+		n = Math.floor(Math.random()*10/4);
 	var saying = new Array(
-		"当人们说，能说的都已经说了，能做的都已经做了，实际上许多事情只是说了，还没有做<br><span>When all is said and done a lot more will have been said than done.</span>",
-		"如果只是一直坐着，你在时间的沙滩上留下的不是脚印，而是屁股印！<br><span>You can't leave footprints in the sands of time if you are sitting on your butt,And who wants to leave buttprints in the sands of time.</span>",
-		"\"我不能\"从来都不会带来成功<br>\"我试试看\"常常创造奇迹！<br><span>\"I can\'t\" never accomplished anything.<br>\"I will try\" has worked wonders!</span>",
-		"这里，由你来书写！<br><span>It is your time!</span>"
+		'login_1.jpg',
+		'login_2.gif',
+		'login_3.jpg'
 	);
-	document.write(saying[n]);
+	document.write('<img src=\"<?=base_url()?>images/banners/' + saying[n] + '\" />');
 }
 </script>
 </head>
 <body>
 <div class="container">
+	<div class="login_header">
+		<h1><a href="<?=base_url()?>">
+			<img src="<?=base_url()?>images/logo_login.gif" /></a></h1>
+	</div>
+</div>
+<div class="container login_shadow">
+	
 	<div class="loginbox">
 		<div class="saying">
-			<p>
 			<script type="text/javascript">
 				show_saying();
 			</script>
-			</p>
 		</div>
 		<div class="login">
 			<form name="login" method="post" action="<?=site_url('login/check')?>" id="loginform">
-			<h3>用户登录</h3>
-			<div class="name">
+			<h3>通行证</h3>
+			<div class="name item">
 				<span class="label">邮 箱</span>
 				<input class="input" type="text" name="email"/>
 			</div>
-			<div class="psd">
+			<div class="psd item">
 				<span class="label">密 码</span>
 				<input class="input" type="password" name="password"/>
 			</div>
@@ -58,11 +66,40 @@ function show_saying(){
 				<input type="checkbox" value="1"/>
 				<label>一周内自动登录</label>
 			</div>-->
-			<input class="submit" type="submit" value="登 录"/>
+			<div class="item">
+				<input class="submit" type="submit" value=""/>	
+			</div>
+			<div class="item">
+				<p class="reg">
+					还没有账号？<a href="<?=base_url()?>register">马上注册</a><br />
+					也可以
+					<a href="<?=base_url()?>">返回首页</a>
+					
+					或者去 <a href="http://lab.cxroom.com/">创新学院</a>
+				</p>
+				
+			</div>
+			
 			</form>
 			
 		</div>
 	</div>
 </div>
+
+
+	
+<div class="container" id="footer" style="margin-top:20px;background:#f9f9f9;"> 
+	<div class="fl"> 
+		<a href="http://www.cxroom.com/articles/getarticle/17">关于我们</a> <a href="http://www.cxroom.com/articles/getarticle/18">关于创新空间</a> <a href="http://lab.cxroom.com/volunteers">贡献者计划</a> <a href="http://www.cxroom.com/articles/getarticle/11">项目服务条款</a> <a href="http://www.cxroom.com/articles/getarticle/12">EGG服务条款</a> 
+		<a href="http://www.cxroom.com/articles/getarticle/15">用户协议</a> 
+	</div> 
+	<div class="fr"> 
+		Copyright © 2012 创新空间 All Right Reserved. 浙ICP备12010459号
+	</div> 
+	<div class="clear0"></div> 
+</div>	
+		
+	
+
 </body>
 </html>

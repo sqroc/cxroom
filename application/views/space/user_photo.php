@@ -12,6 +12,7 @@
 		<li>
 			<a href="user_info/contact">联系方式</a>
 		</li>
+		<li><a href="user_info/nineask">九 问</a></li>
 	</ul>
 	<div class="info_notice">
 			<span>建议上传真实头像，这样可以获得更多人关注</span>
