@@ -194,6 +194,46 @@ class User_space extends CI_Controller {
 
 	}
 
+	public function aid() {
+		if ($this -> uri -> segment(3) === FALSE) {
+			$uid = 0;
+		} else {
+			$uid = $this -> uri -> segment(3);
+		}
+		$row = $this -> Users_model -> queryuser_byuid($uid);
+		$row2 = $this -> Users_model -> queryuser_byuid($this -> session -> userdata('uid'));
+		//$this -> Users_model -> userclick($uid);
+		$data['nineaskinfo'] = $this -> Users_model -> queryusernineask_byuid($uid);
+		$data['clickdata'] = $this -> Users_model -> queryuserclick_byuid($uid);
+		$data['uid'] = $uid;
+		$data['intro'] = $row -> intro;
+		$data['gender'] = $row -> gender;
+		$data['province'] = $row -> province;
+		$data['contact_email'] = $row -> contact_email;
+		$data['qq'] = $row -> qq;
+		$data['telphone'] = $row -> telphone;
+		$data['phone'] = $row -> phone;
+		$data['person_pic'] = $row -> person_pic;
+		$data['person_pic2'] = $row2 -> person_pic;
+		$data['username'] = $row -> username;
+		$data['username2'] = $this -> session -> userdata('username');
+		//$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
+		$data['myskills'] = $this -> Users_model -> queryskillByOtherUid($uid);
+		$data['comment'] = $this -> Messages_model -> getcomment($uid);
+		$data['commentReply'] = $this -> Messages_model -> getcommentReply($uid);
+		$data['commentNumber'] = $this -> Messages_model -> getcommentnumber($uid);
+		$data['replyspace'] = 1;
+		$data['userreply'] = $this -> Users_model -> queryuser_byuid($this -> session -> userdata('uid'));
+		$data['myprojectnumber'] = $this -> Projects_model -> select_num_rowsByUid();
+		$data['myattentionprojectnumber'] = $this -> Projects_model -> select_num_rowsByAttention();
+		$data['myfriendnumber'] = $this -> Users_model -> select_friends_num_rows($this -> session -> userdata('uid'));
+		
+		$this -> load -> view('space/api_doctor', $data);
+		
+
+	}
+	
+
 	public function addcomment() {
 		if ($this -> Messages_model -> addcomment()) {
 			echo json_encode(array("state" => "ok"));

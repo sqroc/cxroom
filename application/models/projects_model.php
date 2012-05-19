@@ -657,6 +657,17 @@ class Projects_model extends CI_Model {
 			return $row;
 		}
 	}
+	
+	/*
+	 * 获得对应id的project评论
+	 */
+	function getprojectcommentbyid($pcommentid) {
+		$sql = "SELECT * FROM  project_comments where  pcommentid=" . $pcommentid;
+		$query = $this -> db -> query($sql);
+		foreach ($query->result() as $row) {
+			return $row;
+		}
+	}
 
 	function showcomment($ideaid, $type) {
 		$sql = "SELECT * FROM  idea_comments,user where idea_comments.author_uid = user.uid and comment_parent = -1 and icommentideaid=" . $ideaid . " and supporttype=" . $type . " order by idea_comments.icommentid desc limit 15";

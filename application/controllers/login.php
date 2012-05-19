@@ -12,7 +12,7 @@ class Login extends CI_Controller {
 
 	function check() {
 
-		$url = base_url();
+		$url = base_url()."/user_space";
 
 		if ($this -> Users_model -> check()) {
 			$data_notice['information'] = "登录成功！该页面将在三秒后自动跳转...";

@@ -2,31 +2,44 @@
 		
 		<div class="user_info">
 			<h2><?=$username ?></h2>
+			
 			<span class="user_mess">
-					<?php if (isset($gender) && $gender !=0): ?>
-						男
-					<?php elseif (!isset($gender)): ?>
-						未设置
-					<?php else: ?>
-						女
-					<?php endif; ?>
+				
+					知名指数
 			</span>
-			<span class="user_mess">
-				来自<?php if (isset($province)): ?><?=$province ?>
-					<?php else: ?>未设置<?php endif; ?>
+			<span class="user_score">
+				<?=$clickdata->click?>
 			</span>
-			<span class="s_button s_m" id="add_friend">
-				加为好友
-			</span>
-			<span class="s_button s_m" id="send_msg">
-				发站内信
-			</span>
+			<div class="talk">
+				<span class="btn grey" id="send_msg">
+					发站内信
+				</span>
+				<span class="btn focus" id="add_friend">
+					+关注Ta
+				</span>
+				
+			</div>
 		</div>
 		
 		<div class="short_intro">
 			<div class="j"></div>
-			<?php if (isset($intro)): ?><?=$intro ?>
-			<?php else: ?>这家伙很懒，什么也没写。<?php endif; ?>
+			<p>
+			<?php if (isset($intro) && $intro!=''): ?><?=$intro ?>
+			<?php else: ?>这家伙很懒，什么也没写。<?php endif; ?></p>
+			<div class="base_info">
+				<span>
+				<?php if (isset($gender) && $gender !=0): ?>
+					男
+				<?php elseif (!isset($gender)): ?>
+					性别保密
+				<?php else: ?>
+					女
+				<?php endif; ?>
+				</span><span>
+				<?php if (isset($province) && $province!='---请选择---'): ?>来自<?=$province ?><?php else:?>
+					来自未知星球
+					<?php endif; ?></span>
+			</div>
 		</div>
 		
 		<div class="spacecol">

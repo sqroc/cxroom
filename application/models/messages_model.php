@@ -88,6 +88,9 @@ class Messages_model extends CI_Model {
 		}
 	}
 
+	/**
+	 * 项目内容页的评论
+	 */
 	function addProjectcomment() {
 
 		$data['pcommentpid'] = $this -> input -> post('pid');
@@ -97,7 +100,24 @@ class Messages_model extends CI_Model {
 		$data['pcomment_date'] = time();
 		if ($data['pcommentpid'] != NULL) {
 			if ($this -> db -> insert('project_comments', $data)) {
-				return TRUE;
+				//增加消息通知
+				$row = $this -> Projects_model -> showProjectsByPid($this -> input -> post('pid'));
+				$data2['itemname'] = $row -> name;
+				$data2['snsitemid'] = $row -> pid;
+				$data2['senduid'] = $this -> session -> userdata('uid');
+				$data2['recuid'] = $row -> uid;
+				$data2['content'] = $this -> input -> post('comment_content');
+				$data2['type'] = "projectcomment";
+				$data2['senddate'] = time();
+
+				if ($data2['senduid'] == $data2['recuid']) {
+					return TRUE;
+				}
+				if ($this -> db -> insert('snsnotice', $data2)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}
 			} else {
 				return FALSE;
 			}
@@ -133,7 +153,25 @@ class Messages_model extends CI_Model {
 		$data['pcomment_date'] = time();
 		if ($data['pcommentpid'] != NULL) {
 			if ($this -> db -> insert('project_comments', $data)) {
-				return TRUE;
+				//增加消息通知
+				$row = $this -> Projects_model -> showProjectsByPid($this -> input -> post('pid'));
+				$row2 = $this -> Projects_model -> getprojectcommentbyid($this -> input -> post('pcommentid'));
+				$data2['itemname'] = $row -> name;
+				$data2['snsitemid'] = $row -> pid;
+				$data2['senduid'] = $this -> session -> userdata('uid');
+				$data2['recuid'] = $row2 -> author_uid;
+				$data2['content'] = $this -> input -> post('comment_content');
+				$data2['type'] = "projectreplycomment";
+				$data2['senddate'] = time();
+
+				if ($data2['senduid'] == $data2['recuid']) {
+					return TRUE;
+				}
+				if ($this -> db -> insert('snsnotice', $data2)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}
 			} else {
 				return FALSE;
 			}

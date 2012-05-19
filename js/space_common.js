@@ -10,6 +10,7 @@ $(document).ready(function() {
 	});
 	
 	space_tabs();
+	preview();
 });
 
 function auto_height(){
@@ -233,5 +234,14 @@ function space_tabs(){
 		$('#s_2').css('display', 'block');
 		$('#s_1').css('display', 'none');
 		auto_height();
+	});
+}
+
+//
+function preview(){
+	$('.new').hover(function(){
+		$(this).children('.preview').css('display', 'block');
+	}, function(){
+		$(this).children('.preview').css('display', 'none');
 	});
 }
