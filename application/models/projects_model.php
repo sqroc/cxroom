@@ -668,6 +668,17 @@ class Projects_model extends CI_Model {
 			return $row;
 		}
 	}
+	
+	/*
+	 * 获得对应id的space评论
+	 */
+	function getspacecommentbyid($scommentid) {
+		$sql = "SELECT * FROM  space_comments where  scommentid=" . $scommentid;
+		$query = $this -> db -> query($sql);
+		foreach ($query->result() as $row) {
+			return $row;
+		}
+	}
 
 	function showcomment($ideaid, $type) {
 		$sql = "SELECT * FROM  idea_comments,user where idea_comments.author_uid = user.uid and comment_parent = -1 and icommentideaid=" . $ideaid . " and supporttype=" . $type . " order by idea_comments.icommentid desc limit 15";

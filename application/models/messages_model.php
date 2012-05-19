@@ -13,7 +13,23 @@ class Messages_model extends CI_Model {
 		$data['comment_date'] = time();
 		if ($data['scommentuid'] != NULL) {
 			if ($this -> db -> insert('space_comments', $data)) {
-				return TRUE;
+				//增加消息通知
+				$data2['itemname'] = "";
+				$data2['snsitemid'] = "";
+				$data2['senduid'] = $this -> session -> userdata('uid');
+				$data2['recuid'] = $this -> input -> post('uid');
+				$data2['content'] = $this -> input -> post('comment_content');
+				$data2['type'] = "spacecomment";
+				$data2['senddate'] = time();
+
+				if ($data2['senduid'] == $data2['recuid']) {
+					return TRUE;
+				}
+				if ($this -> db -> insert('snsnotice', $data2)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}
 			} else {
 				return FALSE;
 			}
@@ -31,7 +47,23 @@ class Messages_model extends CI_Model {
 		$data['m_date'] = time();
 		if ($data['otheruid'] != NULL) {
 			if ($this -> db -> insert('message', $data)) {
-				return TRUE;
+				//增加消息通知
+				$data2['itemname'] = "";
+				$data2['snsitemid'] = "";
+				$data2['senduid'] = $this -> session -> userdata('uid');
+				$data2['recuid'] = $this -> input -> post('otheruid');
+				$data2['content'] = $this -> input -> post('content2');
+				$data2['type'] = "spacemessage";
+				$data2['senddate'] = time();
+
+				if ($data2['senduid'] == $data2['recuid']) {
+					return TRUE;
+				}
+				if ($this -> db -> insert('snsnotice', $data2)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}
 			} else {
 				return FALSE;
 			}
@@ -49,7 +81,23 @@ class Messages_model extends CI_Model {
 		$data['m_date'] = time();
 		if ($data['otheruid'] != NULL) {
 			if ($this -> db -> insert('message', $data)) {
-				return TRUE;
+				//增加消息通知
+				$data2['itemname'] = "";
+				$data2['snsitemid'] = "";
+				$data2['senduid'] = $this -> session -> userdata('uid');
+				$data2['recuid'] = $this -> input -> post('otheruid');
+				$data2['content'] = $this -> input -> post('content');
+				$data2['type'] = "spacereplymessage";
+				$data2['senddate'] = time();
+
+				if ($data2['senduid'] == $data2['recuid']) {
+					return TRUE;
+				}
+				if ($this -> db -> insert('snsnotice', $data2)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}
 			} else {
 				return FALSE;
 			}
@@ -135,7 +183,24 @@ class Messages_model extends CI_Model {
 		$data['comment_date'] = time();
 		if ($data['scommentuid'] != NULL) {
 			if ($this -> db -> insert('space_comments', $data)) {
-				return TRUE;
+				//增加消息通知
+				$row2 = $this -> Projects_model -> getspacecommentbyid($this -> input -> post('comment_id'));
+				$data2['itemname'] = "";
+				$data2['snsitemid'] = "";
+				$data2['senduid'] = $this -> session -> userdata('uid');
+				$data2['recuid'] = $row2 -> author_uid;
+				$data2['content'] = $this -> input -> post('comment_content');
+				$data2['type'] = "spacereplycomment";
+				$data2['senddate'] = time();
+
+				if ($data2['senduid'] == $data2['recuid']) {
+					return TRUE;
+				}
+				if ($this -> db -> insert('snsnotice', $data2)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}
 			} else {
 				return FALSE;
 			}

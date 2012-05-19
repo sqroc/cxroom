@@ -213,6 +213,63 @@
 			</li>
 			<?php endif;?>
 			
+			<?php if ($item->type == "spacecomment"):?>		
+				<li>
+				<div class="notice_box">
+					<div class="n_avatar">
+						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+					</div>
+					<div class="n_msg">
+						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> :</span> 给您留言了。 <a href="<?=base_url()?>space/commentslist">点击此处查看详情！</a> 
+						<blockquote>
+							【Ta的留言】：<?=$item->content ?>
+						</blockquote>
+					</div>
+					<div class="n_msg">
+					<?= date('Y/m/d h:m:s',$item->senddate);?>
+					</div>
+				</div>
+			</li>
+			<?php endif;?>
+			
+			<?php if ($item->type == "spacemessage"):?>		
+				<li>
+				<div class="notice_box">
+					<div class="n_avatar">
+						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+					</div>
+					<div class="n_msg">
+						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> :</span> 给您发了一封站内信。 <a href="<?=base_url()?>space/messages/letters">点击此处查看详情！</a> 
+						<blockquote>
+							【站内信内容】：<?=$item->content ?>
+						</blockquote>
+					</div>
+					<div class="n_msg">
+					<?= date('Y/m/d h:m:s',$item->senddate);?>
+					</div>
+				</div>
+			</li>
+			<?php endif;?>
+			
+			<?php if ($item->type == "spacereplymessage"):?>		
+				<li>
+				<div class="notice_box">
+					<div class="n_avatar">
+						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+					</div>
+					<div class="n_msg">
+						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> :</span> 回复了您发送的站内信。 <a href="<?=base_url()?>space/messages/letters">点击此处查看详情！</a> 
+						<blockquote>
+							【站内信内容】：<?=$item->content ?>
+						</blockquote>
+					</div>
+					<div class="n_msg">
+					<?= date('Y/m/d h:m:s',$item->senddate);?>
+					</div>
+				</div>
+			</li>
+			<?php endif;?>
+			
 			<?php if ($item->type == "eggreplycomment"):?>		
 				<li>
 				<div class="notice_box">
@@ -242,6 +299,25 @@
 						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> :</span> 回复了您在项目 <a href="<?=base_url()?>projects/home/<?=$item->snsitemid ?>"><?=$item->itemname ?></a>上的评论。 赶快去看看吧！
 						<blockquote>
 							【Ta对您说】：<?=$item->content ?>
+						</blockquote>
+					</div>
+					<div class="n_msg">
+					<?= date('Y/m/d h:m:s',$item->senddate);?>
+					</div>
+				</div>
+			</li>
+			<?php endif;?>
+			
+			<?php if ($item->type == "spacereplycomment"):?>		
+				<li>
+				<div class="notice_box">
+					<div class="n_avatar">
+						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+					</div>
+					<div class="n_msg">
+						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> :</span> 回复了您在Ta空间的留言！<a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"> [去<?=$item->username ?>的空间看看]</a>
+						<blockquote>
+							【Ta对您的留言回复】：<?=$item->content ?>
 						</blockquote>
 					</div>
 					<div class="n_msg">
