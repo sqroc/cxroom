@@ -42,6 +42,105 @@ class User_space extends CI_Controller {
 		$data['myfriendnumber'] = $this -> Users_model -> select_friends_num_rows($this -> session -> userdata('uid'));
 		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($uid);
 		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($uid);
+
+		//分页配置开始
+		$config['base_url'] = base_url() . 'user_space/spacenotice/';
+		$config['total_rows'] = $this -> Messages_model -> select_num_rowsSnsnoticeByUid();
+		$config['per_page'] = 5;
+		$config['uri_segment'] = 3;
+		$config['full_tag_open'] = '<ul>';
+		$config['full_tag_close'] = '</ul>';
+		$config['first_link'] = '第一页';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['last_link'] = '最后一页';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		$config['next_link'] = '下一页';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_link'] = '上一页';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="current_page">';
+		$config['cur_tag_close'] = '</li>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$this -> pagination -> initialize($config);
+		//分页配置结束
+		$data['snsnotices'] = $this -> Messages_model -> getsnsnoticeByLimitByUid($this -> uri -> segment(3, 0), $config['per_page']);
+		$this -> load -> view('space/space_header', $data);
+		$this -> load -> view('space/space_menu');
+		$this -> load -> view('space/space_myhome');
+		$this -> load -> view('space/user_sidebar');
+		$this -> load -> view('space/footer');
+	}
+
+	public function spacenotice() {
+		$sta = $this -> session -> userdata('user');
+		if (!isset($sta) || $sta != "login_ok") {
+			redirect('/login');
+		}
+		$uid = $this -> session -> userdata('uid');
+
+		$data = array('title' => '用户空间', 'css' => 'space.css', 'js' => 'space_index.js');
+		$data['email'] = $this -> session -> userdata('email');
+		$data['username'] = $this -> session -> userdata('username');
+		$data['username2'] = $this -> session -> userdata('username');
+		$data['clickdata'] = $this -> Users_model -> queryuserclick_byuid($uid);
+		$data['randvalue'] = rand(0, 10000000000);
+		$row = $this -> Users_model -> queryuser($data['email']);
+		$data['intro'] = $row -> intro;
+		$data['gender'] = $row -> gender;
+		$data['province'] = $row -> province;
+		$data['contact_email'] = $row -> contact_email;
+		$data['qq'] = $row -> qq;
+		$data['telphone'] = $row -> telphone;
+		$data['phone'] = $row -> phone;
+		$data['person_pic'] = $row -> person_pic;
+		$data['person_pic2'] = $row -> person_pic;
+		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
+		$data['myskills'] = $this -> Users_model -> queryskillByUid();
+		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
+		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
+		$data['comment'] = $this -> Messages_model -> getcomment($uid);
+		$data['commentReply'] = $this -> Messages_model -> getcommentReply($uid);
+		$data['commentNumber'] = $this -> Messages_model -> getcommentnumber($uid);
+		$data['userreply'] = $this -> Users_model -> queryuser_byuid($this -> session -> userdata('uid'));
+		$data['replyspace'] = 2;
+		$data['uid'] = $uid;
+		$data['myprojectnumber'] = $this -> Projects_model -> select_num_rowsByUid();
+		$data['myattentionprojectnumber'] = $this -> Projects_model -> select_num_rowsByAttention();
+		$data['myfriendnumber'] = $this -> Users_model -> select_friends_num_rows($this -> session -> userdata('uid'));
+		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($uid);
+		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($uid);
+
+		//分页配置开始
+		$config['base_url'] = base_url() . 'user_space/spacenotice/';
+		$config['total_rows'] = $this -> Messages_model -> select_num_rowsSnsnoticeByUid();
+		$config['per_page'] = 5;
+		$config['uri_segment'] = 3;
+		$config['full_tag_open'] = '<ul>';
+		$config['full_tag_close'] = '</ul>';
+		$config['first_link'] = '第一页';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['last_link'] = '最后一页';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		$config['next_link'] = '下一页';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_link'] = '上一页';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="current_page">';
+		$config['cur_tag_close'] = '</li>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$this -> pagination -> initialize($config);
+		//分页配置结束
+		$data['snsnotices'] = $this -> Messages_model -> getsnsnoticeByLimitByUid($this -> uri -> segment(3, 0), $config['per_page']);
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/space_myhome');
@@ -116,7 +215,7 @@ class User_space extends CI_Controller {
 		}
 
 	}
-	
+
 	public function addfriend() {
 		if ($this -> Messages_model -> addfriend()) {
 			echo json_encode(array("state" => "ok"));

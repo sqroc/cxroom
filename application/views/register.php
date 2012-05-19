@@ -29,7 +29,7 @@
 				<div class="label">姓 名</div>
 				<div class="item_info">
 					<input class="input" type="text" name="name" id="name" value=""/>
-					<span class="notice">输入姓名,只可以包含数字和字母</span>
+					<span class="notice">输入姓名,只可以包含中文或字母</span>
 				</div>
 			</div>
 			

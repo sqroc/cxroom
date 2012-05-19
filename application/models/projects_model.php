@@ -97,7 +97,8 @@ class Projects_model extends CI_Model {
 						$rolestr = "role_" . $i;
 						$data3['uid'] = $this -> input -> post($memberstr);
 						$data3['role'] = $this -> input -> post($rolestr);
-						$data3['pid'] = $this -> input -> post('pid'); ;
+						$data3['pid'] = $this -> input -> post('pid');
+						;
 						if ($this -> db -> insert('promember', $data3)) {
 
 						} else {
@@ -140,7 +141,7 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
-	
+
 	function showeggsByLimitByUid($offset, $num) {
 		$uid = $this -> session -> userdata('uid');
 		$sql = "SELECT * FROM idea where ideauid = " . $uid . " order by ideaid desc limit " . $offset . "," . $num;
@@ -161,7 +162,7 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
-	
+
 	function showeggsByLimitByAttention($offset, $num) {
 		$uid = $this -> session -> userdata('uid');
 		$sql = "SELECT * FROM  idea,ideaattentionmember where ideaattentionmember.ideaid =  idea.ideaid and ideaattentionmember.uid = " . $uid . " order by ideaattentionmember.ideaamid desc limit " . $offset . "," . $num;
@@ -180,7 +181,7 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query("SELECT * FROM project where uid =" . $uid);
 		return $query -> num_rows();
 	}
-	
+
 	function select_num_eggrowsByUid() {
 		$uid = $this -> session -> userdata('uid');
 		$query = $this -> db -> query("SELECT * FROM idea where ideauid =" . $uid);
@@ -198,7 +199,7 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query("SELECT * FROM vocabularyattention where uid =" . $uid);
 		return $query -> num_rows();
 	}
-	
+
 	function select_num_rowseggsByAttention() {
 		$uid = $this -> session -> userdata('uid');
 		$query = $this -> db -> query("SELECT * FROM ideaattentionmember where uid =" . $uid);
@@ -391,10 +392,10 @@ class Projects_model extends CI_Model {
 			return FALSE;
 		}
 	}
-	
+
 	function editidea() {
 
-	    $ideaid = $this -> input -> post('ideaid');
+		$ideaid = $this -> input -> post('ideaid');
 		$data['ideaname'] = $this -> input -> post('ideaname');
 		$data['ideauid'] = $this -> session -> userdata('uid');
 		$data['ideaintro'] = $this -> input -> post('ideaintro');
@@ -559,6 +560,9 @@ class Projects_model extends CI_Model {
 		return $query -> result();
 	}
 
+	/*
+	 * 创意蛋添加评论
+	 */
 	function addcomment() {
 
 		$data['icommentideaid'] = $this -> input -> post('icommentideaid');
@@ -568,9 +572,69 @@ class Projects_model extends CI_Model {
 		$data['comment_parent'] = -1;
 		$data['comment_date'] = time();
 		if ($data['icommentideaid'] != NULL) {
+			//添加评论
 			if ($this -> db -> insert('idea_comments', $data)) {
 				$this -> db -> where('ideaid', $data['icommentideaid']);
+				//评论计数
 				if ($this -> db -> set('commentnum', 'commentnum+1', false) -> update('idea')) {
+					//增加消息通知
+					$row = $this -> Projects_model -> showIdeaByPid($this -> input -> post('icommentideaid'));
+					$data2['itemname'] = $row -> ideaname;
+					$data2['snsitemid'] = $row -> ideaid;
+					$data2['senduid'] = $this -> session -> userdata('uid');
+					$data2['recuid'] = $row -> ideauid;
+					$data2['content'] = $this -> input -> post('comment_content');
+					$data2['type'] = "eggcomment";
+					$data2['senddate'] = time();
+
+					if ($data2['senduid'] == $data2['recuid']) {
+						return TRUE;
+					}
+					if ($this -> db -> insert('snsnotice', $data2)) {
+						return TRUE;
+					} else {
+						return FALSE;
+					}
+
+				} else {
+					return FALSE;
+				}
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+	}
+
+	/*
+	 * 创意蛋回复评论
+	 */
+	function addreply() {
+
+		$data['icommentideaid'] = $this -> input -> post('icommentideaid');
+		$data['author_uid'] = $this -> session -> userdata('uid');
+		$data['comment_content'] = $this -> input -> post('comment_content');
+		$data['supporttype'] = $this -> input -> post('supporttype');
+		$data['comment_parent'] = $this -> input -> post('comment_id');
+		$data['comment_date'] = time();
+		if ($data['icommentideaid'] != NULL) {
+			if ($this -> db -> insert('idea_comments', $data)) {
+				//增加消息通知
+				$row = $this -> Projects_model -> showIdeaByPid($this -> input -> post('icommentideaid'));
+				$row2 = $this -> Projects_model -> getideacommentbyid($this -> input -> post('comment_id'));
+				$data2['itemname'] = $row -> ideaname;
+				$data2['snsitemid'] = $row -> ideaid;
+				$data2['senduid'] = $this -> session -> userdata('uid');
+				$data2['recuid'] = $row2 -> author_uid;
+				$data2['content'] = $this -> input -> post('comment_content');
+				$data2['type'] = "eggreplycomment";
+				$data2['senddate'] = time();
+
+				if ($data2['senduid'] == $data2['recuid']) {
+					return TRUE;
+				}
+				if ($this -> db -> insert('snsnotice', $data2)) {
 					return TRUE;
 				} else {
 					return FALSE;
@@ -583,22 +647,14 @@ class Projects_model extends CI_Model {
 		}
 	}
 
-	function addreply() {
-
-		$data['icommentideaid'] = $this -> input -> post('icommentideaid');
-		$data['author_uid'] = $this -> session -> userdata('uid');
-		$data['comment_content'] = $this -> input -> post('comment_content');
-		$data['supporttype'] = $this -> input -> post('supporttype');
-		$data['comment_parent'] = $this -> input -> post('comment_id');
-		$data['comment_date'] = time();
-		if ($data['icommentideaid'] != NULL) {
-			if ($this -> db -> insert('idea_comments', $data)) {
-				return TRUE;
-			} else {
-				return FALSE;
-			}
-		} else {
-			return FALSE;
+	/*
+	 * 获得对应id的egg评论
+	 */
+	function getideacommentbyid($icommentid) {
+		$sql = "SELECT * FROM  idea_comments where  icommentid=" . $icommentid;
+		$query = $this -> db -> query($sql);
+		foreach ($query->result() as $row) {
+			return $row;
 		}
 	}
 

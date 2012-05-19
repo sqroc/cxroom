@@ -149,6 +149,22 @@ class Messages_model extends CI_Model {
 
 	}
 
+	/*
+	 * 个人空间互动消息调用
+	 */
+	function getsnsnoticeByLimitByUid($offset, $num) {
+		$uid = $this -> session -> userdata('uid');
+		$sql = "SELECT * FROM snsnotice,user where snsnotice.senduid = user.uid and snsnotice.recuid =" . $uid . " order by snsnotice.senddate desc limit  " . $offset . "," . $num;
+		$query = $this -> db -> query($sql);
+		return $query -> result();
+	}
+
+	function select_num_rowsSnsnoticeByUid() {
+		$uid = $this -> session -> userdata('uid');
+		$query = $this -> db -> query("SELECT * FROM snsnotice where recuid =" . $uid);
+		return $query -> num_rows();
+	}
+
 	function getcommentnumber($uid) {
 		$sql = "SELECT * FROM  space_comments where comment_parent = -1  and  scommentuid =" . $uid;
 		$query = $this -> db -> query($sql);
