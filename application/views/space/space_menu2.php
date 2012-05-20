@@ -12,15 +12,15 @@
 			<?php endif; ?>
 		</div>
 		<ul class="lmenu">
-			<li class="home"><a href="<?=base_url() ?>/user_space">我的客厅</a></li>
+			<li class="home"><a href="<?=base_url() ?>/user_space">我的书房</a></li>
 		
-						<li class="my_pro"><a href="<?=base_url() ?>/space/space_projectlist">我的项目</a><span><?=$myprojectnumber?></span></li>
+						<li class="my_pro"><a href="<?=base_url() ?>/space/space_projectlist">我的项目</a></li>
 			
-				<li class="fav_pro"><a href="<?=base_url() ?>/space/space_projectlist/attentionProjectlist">收藏项目</a><span><?=$myattentionprojectnumber?></span></li>
+				<li class="fav_pro"><a href="<?=base_url() ?>/space/space_projectlist/attentionProjectlist">收藏项目</a></li>
 				
 				<li class="fav_lab"><a href="<?=base_url() ?>/space/space_projectlist/attentionTiplist">词条收藏</a></li>
 			
-			<li class="myfriends"><a href="<?=base_url() ?>/space/space_userlist/myuserlist">我的好友</a><span><?=$myfriendnumber?></span></li>
+			<li class="myfriends"><a href="<?=base_url() ?>/space/space_userlist/myuserlist">我的好友</a></li>
 			
 			<li class="find"><a href="<?=base_url() ?>/space/space_userlist/userlist">朋友天下</a></li>
 			

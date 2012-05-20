@@ -8,6 +8,12 @@
 				<li><a href="<?=base_url()?>space/space_projectlist/attentionTiplist">收藏的词条</a></li>
 			</ul>
 		</div>
+		<?php if($projects == NULL):?>
+				<div class="nothing">
+					还没关注任何项目<br/>
+					
+				</div>
+		<?php endif;?>
 		<ul class="project_list">
 			<?php $n=0;foreach($projects as $item):$n++; ?>
 			<li>

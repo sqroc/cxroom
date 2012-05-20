@@ -12,7 +12,7 @@
 			<?php endif; ?>
 		</div>
 		<ul class="lmenu">
-			<li class="home"><a href="<?=base_url() ?>/user_space">我的客厅</a></li>
+			<li class="home"><a href="<?=base_url() ?>/user_space">我的书房</a></li>
 		
 			<li class="my_pro"><a href="<?=base_url() ?>/space/space_projectlist">我的发布</a><!--<span><?=$myprojectnumber?></span>--></li>
 			

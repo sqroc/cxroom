@@ -8,6 +8,12 @@
 				
 			</ul>
 		</div>
+		<?php if($projects == NULL):?>
+				<div class="nothing">
+					还没发布任何项目，你可以：<br/>
+					<a href="<?=base_url()?>space/objects_form">发布一个项目</a>
+				</div>
+		<?php endif;?>
 		<ul class="project_list">
 			<?php $n=0;foreach($projects as $item):$n++; ?>
 			<li>

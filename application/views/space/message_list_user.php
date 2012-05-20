@@ -13,7 +13,8 @@
 					<li>	
 						<div class="n_box">
 							<h4 class="n_title" id="<?=$item->messageid?>">来自<a href="<?=base_url()?>user_space/uid/<?=$item->uid ?>"><?=$item->username?></a>的信息<span class="date"><? $nowtime = time();echo ceil(($nowtime-$item->m_date)/(60*60*24));?>天前</span></h4>
-							<div class="n_content" style="display:none;">
+							<div class="short_intro" style="margin:10px 0 ">
+								<div class="j"></div>
 								<p><?=$item->content ?></p>
 								<span class="n_button n_reply" id="<?=$item->myuid?>">回复消息</span>
 							</div>
@@ -86,12 +87,7 @@ $(document).ready(function() {
 });
 
 $(document).ready(function(){
-	$('.n_box').mouseover(function(){
-		$(this).css('background','#f9f9f9');
-	});
-	$('.n_box').mouseout(function(){
-		$(this).css('background','#fff');
-	});
+	
 	$('.n_title').click(function(){
 		$(this).next().toggle(300);
 		var messageid  =  $(this).attr('id');
@@ -105,11 +101,10 @@ $(document).ready(function(){
 				}
 			}, "json");
 	});
-	$('.n_button').mouseover(function(){
-		$(this).addClass('n_b_r');
-	});
-	$('.n_button').mouseout(function(){
-		$(this).removeClass('n_b_r');
+	$('.n_button').hover(function(){
+		$(this).css('color', '#669900');
+	}, function(){
+		$(this).css('color', '#444');
 	});
 });
 </script>

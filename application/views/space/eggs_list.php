@@ -8,6 +8,12 @@
 				
 			</ul>
 		</div>
+		<?php if($eggs == NULL):?>
+				<div class="nothing">
+					还未发布任何创意蛋，你可以：<br/>
+					<a href="<?=base_url()?>eggs/new_topic">下个创意蛋</a>
+				</div>
+		<?php endif;?>
 		<ul class="project_list">
 			<?php $n=0;foreach($eggs as $item):$n++; ?>
 			<li>

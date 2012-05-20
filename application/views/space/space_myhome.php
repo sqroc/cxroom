@@ -46,7 +46,7 @@
 			</div>
 			<script type="text/javascript">
 				$(document).ready(function(){
-					var d_url = "<?= base_url() ?>/user_space/aid/<?=$userreply->uid?>";
+					var d_url = "<?= base_url() ?>/user_space/aid/<?=$userreply->uid?>?timestamp=" + new Date().getTime();
 					var avatar ="";
 					var avatar_ok = "你已上传了头像。";
 					var avatar_no = "你未上传头像，建议上传头像以便获得更多人关注。";
@@ -59,7 +59,7 @@
 					var friend = "你没有关注任何人，赶快找找感兴趣的人吧。";
 				
 					
-					$.getJSON(d_url, function(data){
+					$.getJSON(d_url,function(data){
 						
 						var avatar_tmp = "";
 						var intro_tmp ="";
@@ -128,6 +128,7 @@
 						}
 						doctor_fade();
 						doctor_slide(tt);
+						auto_height();
 					
 					});
 				});
@@ -161,8 +162,6 @@
 			<ul>
 				<li class="current_tab" id="tab_msg">互动消息</li>
 				<li id="tab_reply">我的留言<?php if($commentNumber>0):?>(<?=$commentNumber?>)<?php endif; ?></li>
-				<!--<li><a href="">好友消息</a></li>
-				<li><a href="">系统消息</a></li>-->
 			</ul>
 		</div>
 		<div id="s_1">
@@ -186,10 +185,11 @@
 						<blockquote>
 							【Ta的评论】：<?=$item->content ?>
 						</blockquote>
+						<span class="date">
+							<?= date('Y/m/d h:m:s',$item->senddate);?>
+						</span>
 					</div>
-					<div class="n_msg">
-					<?= date('Y/m/d h:m:s',$item->senddate);?>
-					</div>
+					
 				</div>
 			</li>
 			<?php endif;?>
@@ -205,10 +205,11 @@
 						<blockquote>
 							【Ta的评论】：<?=$item->content ?>
 						</blockquote>
+						<span class="date">
+							<?= date('Y/m/d h:m:s',$item->senddate);?>
+						</span>
 					</div>
-					<div class="n_msg">
-					<?= date('Y/m/d h:m:s',$item->senddate);?>
-					</div>
+					
 				</div>
 			</li>
 			<?php endif;?>
@@ -224,10 +225,11 @@
 						<blockquote>
 							【Ta的留言】：<?=$item->content ?>
 						</blockquote>
+						<span class="date">
+							<?= date('Y/m/d h:m:s',$item->senddate);?>
+						</span>
 					</div>
-					<div class="n_msg">
-					<?= date('Y/m/d h:m:s',$item->senddate);?>
-					</div>
+					
 				</div>
 			</li>
 			<?php endif;?>
@@ -243,10 +245,11 @@
 						<blockquote>
 							【站内信内容】：<?=$item->content ?>
 						</blockquote>
+						<span class="date">
+							<?= date('Y/m/d h:m:s',$item->senddate);?>
+						</span>
 					</div>
-					<div class="n_msg">
-					<?= date('Y/m/d h:m:s',$item->senddate);?>
-					</div>
+					
 				</div>
 			</li>
 			<?php endif;?>
@@ -262,10 +265,11 @@
 						<blockquote>
 							【站内信内容】：<?=$item->content ?>
 						</blockquote>
+						<span class="date">
+							<?= date('Y/m/d h:m:s',$item->senddate);?>
+						</span>
 					</div>
-					<div class="n_msg">
-					<?= date('Y/m/d h:m:s',$item->senddate);?>
-					</div>
+					
 				</div>
 			</li>
 			<?php endif;?>
@@ -281,10 +285,11 @@
 						<blockquote>
 							【Ta对您说】：<?=$item->content ?>
 						</blockquote>
+						<span class="date">
+							<?= date('Y/m/d h:m:s',$item->senddate);?>
+						</span>
 					</div>
-					<div class="n_msg">
-					<?= date('Y/m/d h:m:s',$item->senddate);?>
-					</div>
+					
 				</div>
 			</li>
 			<?php endif;?>
@@ -300,10 +305,11 @@
 						<blockquote>
 							【Ta对您说】：<?=$item->content ?>
 						</blockquote>
+						<span class="date">
+							<?= date('Y/m/d h:m:s',$item->senddate);?>
+						</span>
 					</div>
-					<div class="n_msg">
-					<?= date('Y/m/d h:m:s',$item->senddate);?>
-					</div>
+					
 				</div>
 			</li>
 			<?php endif;?>
@@ -319,10 +325,11 @@
 						<blockquote>
 							【Ta对您的留言回复】：<?=$item->content ?>
 						</blockquote>
+						<span class="date">
+							<?= date('Y/m/d h:m:s',$item->senddate);?>
+						</span>
 					</div>
-					<div class="n_msg">
-					<?= date('Y/m/d h:m:s',$item->senddate);?>
-					</div>
+					
 				</div>
 			</li>
 			<?php endif;?>

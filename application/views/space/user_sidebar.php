@@ -20,6 +20,35 @@
 				<a href="<?=base_url()?>space/objects_form"> </a>
 			</div>
 		</div>
+		
+		<div class="side_title">
+			新鲜创意
+		</div>
+		<div class="new ideas" style="position:relative;z-index:4;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
+		<div class="new ideas" style="position:relative;z-index:3;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
+		<div class="new ideas" style="position:relative;z-index:2;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
+		<div class="new ideas" style="position:relative;z-index:1;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var ideas = $('.ideas');
+				var n = 0;
+				$.getJSON("<?=base_url()?>eggs/api",function(json){
+					
+					ideas.each(function(){
+						var avatar_tmp = '<div class="author"><img src="'+ json[n].author_pic +'" /></div>';
+						var info_tmp = '<div class="new_info"><strong>'+ json[n].author_name +'</strong> :<br /><a href=\"'+ json[n].url +'\">'+ json[n].title +'</a></div>';
+						var pre_tmp = '<div class="preview" style="right:10px;top:70px;display:none;"><div class="arrow"></div><div class="pre_box"><h3 class="title"><a href=\"'+ json[n].url +'\">'+ json[n].title +'</a></h3><div class="content">'+ json[n].content +'</div><div class="bottom"><span><a href=\"'+ json[n].author_url +'\">访问'+ json[n].author_name +'的客厅</a></span></div></div></div>';
+						$(this).html(avatar_tmp + info_tmp + pre_tmp + '<div class="clear0"></div>');
+						n++;
+					});
+					auto_height();
+				});
+				
+			
+				
+			});
+		</script>
+		
 			
 		<div class="infobox">
 			<h3 class="side_title close">创业词条</h3>
@@ -79,14 +108,7 @@
 			
 		</div>
 		
-		<div class="infobox">
-			<h3 class="side_title close">人气统计</h3>
-			<div class="slidebox">
-				<ul class="contact_list">
-					<li>空间人气:<?=$clickdata->click?></li>
-				</ul>
-			</div>
-		</div>
+		
 		<div class="clear"></div>
 	</div><!--#sidebar-->
 </div><!--#container-->

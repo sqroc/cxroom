@@ -33,16 +33,21 @@ if(isset($js)):
 		<div class="mycount fr">
 			
 			<?php if (isset($username2)): ?>
+				<?php if($unreadmessage !=0 || $unreadnotice != 0):?>
+					<div class="warm_box">
+						<img src="<?=base_url()?>images/common/have_notice.gif" />
+					</div>	
+				<?php endif;?>
 				<?php if (isset($person_pic2)): ?>
-				<img src="<?=base_url()?><?=$person_pic2?>" /> 
+					<img class="my_avatar" src="<?=base_url()?><?=$person_pic2?>" /> 
 				<?php else: ?>
-					<img src="images/user_head/head_default.gif" /> 
+					<img class="my_avatar"  src="images/user_head/head_default.gif" /> 
 				<?php endif; ?>
 				<ul class="mymenu">
 					<li class="droptab">菜单
 						<ul class="dropmenu" style="display:none;">
 							
-							<li><a href="<?=base_url() ?>user_space">我的客厅</a></li>
+							<li><a href="<?=base_url() ?>user_space">我的书房</a></li>
 							<li><a href="<?=base_url() ?>space/space_projectlist/attentionProjectlist">关注的项目</a></li>
 							<!--
 							<li><a href="<?=base_url() ?>user_space">关注的Egg</a></li>
@@ -61,9 +66,10 @@ if(isset($js)):
 							<li><a href="<?=base_url()?>space/messages/letters">站内信(<?=$unreadmessage?>)</a></li>
 							<li><a href="<?=base_url()?>space/messages/notices">好友请求(<?=$unreadnotice?>)</a></li>
 							
-						</ul>		
+						</ul>	
+						
 					</li>
-					<li><a href="<?=base_url() ?>user_space" title="我的空间"><?=$username2 ?></a></li>
+					<li><a href="<?=base_url() ?>user_space" title="我的书房"><?=$username2 ?></a></li>
 				</ul>
 			<?php else: ?>
 				<ul class="new_nav">

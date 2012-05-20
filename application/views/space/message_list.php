@@ -15,10 +15,12 @@
 					<li>	
 						<div class="n_box">
 							<h4 class="n_title" id="<?=$item->noticeid ?>">好友请求<span class="date"><? $nowtime = time();echo ceil(($nowtime-$item->noticedate)/(60*60*24));?>天前</span></h4>
-							<div class="n_content" style="display:none;">
+							<div class="short_intro" style="margin:10px 0 ">
+								<div class="j"></div>
 								<p><a href="<?=base_url()?>user_space/uid/<?=$item->uid ?>"><?=$item->username?></a>希望加你为好友</p>
 								<span class="n_button n_button1" id="<?=$item->noticetypeid ?>">同意</span><span  class="n_button n_button2" id="<?=$item->noticetypeid ?>">同意并加对方为好友</span>
 							</div>
+							
 						</div>
 					</li>
 					<?php endif;?>
@@ -111,14 +113,8 @@ $(document).ready(function() {
 });
 
 $(document).ready(function(){
-	$('.n_box').mouseover(function(){
-		$(this).css('background','#f9f9f9');
-	});
-	$('.n_box').mouseout(function(){
-		$(this).css('background','#fff');
-	});
 	$('.n_title').click(function(){
-		$(this).next().toggle(300);
+		//$(this).next().toggle(300);
 		var noticeid  =  $(this).attr('id');
 		var url = "<?=base_url()?>space/messages/updatenoticeread";
 			$.post(url, {
@@ -163,12 +159,10 @@ $(document).ready(function(){
 			}, "json");
 	});
 	
-	$('.n_button').mouseover(function(){
-		$(this).addClass('n_b_r');
-		
-	});
-	$('.n_button').mouseout(function(){
-		$(this).removeClass('n_b_r');
+	$('.n_button').hover(function(){
+		$(this).css('color', '#669900');
+	}, function(){
+		$(this).css('color', '#444');
 	});
 	
 });

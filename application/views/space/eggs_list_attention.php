@@ -8,6 +8,12 @@
 				<li><a href="<?=base_url()?>space/space_projectlist/attentionTiplist">收藏的词条</a></li>
 			</ul>
 		</div>
+		<?php if($eggs == NULL):?>
+				<div class="nothing">
+					还没关注任何创意蛋。<br/>
+					<a href="<?=base_url()?>eggs">去淘淘</a>
+				</div>
+		<?php endif;?>
 		<ul class="project_list">
 			<?php $n=0;foreach($eggs as $item):$n++; ?>
 			<li>
