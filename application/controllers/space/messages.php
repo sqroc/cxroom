@@ -193,7 +193,7 @@ class Messages extends CI_Controller {
 		$config['base_url'] = base_url() . 'space/messages/letters/';
 		$config['total_rows'] = $this -> Messages_model -> getmessagenumber($uid);
 		$config['per_page'] = 5;
-		$config['uri_segment'] = 5;
+		$config['uri_segment'] = 4;
 		$config['full_tag_open'] = '<ul>';
 		$config['full_tag_close'] = '</ul>';
 		$config['first_link'] = '第一页';
@@ -215,7 +215,7 @@ class Messages extends CI_Controller {
 		$this -> pagination -> initialize($config);
 		//分页配置结束
 		$data['uid'] = $uid;
-		$data['message'] = $this -> Messages_model -> showMessageByLimitByUid($this -> uri -> segment(5, 0), $config['per_page'], $uid);
+		$data['message'] = $this -> Messages_model -> showMessageByLimitByUid($this -> uri -> segment(4, 0), $config['per_page'], $uid);
 		$data['userreply'] = $this -> Users_model -> queryuser_byuid($this -> session -> userdata('uid'));
 		$data['myprojectnumber'] = $this -> Projects_model -> select_num_rowsByUid();
 		$data['myattentionprojectnumber'] = $this -> Projects_model -> select_num_rowsByAttention();
@@ -269,7 +269,7 @@ class Messages extends CI_Controller {
 		$config['base_url'] = base_url() . 'space/messages/notices/';
 		$config['total_rows'] = $this -> Messages_model -> getnoticenumber($uid);
 		$config['per_page'] = 5;
-		$config['uri_segment'] = 5;
+		$config['uri_segment'] = 4;
 		$config['full_tag_open'] = '<ul>';
 		$config['full_tag_close'] = '</ul>';
 		$config['first_link'] = '第一页';
@@ -291,7 +291,7 @@ class Messages extends CI_Controller {
 		$this -> pagination -> initialize($config);
 		//分页配置结束
 		$data['uid'] = $uid;
-		$data['notice'] = $this -> Messages_model -> showNoticeByLimitByUid($this -> uri -> segment(5, 0), $config['per_page'], $uid);
+		$data['notice'] = $this -> Messages_model -> showNoticeByLimitByUid($this -> uri -> segment(4, 0), $config['per_page'], $uid);
 		$data['userreply'] = $this -> Users_model -> queryuser_byuid($this -> session -> userdata('uid'));
 		$data['myprojectnumber'] = $this -> Projects_model -> select_num_rowsByUid();
 		$data['myattentionprojectnumber'] = $this -> Projects_model -> select_num_rowsByAttention();

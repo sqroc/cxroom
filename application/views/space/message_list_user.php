@@ -26,7 +26,9 @@
 					
 				</ul>
 				<div class="pages m0">
-		
+
+			<?php echo $this->pagination->create_links();?>
+	
 				</div>
 		
 		</div>
