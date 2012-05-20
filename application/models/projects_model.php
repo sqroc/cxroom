@@ -141,9 +141,21 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
+	
+	function showProjectsByLimitByUid2($offset, $num,$uid) {
+		$sql = "SELECT * FROM project,proclass where proclass.pclassid = project.pclassid and project.uid = " . $uid . " order by project.pid desc limit " . $offset . "," . $num;
+		$query = $this -> db -> query($sql);
+		return $query -> result();
+	}
 
 	function showeggsByLimitByUid($offset, $num) {
 		$uid = $this -> session -> userdata('uid');
+		$sql = "SELECT * FROM idea where ideauid = " . $uid . " order by ideaid desc limit " . $offset . "," . $num;
+		$query = $this -> db -> query($sql);
+		return $query -> result();
+	}
+	
+	function showeggsByLimitByUid2($offset, $num,$uid) {
 		$sql = "SELECT * FROM idea where ideauid = " . $uid . " order by ideaid desc limit " . $offset . "," . $num;
 		$query = $this -> db -> query($sql);
 		return $query -> result();
@@ -181,9 +193,19 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query("SELECT * FROM project where uid =" . $uid);
 		return $query -> num_rows();
 	}
+	
+	function select_num_rowsByUid2($uid) {
+		$query = $this -> db -> query("SELECT * FROM project where uid =" . $uid);
+		return $query -> num_rows();
+	}
 
 	function select_num_eggrowsByUid() {
 		$uid = $this -> session -> userdata('uid');
+		$query = $this -> db -> query("SELECT * FROM idea where ideauid =" . $uid);
+		return $query -> num_rows();
+	}
+	
+	function select_num_eggrowsByUid2($uid) {
 		$query = $this -> db -> query("SELECT * FROM idea where ideauid =" . $uid);
 		return $query -> num_rows();
 	}
