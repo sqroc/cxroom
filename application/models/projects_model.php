@@ -194,6 +194,17 @@ class Projects_model extends CI_Model {
 		return $query -> num_rows();
 	}
 	
+	
+	function select_num_rowsforEgg() {
+		$query = $this -> db -> query("SELECT ideaid FROM idea");
+		return $query -> num_rows();
+	}
+	
+	function select_num_rowsforEggcomment() {
+		$query = $this -> db -> query("SELECT icommentid FROM idea_comments");
+		return $query -> num_rows();
+	}
+	
 	function select_num_rowsByUid2($uid) {
 		$query = $this -> db -> query("SELECT * FROM project where uid =" . $uid);
 		return $query -> num_rows();

@@ -29,6 +29,8 @@ class Eggs extends CI_Controller {
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
 		$data['uid'] = $this -> session -> userdata('uid');
+		$data['eggcommentnum'] = $this -> Projects_model -> select_num_rowsforEggcomment();;
+		$data['eggnum'] = $this -> Projects_model -> select_num_rowsforEgg();
 		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
 		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
 		$data = array_merge($data, $this -> Common_model -> global_data());
