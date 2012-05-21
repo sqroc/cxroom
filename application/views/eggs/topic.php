@@ -129,7 +129,7 @@
 								<img src="<?=base_url()?><?=$itemReply->person_pic?>" />
 							</div>
 							<div class="reply w540">
-								<span><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a></span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$itemReply->comment_date)/(60*60*24));?>天前</span><br>
+								<span><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a></span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$itemReply->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>_<?=$itemReply->uid?>">回复</span><br>
 									<p><?=$itemReply->comment_content?></p>
 							</div>
 							<div class="clear_comment"></div>
@@ -192,7 +192,7 @@
 								<img src="<?=base_url()?><?=$itemReply->person_pic?>" />
 							</div>
 							<div class="reply w540">
-								<span><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a></span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$itemReply->comment_date)/(60*60*24));?>天前</span><br>
+								<span><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a></span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$itemReply->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>_<?=$itemReply->uid?>">回复</span><br>
 									<p><?=$itemReply->comment_content?></p>
 							</div>
 							<div class="clear_comment"></div>
@@ -254,7 +254,7 @@
 								<img src="<?=base_url()?><?=$itemReply->person_pic?>" />
 							</div>
 							<div class="reply w540">
-								<span><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a></span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$itemReply->comment_date)/(60*60*24));?>天前</span><br>
+								<span><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a></span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$itemReply->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>_<?=$itemReply->uid?>">回复</span><br>
 									<p><?=$itemReply->comment_content?></p>
 							</div>
 							<div class="clear_comment"></div>
@@ -295,7 +295,10 @@
 		<div class="clear0"></div>
 	</div>
 </div>
+
+
 <script type="text/javascript">
+
 //发送回复
 $(document).ready(function() {
 	$('#send_reply').click(function() {
@@ -306,12 +309,21 @@ $(document).ready(function() {
 			var comment_id  =  $("#reply_comment_id").attr("value");
 			var arr = (comment_id+'').split('_');
 			var icommentideaid  =  <?=$idea->ideaid?>;
+			if(arr.length>=3){
+				var url = "<?=base_url()?>eggs/addreply2";
+			}else{
+			
 			var url = "<?=base_url()?>eggs/addreply";
+			//arr[2] = '';
+				
+			}
+			
 			$.post(url, {
 			comment_content : comment_content,
 			icommentideaid : icommentideaid,
 			supporttype : arr[1],
-			comment_id : arr[0]
+			comment_id : arr[0],
+			comforuid : arr[2]
 			},
 			function(data) {
 				if(data.state == 'ok') {

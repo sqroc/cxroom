@@ -681,6 +681,46 @@ class Projects_model extends CI_Model {
 	}
 
 	/*
+	 * 创意蛋嵌套回复评论
+	 */
+	function addreply2() {
+
+		$data['icommentideaid'] = $this -> input -> post('icommentideaid');
+		$data['author_uid'] = $this -> session -> userdata('uid');
+		$data['comment_content'] = $this -> input -> post('comment_content');
+		$data['supporttype'] = $this -> input -> post('supporttype');
+		$data['comment_parent'] = $this -> input -> post('comment_id');
+		$data['comment_date'] = time();
+		if ($data['icommentideaid'] != NULL) {
+			if ($this -> db -> insert('idea_comments', $data)) {
+				//增加消息通知
+				$row = $this -> Projects_model -> showIdeaByPid($this -> input -> post('icommentideaid'));
+				//$row2 = $this -> Projects_model -> getideacommentbyid($this -> input -> post('comment_id'));
+				$data2['itemname'] = $row -> ideaname;
+				$data2['snsitemid'] = $row -> ideaid;
+				$data2['senduid'] = $this -> session -> userdata('uid');
+				$data2['recuid'] = $this -> input -> post('comforuid');
+				$data2['content'] = $this -> input -> post('comment_content');
+				$data2['type'] = "eggreplycomment";
+				$data2['senddate'] = time();
+
+				if ($data2['senduid'] == $data2['recuid']) {
+					return TRUE;
+				}
+				if ($this -> db -> insert('snsnotice', $data2)) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+	}
+
+	/*
 	 * 获得对应id的egg评论
 	 */
 	function getideacommentbyid($icommentid) {

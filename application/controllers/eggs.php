@@ -353,5 +353,16 @@ public function eggedit() {
 		}
 
 	}
+	
+	public function addreply2() {
+		if ($this -> Projects_model -> addreply2()) {
+			echo json_encode(array("state" => "ok"));
+
+		} else {
+			echo json_encode(array("state" => "no"));
+
+		}
+
+	}
 
 }

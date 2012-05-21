@@ -37,6 +37,7 @@ $(document).ready(function(){
 	}
 );
 
+
 $(document).ready(function(){
 	$('#close_dialog').click(function(){
 			$('textarea[name="reply_content"]').removeClass('warm');
