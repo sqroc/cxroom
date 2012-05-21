@@ -19,8 +19,8 @@
 	.login .item .label{line-height:32px;height:30px;float:left;}
 	.login .item .reg{padding:20px 0 0 72px;text-align:left;line-height:26px;}
 	
-	.login .submit{padding:0;margin-left:72px;float:left;font-size:14px;background:url(<?=base_url()?>images/login_buttons.gif) no-repeat 0 0;_background:url(<?=base_url()?>images/icons_form.jpg) no-repeat 0 -50px;border:none;width:176px;height:39px;line-height:42px;color:#fff;}
-	.login .submit:hover{background:url(<?=base_url()?>images/login_buttons.gif) no-repeat 0 -50px;_background:url(<?=base_url()?>images/icons_form.jpg) no-repeat 0 0px;}
+	.login .submit{padding:0;margin-left:72px;float:left;font-size:14px;background:url(<?=base_url()?>images/login_buttons.gif) no-repeat 0 0;border:none;width:176px;height:39px;line-height:42px;color:#fff;}
+	.login .submit:hover{background:url(<?=base_url()?>images/login_buttons.gif) no-repeat 0 -50px;}
 	.name,.psd,.check{margin:20px;line-height:30px;}
 </style>
 <script type="text/javascript">

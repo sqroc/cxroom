@@ -38,6 +38,10 @@ class Register extends CI_Controller {
 				$data['username'] = $this -> session -> userdata('username');
 				$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
 				$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
+				$uid = $this -> session -> userdata('uid');
+				$data['uid'] = $uid;
+				$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($uid);
+				$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($uid);
 				$this -> load -> view('header', $data);
 				$this -> load -> view('reg_succeed');
 				$this -> load -> view('footer');

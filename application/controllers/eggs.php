@@ -37,6 +37,30 @@ class Eggs extends CI_Controller {
 
 	}
 
+	public function api() {
+		$sta = $this -> session -> userdata('user');
+		if (!isset($sta) || $sta != "login_ok") {
+			redirect('/eggs/homepage');
+		}
+
+		$data['email'] = $this -> session -> userdata('email');
+		$data['username'] = $this -> session -> userdata('username');
+		$data['randvalue'] = rand(0, 10000000000);
+		$row = $this -> Users_model -> queryuser($data['email']);
+		
+		$data['ideas'] = $this -> Projects_model -> showIdeas();
+		$data['ideascomment'] = $this -> Projects_model -> showIdeascomment();
+		
+		$data['uid'] = $this -> session -> userdata('uid');
+		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
+		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
+		$data = array_merge($data, $this -> Common_model -> global_data());
+		
+		$this -> load -> view('eggs/eggs_api.php', $data);
+
+	}
+	
+
 	public function homepage() {
 		$sta = $this -> session -> userdata('user');
 		$data = array('title' => 'Eggs-创新空间', 'css' => 'home_page.css', 'js' => 'home_page.js', );

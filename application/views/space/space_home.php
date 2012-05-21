@@ -257,10 +257,7 @@
 			
 			
 		</div>
-		
-	</div><!--#mid-->
-	
-<!--dialog-->
+		<!--dialog-->
 <div id="t_dialog" style="display:none;">
 	<div class="box">
 		<div class="box_top">
@@ -311,6 +308,10 @@
 		<div class="clear0"></div>
 	</div>
 </div>
+		
+	</div><!--#mid-->
+	
+
 	<script type="text/javascript">
 //发送回复
 $(document).ready(function() {

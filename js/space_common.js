@@ -1,14 +1,5 @@
 $(document).ready(function() {
 	auto_height();
-
-	$('.s_m').mouseover(function(){
-		$(this).css('color','#333');
-	});
-	
-	$('.s_m').mouseout(function(){
-		$(this).css('color','#999');
-	});
-	
 	space_tabs();
 	preview();
 });
@@ -34,8 +25,10 @@ $(document).ready(function() {
 $(document).ready(function(){
 	$('.droptab').hover(function(){
 		$(this).addClass('my_cur').children('ul').css('display','block');
+		$('.warm_box').css('display', 'none');
 	}, function(){
 		$(this).removeClass('my_cur').children('ul').css('display','none');
+		$('.warm_box').css('display', 'block');
 	});
 });
 
@@ -170,30 +163,7 @@ function add_br(str){
 	return str; 
 }
 
-//menu background
-$(document).ready(function(){
-	var url = window.location.href;
-	var reg_home = /user_space/;
-	var reg_favpro = /attention/;
-	var reg_mypro = /projectlist/;
-	var reg_myf = /userlist/;
-	var reg_info = /user_info/;
-	var reg_tips = /Tiplist/;
-	
-	if(reg_home.test(url)){
-		$('.home').removeClass('home').addClass('cur_home current')
-	} else if(reg_tips.test(url)) {
-		$('.fav_lab').removeClass('fav_lab').addClass('cur_fav_lab current')
-	} else if(reg_favpro.test(url)) {
-		$('.fav_pro').removeClass('fav_pro').addClass('cur_fav_pro current')
-	} else if(reg_mypro.test(url)) {
-		$('.my_pro').removeClass('my_pro').addClass('cur_my_pro current')
-	} else if(reg_myf.test(url)) {
-		$('.myfriends').removeClass('myfriends').addClass('cur_myfriends current')
-	} else if(reg_info.test(url)) {
-		$('.func').removeClass('func').addClass('cur_func current')
-	} 
-});
+
 
 //move dialog
 $(document).ready(function(){

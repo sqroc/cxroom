@@ -24,6 +24,33 @@
 			
 		
 			<li class="func"><a href="<?=base_url() ?>/user_info">修改资料</a></li>
-			<li style="border-bottom:none;"><a href="<?=base_url() ?>/space/space_codelist">我的邀请码</a></li>
+			<li class="codestyle" style="border-bottom:none;"><a href="<?=base_url() ?>/space/space_codelist">我的邀请码</a></li>
 		</ul>
 	</div>
+	
+<script type="text/javascript">
+$(document).ready(function(){
+	var url = window.location.href;
+	var reg_home = /user_space/;
+	var reg_favpro = /attention/;
+	var reg_mypro = /projectlist/;
+	var reg_myf = /userlist/;
+	var reg_info = /user_info/;
+	var reg_code = /codelist/;
+	//var reg_tips = /Tiplist/;
+	
+	if(reg_home.test(url)){
+		$('.home').removeClass('home').addClass('cur_home current');
+	} else if(reg_favpro.test(url)) {
+		$('.fav_pro').removeClass('fav_pro').addClass('cur_fav_pro current');
+	} else if(reg_mypro.test(url)) {
+		$('.my_pro').removeClass('my_pro').addClass('cur_my_pro current');
+	} else if(reg_myf.test(url)) {
+		$('.myfriends').removeClass('myfriends').addClass('cur_myfriends current');
+	} else if(reg_info.test(url)) {
+		$('.func').removeClass('func').addClass('cur_func current');
+	} else if(reg_code.test(url)) {
+		$('.codestyle').addClass('current').css('background','#fff');
+	}
+});
+</script>

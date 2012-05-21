@@ -26,8 +26,10 @@ var USER_PHOTO = '<img src=\"'+ '<?=base_url()?><?=$person_pic?>' +'\" />';
 $(document).ready(function(){
 	$('.droptab').hover(function(){
 		$(this).addClass('my_cur').children('ul').css('display','block');
+		$('.warm_box').css('display', 'none');
 	}, function(){
 		$(this).removeClass('my_cur').children('ul').css('display','none');
+		$('.warm_box').css('display', 'block');
 	});
 });
 
@@ -46,16 +48,21 @@ $(document).ready(function(){
 		<div class="mycount fr">
 			
 			<?php if (isset($username)): ?>
+				<?php if($unreadmessage !=0 || $unreadnotice != 0):?>
+					<div class="warm_box">
+						<img src="<?=base_url()?>images/common/have_notice.gif" />
+					</div>	
+				<?php endif;?>
 				<?php if (isset($person_pic)): ?>
-				<img src="<?=base_url()?><?=$person_pic?>" /> 
+				<img class="my_avatar" src="<?=base_url()?><?=$person_pic?>" /> 
 				<?php else: ?>
-					<img src="images/user_head/head_default.gif" /> 
+					<img class="my_avatar" src="images/user_head/head_default.gif" /> 
 				<?php endif; ?>
 				<ul class="mymenu">
 					<li class="droptab">菜单
 						<ul class="dropmenu" style="display:none;">
 							
-							<li><a href="<?=base_url() ?>user_space">我的客厅</a></li>
+							<li><a href="<?=base_url() ?>user_space">我的书房</a></li>
 							<li><a href="<?=base_url() ?>space/space_projectlist/attentionProjectlist">关注的项目</a></li>
 							<!--
 							<li><a href="<?=base_url() ?>user_space">关注的Egg</a></li>

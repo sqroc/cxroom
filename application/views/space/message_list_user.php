@@ -5,18 +5,19 @@
 			<span class="msg_b">站内信(<?=$unreadmessage?>)</span>
 		</div>
 		
-		<div class="spacecol" style="padding:0;">
+		<div class="spacecol" style="padding:0;margin-top:10px;">
 				
 				
 				<ul class="notice">
 						<?php foreach($message as $item): ?>
 					<li>	
 						<div class="n_box">
-							<h4 class="n_title" id="<?=$item->messageid?>">来自<a href="<?=base_url()?>user_space/uid/<?=$item->uid ?>"><?=$item->username?></a>的信息<span class="date"><? $nowtime = time();echo ceil(($nowtime-$item->m_date)/(60*60*24));?>天前</span></h4>
+							<h4 class="n_title">来自<a href="<?=base_url()?>user_space/uid/<?=$item->uid ?>"><?=$item->username?></a>的信息<span class="date"><? $nowtime = time();echo ceil(($nowtime-$item->m_date)/(60*60*24));?>天前</span><span class="date" id="read<?=$item->messageid?>"><?php if($item->isread=='1'){echo "已查阅";} ?></span></h4>
 							<div class="short_intro" style="margin:10px 0 ">
 								<div class="j"></div>
 								<p><?=$item->content ?></p>
 								<span class="n_button n_reply" id="<?=$item->myuid?>">回复消息</span>
+								<span class="n_button readed" id="<?=$item->messageid?>">标记为已阅</span>
 							</div>
 						</div>
 					</li>
@@ -25,14 +26,37 @@
 					
 					
 				</ul>
-				<div class="pages m0">
-
+				<div class="pages">
 			<?php echo $this->pagination->create_links();?>
-	
-				</div>
-		
 		</div>
 		
+		</div>
+		<!--dialog-->
+<div id="t_dialog" style="display:none;">
+	<div class="box">
+		<div class="box_top">
+			<span class="replyto">回复框</span>
+			<span id="close_dialog" class="close_dialog"> </span>
+		</div>
+		<form action="<?=base_url()?>user_space/replycomment" method="post">
+	
+			<input type="hidden" value="" id="reply_comment_id" name="comment_id" />
+			<input type="hidden" name="uid" id="reply_uid" value="<?=$uid ?>"/>
+		
+			
+			<div class="item_box">
+				<textarea rows="4"  name="comment_content" id="reply_content"></textarea>
+			</div>
+			
+			<div class="item_box">
+				<input type="button" class="small_button" id="send_reply" value="提交内容" />
+			</div>
+			
+		</form>
+		<div class="clear0"></div>
+	</div>
+</div>
+
 	
 		
 	</div><!--#mid-->
@@ -90,15 +114,16 @@ $(document).ready(function() {
 
 $(document).ready(function(){
 	
-	$('.n_title').click(function(){
-		$(this).next().toggle(300);
+	$('.readed').click(function(){
+		//$(this).next().toggle(300);
 		var messageid  =  $(this).attr('id');
 		var url = "<?=base_url()?>space/messages/updateread";
 			$.post(url, {
-			messageid : messageid,
+			messageid : messageid
 			},
 			function(data) {
 				if(data.state == 'ok') {
+					$('#read'+messageid).text("已查阅");
 				} else {
 				}
 			}, "json");
@@ -110,29 +135,4 @@ $(document).ready(function(){
 	});
 });
 </script>
-<!--dialog-->
-<div id="t_dialog" style="display:none;">
-	<div class="box">
-		<div class="box_top">
-			<span class="replyto">回复框</span>
-			<span id="close_dialog" class="close_dialog"> </span>
-		</div>
-		<form action="<?=base_url()?>user_space/replycomment" method="post">
-	
-			<input type="hidden" value="" id="reply_comment_id" name="comment_id" />
-			<input type="hidden" name="uid" id="reply_uid" value="<?=$uid ?>"/>
-		
-			
-			<div class="item_box">
-				<textarea rows="4"  name="comment_content" id="reply_content"></textarea>
-			</div>
-			
-			<div class="item_box">
-				<input type="button" class="small_button" id="send_reply" value="提交内容" />
-			</div>
-			
-		</form>
-		<div class="clear0"></div>
-	</div>
-</div>
 

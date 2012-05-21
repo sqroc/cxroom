@@ -14,11 +14,12 @@
 							?>
 					<li>	
 						<div class="n_box">
-							<h4 class="n_title" id="<?=$item->noticeid ?>">好友请求<span class="date"><? $nowtime = time();echo ceil(($nowtime-$item->noticedate)/(60*60*24));?>天前</span></h4>
+							<h4 class="n_title">好友请求<span class="date"><? $nowtime = time();echo ceil(($nowtime-$item->noticedate)/(60*60*24));?>天前</span><span class="date" id="read<?=$item->noticeid ?>"><?php if($item->noticeisread == '1'){echo "已处理";} ?></span></h4>
 							<div class="short_intro" style="margin:10px 0 ">
 								<div class="j"></div>
-								<p><a href="<?=base_url()?>user_space/uid/<?=$item->uid ?>"><?=$item->username?></a>希望加你为好友</p>
+								<p><a href="<?=base_url()?>user_space/uid/<?=$item->uid ?>"><?=$item->username?></a>希望加你为好友以便长期关注你</p>
 								<span class="n_button n_button1" id="<?=$item->noticetypeid ?>">同意</span><span  class="n_button n_button2" id="<?=$item->noticetypeid ?>">同意并加对方为好友</span>
+								<span class="n_button readed" id="<?=$item->noticeid ?>">忽略</span>
 							</div>
 							
 						</div>
@@ -29,9 +30,9 @@
 					
 					
 				</ul>
-				<div class="pages m0">
-		<?php echo $this->pagination->create_links();?>
-				</div>
+				<div class="pages">
+			<?php echo $this->pagination->create_links();?>
+		</div>
 		
 		</div>
 		
@@ -113,7 +114,7 @@ $(document).ready(function() {
 });
 
 $(document).ready(function(){
-	$('.n_title').click(function(){
+	$('.readed').click(function(){
 		//$(this).next().toggle(300);
 		var noticeid  =  $(this).attr('id');
 		var url = "<?=base_url()?>space/messages/updatenoticeread";
@@ -122,15 +123,30 @@ $(document).ready(function(){
 			},
 			function(data) {
 				if(data.state == 'ok') {
-					
+					$('#read'+noticeid).text("已处理");
 				} else {
 					
 				}
 			}, "json");
 	});
 	
+	function updateread(obj){
+		var url = "<?=base_url()?>space/messages/updatenoticeread";
+			$.post(url, {
+			noticeid : obj,
+			},
+			function(data) {
+				if(data.state == 'ok') {
+					$('#read'+obj).text("已处理");
+				} else {
+					
+				}
+			}, "json");
+	}
+	
 	$('.n_button1').click(function(){
 		var friendid  =  $(this).attr('id');
+		var noticeid = $(this).nextAll('.readed').attr('id');
 		var url = "<?=base_url()?>space/messages/updateallowfriend";
 			$.post(url, {
 			friendid : friendid,
@@ -138,6 +154,7 @@ $(document).ready(function(){
 			function(data) {
 				if(data.state == 'ok') {
 					warm_dialog('ok', '操作成功！');
+					updateread(noticeid);
 				} else {
 					warm_dialog('no', '操作失败，请检查网络！');
 				}
@@ -146,6 +163,7 @@ $(document).ready(function(){
 	
 	$('.n_button2').click(function(){
 		var friendid  =  $(this).attr('id');
+		var noticeid = $(this).nextAll('.readed').attr('id');
 		var url = "<?=base_url()?>space/messages/updateallowfriend2";
 			$.post(url, {
 			friendid : friendid,
@@ -153,6 +171,7 @@ $(document).ready(function(){
 			function(data) {
 				if(data.state == 'ok') {
 					warm_dialog('ok', '操作成功！');
+					updateread(noticeid);
 				} else {
 					warm_dialog('no', '操作失败，请检查网络！');
 				}
