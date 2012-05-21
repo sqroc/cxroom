@@ -97,11 +97,12 @@ dialog
 #t_dialog{position:absolute;width:240px;left:50%;top:50%;border-radius:4px 4px;padding:6px;z-index:999;background:url(../images/space/bg_dialog.png) repeat 0 0;}
 	#t_dialog .box{background:#fff;border:1px #000 solid;}
     #t_dialog .box .box_top{text-align:left;padding-left:10px;height:30px;line-height:30px;background:url(../images/common/icons_dialog.png) repeat-x 0 -90px;border-bottom:1px #ccc solid;}
+    #t_dialog .box .box_top span{float:left;}
     #t_dialog .box .box_top .close_dialog,.close_dialog_hover{cursor:pointer;float:right;margin:7px 10px 0 0;width:15px;height:15px;}
     #t_dialog .box .box_top .close_dialog{background:url(../images/common/icons_dialog.png) no-repeat 0 -140px;}
-    #t_dialog .box .box_top .close_dialog_hover{background:url(../images/common/icons_dialog.png) no-repeat 0 -170px;}
+    #t_dialog .box .box_top .close_dialog_hover{background:url(../images/common/icons_dialog.png) no-repeat 0 -170px;float:right;}
     #t_dialog .box .item_box{overflow:hidden;padding:10px 0 0 0;}
-    #t_dialog .box .item_box textarea{width:90%;padding:4px;}
+    #t_dialog .box .item_box textarea{width:90%;padding:4px;overflow:auto;}
     #t_dialog .box .item_box .small_button,.small_button_hover{padding:0;float:right;margin-right:10px;margin-bottom:10px;}
 	
 /*common*/

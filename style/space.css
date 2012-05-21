@@ -10,7 +10,7 @@ body{background:#f9f9f9}
 /*
 left menu
 ***************/
-.menubox{width:150px;overflow:hidden;}
+.menubox{width:150px;overflow:hidden;font-size:14px;}
 	.my_avatar{text-align:center;margin-top:15px;}
 	.my_avatar img{width:110px;padding:3px;border:1px #e1e1e1 solid;background:#fff;}
 	.lmenu{margin-top:20px;}
@@ -101,7 +101,7 @@ main body
 	.user_info .talk .grey{background:url(../images/space/icons_space.png) no-repeat 0 -260px;color:#444;margin-left:10px;}
 	.user_info .talk .grey:hover{background:url(../images/space/icons_space.png) no-repeat 0 -290px;}
 	
-	.short_intro{border-radius:2px;border-top:1px #eee solid;border-left:1px #eee solid;border-right:1px #e1e1e1 solid;border-bottom:1px #e1e1e1 solid;background:#F9F9F9;position:relative;padding:10px 10px 5px 10px;line-height:22px;}
+	.short_intro{border-radius:2px;border-top:1px #eee solid;border-left:1px #eee solid;border-right:1px #e1e1e1 solid;border-bottom:1px #e1e1e1 solid;background:#F9F9F9;position:relative;z-index:1;padding:10px 10px 5px 10px;line-height:22px;}
     .short_intro p{padding-bottom:10px;}
     .short_intro .base_info{border-top:1px #eee solid;padding-top:5px;color:#999;}
     .short_intro .base_info span{margin-right:15px;}
@@ -137,7 +137,7 @@ main body
 	/*for common menu*/
 	.user_list_intro, .pages, .project_list_box{margin:20px;}
 	
-	.tab_msg{margin:30px 20px 0 20px;clear:both;overflow:hidden;}
+	.tab_msg{margin:30px 20px 0 20px;clear:both;overflow:hidden;border:1px #fff solid;}
 	.tab_msg span{float:left;padding:5px 10px 5px 10px;margin-right:10px;cursor:pointer;}
 	.tab_msg .msg_b{background:#f2f2f2;border-radius:3px 3px;}
 	
@@ -158,7 +158,7 @@ main body
 	
 	
 	/*pages counter*/
-	.pages{padding:10px 0;overflow:hidden;}
+	.pages{padding:10px 0;overflow:hidden;clear:both;}
 	.pages ul{}
 	.pages ul li{float:left;;padding:0;margin-right:10px;border:1px #ccc solid;background:#fff}
 	.pages ul .current_page{background:#66CC00;border:1px #669900 solid;color:#fff;padding:3px 6px 3px 6px;}
@@ -220,16 +220,15 @@ main body
 	.leave_reply .c_bottom .d_submit{margin:8px 40px 10px 0;padding:0;float:right;}
 
 	/*notice list*/
-	.notice{}
+	.notice{clear:both;margin:0;}
 	.notice li{border-bottom:1px #eee solid;overflow:hidden;}
 	
-	.n_box{padding:10px;}
+	.n_box{padding:10px;clear:both;}
 		.n_box .n_title{font-size:14px;line-height:28px;cursor:pointer;}
 		.n_box .date{font-weight:normal;color:#999;padding-left:20px;}
 		.n_box .n_content{}
 		.n_box .n_content p{line-height:22px;padding:10px 0 10px 0;}
-		.n_box .n_content .n_button{color:#6FBD00;margin:10px 20px 5px 0;padding:5px;cursor:pointer;}
-		.n_box .n_content .n_b_r{color:#fff;margin:10px 20px 0 0;background:#66CC00;}
+		.n_box .n_button{cursor:pointer;margin-right:20px;}
 		
 	/*message list*/
 	.space_tabs{margin:20px 20px 0 20px;padding:5px 5px 0 5px;overflow:hidden;clear:both;background:#f9f9f9;}
@@ -239,7 +238,7 @@ main body
 	
 	.notice_list{font-size:14px;margin:0 20px 0 20px;}
 	.notice_list li{}
-	.notice_box{clear:both;padding:20px 0 20px 0;border-bottom:1px #eee solid;overflow:hidden;}
+	.notice_box{clear:both;width:100%;padding:20px 0 20px 0;border-bottom:1px #eee solid;overflow:hidden;}
 	.notice_box .n_avatar{float:left;width:54px;}
 	.notice_box .n_avatar img{width:50px;border:1px #e1e1e1 solid;padding:2px;}
 	.notice_box .n_msg{float:right;width:450px;line-height:22px;}
@@ -265,7 +264,7 @@ main body
 	   .doctor .d_title .left_part{margin-right:10px;}
 	   .doctor .finish_wrap{height:10px;background:#D5D5D5;border-radius:5px;overflow:hidden;}
 	   .doctor .finish_wrap .finish_wrap_in{float:left;height:10px;background:#87C442;border-radius:5px;overflow:hidden;}
-	   .doctor .doctor_info{padding-top:10px;}
+	   .doctor .doctor_info{padding-top:10px;overflow:hidden;width:100%;}
 	   .doctor .doctor_info ul{}
 	   .doctor .doctor_info ul li{padding:10px;padding-left:20px;position:relative;}
 	   .doctor .doctor_info ul li span{position:absolute;display:none;right:10px;top:10px;}
@@ -291,11 +290,11 @@ right sidebar
     .publish .new_project a:hover{background:url(../images/space/icons_space.png) no-repeat 0 -150px;}
 
 	.side_title{font-weight:bold;padding:10px 15px;font-size:14px;}
-	.new{clear:both;position:relative;padding:15px;}
+	.new{position:relative;padding:15px;}
 	.new .author{float:left;width:44px;}
 	.new .author img{width:42px;border:1px #e1e1e1 solid;padding:1px;}
 	.new .new_info{float:right;width:164px;line-height:22px;height:46px;overflow:hidden;}
-	.new .preview{z-index:999;position:absolute;right:0px;top:50px;width:340px;padding:5px;background:url(../images/common/opacity_bg.png) 0 0;border-radius:4px;}
+	.new .preview{position:absolute;z-index:9999;right:0px;top:50px;width:340px;padding:5px;background:url(../images/common/opacity_bg.png) 0 0;border-radius:4px;}
     .new .preview .arrow{position:absolute;right:120px;top:-12px;width:24px;height:18px;background:url(../images/common/opacity_arrow.png) no-repeat 0 0;}
     .new .preview .pre_box{background:#fff;border:1px #ccc solid;text-align:left;overflow:hidden;}
     .new .preview .pre_box .title{margin:5px 15px 5px 15px;font-size:14px;font-weight:normal;line-height:30px;}
@@ -340,12 +339,13 @@ right sidebar
 /*
 dialog
 *********/
-#t_dialog{position:absolute;width:400px;border-radius:4px 4px;left:50%;top:50%;padding:6px;z-index:999;background:url(../images/space/bg_dialog.png) repeat 0 0;}
+#t_dialog{position:absolute;width:400px;border-radius:4px 4px;left:50%;top:50%;padding:6px;_padding:0;z-index:999;background:url(../images/space/bg_dialog.png) repeat 0 0;}
 	#t_dialog .box{background:#fff;border:1px #000 solid;}
 	#t_dialog .box .box_top{text-align:left;padding-left:10px;height:30px;line-height:30px;background:url(../images/common/icons_dialog.png) repeat-x 0 -90px;border-bottom:1px #ccc solid;}
+	#t_dialog .box .box_top span{float:left;}
 	#t_dialog .box .box_top .close_dialog,.close_dialog_hover{cursor:pointer;float:right;margin:7px 10px 0 0;width:15px;height:15px;}
 	#t_dialog .box .box_top .close_dialog{background:url(../images/common/icons_dialog.png) no-repeat 0 -140px;}
-	#t_dialog .box .box_top .close_dialog_hover{background:url(../images/common/icons_dialog.png) no-repeat 0 -170px;}
+	#t_dialog .box .box_top .close_dialog_hover{background:url(../images/common/icons_dialog.png) no-repeat 0 -170px;float:right;}
 	#t_dialog .box .item_box{overflow:hidden;padding:0;}
 	#t_dialog .box .item_box textarea{width:92%;padding:4px;margin:10px;}
 	#t_dialog .box .item_box .small_button,.small_button_hover{padding:0;float:right;margin-right:10px;margin-bottom:10px;}
@@ -353,9 +353,10 @@ dialog
 #t2_dialog{position:absolute;width:400px;border-radius:4px 4px;left:50%;top:50%;padding:6px;z-index:999;background:url(../images/space/bg_dialog.png) repeat 0 0;}
     #t2_dialog .box{background:#fff;border:1px #000 solid;}
     #t2_dialog .box .box_top{text-align:left;padding-left:10px;height:30px;line-height:30px;background:url(../images/common/icons_dialog.png) repeat-x 0 -90px;border-bottom:1px #ccc solid;}
+    #t2_dialog .box .box_top span{float:left;}
     #t2_dialog .box .box_top .close_dialog,.close_dialog_hover{cursor:pointer;float:right;margin:7px 10px 0 0;width:15px;height:15px;}
     #t2_dialog .box .box_top .close_dialog{background:url(../images/common/icons_dialog.png) no-repeat 0 -140px;}
-    #t2_dialog .box .box_top .close_dialog_hover{background:url(../images/common/icons_dialog.png) no-repeat 0 -170px;}
+    #t2_dialog .box .box_top .close_dialog_hover{background:url(../images/common/icons_dialog.png) no-repeat 0 -170px;float:right;}
     #t2_dialog .box .item_box{overflow:hidden;padding:0;}
     #t2_dialog .box .item_box textarea{width:92%;padding:4px;margin:10px;}
     #t2_dialog .box .item_box .small_button,.small_button_hover{padding:0;float:right;margin-right:10px;margin-bottom:10px;}

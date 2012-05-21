@@ -39,8 +39,10 @@ header
     #header #menu li{padding:14px 30px 14px 30px;float:left;border-left:1px #eee solid;border-right:1px #fff solid;font-size:14px;text-align:left;}
     #header #menu li span{color:#999;font-size:12px;}
     
-    .mycount{width:300px;height:100%;}
-    .mycount img{float:right;border:1px #e1e1e1 solid;background:#fff;padding:2px;margin:8px 0 0 0;width:36px;}
+    .mycount{width:300px;height:100%;position:relative;z-index:999;}
+    .mycount .warm_box{position:absolute;width:80px;height:26px;top:45px;left:96px;}
+    .mycount .warm_box img{}
+    .mycount .my_avatar{float:right;border:1px #e1e1e1 solid;background:#fff;padding:2px;margin:8px 0 0 0;width:36px;}
     .mycount .mymenu{width:240px;float:right;}
     .mycount .mymenu li{float:left;line-height:60px;padding:0 0 0 10px;position:relative;}
     .mycount .mymenu .droptab{padding:0 30px 0 15px;cursor:pointer;z-index:998;background:url(../images/common/icons_dialog.png) no-repeat 48px -223px;}
