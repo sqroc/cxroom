@@ -1,3 +1,53 @@
+2012.05.26
+CREATE TABLE  `innovation`.`money` (
+`uid` INT NOT NULL ,
+`value` DECIMAL NOT NULL
+) ENGINE = INNODB
+
+ALTER TABLE  `money` CHANGE  `value`  `value` DECIMAL( 10, 2 ) NOT NULL
+
+CREATE TABLE  `innovation`.`alipayorder` (
+`orderid` INT NOT NULL AUTO_INCREMENT ,
+`ordernum` VARCHAR( 150 ) NOT NULL ,
+`uid` INT NOT NULL ,
+`describe` TEXT NOT NULL ,
+`value` DECIMAL( 10, 2 ) NOT NULL ,
+`adddate` INT( 10 ) NOT NULL ,
+PRIMARY KEY (  `orderid` )
+) ENGINE = INNODB
+
+CREATE TABLE  `innovation`.`point` (
+`uid` INT NOT NULL ,
+`allpoint` INT NOT NULL ,
+`activenum` INT NOT NULL ,
+`creativitynum` INT NOT NULL ,
+`contributionnum` INT NOT NULL
+) ENGINE = INNODB
+
+CREATE TABLE  `innovation`.`payorder` (
+`payorderid` INT NOT NULL AUTO_INCREMENT ,
+`payordernum` VARCHAR( 150 ) NOT NULL ,
+`uid` INT NOT NULL ,
+`touid` INT NOT NULL ,
+`payvalue` DECIMAL( 10, 2 ) NOT NULL ,
+`type` VARCHAR( 50 ) NOT NULL ,
+`itemid` INT NOT NULL ,
+`adddate` INT( 10 ) NOT NULL ,
+PRIMARY KEY (  `payorderid` )
+) ENGINE = INNODB
+
+CREATE TABLE  `innovation`.`drawmoney` (
+`drawmoneyid` INT NOT NULL AUTO_INCREMENT ,
+`uid` INT NOT NULL ,
+`drawvalue` DECIMAL( 10, 2 ) NOT NULL ,
+`adddate` INT( 10 ) NOT NULL ,
+`isok` TINYINT( 1 ) NOT NULL ,
+`getdate` INT( 10 ) NOT NULL ,
+PRIMARY KEY (  `drawmoneyid` )
+) ENGINE = INNODB
+
+
+
 2012.05.18
 CREATE TABLE  `innovation`.`snsnotice` (
 `snsid` INT NOT NULL AUTO_INCREMENT ,
