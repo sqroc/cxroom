@@ -27,7 +27,7 @@ require_once("lib/alipay_service.class.php");
 
 //必填参数//
 
-$out_trade_no		= date('Ymdhis');		//请与贵网站订单系统中的唯一订单号匹配
+$out_trade_no		= date('Ymdhis').'-'.$_POST['uid'];		//请与贵网站订单系统中的唯一订单号匹配
 $subject			= $_POST['subject'];	//订单名称，显示在支付宝收银台里的“商品名称”里，显示在支付宝的交易管理的“商品名称”的列表里。
 $body				= $_POST['alibody'];	//订单描述、订单详细、订单备注，显示在支付宝收银台里的“商品描述”里
 $price				= $_POST['total_fee'];	//订单总金额，显示在支付宝收银台里的“应付总额”里
@@ -44,14 +44,14 @@ $quantity			= "1";					//商品数量，建议默认为1，不改变值，把一
 //该功能作用在于买家已经在商户网站的下单流程中填过一次收货信息，而不需要买家在支付宝的付款流程中再次填写收货信息。
 //若要使用该功能，请至少保证receive_name、receive_address有值
 //收货信息格式请严格按照姓名、地址、邮编、电话、手机的格式填写
-$receive_name		= "收货人姓名";			//收货人姓名，如：张三
-$receive_address	= "收货人地址";			//收货人地址，如：XX省XXX市XXX区XXX路XXX小区XXX栋XXX单元XXX号
+$receive_name		= $_POST['username'];			//收货人姓名，如：张三
+$receive_address	= $_POST['username'];			//收货人地址，如：XX省XXX市XXX区XXX路XXX小区XXX栋XXX单元XXX号
 $receive_zip		= "123456";				//收货人邮编，如：123456
 $receive_phone		= "0571-81234567";		//收货人电话号码，如：0571-81234567
 $receive_mobile		= "13312341234";		//收货人手机号码，如：13312341234
 
 //网站商品的展示地址，不允许加?id=123这类自定义参数
-$show_url			= "http://www.xxx.com/myorder.php";
+$show_url			= "http://www.cxroom.com";
 
 /************************************************************/
 

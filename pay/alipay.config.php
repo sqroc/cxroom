@@ -26,11 +26,11 @@ $aliapy_config['partner']      = '2088702981887132';
 $aliapy_config['key']          = 'iylvi8jn9toxicqt05fkkhrxcxwlgalx';
 
 //签约支付宝账号或卖家支付宝帐户
-$aliapy_config['seller_email'] = '';
+$aliapy_config['seller_email'] = 'heiguaizai@126.com';
 
 //页面跳转同步通知页面路径，要用 http://格式的完整路径，不允许加?id=123这类自定义参数
 //return_url的域名不能写成http://localhost/create_partner_trade_by_buyer_php_utf8/return_url.php ，否则会导致return_url执行无效
-$aliapy_config['return_url']   = 'http://127.0.0.1/cxroom/pay/return_url.php';
+$aliapy_config['return_url']   = 'http://www.cxroom.com/pay/return_url.php';
 
 //服务器异步通知页面路径，要用 http://格式的完整路径，不允许加?id=123这类自定义参数
 $aliapy_config['notify_url']   = 'http://www.cxroom.com/pay/notify_url.php';

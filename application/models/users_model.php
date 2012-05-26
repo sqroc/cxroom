@@ -30,6 +30,9 @@ class Users_model extends CI_Model {
 				$data2['uid'] = $this -> db -> insert_id();
 				$data2['click'] = 0;
 				$this -> db -> insert('userclick', $data2);
+				$datamoney['uid'] = $data2['uid'];
+				$datamoney['value'] = 0;
+				$this -> db -> insert('money', $datamoney);
 				for ($i = 0; $i < 5; $i++) {
 					$data3['code'] = md5(time() . rand());
 					$data3['uid'] = $data2['uid'];

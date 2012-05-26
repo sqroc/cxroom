@@ -6,6 +6,8 @@ CREATE TABLE  `innovation`.`money` (
 
 ALTER TABLE  `money` CHANGE  `value`  `value` DECIMAL( 10, 2 ) NOT NULL
 
+ALTER TABLE  `alipayorder` CHANGE  `describe`  `describenum` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+
 CREATE TABLE  `innovation`.`alipayorder` (
 `orderid` INT NOT NULL AUTO_INCREMENT ,
 `ordernum` VARCHAR( 150 ) NOT NULL ,

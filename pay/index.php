@@ -84,7 +84,7 @@ ul,ol{
 
 .new-btn-login{
     background-color: transparent;
-    background-image: url("images/new-btn-fixed.png");
+    background-image: url("pay/images/new-btn-fixed.png");
     border: medium none;
 }
 .new-btn-login{
@@ -123,7 +123,7 @@ ul,ol{
 }
 #logo{
 	background-color: transparent;
-    background-image: url("images/new-btn-fixed.png");
+    background-image: url("pay/images/new-btn-fixed.png");
     border: medium none;
 	background-position:0 0;
 	width:166px;
@@ -215,7 +215,7 @@ ul,ol{
                 <li class="last">3、付款完成</li>
             </ol>
         </div>
-        <form name=alipayment onSubmit="return CheckForm();" action=alipayto.php method=post target="_blank">
+        <form name=alipayment onSubmit="return CheckForm();" action="pay/alipayto.php" method=post target="_blank">
             <div id="body" style="clear:left">
                 <dl class="content">
                     <dt>标题：</dt>

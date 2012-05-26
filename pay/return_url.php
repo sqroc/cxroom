@@ -41,13 +41,40 @@ if($verify_result) {//验证成功
 		//判断该笔订单是否在商户网站中已经做过处理（可参考“集成教程”中“3.4返回数据处理”）
 			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
 			//如果有做过处理，不执行商户的业务程序
+			
+			list($out_trade_no1, $uid) = split ('[-]', $out_trade_no); 
+			$time2 = time();
+			
+			@ $db = new mysqli('localhost','cxroomcom','cxroom!@#$%','innovation');
+			
+			if(mysqli_connect_errno()){
+				echo "数据库连接错误，请您尽快联系管理员解决！";
+				exit;
+			}
+			$query = "insert into alipayorder (orderid,ordernum,uid,describenum,value,adddate) values ('','".$out_trade_no1.$uid."','$uid','".$trade_no."','$total_fee','$time2')";
+			$query2 = "update money set value = value+".$total_fee. " where uid = ".$uid;
+			//echo $query;
+			$result = $db->query($query);
+			$result2 = $db->query($query2);
+			//print_r($result);
+			if($result){
+				if($result2){
+					echo "充值成功！";
+				}else{
+					echo "充值失败,请您尽快与管理员取得联系！";
+				}
+				
+			}else{
+				echo "保存失败,请您尽快与管理员取得联系！";
+			}
+			$db->close();
     }
     else {
-      echo "trade_status=".$_GET['trade_status'];
+      //echo "trade_status=".$_GET['trade_status'];
     }
 		
-	echo "验证成功<br />";
-	echo "trade_no=".$trade_no;
+	//echo "验证成功<br />";
+	//echo "trade_no=".$trade_no;
 	
 	//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
 	
@@ -56,7 +83,7 @@ if($verify_result) {//验证成功
 else {
     //验证失败
     //如要调试，请看alipay_notify.php页面的verifyReturn函数，比对sign和mysign的值是否相等，或者检查$responseTxt有没有返回true
-    echo "验证失败";
+    echo "验证失败,请您尽快与管理员取得联系！";
 }
 ?>
         <title>支付宝担保交易</title>
