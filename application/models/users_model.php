@@ -369,6 +369,15 @@ class Users_model extends CI_Model {
 			return $row;
 		}
 	}
+	
+	function queryuservalue_byuid($uid) {
+		$data['uid'] = $uid;
+		$sql = "SELECT * FROM money WHERE uid = ? ";
+		$query = $this -> db -> query($sql, $data);
+		foreach ($query->result() as $row) {
+			return $row;
+		}
+	}
 
 }
 ?>
