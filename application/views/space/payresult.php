@@ -6,7 +6,7 @@
 				
 				<ul class="notice">		
 					<br />
-				您账户的余额：<?=$myuservalue->value ?>豆
+				您账户的余额：<?=$myuservalue->value ?> 创新豆
 					
 								
 				</ul>

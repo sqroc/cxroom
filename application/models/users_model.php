@@ -33,6 +33,8 @@ class Users_model extends CI_Model {
 				$datamoney['uid'] = $data2['uid'];
 				$datamoney['value'] = 0;
 				$this -> db -> insert('money', $datamoney);
+				$datapoint['uid'] = $data2['uid'];
+				$this -> db -> insert('point', $datapoint);
 				for ($i = 0; $i < 5; $i++) {
 					$data3['code'] = md5(time() . rand());
 					$data3['uid'] = $data2['uid'];
@@ -373,6 +375,15 @@ class Users_model extends CI_Model {
 	function queryuservalue_byuid($uid) {
 		$data['uid'] = $uid;
 		$sql = "SELECT * FROM money WHERE uid = ? ";
+		$query = $this -> db -> query($sql, $data);
+		foreach ($query->result() as $row) {
+			return $row;
+		}
+	}
+	
+	function queryuserpoint_byuid($uid) {
+		$data['uid'] = $uid;
+		$sql = "SELECT * FROM point WHERE uid = ? ";
 		$query = $this -> db -> query($sql, $data);
 		foreach ($query->result() as $row) {
 			return $row;
