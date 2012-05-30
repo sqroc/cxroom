@@ -3,8 +3,16 @@
 <div class="topic_box">
 	<div class="author fl">
 		<div class="avatar">
-			<img src="<?=base_url()?><?=$idea->person_pic?>" />  <br>
-			<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$idea->uid?>" target="_blank" title="<?=$idea->username?>的空间"><?=$idea->username?></a></span>
+			<img class="pic" src="<?=base_url()?><?=$idea->person_pic?>" />  <br>
+			<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$idea->uid?>" target="_blank" title="<?=$idea->username?>的空间"><?=$idea->username?></a>
+				<?php if($idea->ctype == 1):?>
+					<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+				<?php elseif($idea->ctype == 2):?>
+					<img src="<?=base_url()?>images/c/c_team_little.gif" />
+				<?php else:?>
+					
+				<?php endif;?>
+			</span>
 		</div>
 		<div class="support" id="join">
 				愿意加盟<span><?=$idea->ijoinnumber?></span>
@@ -40,14 +48,7 @@
 			
 			<p><?=$idea->ideacontent?></p>
 			
-			<!--未登录时显示内容
-			<p>
-				摘要内容
-			</p>
-			<p class="summary">	
-			 当前仅显示摘要内容，如果想查看完整内容请 <a href="<?=base_url()?>login" title="登录创新空间">马上登录</a> &nbsp; &nbsp; &nbsp;还没有账号？<a href="<?=base_url()?>register" title="注册创新空间账号">马上注册</a><br/>
-			</p>
-			-->
+			
 		</div>
 		<div class="list">
 			<ul class="person" id="j">
@@ -93,11 +94,11 @@
 		</div>
 		<div class="leave_reply">
 			
-			<div class="lcontent">
-				<textarea name="comment_content" rows="6"></textarea> <br>
+			
+				<textarea class="lcontent" name="comment_content" rows="6"></textarea> <br>
 				<input type="hidden" name="uid" id="comment_uid" value=""/>
 				<input type="hidden" name="pid" id="comment_pid" value=""/>
-			</div>
+			
 			<div class="c_bottom">
 				<div class="tag">
 					支持该创意，创新改变世界！
@@ -117,27 +118,44 @@
 							<img src="<?=base_url()?><?=$item->person_pic?>" /> 
 						</div>
 						<div class="reply w600">
-							<span><a href="<?= base_url() ?>/user_space/uid/<?=$item->uid?>"><?=$item->username?></a></span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$item->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>">回复</span><br>
+							<span class="authorname"><a href="<?= base_url() ?>/user_space/uid/<?=$item->uid?>"><?=$item->username?></a>
+								<?php if($item->ctype == 1):?>
+									<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+								<?php elseif($item->ctype == 2):?>
+									<img src="<?=base_url()?>images/c/c_team_little.gif" />
+								<?php else:?>
+									
+								<?php endif;?>
+							</span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$item->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>">回复</span><br>
 								<p><?=$item->comment_content?></p>
 						</div>
 					</div>
 					<div class="clear10_comment"></div>
 						<!--回复开始--><?php foreach($commentReply1 as $itemReply): ?>
 							<?php if($item->icommentid == $itemReply->comment_parent):?>
+								
 						<div class="dis_box dis_reply">	
 							<div class="avatar2">
 								<img src="<?=base_url()?><?=$itemReply->person_pic?>" />
 							</div>
 							<div class="reply w540">
-								<span><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a></span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$itemReply->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>_<?=$itemReply->uid?>">回复</span><br>
+								<span class="authorname"><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a>
+									<?php if($itemReply->ctype == 1):?>
+										<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+									<?php elseif($itemReply->ctype == 2):?>
+										<img src="<?=base_url()?>images/c/c_team_little.gif" />
+									<?php else:?>
+										
+									<?php endif;?>
+								</span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$itemReply->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>_<?=$itemReply->uid?>">回复</span><br>
 									<p><?=$itemReply->comment_content?></p>
 							</div>
-							<div class="clear_comment"></div>
+							
 						</div>	<?php endif; ?>
 							<?php endforeach; ?>
 						<!--回复结束-->
 					
-						<div class="clear_comment"></div>
+						
 				</li>		
 				
 			<?php endforeach; ?>
@@ -155,11 +173,11 @@
 		
 		<div class="leave_reply">
 			
-			<div class="lcontent">
-				<textarea name="comment_content" rows="6"></textarea> <br>
+			
+				<textarea class="lcontent" name="comment_content" rows="6"></textarea> <br>
 				<input type="hidden" name="uid" id="comment_uid" value=""/>
 				<input type="hidden" name="pid" id="comment_pid" value=""/>
-			</div>
+			
 			<div class="c_bottom">
 				<div class="tag">
 					吐槽该创意，批判成就创新！
@@ -180,19 +198,36 @@
 							<img src="<?=base_url()?><?=$item->person_pic?>" /> 
 						</div>
 						<div class="reply w600">
-							<span><a href="<?= base_url() ?>/user_space/uid/<?=$item->uid?>"><?=$item->username?></a></span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$item->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>">回复</span><br>
+							<span class="authorname"><a href="<?= base_url() ?>/user_space/uid/<?=$item->uid?>"><?=$item->username?></a>
+								<?php if($item->ctype == 1):?>
+									<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+								<?php elseif($item->ctype == 2):?>
+									<img src="<?=base_url()?>images/c/c_team_little.gif" />
+								<?php else:?>
+									
+								<?php endif;?>
+							</span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$item->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>">回复</span><br>
 								<p><?=$item->comment_content?></p>
 						</div>
 					</div>
 					<div class="clear10_comment"></div>
 					<!--回复开始--><?php foreach($commentReply2 as $itemReply): ?>
 							<?php if($item->icommentid == $itemReply->comment_parent):?>
+					
 						<div class="dis_box dis_reply">	
 							<div class="avatar2">
 								<img src="<?=base_url()?><?=$itemReply->person_pic?>" />
 							</div>
 							<div class="reply w540">
-								<span><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a></span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$itemReply->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>_<?=$itemReply->uid?>">回复</span><br>
+								<span class="authorname"><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a>
+									<?php if($itemReply->ctype == 1):?>
+										<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+									<?php elseif($itemReply->ctype == 2):?>
+										<img src="<?=base_url()?>images/c/c_team_little.gif" />
+									<?php else:?>
+										
+									<?php endif;?>
+								</span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$itemReply->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>_<?=$itemReply->uid?>">回复</span><br>
 									<p><?=$itemReply->comment_content?></p>
 							</div>
 							<div class="clear_comment"></div>
@@ -200,7 +235,7 @@
 							<?php endforeach; ?>
 						<!--回复结束-->
 					
-						<div class="clear_comment"></div>
+						
 				</li>		
 				
 			<?php endforeach; ?>
@@ -217,11 +252,11 @@
 		</div>
 		<div class="leave_reply">
 			
-			<div class="lcontent">
-				<textarea name="comment_content" rows="6"></textarea> <br>
+			
+				<textarea class="lcontent" name="comment_content" rows="6"></textarea> <br>
 				<input type="hidden" name="uid" id="comment_uid" value=""/>
 				<input type="hidden" name="pid" id="comment_pid" value=""/>
-			</div>
+			
 			<div class="c_bottom">
 				<div class="tag">
 					纯路过，打个酱油支持！
@@ -242,7 +277,15 @@
 							<img src="<?=base_url()?><?=$item->person_pic?>" /> 
 						</div>
 						<div class="reply w600">
-							<span><a href="<?= base_url() ?>/user_space/uid/<?=$item->uid?>"><?=$item->username?></a></span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$item->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>">回复</span><br>
+							<span class="authorname"><a href="<?= base_url() ?>/user_space/uid/<?=$item->uid?>"><?=$item->username?></a>
+								<?php if($item->ctype == 1):?>
+									<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+								<?php elseif($item->ctype == 2):?>
+									<img src="<?=base_url()?>images/c/c_team_little.gif" />
+								<?php else:?>
+									
+								<?php endif;?>
+							</span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$item->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>">回复</span><br>
 								<p><?=$item->comment_content?></p>
 						</div>
 					</div>
@@ -254,7 +297,15 @@
 								<img src="<?=base_url()?><?=$itemReply->person_pic?>" />
 							</div>
 							<div class="reply w540">
-								<span><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a></span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$itemReply->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>_<?=$itemReply->uid?>">回复</span><br>
+								<span class="authorname"><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a>
+									<?php if($itemReply->ctype == 1):?>
+										<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+									<?php elseif($itemReply->ctype == 2):?>
+										<img src="<?=base_url()?>images/c/c_team_little.gif" />
+									<?php else:?>
+										
+									<?php endif;?>
+								</span><span class="date"><? $nowtime = time();echo ceil(($nowtime-$itemReply->comment_date)/(60*60*24));?>天前</span><span class="reply_button" id="<?=$item->icommentid?>_<?=$item->supporttype?>_<?=$itemReply->uid?>">回复</span><br>
 									<p><?=$itemReply->comment_content?></p>
 							</div>
 							<div class="clear_comment"></div>
@@ -282,7 +333,8 @@
 			<input type="hidden" value="" id="reply_comment_id" name="comment_id" />
 			<input type="hidden" name="uid" id="reply_uid" value=""/>
 			<input type="hidden" name="replyspace" id="reply_replyspace" value=""/>
-			
+			<input type="hidden" name="username" id="u_name" value="" />
+			<input type="hidden" name="userurl" id="u_url" value="" />
 			<div class="item_box">
 				<textarea rows="6"  name="comment_content" id="reply_content"></textarea>
 			</div>
@@ -303,6 +355,7 @@
 $(document).ready(function() {
 	$('#send_reply').click(function() {
 		var comment_content  =  add_br( $("#reply_content").attr("value") );
+		comment_content = '<a href=\"'+$("#u_url").val() + '\" target=\"_blank\">@'+ $("#u_name").val() + '</a> '+comment_content ;
 		if(check_content(comment_content)) {
 			$(this).val('正在发送');
 			var uid  =  $("#reply_uid").attr("value");
@@ -331,6 +384,7 @@ $(document).ready(function() {
 					$('#t_dialog').fadeOut();
 					add_comment('', 'reply', comment_content);
 					$('#send_reply').val('提交回复');
+					//$("#reply_content").val("")
 				} else {
 					warm_dialog('no', '回复评论失败！');
 					$('#send_reply').val('提交回复');
@@ -348,7 +402,7 @@ $(document).ready(function() {
 //发送留言
 $(document).ready(function() {
 	$('.send_comment').click(function() {
-		var comment_content  =  $(this).parent().parent().children('.lcontent').children('textarea[name="comment_content"]').attr("value");
+		var comment_content  =  $(this).parent().parent().children('textarea[name="comment_content"]').attr("value");
 		comment_content = add_br(comment_content);
 		if(check_content(comment_content)) {
 			$(this).val('正在发送');
@@ -382,6 +436,7 @@ $(document).ready(function() {
 					warm_dialog('ok', '评论成功！【活跃度 +2】');
 					add_comment(g, 'comment', comment_content);
 					$('.send_comment').val('发表评论');
+					$('textarea[name="comment_content"]').val('')
 				} else {
 					warm_dialog('no', '评论失败！');
 					$('.send_comment').val('发表评论');
