@@ -327,7 +327,7 @@ $(document).ready(function() {
 			},
 			function(data) {
 				if(data.state == 'ok') {
-					//warm_dialog('ok', '回复评论成功！');
+					warm_dialog('ok', '回复评论成功！ 【活跃度 +1】');
 					$('#t_dialog').fadeOut();
 					add_comment('', 'reply', comment_content);
 					$('#send_reply').val('提交回复');
@@ -379,7 +379,7 @@ $(document).ready(function() {
 			},
 			function(data) {
 				if(data.state == 'ok') {
-					//warm_dialog('ok', '评论成功！');
+					warm_dialog('ok', '评论成功！【活跃度 +2】');
 					add_comment(g, 'comment', comment_content);
 					$('.send_comment').val('发表评论');
 				} else {

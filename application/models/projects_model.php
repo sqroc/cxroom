@@ -97,8 +97,7 @@ class Projects_model extends CI_Model {
 						$rolestr = "role_" . $i;
 						$data3['uid'] = $this -> input -> post($memberstr);
 						$data3['role'] = $this -> input -> post($rolestr);
-						$data3['pid'] = $this -> input -> post('pid');
-						;
+						$data3['pid'] = $this -> input -> post('pid'); ;
 						if ($this -> db -> insert('promember', $data3)) {
 
 						} else {
@@ -141,8 +140,8 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
-	
-	function showProjectsByLimitByUid2($offset, $num,$uid) {
+
+	function showProjectsByLimitByUid2($offset, $num, $uid) {
 		$sql = "SELECT * FROM project,proclass where proclass.pclassid = project.pclassid and project.uid = " . $uid . " order by project.pid desc limit " . $offset . "," . $num;
 		$query = $this -> db -> query($sql);
 		return $query -> result();
@@ -154,8 +153,8 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
-	
-	function showeggsByLimitByUid2($offset, $num,$uid) {
+
+	function showeggsByLimitByUid2($offset, $num, $uid) {
 		$sql = "SELECT * FROM idea where ideauid = " . $uid . " order by ideaid desc limit " . $offset . "," . $num;
 		$query = $this -> db -> query($sql);
 		return $query -> result();
@@ -181,7 +180,7 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
-	
+
 	//add by tgoooo
 	function showeggsByAttention() {
 		$uid = $this -> session -> userdata('uid');
@@ -201,18 +200,17 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query("SELECT * FROM project where uid =" . $uid);
 		return $query -> num_rows();
 	}
-	
-	
+
 	function select_num_rowsforEgg() {
 		$query = $this -> db -> query("SELECT ideaid FROM idea");
 		return $query -> num_rows();
 	}
-	
+
 	function select_num_rowsforEggcomment() {
 		$query = $this -> db -> query("SELECT icommentid FROM idea_comments");
 		return $query -> num_rows();
 	}
-	
+
 	function select_num_rowsByUid2($uid) {
 		$query = $this -> db -> query("SELECT * FROM project where uid =" . $uid);
 		return $query -> num_rows();
@@ -223,7 +221,7 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query("SELECT * FROM idea where ideauid =" . $uid);
 		return $query -> num_rows();
 	}
-	
+
 	function select_num_eggrowsByUid2($uid) {
 		$query = $this -> db -> query("SELECT * FROM idea where ideauid =" . $uid);
 		return $query -> num_rows();
@@ -618,6 +616,10 @@ class Projects_model extends CI_Model {
 				$this -> db -> where('ideaid', $data['icommentideaid']);
 				//评论计数
 				if ($this -> db -> set('commentnum', 'commentnum+1', false) -> update('idea')) {
+					//活跃度+2
+					$this -> db -> where('uid', $this -> session -> userdata('uid'));
+					$this -> db -> set('activenum', 'activenum+2', false) -> update('point');
+
 					//增加消息通知
 					$row = $this -> Projects_model -> showIdeaByPid($this -> input -> post('icommentideaid'));
 					$data2['itemname'] = $row -> ideaname;
@@ -661,6 +663,9 @@ class Projects_model extends CI_Model {
 		$data['comment_date'] = time();
 		if ($data['icommentideaid'] != NULL) {
 			if ($this -> db -> insert('idea_comments', $data)) {
+				//活跃度+1
+				$this -> db -> where('uid', $this -> session -> userdata('uid'));
+				$this -> db -> set('activenum', 'activenum+1', false) -> update('point');
 				//增加消息通知
 				$row = $this -> Projects_model -> showIdeaByPid($this -> input -> post('icommentideaid'));
 				$row2 = $this -> Projects_model -> getideacommentbyid($this -> input -> post('comment_id'));
@@ -701,6 +706,9 @@ class Projects_model extends CI_Model {
 		$data['comment_date'] = time();
 		if ($data['icommentideaid'] != NULL) {
 			if ($this -> db -> insert('idea_comments', $data)) {
+				//活跃度+1
+				$this -> db -> where('uid', $this -> session -> userdata('uid'));
+				$this -> db -> set('activenum', 'activenum+1', false) -> update('point');
 				//增加消息通知
 				$row = $this -> Projects_model -> showIdeaByPid($this -> input -> post('icommentideaid'));
 				//$row2 = $this -> Projects_model -> getideacommentbyid($this -> input -> post('comment_id'));
@@ -738,7 +746,7 @@ class Projects_model extends CI_Model {
 			return $row;
 		}
 	}
-	
+
 	/*
 	 * 获得对应id的project评论
 	 */
@@ -749,7 +757,7 @@ class Projects_model extends CI_Model {
 			return $row;
 		}
 	}
-	
+
 	/*
 	 * 获得对应id的space评论
 	 */

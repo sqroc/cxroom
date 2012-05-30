@@ -45,7 +45,7 @@ class User_space extends CI_Controller {
 		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($uid);
 		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($uid);
 		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
-		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
+		$data['mypointall'] =  round(($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10);
 
 		//分页配置开始
 		$config['base_url'] = base_url() . 'user_space/spacenotice/';
@@ -121,7 +121,7 @@ class User_space extends CI_Controller {
 		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($uid);
 		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($uid);
 		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
-		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
+		$data['mypointall'] =  round(($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10);
 
 		//分页配置开始
 		$config['base_url'] = base_url() . 'user_space/spacenotice/';
@@ -197,7 +197,7 @@ class User_space extends CI_Controller {
 		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
 		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
 		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
-		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
+		$data['mypointall'] =  round(($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10);
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu2');
 		$this -> load -> view('space/space_home');
@@ -242,7 +242,7 @@ class User_space extends CI_Controller {
 		$data['myattentionprojectnumber'] = $this -> Projects_model -> select_num_rowsByAttention();
 		$data['myfriendnumber'] = $this -> Users_model -> select_friends_num_rows($this -> session -> userdata('uid'));
 		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
-		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
+		$data['mypointall'] =  round(($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10);
 		
 		$this -> load -> view('space/api_doctor', $data);
 		
