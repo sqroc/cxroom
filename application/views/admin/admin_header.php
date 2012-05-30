@@ -60,6 +60,7 @@ function show_saying(){
 		<ul>
 			
 			<li class="bornone"><a href="<?=base_url()?>admin/cx_admin/user_list">会员管理</a></li>
+			<li class="bornone"><a href="<?=base_url()?>admin/cx_admin/c_add">会员认证</a></li>
 			
 		
 		</ul>

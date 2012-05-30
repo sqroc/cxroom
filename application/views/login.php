@@ -15,7 +15,7 @@
 	.login{float:left;width:354px;height:340px;border-left:2px #f2f2f2 solid;border-top:1px #fff solid;background:#f9f9f9}
 	.login h3{line-height:50px;height:50px;font-size:14px;padding:0 0 0 20px;border-bottom:1px #e1e1e1 solid;}
 	.login .item{clear:both;}
-	.login .item .input{line-height:30px;width:220px;height:30px;padding:0 10px 0 10px;}
+	.login .item .input{width:220px;padding:8px 10px 8px 10px;}
 	.login .item .label{line-height:32px;height:30px;float:left;}
 	.login .item .reg{padding:20px 0 0 72px;text-align:left;line-height:26px;}
 	

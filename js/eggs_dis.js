@@ -18,6 +18,13 @@ $(document).ready(function(){
 		$(this).removeClass('support_hover');
 	});
 	
+
+	$('.dis_box').hover(function(){
+		$(this).children('.reply').children('.reply_button').css('display', 'inline');
+	}, function(){
+		$(this).children('.reply').children('.reply_button').css('display', 'none');
+	});
+	
 	//$('.author').css('height',$('.topic_box').height());
 });
 
@@ -26,7 +33,10 @@ $(document).ready(function(){
 			var id = $(this).attr('id');
 			$("input[name='comment_id']").val(id);
 			var user = $(this).parent().children(':first').text();
+			var url = $(this).parent().children(':first').children('a').attr('href'); 
 			$('.replyto').text("回复给 "+user);
+			$('#u_name').val(user);
+			$('#u_url').val(url);
 			var offset = $(this).offset();
 			var left = offset.left + 0 ;
 			var top = offset.top + 20;
@@ -58,8 +68,6 @@ function check_content(content){
 function add_comment(obj, tag, content){
 	
 	var id = $("input[name='comment_id']").val();
-	var username = 'test';
-	var userpic = 'test';
 	var cmp_avatar = '<div class="avatar2">' + USER_PHOTO + '</div>';
 	var cmp_avatar0 = '<div class="avatar">' + USER_PHOTO + '</div>';
 
@@ -67,12 +75,12 @@ function add_comment(obj, tag, content){
 	var cmp_content = '<p>' + content + '</p>';
 	
 	var cmp_reply = '<div class="dis_box dis_reply">' + cmp_avatar + '<div class="reply w540">' + cmp_info + cmp_content + '</div><div class="clear_comment"></div></div><div class="clear_comment"></div>';
-	var cmp_comment = '<li><div class="dis_box">' + cmp_avatar0 + '<div class="reply w600">' + cmp_info + cmp_content + '</div><div class="clear_comment"></div></div><div class="clear_comment"></div></li>';
+	var cmp_comment = '<li><div class="dis_box">' + cmp_avatar0 + '<div class="reply w600">' + cmp_info + cmp_content + '</div><div class="clear_comment"></div></div><div class="clear10_comment"></div></li>';
 	
 	if(tag == 'reply'){
 		$('#' + id).parent().parent().parent().append(cmp_reply);
 	} else {
-		$('#'+obj).append(cmp_comment);
+		$('#'+obj).prepend(cmp_comment);
 	}
 
 }

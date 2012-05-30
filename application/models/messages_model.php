@@ -71,6 +71,90 @@ class Messages_model extends CI_Model {
 			return FALSE;
 		}
 	}
+	
+	//多人发送消息add by tgoooo
+	function addmessage2($uid) {
+		$otheruid = $uid;
+		$data['myuid'] = $this -> session -> userdata('uid');
+		$data['content'] = $this -> input -> post('content2');
+		$data['fmessageid'] = -1;
+		$data['m_date'] = time();
+		$n = sizeof($otheruid);
+		
+		for($i=0; $i<$n; $i++) {
+			
+			$data['otheruid'] = $otheruid[$i];
+			
+			if ($data['otheruid'] != NULL) {
+				if ($this -> db -> insert('message', $data)) {
+					//增加消息通知
+					$data2['itemname'] = "";
+					$data2['snsitemid'] = "";
+					$data2['senduid'] = $this -> session -> userdata('uid');
+					$data2['recuid'] = $otheruid[$i];
+					$data2['content'] = $this -> input -> post('content2');
+					$data2['type'] = "spacemessage";
+					$data2['senddate'] = time();
+	
+					if($this -> db -> insert('snsnotice', $data2)){
+						
+					} else {
+						return false;
+					}
+					
+				} else {
+					return FALSE;
+				}
+			} else {
+				return FALSE;
+			}
+		}//#for
+		return true;
+	}
+	
+	
+	//分享创意给多人add by tgoooo
+	function addshare($uid) {
+		$otheruid = $uid;
+		//$data['myuid'] = $this -> session -> userdata('uid');
+		//$data['content'] = $this -> input -> post('content2');
+		//$data['fmessageid'] = -1;
+		//$data['m_date'] = time();
+		$n = sizeof($otheruid);
+		
+		for($i=0; $i<$n; $i++) {
+			
+			$data['otheruid'] = $otheruid[$i];
+			
+			if ($data['otheruid'] != NULL) {
+				
+				//增加分享消息通知
+				$data2['itemname'] = $this -> input -> post('ename');
+				$data2['snsitemid'] = $this -> input -> post('eid');
+				$data2['senduid'] = $this -> session -> userdata('uid');
+				$data2['recuid'] = $otheruid[$i];
+				if($this -> input -> post('epic') != NULL){
+					$data2['content'] = $this -> input -> post('content2').'<br /><img src="'.base_url().$this -> input -> post('epic').'"/>';	
+				} else {
+					$data2['content'] = $this -> input -> post('content2');
+				}
+				
+				$data2['type'] = "eggshare";
+				$data2['senddate'] = time();
+
+				if($this -> db -> insert('snsnotice', $data2)){
+					
+				} else {
+					return false;
+				}
+					
+				
+			} else {
+				return FALSE;
+			}
+		}//#for
+		return true;
+	}
 
 	function addreplymessage() {
 

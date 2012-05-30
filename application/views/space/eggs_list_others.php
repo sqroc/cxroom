@@ -9,7 +9,7 @@
 		</div>
 		<?php if($eggs == NULL):?>
 				<div class="nothing">
-					他还未发布任何创意蛋。
+					TA还未发布任何创意蛋。
 				</div>
 		<?php endif;?>
 		<ul class="project_list">

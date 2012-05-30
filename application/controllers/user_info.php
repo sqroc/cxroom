@@ -22,6 +22,8 @@ class User_info extends CI_Controller {
 		$data['telphone'] = $row -> telphone;
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
 		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
@@ -37,6 +39,8 @@ class User_info extends CI_Controller {
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['person_pic2'] = $row2 -> person_pic;
 		$data['username2'] = $this -> session -> userdata('username');
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/user_info');
@@ -122,6 +126,8 @@ class User_info extends CI_Controller {
 		$data['telphone'] = $row -> telphone;
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 		$data['myskills'] = $this -> Users_model -> queryskill();
 		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
 		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
@@ -138,6 +144,8 @@ class User_info extends CI_Controller {
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['person_pic2'] = $row2 -> person_pic;
 		$data['username2'] = $this -> session -> userdata('username');
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/user_skills');
@@ -164,6 +172,8 @@ class User_info extends CI_Controller {
 		$data['telphone'] = $row -> telphone;
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
 		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
@@ -179,6 +189,8 @@ class User_info extends CI_Controller {
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['person_pic2'] = $row2 -> person_pic;
 		$data['username2'] = $this -> session -> userdata('username');
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/user_photo');
@@ -205,6 +217,8 @@ class User_info extends CI_Controller {
 		$data['telphone'] = $row -> telphone;
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
 		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
@@ -220,6 +234,8 @@ class User_info extends CI_Controller {
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['person_pic2'] = $row2 -> person_pic;
 		$data['username2'] = $this -> session -> userdata('username');
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/user_contact');
@@ -323,6 +339,8 @@ class User_info extends CI_Controller {
 		$data['telphone'] = $row -> telphone;
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
 		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
@@ -339,6 +357,8 @@ class User_info extends CI_Controller {
 		$data['person_pic2'] = $row2 -> person_pic;
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['nineaskinfo'] = $this -> Users_model -> queryusernineask_byuid($this -> session -> userdata('uid'));
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/user_9ask');

@@ -1,10 +1,8 @@
 $(document).ready(function() {
-	$('.more').mouseover(function() {
-		$(this).css('background', '#86DA00');
-	});
-
-	$('.more').mouseout(function() {
-		$(this).css('background', '#66CC00');
+	$('.more').hover(function() {
+		$(this).css('background', '#f9f9f9');
+	}, function() {
+		$(this).css('background', '#f2f2f2');
 	});
 	bor_box();
 });
@@ -22,6 +20,10 @@ function bor_box(){
 $(document).ready(function(){
 	start_box();
 });
+
+window.onload = function(){
+	start_box();
+}
 
 function start_box(){
 	var boxes = $('.ibox_shadow');

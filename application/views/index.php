@@ -61,6 +61,21 @@
 				</div>
 			</div>
 			
+			<div class="places red_r text_r" style="left:690px;top:100px;">
+				抢邀请码
+			</div>
+			<div class="preview" style="left:690px;top:160px;">
+				<div class="arrow"></div>
+				<div class="pre_box">
+					<h3 class="title">关注我们的微博，得邀请码啦</h3>
+					<div class="content slide">
+						关注我们的微博后请给我们留言或者私信，我们会在一个工作日内将一枚邀请码发送给你，注册会员将拥有五枚邀请码。<br />
+						<a href="http://weibo.com/cxroom" target="_blank">关注新浪微博</a> <br />
+						<a href="http://t.qq.com/bigplan" target="_blank">关注腾讯微博</a>
+					</div>
+				</div>
+			</div>
+			
 			
 			<img src="<?=base_url()?>images/map.png" alt="创新城" />
 		</div>
@@ -95,7 +110,7 @@
 	<div class="streets_box fl">
 		<div class="street mb35">
 			<div class="name">
-				项目窝
+				<a href="<?=base_url()?>projects">项目窝</a>
 			</div>
 			<div class="s_intro">
 				<p>
@@ -105,7 +120,7 @@
 		</div>
 		<div class="street mb35">
 			<div class="name">
-				创意蛋
+				<a href="<?=base_url()?>eggs">创意蛋</a>
 			</div>
 			<div class="s_intro">
 				<p>
@@ -115,7 +130,7 @@
 		</div>
 		<div class="street">
 			<div class="name">
-				创新学院
+				<a href="http://lab.cxroom.com/">创新学院</a>
 			</div>
 			<div class="s_intro">
 				<p>

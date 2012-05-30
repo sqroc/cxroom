@@ -22,6 +22,8 @@ class Project_edit extends CI_Controller {
 		$data['telphone'] = $row -> telphone;
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 		$classresult = $this -> Projects_model -> showclass();
 		$data['classresult'] = $classresult;
 		$pid = $this -> uri -> segment(4, 0);
@@ -38,6 +40,8 @@ class Project_edit extends CI_Controller {
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['person_pic2'] = $row2 -> person_pic;
 		$data['username2'] = $this -> session -> userdata('username');
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/project_edit');
@@ -65,6 +69,8 @@ class Project_edit extends CI_Controller {
 		$data['telphone'] = $row -> telphone;
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 		$classresult = $this -> Projects_model -> showclass();
 		$data['classresult'] = $classresult;
 		$pid = $this -> uri -> segment(4, 0);
@@ -80,6 +86,8 @@ class Project_edit extends CI_Controller {
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['uid'] = $this -> session -> userdata('uid');
 		$data['person_pic2'] = $row2 -> person_pic;
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		$data = array_merge($data, $this -> Common_model -> global_data());
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');

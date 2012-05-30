@@ -16,7 +16,7 @@ h1,h2,h3,h4,h5{margin:0;padding:0;text-align:left;display:block;}
 h3{font-size:13px;}
 .container{width:960px;margin:0 auto;text-align:left;}
 .clear{overflow:hidden;height:20px;width:100%;}
-.clear0{overflow:hidden;height:0px;width:100%;}
+.clear0{overflow:hidden;height:0px;width:100%;clear:both;}
 img{border:0;}
 input,textarea{background:url(../images/bg_input.png) no-repeat 0 0;border:1px #ccc solid;}
 p{margin:0;padding:0;}
@@ -35,9 +35,13 @@ textarea{padding:5px;overflow-y:auto}
 .button{background:url(../images/icons_form.png) no-repeat 0 -150px;_background:url(../images/icons_form.jpg) no-repeat 0 -150px;border:none;width:120px;height:42px;line-height:42px;color:#fff;color:#666;}
 .button:hover{background:url(../images/icons_form.png) no-repeat 0 -100px;_background:url(../images/icons_form.jpg) no-repeat 0 -100px;}
 
-.small_button,.small_button_hover{width:85px;height:30px;padding:0;line-height:30px;border:none;color:#fff;}
+.small_button,.small_button_hover{width:85px;height:30px;padding:0;line-height:30px;border:none;color:#fff;font-size:14px;}
 .small_button{background:url(../images/common/icons_dialog.png) no-repeat 0 0;}
 .small_button_hover{background:url(../images/common/icons_dialog.png) no-repeat 0 -40px;}
+
+.little_button{width:77px;height:27px;line-height:27px;font-size:14px;text-align:center;}
+.little_button{background:url(../images/space/icons_space.png) no-repeat 0 -200px;color:#fff;}
+.little_button:hover{background:url(../images/space/icons_space.png) no-repeat 0 -230px;}
 /*
 header
 ***********/

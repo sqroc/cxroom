@@ -25,6 +25,8 @@ class Commentslist extends CI_Controller {
 		$data['person_pic'] = $row -> person_pic;
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 		$data['randvalue'] = rand(0, 10000000000);
 
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
@@ -32,6 +34,8 @@ class Commentslist extends CI_Controller {
 		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
 		$data['commentNumber'] = $this -> Messages_model -> getcommentnumber($uid);
 		$data['clickdata'] = $this -> Users_model -> queryuserclick_byuid($uid);
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/commentslist/';
 		$config['total_rows'] = $this -> Messages_model -> getcommentnumber($uid);
@@ -104,10 +108,14 @@ class Commentslist extends CI_Controller {
 		$data['qq'] = $row -> qq;
 		$data['telphone'] = $row -> telphone;
 		$data['phone'] = $row -> phone;
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 		$data['person_pic'] = $row -> person_pic;
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
 		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();

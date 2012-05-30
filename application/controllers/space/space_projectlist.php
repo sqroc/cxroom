@@ -26,6 +26,10 @@ class Space_projectlist extends CI_Controller {
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/space_projectlist/projectlist/';
 		$config['total_rows'] = $this -> Projects_model -> select_num_rowsByUid();
@@ -96,6 +100,10 @@ class Space_projectlist extends CI_Controller {
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/space_projectlist/projectlist/';
 		$config['total_rows'] = $this -> Projects_model -> select_num_rowsByUid();
@@ -170,6 +178,8 @@ class Space_projectlist extends CI_Controller {
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
 		$data['person_pic2'] = $row2 -> person_pic;
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 		$data['username'] = $row -> username;
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
@@ -186,6 +196,8 @@ class Space_projectlist extends CI_Controller {
 		$data['myfriendnumber'] = $this -> Users_model -> select_friends_num_rows($this -> session -> userdata('uid'));
 		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
 		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/space_projectlist/prouid/' . $uid . '/';
 		$config['total_rows'] = $this -> Projects_model -> select_num_rowsByUid2($uid);
@@ -247,6 +259,8 @@ class Space_projectlist extends CI_Controller {
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
 		$data['person_pic2'] = $row2 -> person_pic;
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 		$data['username'] = $row -> username;
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
@@ -263,6 +277,8 @@ class Space_projectlist extends CI_Controller {
 		$data['myfriendnumber'] = $this -> Users_model -> select_friends_num_rows($this -> session -> userdata('uid'));
 		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
 		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/space_projectlist/egguid/' . $uid . '/';
 		$config['total_rows'] = $this -> Projects_model -> select_num_eggrowsByUid2($uid);
@@ -320,6 +336,10 @@ class Space_projectlist extends CI_Controller {
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/space_projectlist/egglist/';
 		$config['total_rows'] = $this -> Projects_model -> select_num_eggrowsByUid();
@@ -391,6 +411,10 @@ class Space_projectlist extends CI_Controller {
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/space_projectlist/attentionProjectlist/';
 		$config['total_rows'] = $this -> Projects_model -> select_num_rowsByAttention();
@@ -462,6 +486,10 @@ class Space_projectlist extends CI_Controller {
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/space_projectlist/attentionTiplist/';
 		$config['total_rows'] = $this -> Projects_model -> select_num_rowsTipsByAttention();
@@ -532,6 +560,10 @@ class Space_projectlist extends CI_Controller {
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/space_projectlist/attentionegglist/';
 		$config['total_rows'] = $this -> Projects_model -> select_num_rowseggsByAttention();
@@ -577,6 +609,19 @@ class Space_projectlist extends CI_Controller {
 		$this -> load -> view('space/eggs_list_attention');
 		$this -> load -> view('space/user_sidebar');
 		$this -> load -> view('space/footer');
+
+	}
+
+	public function attentioneggs_api() {
+		$sta = $this -> session -> userdata('user');
+		if (!isset($sta) || $sta != "login_ok") {
+			redirect('/login');
+		}
+		
+		$data['eggs'] = $this -> Projects_model -> showeggsByAttention();
+		$data['uid'] = $this -> session -> userdata('uid');
+		$uid = $this -> session -> userdata('uid');
+		$this -> load -> view('space/api_attentioneggs', $data);
 
 	}
 

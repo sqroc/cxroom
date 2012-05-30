@@ -11,12 +11,35 @@
 				<img src="images/user_head/head_default.gif" /> 
 			<?php endif; ?>
 		</div>
-		<ul class="lmenu">
-			<li class="find"><a href="<?=base_url() ?>user_space/uid/<?=$uid ?>">他的客厅</a></li>
-		
-						<li class="fav_lab"><a href="<?=base_url() ?>space/space_projectlist/prouid/<?=$uid ?>">他的项目</a></li>
+		<div class="point">
+			<ul>
+				<li class="liner">
+					<strong><?=$mypointall ?></strong>
+					<span class="pl">价值
+						<div class="point_list" style="display:none;">
+							<ul>
+								<li>贡献 <?=$mypoint->contributionnum ?></li>
+								<li>活跃 <?=$mypoint->activenum ?></li>
+								<li>创新 <?=$mypoint->creativitynum ?></li>
+							</ul>
+						</div>	
+					</span>
+				</li>
+				<li class="linel">
+					<strong><?=$clickdata->click?></strong>
+					<span>人气</span>
+					
+				</li>
+			</ul>
 			
-				<li class="my_pro"><a href="<?=base_url() ?>space/space_projectlist/egguid/<?=$uid ?>">他的创意</a></li>
+			
+		</div>
+		<ul class="lmenu">
+			<li class="find"><a href="<?=base_url() ?>user_space/uid/<?=$uid ?>">Ta的客厅</a></li>
+		
+						<li class="fav_lab"><a href="<?=base_url() ?>space/space_projectlist/prouid/<?=$uid ?>">Ta的项目</a></li>
+			
+				<li class="my_pro"><a href="<?=base_url() ?>space/space_projectlist/egguid/<?=$uid ?>">Ta的创意</a></li>
 				<li class="home"><a href="<?=base_url() ?>/user_space">回我的书房</a></li>
 			
 		</ul>

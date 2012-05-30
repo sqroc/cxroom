@@ -26,11 +26,16 @@ class Messages extends CI_Controller {
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
-
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
+		
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
 		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
 		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
 		$data['commentNumber'] = $this -> Messages_model -> getcommentnumber($uid);
+		
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/commentslist/';
@@ -108,11 +113,16 @@ class Messages extends CI_Controller {
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
 		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
 		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
 		$data['commentNumber'] = $this -> Messages_model -> getcommentnumber($uid);
+		
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/commentslist/uid/' . $uid . '/';
@@ -183,11 +193,16 @@ class Messages extends CI_Controller {
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
 		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
 		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
 		$data['commentNumber'] = $this -> Messages_model -> getcommentnumber($uid);
+		
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/messages/letters/';
@@ -259,11 +274,16 @@ class Messages extends CI_Controller {
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
 		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
 		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
 		$data['commentNumber'] = $this -> Messages_model -> getcommentnumber($uid);
+		
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/messages/notices/';

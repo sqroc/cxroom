@@ -181,6 +181,14 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
+	
+	//add by tgoooo
+	function showeggsByAttention() {
+		$uid = $this -> session -> userdata('uid');
+		$sql = "SELECT * FROM  idea,ideaattentionmember where ideaattentionmember.ideaid =  idea.ideaid and ideaattentionmember.uid = " . $uid . " order by ideaattentionmember.ideaamid desc limit 0,5";
+		$query = $this -> db -> query($sql);
+		return $query -> result();
+	}
 
 	function showProjectsByLimitAll($offset, $num) {
 		$sql = "SELECT * FROM project,proclass where proclass.pclassid = project.pclassid  order by project.pid desc limit " . $offset . "," . $num;
@@ -304,7 +312,7 @@ class Projects_model extends CI_Model {
 			$ideaids .= ($ideaid . ',');
 		}
 		$ideaids = rtrim($ideaids, ',');
-		$sql = "SELECT * FROM idea_comments,user WHERE author_uid=user.uid and supporttype=1 and icommentideaid IN (" . $ideaids . ")";
+		$sql = "SELECT * FROM idea_comments,user WHERE author_uid=user.uid and icommentideaid IN (" . $ideaids . ")";
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}

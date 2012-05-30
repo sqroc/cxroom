@@ -23,6 +23,10 @@ class Space_userlist extends CI_Controller {
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/space_userlist/userlist/';
 		$config['total_rows'] = 100;
@@ -77,6 +81,10 @@ class Space_userlist extends CI_Controller {
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/space_userlist/userlist/';
 		$config['total_rows'] = $this -> Users_model -> select_num_rows();
@@ -144,6 +152,10 @@ class Space_userlist extends CI_Controller {
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		//分页配置开始
 		$config['base_url'] = base_url() . 'space/Space_userlist/myuserlist/';
 		$config['total_rows'] = $this -> Users_model -> select_friends_num_rows($this -> session -> userdata('uid'));
@@ -189,6 +201,20 @@ class Space_userlist extends CI_Controller {
 		$this -> load -> view('space/space_myuserlist');
 		$this -> load -> view('space/user_sidebar');
 		$this -> load -> view('space/footer');
+
+	}
+
+	public function myfriends_api() {
+		$sta = $this -> session -> userdata('user');
+		if (!isset($sta) || $sta != "login_ok") {
+			redirect('/login');
+		}
+		
+		$data['newuser'] = $this -> Users_model -> querymyuser();
+		$data['myfriendnumber'] = $this -> Users_model -> select_friends_num_rows($this -> session -> userdata('uid'));
+		$data['uid'] = $this -> session -> userdata('uid');
+		$uid = $this -> session -> userdata('uid');
+		$this -> load -> view('space/api_myfriends', $data);
 
 	}
 

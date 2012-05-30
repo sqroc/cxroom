@@ -9,7 +9,7 @@
 		</div>
 		<?php if($projects == NULL):?>
 				<div class="nothing">
-					他还没发布任何公开项目。<br/>
+					TA还没发布任何公开项目。<br/>
 					
 				</div>
 		<?php endif;?>

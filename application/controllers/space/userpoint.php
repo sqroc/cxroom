@@ -9,7 +9,7 @@ class Userpoint extends CI_Controller {
 		if (!isset($sta) || $sta != "login_ok") {
 			redirect('/login');
 		}
-		$data = array('title' => '充值中心', 'css' => 'space.css', );
+		$data = array('title' => '用户价值中心', 'css' => 'space.css', );
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
@@ -23,6 +23,8 @@ class Userpoint extends CI_Controller {
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
 
 		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
 		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;

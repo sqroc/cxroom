@@ -12,6 +12,21 @@
 			<a href="">如何才能通过认证？</a>
 		</div>
 		-->
+		<?php if($ctype != NULL):?>
+			<div class="c">
+				<?php if($ctype == 1):?>
+					<img src="<?=base_url()?>images/c/c_personal.gif" />
+				<?php elseif($ctype == 2):?>
+					<img src="<?=base_url()?>images/c/c_team.gif" />
+				<?php else:?>
+					
+				<?php endif;?>
+				<?php if($cname != NULL):?>
+					<p><?=$cname?></p>
+				
+				<?php endif;?>
+			</div>	
+		<?php endif;?>
 		<div class="publish">
 			<div class="new_egg">
 				<a href="<?=base_url()?>eggs/new_topic"> </a>
@@ -24,6 +39,7 @@
 		<div class="side_title">
 			新鲜创意
 		</div>
+		
 		<div class="new ideas" style="position:relative;z-index:4;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
 		<div class="new ideas" style="position:relative;z-index:3;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
 		<div class="new ideas" style="position:relative;z-index:2;"><img src="<?=base_url()?>images/common/loading.gif" /></div>

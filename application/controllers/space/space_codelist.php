@@ -23,6 +23,11 @@ class Space_codelist extends CI_Controller {
 		$data['phone'] = $row -> phone;
 		$data['person_pic'] = $row -> person_pic;
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
+		
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
+		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		
 		$data['codes'] = $this -> Users_model -> space_code_list();
 		$data['usedcodenumber'] = $this -> Users_model -> space_used_codenumber();

@@ -1,39 +1,105 @@
 	<div class="mid fl">
-		
+		<script src="<?=base_url()?>js/space_myhome.js" type="text/javascript"></script>
 		<div class="user_info">
-			<h2><?=$username ?></h2>
+			<h2><?=$username ?><?php if($ctype == 1):?>
+								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+							<?php elseif($ctype == 2):?>
+								<img src="<?=base_url()?>images/c/c_team_little.gif" />
+							<?php else:?>
+								
+							<?php endif;?></h2>
+							<!--
 			<span class="user_mess">
 				
 					知名指数
 			</span>
 			<span class="user_score">
 				<?=$clickdata->click?>
-			</span>
+			</span>-->
 			<div class="talk">
 				<a class="btn grey"  href="<?= base_url() ?>/user_space/uid/<?=$userreply->uid?>" title="看看我的客厅">我的客厅</a>
 			</div>
 		</div>
 		
-		<div class="short_intro">
+		<div class="short_intro" style="padding:4px 4px 0 4px;">
 			<div class="j"></div>
-			<p>
-			<?php if (isset($intro)): ?><?=$intro ?>
-			<?php else: ?>这家伙很懒，什么也没写。<?php endif; ?></p>
-			<div class="base_info">
-				<span>
-				<?php if (isset($gender) && $gender !=0): ?>
-					男
-				<?php elseif (!isset($gender)): ?>
-					性别保密
-				<?php else: ?>
-					女
-				<?php endif; ?>
-				</span><span>
-				<?php if (isset($province) && $province!='---请选择---'): ?>来自<?=$province ?><?php else:?>
-					来自未知星球
-					<?php endif; ?></span>
+			
+			
+			<input type="hidden" name="uid" id="msg_getter" value=""/>
+			<input type="hidden" name="egg_id" id="eid" value="" />
+			<input type="hidden" name="egg_name" id="ename" value="" />
+			<input type="hidden" name="egg_pic" id="epic" value="" />
+			<textarea rows="4"  name="comment_content" class="text" id="reply_content2"></textarea>
+			<div class="text_bottom">
+			
+				<span class="check_tab check_tab_on" id="share">分享创意</span>
+				<span class="check_tab" id="weixin">发微信</span>
+				<span class="check_tab" id="towho">发送给0人</span>
+				<span class="check_tab" id="myf" style="padding-left:0;"><a href="javascript:void(0)">选择</a></span>
+				<span class="check_tab" id="all" style="padding-left:0;display:none;"><a href="javascript:void(0)">全选</a></span>
+				<div class="little_button" id="send_reply2">马上分享</div>
 			</div>
+			<div id="friends_list" style="display:none;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
+			<div id="attention_eggs" style="display:none;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
 		</div>
+		<script type="text/javascript">
+			var flag_friends = true;
+			var flag_share = true;
+			var flag_weixin = false;
+			
+			$(document).ready(function(){
+				share("<?=base_url()?>space/space_projectlist/attentioneggs_api");
+				
+				$('#myf').click(function(){
+					$('#attention_eggs').css('display', 'none');
+					$('#all').css('display', 'block');
+					if(flag_friends){
+						var url = "<?=base_url()?>space/space_userlist/myfriends_api";
+						$.getJSON(url, function(json){
+							
+							flag_friends = false;
+							var n = json.length;
+							var i;
+							var temp = "";
+							for(i=0; i<n; i++){
+								temp += '<li id=\"' + json[i].uid + '\" class=\"unselect\">' + json[i].name + '</li>'; 
+							}
+							$('#friends_list').html('<ul>' + temp + '</ul>');
+							$('#friends_list').css('display', 'block');
+							add_one();
+						});
+					} else {
+						$('#friends_list').css('display', 'block');
+					}
+					return false;
+				});
+				
+				$('#friends_list').click(function(){
+					return false;
+				});
+				
+				$('#all').click(function(){
+					select_all();
+					return false;
+				});
+				
+				$('body').click(function(){
+					$('#friends_list').css('display', 'none');
+					$('#attention_eggs').css('display', 'none');
+					$('#all').css('display', 'none');
+				});
+				
+				$('#share').hover(function(){
+					$(this).text('换个创意');
+				}, function(){
+					$(this).text('分享创意');
+				});
+				
+				tab_on();
+			
+			})
+			
+		</script>
 		
 		<div class="doctor">
 			<div class="d_title">
@@ -132,28 +198,7 @@
 					
 					});
 				});
-				function doctor_fade(){
-					$('.doctor_info ul li').hover(function(){
-						$(this).children('span').css('display','inline');
-					}, function(){
-						$(this).children('span').css('display','none');
-					});
-				}
-				function doctor_slide(tag){
-					if(tag){
-						$('.doctor_info').css('display', 'none');
-						$('.slide_button').text('展开化验单');		
-					}
-					$('.slide_button').click(function(){
-						if($('.doctor_info').css('display')=='none'){
-							$('.doctor_info').slideDown('fast');
-							$(this).text('关闭化验单');
-						} else {
-							$('.doctor_info').slideUp('fast');
-							$(this).text('展开化验单');
-						}
-					});
-				}
+				
 				
 			</script>	
 		</div><!--doctor-->
@@ -182,7 +227,15 @@
 						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> :</span> 评论了您的创意蛋 <a href="<?=base_url()?>eggs/topic/<?=$item->snsitemid ?>"><?=$item->itemname ?></a> 赶快去看看吧！
+						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a>
+							<?php if($item->ctype == 1):?>
+								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+							<?php elseif($item->ctype == 2):?>
+								<img src="<?=base_url()?>images/c/c_team_little.gif" />
+							<?php else:?>
+								
+							<?php endif;?>
+							 :</span> 评论了您的创意蛋 <a href="<?=base_url()?>eggs/topic/<?=$item->snsitemid ?>"><?=$item->itemname ?></a> 赶快去看看吧！
 						<blockquote>
 							【Ta的评论】：<?=$item->content ?>
 						</blockquote>
@@ -202,7 +255,15 @@
 						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> :</span> 评论了您的项目 <a href="<?=base_url()?>projects/home/<?=$item->snsitemid ?>"><?=$item->itemname ?></a> 赶快去看看吧！
+						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+							<?php if($item->ctype == 1):?>
+								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+							<?php elseif($item->ctype == 2):?>
+								<img src="<?=base_url()?>images/c/c_team_little.gif" />
+							<?php else:?>
+								
+							<?php endif;?>
+							:</span> 评论了您的项目 <a href="<?=base_url()?>projects/home/<?=$item->snsitemid ?>"><?=$item->itemname ?></a> 赶快去看看吧！
 						<blockquote>
 							【Ta的评论】：<?=$item->content ?>
 						</blockquote>
@@ -222,7 +283,15 @@
 						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> :</span> 给您留言了。 <a href="<?=base_url()?>space/commentslist">点击此处查看详情！</a> 
+						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+							<?php if($item->ctype == 1):?>
+								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+							<?php elseif($item->ctype == 2):?>
+								<img src="<?=base_url()?>images/c/c_team_little.gif" />
+							<?php else:?>
+								
+							<?php endif;?>
+							:</span> 给您留言了。 <a href="<?=base_url()?>space/commentslist">点击此处查看详情！</a> 
 						<blockquote>
 							【Ta的留言】：<?=$item->content ?>
 						</blockquote>
@@ -242,7 +311,15 @@
 						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> :</span> 给您发了一封站内信。 <a href="<?=base_url()?>space/messages/letters">点击此处查看详情！</a> 
+						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a>
+							<?php if($item->ctype == 1):?>
+								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+							<?php elseif($item->ctype == 2):?>
+								<img src="<?=base_url()?>images/c/c_team_little.gif" />
+							<?php else:?>
+								
+							<?php endif;?>
+							:</span> 给您发了一封站内信。 <a href="<?=base_url()?>space/messages/letters">点击此处查看详情！</a> 
 						<blockquote>
 							【站内信内容】：<?=$item->content ?>
 						</blockquote>
@@ -262,7 +339,15 @@
 						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> :</span> 回复了您发送的站内信。 <a href="<?=base_url()?>space/messages/letters">点击此处查看详情！</a> 
+						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+							<?php if($item->ctype == 1):?>
+								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+							<?php elseif($item->ctype == 2):?>
+								<img src="<?=base_url()?>images/c/c_team_little.gif" />
+							<?php else:?>
+								
+							<?php endif;?>
+							:</span> 回复了您发送的站内信。 <a href="<?=base_url()?>space/messages/letters">点击此处查看详情！</a> 
 						<blockquote>
 							【站内信内容】：<?=$item->content ?>
 						</blockquote>
@@ -282,7 +367,15 @@
 						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> :</span> 回复了您在创意蛋 <a href="<?=base_url()?>eggs/topic/<?=$item->snsitemid ?>"><?=$item->itemname ?></a>上的评论。 赶快去看看吧！
+						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+							<?php if($item->ctype == 1):?>
+								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+							<?php elseif($item->ctype == 2):?>
+								<img src="<?=base_url()?>images/c/c_team_little.gif" />
+							<?php else:?>
+								
+							<?php endif;?>
+							:</span> 回复了您在创意蛋 <a href="<?=base_url()?>eggs/topic/<?=$item->snsitemid ?>"><?=$item->itemname ?></a>上的评论。 赶快去看看吧！
 						<blockquote>
 							【Ta对您说】：<?=$item->content ?>
 						</blockquote>
@@ -302,7 +395,15 @@
 						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> :</span> 回复了您在项目 <a href="<?=base_url()?>projects/home/<?=$item->snsitemid ?>"><?=$item->itemname ?></a>上的评论。 赶快去看看吧！
+						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+							<?php if($item->ctype == 1):?>
+								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+							<?php elseif($item->ctype == 2):?>
+								<img src="<?=base_url()?>images/c/c_team_little.gif" />
+							<?php else:?>
+								
+							<?php endif;?>
+							:</span> 回复了您在项目 <a href="<?=base_url()?>projects/home/<?=$item->snsitemid ?>"><?=$item->itemname ?></a>上的评论。 赶快去看看吧！
 						<blockquote>
 							【Ta对您说】：<?=$item->content ?>
 						</blockquote>
@@ -322,7 +423,15 @@
 						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> :</span> 回复了您在Ta空间的留言！<a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"> [去<?=$item->username ?>的空间看看]</a>
+						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+							<?php if($item->ctype == 1):?>
+								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+							<?php elseif($item->ctype == 2):?>
+								<img src="<?=base_url()?>images/c/c_team_little.gif" />
+							<?php else:?>
+								
+							<?php endif;?>
+							:</span> 回复了您在Ta空间的留言！<a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"> [去<?=$item->username ?>的空间看看]</a>
 						<blockquote>
 							【Ta对您的留言回复】：<?=$item->content ?>
 						</blockquote>
@@ -333,6 +442,34 @@
 					
 				</div>
 			</li>
+			<?php endif;?>
+			
+			<?php if ($item->type == "eggshare"):?>		
+				<li>
+				<div class="notice_box">
+					<div class="n_avatar">
+						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+					</div>
+					<div class="n_msg">
+						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+							<?php if($item->ctype == 1):?>
+								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
+							<?php elseif($item->ctype == 2):?>
+								<img src="<?=base_url()?>images/c/c_team_little.gif" />
+							<?php else:?>
+								
+							<?php endif;?>
+							:</span> 向你推荐了Ta收藏的创意 <a href="<?=base_url()?>eggs/topic/<?=$item->snsitemid ?>"><?=$item->itemname ?></a> 赶快去看看吧！
+						<blockquote>
+							【Ta对你说】：<?=$item->content ?>
+						</blockquote>
+						<span class="date">
+							<?= date('Y/m/d h:m:s',$item->senddate);?>
+						</span>
+					</div>
+					
+				</div>
+				</li>
 			<?php endif;?>
 			
 			<?php endforeach; ?>
@@ -451,4 +588,66 @@ $(document).ready(function() {
 	});
 });
 
+//发送消息
+$(document).ready(function() {
+	$('#send_reply2').click(function() {
+		if($('#msg_getter').val()==""){
+			warm_dialog('no', '请选择接受信息的好友');
+			return;
+		}
+		
+		if(check_content('message')) {
+			$(this).val('正在发送');
+			//ajax
+			var content2  =  $("#reply_content2").attr("value");
+			var otheruid  =  $("#msg_getter").attr("value");
+			var egg_id = $('#eid').val();
+			var egg_name = $('#ename').val();
+			var egg_pic = $('#epic').val();
+			
+			if(flag_weixin){
+				
+				var url = "<?=base_url()?>user_space/addmessage2";
+				$.post(url, {
+				content2 : content2,
+				otheruid : otheruid
+				},
+				function(data) {
+					if(data.state == 'ok') {
+						warm_dialog('ok', '微信成功发送！');
+						$('#send_reply2').val('发送微信');
+					} else {
+						warm_dialog('no', '发送失败，请检查网络后重新发送！');
+						$('#send_reply2').val('发送微信');
+					}
+				}, "json");
+			}
+			
+			if(flag_share){
+				var url = "<?=base_url()?>user_space/addshare";
+				$.post(url, {
+				content2 : content2,
+				otheruid : otheruid,
+				eid : egg_id,
+				ename : egg_name,
+				epic : egg_pic
+				},
+				function(data) {
+					if(data.state == 'ok') {
+						warm_dialog('ok', '分享成功！');
+						$('#send_reply2').val('马上分享');
+					} else {
+						warm_dialog('no', '分享失败，请检查网络后重新发送！');
+						$('#send_reply2').val('马上分享');
+					}
+				}, "json");
+			}
+	
+			$('#reply_content2').removeClass('warm');
+			$('#t2_dialog').fadeOut();
+		} else {
+			$('#reply_content2').addClass('warm');
+		}
+	});
+});
 </script>

@@ -11,6 +11,31 @@
 				<img src="images/user_head/head_default.gif" /> 
 			<?php endif; ?>
 		</div>
+		<div class="point">
+			<ul>
+				<li class="liner">
+					<strong><?=$mypointall ?></strong>
+					<span class="pl">价值
+						<div class="point_list" style="display:none;">
+							<ul>
+								<li>贡献 <?=$mypoint->contributionnum ?></li>
+								<li>活跃 <?=$mypoint->activenum ?></li>
+								<li>创新 <?=$mypoint->creativitynum ?></li>
+							</ul>
+						</div>	
+					</span>
+				</li>
+				<li class="linel">
+					<strong><?=$clickdata->click?></strong>
+					<span>人气</span>
+					
+				</li>
+			</ul>
+			
+			
+		</div>
+		
+				
 		<ul class="lmenu">
 			<li class="home"><a href="<?=base_url() ?>/user_space">我的书房</a></li>
 		

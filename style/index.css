@@ -16,7 +16,7 @@ map
 	
 	#map{position:relative;width:960px;height:480px;margin:0 auto;}
 	#map .banners{position:absolute;right:10px;top:280px;}
-	#map .places{position:absolute;width:130px;height:50px;text-align:left;color:#fff;}
+	#map .places{position:absolute;width:130px;height:50px;text-align:left;color:#fff;font-size:14px;}
 	#map .places a{color:#fff;}
 	#map .text_l{line-height:46px;padding-left:20px;}
 	#map .text_r{line-height:47px;padding-left:50px;}

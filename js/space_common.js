@@ -2,6 +2,7 @@ $(document).ready(function() {
 	auto_height();
 	space_tabs();
 	preview();
+	pl();
 });
 
 function auto_height(){
@@ -42,11 +43,11 @@ function warm_dialog(tag, msg){
 	$('body').append('<div id="warm_dialog" style="display:none;"><div class="box"><div id="t_content"><p></p></div></div></div>');
 	$('#t_content').html(msg).addClass(tag);
 	$('#warm_dialog').css({"left":left,"top":top}).fadeIn();
-	setTimeout(hide_warm_dialog,3000);
+	setTimeout(hide_warm_dialog,1400);
 }
 
 function hide_warm_dialog(){
-	$('#warm_dialog').fadeOut();
+	$('#warm_dialog').fadeOut().remove();
 }
 
 
@@ -215,3 +216,13 @@ function preview(){
 		$(this).children('.preview').css('display', 'none');
 	});
 }
+
+//point list
+function pl(){
+	$('.pl').hover(function(){
+	$(this).find('.point_list').css('display', 'block');
+	}, function(){
+		$(this).find('.point_list').css('display', 'none');
+	});	
+}
+

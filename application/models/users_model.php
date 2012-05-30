@@ -211,6 +211,23 @@ class Users_model extends CI_Model {
 			return FALSE;
 		}
 	}
+	
+	//add by tgoooo
+	function add_c_byuid() {
+		$data['ctype'] = $this -> input -> post('ctype');
+		$data['cname'] = $this -> input -> post('cname');
+		$where = "uid = '" . $this -> input -> post('uid') . "'";
+		$str = $this -> db -> update_string('user', $data, $where);
+		if ($this -> input -> post('uid') != NULL) {
+			if ($this -> db -> query($str)) {
+				return TRUE;
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+	}
 
 	function queryuser($email) {
 		$data['email'] = $email;
@@ -251,6 +268,14 @@ class Users_model extends CI_Model {
 	function querymyuserByLimit($offset, $num) {
 		$uid = $this -> session -> userdata('uid');
 		$sql = "SELECT * FROM user,friend WHERE user.uid = friend.youruid and friend.isallow = 1 and friend.myuid = " . $uid . " order by friend.friendid desc limit " . $offset . "," . $num;
+		$query = $this -> db -> query($sql);
+		return $query -> result();
+	}
+	
+	//调用全部好友add by tgoooo
+	function querymyuser() {
+		$uid = $this -> session -> userdata('uid');
+		$sql = "SELECT * FROM user,friend WHERE user.uid = friend.youruid and friend.isallow = 1 and friend.myuid = " . $uid . " order by friend.friendid desc";
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
