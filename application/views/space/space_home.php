@@ -1,5 +1,9 @@
 	<div class="mid fl">
-		
+		<script type="text/javascript">
+			var user_photo = '<img src=\"'+ '<?=base_url()?><?=$userreply->person_pic?>' +'\" />';
+			var space_url = '<?= base_url() ?>/user_space/uid/<?=$userreply->uid?>';
+			var user_name = '<?=$userreply->username ?>';	
+		</script>
 		<div class="user_info">
 			<h2><?=$username ?><?php if($ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />

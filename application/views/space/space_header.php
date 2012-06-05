@@ -7,6 +7,7 @@
 <link href="style/common.css" rel="stylesheet" type="text/css" />
 <link href="style/<?=$css ?>" rel="stylesheet" type="text/css" />
 <script src="<?=base_url()?>js/jquery.js" type="text/javascript"></script>
+<script src="<?=base_url()?>js/cx_common.js" type="text/javascript"></script>
 <script src="<?=base_url()?>js/space_common.js" type="text/javascript"></script>
 <?php
 if(isset($js)):
@@ -14,9 +15,7 @@ if(isset($js)):
 <script src="js/<?=$js ?>" type="text/javascript"></script>
 <?php endif; ?>
 <script type="text/javascript">
-	var user_photo = '<img src=\"'+ '<?=base_url()?><?=$userreply->person_pic?>' +'\" />';
-	var space_url = '<?= base_url() ?>/user_space/uid/<?=$userreply->uid?>';
-	var user_name = '<?=$userreply->username ?>';	
+	var BASE_URL = '<?=base_url()?>';
 </script>
 
 </head>
@@ -82,10 +81,18 @@ if(isset($js)):
 	</div>
 </div><!--#header_bg-->
 <div class="header_shadow"></div>
-<div class="clear"></div>
-<div class="container">
+
+<div class="container" id="hi" style="margin-top:20px;">
 	<div class="dear">
-		亲，恭喜成为内测用户，由于网站正在测试阶段，部分功能仍在完善，如发现问题或者有好的建议，可以来 <a href="http://www.cxroom.com/eggs/topic/33">创新空间捉虫虫</a> 反馈给我们哦，感谢支持！
+		<p style="float:left;">亲! 由于网站正在测试完善阶段，如发现bug或者有好的建议，请移步 <a href="http://www.cxroom.com/eggs/topic/33">创新空间捉虫虫</a> 反馈给我们，感谢支持！</p><span id="closebug" style="float:right;margin-right:10px;cursor:pointer;">关闭</span>
 	</div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#closebug').click(function(){
+			$('#hi').fadeOut();
+		});
+	});
+	
+</script>
 	

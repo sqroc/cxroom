@@ -3,6 +3,7 @@ $(document).ready(function() {
 	space_tabs();
 	preview();
 	pl();
+	userinfo();
 });
 
 function auto_height(){
@@ -32,25 +33,6 @@ $(document).ready(function(){
 		$('.warm_box').css('display', 'block');
 	});
 });
-
-//////////////
-//warm dialog
-
-function warm_dialog(tag, msg){
-	var left = $('body').width()/2-160;
-	var top = $(window).height()/2-80;
-	//alert(top)
-	$('body').append('<div id="warm_dialog" style="display:none;"><div class="box"><div id="t_content"><p></p></div></div></div>');
-	$('#t_content').html(msg).addClass(tag);
-	$('#warm_dialog').css({"left":left,"top":top}).fadeIn();
-	setTimeout(hide_warm_dialog,1400);
-}
-
-function hide_warm_dialog(){
-	$('#warm_dialog').fadeOut().remove();
-}
-
-
 
 ///////////////
 //dialog
@@ -157,14 +139,6 @@ function add_comment(tag, content) {
 	}
 
 }
-//support <br>
-function add_br(str){
-	var reg = new RegExp("\n","g"); 
-	str = str.replace(reg,"<br />");
-	return str; 
-}
-
-
 
 //move dialog
 $(document).ready(function(){
@@ -176,7 +150,7 @@ $(document).ready(function(){
         _move=true;
         _x=e.pageX-parseInt($("#t_dialog").css("left"));
         _y=e.pageY-parseInt($("#t_dialog").css("top"));
-        //$("#t_dialog").fadeTo(20, 0.75);
+       
     });
     $(document).mousemove(function(e){
         if(_move){
@@ -186,7 +160,7 @@ $(document).ready(function(){
         }
     }).mouseup(function(){
     _move=false;
-    //$("#t_dialog").fadeTo("fast", 1);
+   
   });
 });
 
@@ -210,12 +184,37 @@ function space_tabs(){
 
 //
 function preview(){
-	$('.new').hover(function(){
-		$(this).children('.preview').css('display', 'block');
+	var timer;
+	var temp = "";
+	var temp2 = '<div class="pegg"><img src="'+BASE_URL+'images/common/loading.gif"/></div>';
+	$('.egg_hover').hover(function(){
+		
+		var parent = $(this);
+		timer = setTimeout(function(){		
+			t_hoverpop(parent, temp2);
+			var url = BASE_URL + 'eggs/topic_api/' + parent.attr('id');
+			$.getJSON(url, function(json){
+				var c = "";
+				if(json.ctype == '1'){
+					c = '<img src="'+BASE_URL+'images/c/c_personal_little.gif" />';
+				} else if(json.ctype == '2'){
+					c = '<img src="'+BASE_URL+'images/c/c_team_little.gif" />';
+				} else {
+					
+				}
+				temp = '<div class="pegg"><h3 class="ptitle">'+ json.title +'</h3><div class="pcontent">'+ json.intro +'</div><div class="pbottom"><span><a href=\"'+ BASE_URL + 'user_space/uid/' + json.uid +'\">'+ json.author +'</a> '+ c +'</span></div></div>';
+				t_fresh_hoverpop(temp);
+			
+			});
+			
+		}, 500);
+				
 	}, function(){
-		$(this).children('.preview').css('display', 'none');
+		clearTimeout(timer);
+		t_remove_hoverpop();
 	});
 }
+
 
 //point list
 function pl(){

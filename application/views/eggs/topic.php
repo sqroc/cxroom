@@ -3,8 +3,8 @@
 <div class="topic_box">
 	<div class="author fl">
 		<div class="avatar">
-			<img class="pic" src="<?=base_url()?><?=$idea->person_pic?>" />  <br>
-			<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$idea->uid?>" target="_blank" title="<?=$idea->username?>的空间"><?=$idea->username?></a>
+			<img class="pic user_hover" id="<?=$idea->uid?>" src="<?=base_url()?><?=$idea->person_pic?>" />  <br>
+			<span class="name"><a class="user_hover" id="<?=$idea->uid?>" href="<?=base_url()?>user_space/uid/<?=$idea->uid?>" target="_blank" title="<?=$idea->username?>的空间"><?=$idea->username?></a>
 				<?php if($idea->ctype == 1):?>
 					<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 				<?php elseif($idea->ctype == 2):?>
@@ -54,19 +54,19 @@
 			<ul class="person" id="j">
 				<li>有意向加入：</li>
 				<?php foreach($ideajoin as $item): ?>
-				<li><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>" title="<?=$item->username?>的空间"><?=$item->username?></a></li>
+				<li><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>" title="<?=$item->username?>的空间"><?=$item->username?></a></li>
 				<?php endforeach; ?>
 			</ul>
 			<ul class="person" id="p">
 				<li>有意向出资：</li>
 					<?php foreach($ideacontribute as $item): ?>
-				<li><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>" title="<?=$item->username?>的空间"><?=$item->username?></a></li>
+				<li><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>" title="<?=$item->username?>的空间"><?=$item->username?></a></li>
 				<?php endforeach; ?>
 			</ul>
 			<ul class="person" id="s">
 				<li>收藏关注：</li>
 					<?php foreach($ideaattention as $item): ?>
-				<li><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>" title="<?=$item->username?>的空间"><?=$item->username?></a></li>
+				<li><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>" title="<?=$item->username?>的空间"><?=$item->username?></a></li>
 				<?php endforeach; ?>
 			</ul>
 		</div>
@@ -115,10 +115,10 @@
 					
 					<div class="dis_box">
 						<div class="avatar">
-							<img src="<?=base_url()?><?=$item->person_pic?>" /> 
+							<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic?>" /> 
 						</div>
 						<div class="reply w600">
-							<span class="authorname"><a href="<?= base_url() ?>/user_space/uid/<?=$item->uid?>"><?=$item->username?></a>
+							<span class="authorname"><a class="user_hover" id="<?=$item->uid?>" href="<?= base_url() ?>/user_space/uid/<?=$item->uid?>"><?=$item->username?></a>
 								<?php if($item->ctype == 1):?>
 									<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 								<?php elseif($item->ctype == 2):?>
@@ -136,10 +136,10 @@
 								
 						<div class="dis_box dis_reply">	
 							<div class="avatar2">
-								<img src="<?=base_url()?><?=$itemReply->person_pic?>" />
+								<img class="user_hover" id="<?=$itemReply->uid?>" src="<?=base_url()?><?=$itemReply->person_pic?>" />
 							</div>
 							<div class="reply w540">
-								<span class="authorname"><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a>
+								<span class="authorname"><a class="user_hover" id="<?=$itemReply->uid?>" href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a>
 									<?php if($itemReply->ctype == 1):?>
 										<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 									<?php elseif($itemReply->ctype == 2):?>
@@ -195,10 +195,10 @@
 					
 					<div class="dis_box">
 						<div class="avatar">
-							<img src="<?=base_url()?><?=$item->person_pic?>" /> 
+							<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic?>" /> 
 						</div>
 						<div class="reply w600">
-							<span class="authorname"><a href="<?= base_url() ?>/user_space/uid/<?=$item->uid?>"><?=$item->username?></a>
+							<span class="authorname"><a class="user_hover" id="<?=$item->uid?>" href="<?= base_url() ?>/user_space/uid/<?=$item->uid?>"><?=$item->username?></a>
 								<?php if($item->ctype == 1):?>
 									<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 								<?php elseif($item->ctype == 2):?>
@@ -216,10 +216,10 @@
 					
 						<div class="dis_box dis_reply">	
 							<div class="avatar2">
-								<img src="<?=base_url()?><?=$itemReply->person_pic?>" />
+								<img class="user_hover" id="<?=$itemReply->uid?>" src="<?=base_url()?><?=$itemReply->person_pic?>" />
 							</div>
 							<div class="reply w540">
-								<span class="authorname"><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a>
+								<span class="authorname"><a class="user_hover" id="<?=$itemReply->uid?>" href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a>
 									<?php if($itemReply->ctype == 1):?>
 										<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 									<?php elseif($itemReply->ctype == 2):?>
@@ -274,10 +274,10 @@
 					
 					<div class="dis_box">
 						<div class="avatar">
-							<img src="<?=base_url()?><?=$item->person_pic?>" /> 
+							<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic?>" /> 
 						</div>
 						<div class="reply w600">
-							<span class="authorname"><a href="<?= base_url() ?>/user_space/uid/<?=$item->uid?>"><?=$item->username?></a>
+							<span class="authorname"><a class="user_hover" id="<?=$item->uid?>" href="<?= base_url() ?>/user_space/uid/<?=$item->uid?>"><?=$item->username?></a>
 								<?php if($item->ctype == 1):?>
 									<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 								<?php elseif($item->ctype == 2):?>
@@ -294,10 +294,10 @@
 							<?php if($item->icommentid == $itemReply->comment_parent):?>
 						<div class="dis_box dis_reply">	
 							<div class="avatar2">
-								<img src="<?=base_url()?><?=$itemReply->person_pic?>" />
+								<img class="user_hover" id="<?=$itemReply->uid?>" src="<?=base_url()?><?=$itemReply->person_pic?>" />
 							</div>
 							<div class="reply w540">
-								<span class="authorname"><a href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a>
+								<span class="authorname"><a class="user_hover" id="<?=$itemReply->uid?>" href="<?= base_url() ?>/user_space/uid/<?=$itemReply->uid?>"><?=$itemReply->username?></a>
 									<?php if($itemReply->ctype == 1):?>
 										<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 									<?php elseif($itemReply->ctype == 2):?>

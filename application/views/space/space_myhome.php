@@ -1,4 +1,9 @@
 	<div class="mid fl">
+		<script type="text/javascript">
+			var user_photo = '<img src=\"'+ '<?=base_url()?><?=$userreply->person_pic?>' +'\" />';
+			var space_url = '<?= base_url() ?>/user_space/uid/<?=$userreply->uid?>';
+			var user_name = '<?=$userreply->username ?>';	
+		</script>
 		<script src="<?=base_url()?>js/space_myhome.js" type="text/javascript"></script>
 		<div class="user_info">
 			<h2><?=$username ?><?php if($ctype == 1):?>
@@ -224,10 +229,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a>
+						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a>
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -235,7 +240,7 @@
 							<?php else:?>
 								
 							<?php endif;?>
-							 :</span> 评论了您的创意蛋 <a href="<?=base_url()?>eggs/topic/<?=$item->snsitemid ?>"><?=$item->itemname ?></a> 赶快去看看吧！
+							 :</span> 评论了您的创意蛋 <a class="egg_hover" id="<?=$item->snsitemid ?>" href="<?=base_url()?>eggs/topic/<?=$item->snsitemid ?>"><?=$item->itemname ?></a> 赶快去看看吧！
 						<blockquote>
 							【Ta的评论】：<?=$item->content ?>
 						</blockquote>
@@ -252,10 +257,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -280,10 +285,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -308,10 +313,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a>
+						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a>
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -336,10 +341,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -364,10 +369,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -375,7 +380,7 @@
 							<?php else:?>
 								
 							<?php endif;?>
-							:</span> 回复了您在创意蛋 <a href="<?=base_url()?>eggs/topic/<?=$item->snsitemid ?>"><?=$item->itemname ?></a>上的评论。 赶快去看看吧！
+							:</span> 回复了您在创意蛋 <a class="egg_hover" id="<?=$item->snsitemid ?>" href="<?=base_url()?>eggs/topic/<?=$item->snsitemid ?>"><?=$item->itemname ?></a>上的评论。 赶快去看看吧！
 						<blockquote>
 							【Ta对您说】：<?=$item->content ?>
 						</blockquote>
@@ -392,10 +397,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -420,10 +425,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -448,10 +453,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -459,7 +464,7 @@
 							<?php else:?>
 								
 							<?php endif;?>
-							:</span> 向你推荐了Ta收藏的创意 <a href="<?=base_url()?>eggs/topic/<?=$item->snsitemid ?>"><?=$item->itemname ?></a> 赶快去看看吧！
+							:</span> 向你推荐了Ta收藏的创意 <a class="egg_hover" id="<?=$item->snsitemid ?>" href="<?=base_url()?>eggs/topic/<?=$item->snsitemid ?>"><?=$item->itemname ?></a> 赶快去看看吧！
 						<blockquote>
 							【Ta对你说】：<?=$item->content ?>
 						</blockquote>

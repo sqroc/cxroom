@@ -5,6 +5,7 @@ $(document).ready(function() {
 		$(this).css('background', '#f2f2f2');
 	});
 	bor_box();
+	userinfo();
 });
 
 function bor_box(){
@@ -71,6 +72,3 @@ function start_box(){
 		return m;
 	}
 }
-
-
-

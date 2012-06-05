@@ -11,15 +11,16 @@
 <?php endif; ?>
 
 <script src="<?=base_url()?>js/jquery.js" type="text/javascript"></script>
-
+<script src="<?=base_url()?>js/cx_common.js" type="text/javascript"></script>
 <?php
 if(isset($js)):
 ?>
 <script src="js/<?=$js ?>" type="text/javascript"></script>
 <?php endif; ?>
 <script type="text/javascript">
+var BASE_URL = '<?=base_url()?>';
 var USER_NAME = '<?=$username ?>';
-var USER_URL = 'TEST';
+var USER_URL = '<?=base_url() ?>user_space';
 var USER_PHOTO = '<img src=\"'+ '<?=base_url()?><?=$person_pic?>' +'\" />';
 </script>
 <script type="text/javascript">

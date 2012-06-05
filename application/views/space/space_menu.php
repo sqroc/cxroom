@@ -15,7 +15,7 @@
 			<ul>
 				<li class="liner">
 					<strong><?=$mypointall ?></strong>
-					<span class="pl">价值
+					<span class="pl">身价
 						<div class="point_list" style="display:none;">
 							<ul>
 								<li>贡献 <?=$mypoint->contributionnum ?></li>
@@ -49,7 +49,8 @@
 			
 		
 			<li class="func"><a href="<?=base_url() ?>/user_info">修改资料</a></li>
-			<li class="codestyle" style="border-bottom:none;"><a href="<?=base_url() ?>/space/space_codelist">我的邀请码</a></li>
+			<li class="codestyle"><a href="<?=base_url() ?>/space/space_codelist">我的邀请码</a></li>
+			<li style="border-bottom:none;"><a href="<?=base_url() ?>help">申请认证</a></li>
 		</ul>
 	</div>
 	

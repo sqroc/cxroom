@@ -36,32 +36,33 @@
 			</div>
 		</div>
 		
-		<div class="side_title">
-			新鲜创意
-		</div>
 		
-		<div class="new ideas" style="position:relative;z-index:4;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
-		<div class="new ideas" style="position:relative;z-index:3;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
-		<div class="new ideas" style="position:relative;z-index:2;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
-		<div class="new ideas" style="position:relative;z-index:1;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
+		<div class="sidebar_title">
+			<h3>新鲜创意</h3> <span><a href="<?=base_url()?>eggs">查看更多»</a></span>
+		</div>
+	
+		<div class="new ideas"><img src="<?=base_url()?>images/common/loading.gif" /></div>
+		<div class="new ideas"><img src="<?=base_url()?>images/common/loading.gif" /></div>
+		<div class="new ideas"><img src="<?=base_url()?>images/common/loading.gif" /></div>
+		<div class="new ideas" style="border-bottom:1px #e1e1e1 solid"><img src="<?=base_url()?>images/common/loading.gif" /></div>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				var ideas = $('.ideas');
 				var n = 0;
+		
 				$.getJSON("<?=base_url()?>eggs/api",function(json){
 					
 					ideas.each(function(){
 						var avatar_tmp = '<div class="author"><img src="'+ json[n].author_pic +'" /></div>';
-						var info_tmp = '<div class="new_info"><strong>'+ json[n].author_name +'</strong> :<br /><a href=\"'+ json[n].url +'\">'+ json[n].title +'</a></div>';
-						var pre_tmp = '<div class="preview" style="right:10px;top:70px;display:none;"><div class="arrow"></div><div class="pre_box"><h3 class="title"><a href=\"'+ json[n].url +'\">'+ json[n].title +'</a></h3><div class="content">'+ json[n].content +'</div><div class="bottom"><span><a href=\"'+ json[n].author_url +'\">访问'+ json[n].author_name +'的客厅</a></span></div></div></div>';
-						$(this).html(avatar_tmp + info_tmp + pre_tmp + '<div class="clear0"></div>');
+						var info_tmp = '<div class="new_info">'+ json[n].author_name +' :<br /><a class="egg_hover" id="'+ json[n].url +'" href=\"<?=base_url()?>eggs/topic/'+ json[n].url +'\">'+ json[n].title +'</a></div>';
+						
+						$(this).html(avatar_tmp + info_tmp + '<div class="clear0"></div>');
 						n++;
 					});
+					preview();
 					auto_height();
 				});
-				
 			
-				
 			});
 		</script>
 		

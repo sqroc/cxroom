@@ -10,7 +10,7 @@ class Eggs extends CI_Controller {
 			redirect('/eggs/homepage');
 		}
 
-		$data = array('title' => '轻创新', 'js' => 'eggs_index.js');
+		$data = array('title' => '创意街', 'js' => 'eggs_index.js');
 
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
@@ -102,7 +102,7 @@ class Eggs extends CI_Controller {
 		$sta = $this -> session -> userdata('user');
 		if (!isset($sta) || $sta != "login_ok") {
 			$ideaid = $this -> uri -> segment(3, 0);
-			$data = array('title' => '轻创新', 'css' => 'eggs_dis.css', 'js' => 'eggs_dis.js');
+			$data = array('title' => '创意街', 'css' => 'eggs_dis.css', 'js' => 'eggs_dis.js');
 			$data['ideaattention'] = $this -> Projects_model -> showIdeaattention($ideaid);
 			$data['ideacontribute'] = $this -> Projects_model -> showIdeacontribute($ideaid);
 			$data['ideajoin'] = $this -> Projects_model -> showIdeajoin($ideaid);
@@ -123,7 +123,7 @@ class Eggs extends CI_Controller {
 			$this -> load -> view('eggs/topic_unlogin.php', $data);
 		} else {
 			$ideaid = $this -> uri -> segment(3, 0);
-			$data = array('title' => '轻创新', 'css' => 'eggs_dis.css', 'js' => 'eggs_dis.js');
+			$data = array('title' => '创意街', 'css' => 'eggs_dis.css', 'js' => 'eggs_dis.js');
 			$data['ideaattention'] = $this -> Projects_model -> showIdeaattention($ideaid);
 			$data['ideacontribute'] = $this -> Projects_model -> showIdeacontribute($ideaid);
 			$data['ideajoin'] = $this -> Projects_model -> showIdeajoin($ideaid);
@@ -134,7 +134,7 @@ class Eggs extends CI_Controller {
 			$data['commentReply2'] = $this -> Projects_model -> showreply($ideaid, 2);
 			$data['commentReply3'] = $this -> Projects_model -> showreply($ideaid, 3);
 			$data['idea'] = $this -> Projects_model -> showIdeaByPid($ideaid);
-			$data['title'] = $data['idea'] -> ideaname . "  -轻创新";
+			$data['title'] = $data['idea'] -> ideaname . "  -创意街";
 			$data['email'] = $this -> session -> userdata('email');
 			$data['username'] = $this -> session -> userdata('username');
 			$data['randvalue'] = rand(0, 10000000000);
@@ -160,6 +160,28 @@ class Eggs extends CI_Controller {
 			$this -> load -> view('eggs/header.php', $data);
 			$this -> load -> view('eggs/topic.php', $data);
 		}
+	}
+
+	//api
+	public function topic_api() {
+		$sta = $this -> session -> userdata('user');
+		
+		$ideaid = $this -> uri -> segment(3, 0);
+		
+		$data['ideaattention'] = $this -> Projects_model -> showIdeaattention($ideaid);
+		$data['ideacontribute'] = $this -> Projects_model -> showIdeacontribute($ideaid);
+		$data['ideajoin'] = $this -> Projects_model -> showIdeajoin($ideaid);
+		
+		$data['idea'] = $this -> Projects_model -> showIdeaByPid($ideaid);
+		$data['title'] = $data['idea'] -> ideaname . "  -创意街";
+		
+		$data['totalsupport'] = $data['idea'] -> supportnumber + $data['idea'] -> criticizenumber + $data['idea'] -> neutralnumber;
+		if ($data['totalsupport'] == 0) {
+			$data['totalsupport'] = 1;
+		}
+		
+		$this -> load -> view('eggs/api_topic.php', $data);
+	
 	}
 
 	public function new_topic() {

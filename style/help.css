@@ -1,0 +1,40 @@
+.help_body{background:#fff;border:1px #e1e1e1 solid;overflow:hidden;}
+
+.leftpart{float:left;width:700px;overflow:hidden;font-size:14px;}
+    .banner{margin:20px;height:206px;}
+    .content{margin:20px;}
+    .content h3{border-bottom:1px #e1e1e1 solid;}
+    .content .list1{}
+    .content .list1 li{}
+    .warm{margin:20px;background:url(../images/help/icons.gif) no-repeat 0 0;padding-left:25px;}
+    .title{margin:20px;border-bottom:1px #e1e1e1 solid;padding:20px 0;font-size:16px;font-weight:bold;}
+    .box1{padding-left:130px;height:130px;margin:20px;}
+    .box1 h4{font-size:14px;font-weight:normal;padding:15px 0;color:#669900;}
+    
+    .bg1{background:url(../images/help/people.jpg) no-repeat 0 0;}
+    .bg2{background:url(../images/help/people.jpg) no-repeat 0 -220px;}
+    .bg3{background:url(../images/help/people.jpg) no-repeat 0 -500px;}
+    .box2{margin:20px;}
+    .box2 ul{padding-left:20px;}
+    .box2 ul li{background:url(../images/help/icons.gif) no-repeat 0 -32px;padding:10px 25px;}
+    
+    /*check acount*/
+    .doctor{margin:20px;border:1px #eee solid;padding:15px;}
+       .doctor .d_title{font-size:14px;padding-bottom:15px;position:relative;width:100%;}
+       .doctor .d_title .slide_button{position:absolute;right:0;top:0;cursor:pointer;}
+       .doctor .d_title .left_part{margin-right:10px;}
+       .doctor .finish_wrap{height:10px;background:#D5D5D5;border-radius:5px;overflow:hidden;}
+       .doctor .finish_wrap .finish_wrap_in{float:left;height:10px;background:#87C442;border-radius:5px;overflow:hidden;}
+       .doctor .doctor_info{padding-top:10px;overflow:hidden;width:100%;}
+       .doctor .doctor_info ul{}
+       .doctor .doctor_info ul li{padding:10px;padding-left:20px;position:relative;}
+       .doctor .doctor_info ul li span{position:absolute;display:none;right:10px;top:10px;}
+       .doctor .doctor_info ul li:hover{background:url(../images/space/icons_space.png) no-repeat -126px -247px #f9f9f9;}
+       .doctor .doctor_info ul .t{background:url(../images/space/icons_space.png) no-repeat -126px -197px;}
+       .doctor .doctor_info ul .f{background:url(../images/space/icons_space.png) no-repeat -126px -287px;}
+
+.rightbar{float:right;width:250px;background:#f2f2f2;border-right:1px #fff solid;border-top:1px #f9f9f9 solid;font-size:14px;height:100%;}
+    .rightbar .listmenu{width:100%;}
+    .rightbar .listmenu li{margin:20px 20px 20px 0;padding:20px 30px;}
+    .rightbar .listmenu .normal{background:#f2f2f2;border-right:1px #ccc solid;border-bottom:1px #ccc solid;border-top:1px #fff solid;}
+    .rightbar .listmenu .current{background:#fff;border-right:1px #ccc solid;border-bottom:1px #ccc solid;}

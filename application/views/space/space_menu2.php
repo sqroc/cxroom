@@ -15,7 +15,7 @@
 			<ul>
 				<li class="liner">
 					<strong><?=$mypointall ?></strong>
-					<span class="pl">价值
+					<span class="pl">身价
 						<div class="point_list" style="display:none;">
 							<ul>
 								<li>贡献 <?=$mypoint->contributionnum ?></li>

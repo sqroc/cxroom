@@ -494,6 +494,40 @@ class Cx_admin extends CI_Controller {
 			$this -> load -> view('admin/admin_msg_add');
 		}
 	}
+	
+	//add by tgoooo
+	public function c_add() {
+		$sta = $this -> session -> userdata('admin');
+		$data = array();
+		if (!isset($sta) || $sta != "login_ok") {
+			redirect('admin/cx_admin');
+		}
+		//$data['codes'] = $this -> Users_model -> code_list();
+		
+		$this -> load -> view('admin/admin_header', $data);
+		$this -> load -> view('admin/admin_c_add');
+		//$this->load->view('footer');
+	}
+	
+	//add by tgoooo
+	public function c_add_func() {
+		$sta = $this -> session -> userdata('admin');
+		$data = array();
+		if (!isset($sta) || $sta != "login_ok") {
+			redirect('admin/cx_admin');
+		}
+		if ($this -> Users_model -> add_c_byuid()) {
+			$data_notice['information'] = "认证成功！该页面将在三秒后自动跳转...";
+			$data_notice['url'] = base_url() . "/admin/cx_admin/c_add";
+			$data_notice['title'] = "提示信息";
+			$data_notice['mode'] = "yes";
+			$this -> load -> view('common_notice', $data_notice);
+
+		} else {
+			$data = array('title' => '友情提示', 'warm' => '发生错误！', 'pic' => 'wrong.gif');
+			$this -> load -> view("wrong", $data);
+		}
+	}
 
 }
 ?>

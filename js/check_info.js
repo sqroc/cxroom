@@ -107,8 +107,8 @@ function check_qq(qq){
 }
 
 function check_phone(pro, ph){
-	var reg1 = /^\d{4}$/;
-	var reg =/^\d{8}$/;
+	var reg1 = /^\d*$/;
+	var reg =/^\d*$/;
 	
 	if( reg1.test(pro) && reg.test(ph) )
 	{
@@ -179,6 +179,8 @@ function check_name(obj){
 function check_intro(obj){
 	var i = $('#'+obj).val();
 	i = trim(i);
+	i = add_br(i);
+	$('#'+obj).val(i);
 	if(i == ""){
 		return true;
 	} else if( i.length < 10){
