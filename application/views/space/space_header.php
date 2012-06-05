@@ -32,7 +32,7 @@ if(isset($js)):
 		</ul>
 		<div class="mycount fr">
 			
-			<?php if (isset($username2) & $loginuid!=NULL): ?>
+			<?php if (isset($username2) & $username2!=NULL): ?>
 				<?php if($unreadmessage !=0 || $unreadnotice != 0):?>
 					<div class="warm_box">
 						<img src="<?=base_url()?>images/common/have_notice.gif" />

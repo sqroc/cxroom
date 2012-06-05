@@ -191,7 +191,7 @@ class User_space extends CI_Controller {
 		$data['ctype'] = $row -> ctype;
 		$data['cname'] = $row -> cname;
 		$data['username2'] = $this -> session -> userdata('username');
-		$data['loginuid'] = $this -> session -> userdata('uid');
+		
 		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
 		$data['myskills'] = $this -> Users_model -> queryskillByOtherUid($uid);
 		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
