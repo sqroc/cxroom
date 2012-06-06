@@ -27,7 +27,21 @@
 				
 			</div>
 		</div>
-		
+		<div class="item">
+			<div class="label">
+				创意分类:<span>*</span>
+			</div>
+			<div class="item_info">
+				<select name="ideaclass">
+  						<option value ="1" selected="selected">分享</option>
+  						<option value ="2">原创</option>
+	
+				</select>
+				<br>
+				<span class="help">请根据创意的类型选择合适的分类。</span>
+				
+			</div>
+		</div>
 		
 		<div class="item">
 			<div class="label">

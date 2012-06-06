@@ -1,3 +1,11 @@
+2012.06.06
+ALTER TABLE  `idea` ADD  `ideaclass` INT( 10 ) NOT NULL DEFAULT  '1';
+
+
+
+
+
+
 2012.05.26
 CREATE TABLE  `innovation`.`money` (
 `uid` INT NOT NULL ,

@@ -421,6 +421,7 @@ class Projects_model extends CI_Model {
 		$data['ideauid'] = $this -> session -> userdata('uid');
 		$data['ideaintro'] = $this -> input -> post('ideaintro');
 		$data['ideacontent'] = $this -> input -> post('pintro');
+		$data['ideaclass'] = $this -> input -> post('ideaclass');
 		$data['coverimage'] = $this -> input -> post('coverimage');
 		$data['isallow'] = 0;
 		$data['ideaadddate'] = time();
@@ -444,6 +445,7 @@ class Projects_model extends CI_Model {
 		$data['ideaname'] = $this -> input -> post('ideaname');
 		$data['ideauid'] = $this -> session -> userdata('uid');
 		$data['ideaintro'] = $this -> input -> post('ideaintro');
+		$data['ideaclass'] = $this -> input -> post('ideaclass');
 		$data['ideacontent'] = $this -> input -> post('pintro');
 		$data['coverimage'] = $this -> input -> post('coverimage');
 		$data['isallow'] = 0;

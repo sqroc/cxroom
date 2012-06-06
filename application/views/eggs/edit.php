@@ -28,6 +28,26 @@
 			</div>
 		</div>
 		
+		<div class="item">
+			<div class="label">
+				创意分类:<span>*</span>
+			</div>
+			<div class="item_info">
+				<select name="ideaclass">
+					<?php if ($egg->ideaclass == 2):
+						?>
+  						<option value ="1">分享</option>
+  						<option value ="2" selected="selected">原创</option>
+				<?php else:?>
+						<option value ="1" selected="selected">分享</option>
+  						<option value ="2">原创</option>
+					<?php endif;?>
+				</select>
+				<br>
+				<span class="help">请根据创意的类型选择合适的分类。</span>
+				
+			</div>
+		</div>
 		
 		<div class="item">
 			<div class="label">
