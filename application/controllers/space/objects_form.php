@@ -74,7 +74,7 @@ class Objects_form extends CI_Controller {
 			$path_logo = $this -> input -> post('path_logo');
 			$path_file = $this -> input -> post('path_file');
 			if ($this -> Projects_model -> add($path_file,$path_logo)) {
-				$data_notice['information'] = "添加成功！该页面将在三秒后自动跳转...";
+				$data_notice['information'] = "添加成功！该页面将在三秒后自动跳转... 【创新度 +50】";
 				$data_notice['url'] = base_url()."/space/space_projectlist";
 				$data_notice['title'] = "提示信息";
 				$data_notice['mode'] = "yes";

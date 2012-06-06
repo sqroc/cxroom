@@ -11,7 +11,7 @@
 					 <input type="hidden" name="subject" value="创新空间" />
 					<br />
 					充值金额： 
-					<input type="radio"  name="total_fee" value="0.01" />0.01元
+					<input type="radio"  name="total_fee" value="10" />10元
     				<input type="radio"  name="total_fee" value="50" />50元
     				<input type="radio"  name="total_fee" value="100" />100元
     				<input type="radio"  name="total_fee" value="500" />500元

@@ -261,7 +261,7 @@ public function eggedit() {
 			exit(1);
 		}
 		if ($this -> Projects_model -> addidea()) {
-			$data_notice['information'] = "添加成功！该页面将在三秒后自动跳转...";
+			$data_notice['information'] = "添加成功！该页面将在三秒后自动跳转...【创新度 +20】";
 			$data_notice['url'] = base_url() . "/eggs";
 			$data_notice['title'] = "提示信息";
 			$data_notice['mode'] = "yes";

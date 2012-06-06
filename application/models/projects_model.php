@@ -50,6 +50,9 @@ class Projects_model extends CI_Model {
 						}
 					}
 				}
+				//创新度+50
+				$this -> db -> where('uid', $this -> session -> userdata('uid'));
+				$this -> db -> set('creativitynum', 'creativitynum+50', false) -> update('point');
 				return TRUE;
 			} else {
 				return FALSE;
@@ -423,6 +426,9 @@ class Projects_model extends CI_Model {
 		$data['ideaadddate'] = time();
 		if ($data['ideauid'] != NULL) {
 			if ($this -> db -> insert('idea', $data)) {
+				//创新度+20
+				$this -> db -> where('uid', $this -> session -> userdata('uid'));
+				$this -> db -> set('creativitynum', 'creativitynum+20', false) -> update('point');
 				return TRUE;
 			} else {
 				return FALSE;

@@ -35,8 +35,8 @@ $(document).ready(function(){
 		<ul id="menu">
 		
 			
-			<li><a href="<?=base_url() ?>/eggs" title="创意蛋">创意蛋</a><br><span>让创意不再流浪</span></li>
-			<li style="border-right:none;"><a href="<?=base_url() ?>/projects" title="项目窝">项目窝</a><br><span>为项目插上翅膀</span></li>
+			<li><a href="<?=base_url() ?>/eggs" title="创意街">创意街</a><br><span>让创意不再流浪</span></li>
+			<li style="border-right:none;"><a href="<?=base_url() ?>/projects" title="创业园">创业园</a><br><span>为项目插上翅膀</span></li>
 		</ul>
 		<div class="mycount fr">
 			<?php if ($username!=NULL): ?>
@@ -60,7 +60,7 @@ $(document).ready(function(){
 							<li><a href="<?=base_url() ?>user_space">关注的Egg</a></li>
 							-->
 							<li class="divide"><a href="<?=base_url() ?>space/space_projectlist/attentionTiplist">收藏的词条</a></li>
-							<li class="divide2"><a href="<?=base_url() ?>eggs/new_topic">发布Egg</a></li>
+							<li class="divide2"><a href="<?=base_url() ?>eggs/new_topic">发布创意</a></li>
 							<li class="divide"><a href="<?=base_url() ?>space/objects_form">发布项目</a></li>
 							<li class="divide2"><a href="<?=base_url() ?>user_info">修改资料</a></li>
 							<li><a href="logout">注销登录</a></li>
