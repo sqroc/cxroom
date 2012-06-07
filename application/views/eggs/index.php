@@ -34,7 +34,10 @@
 		<div class="clear0"></div>
 	</div>
 </div>
-
+<div>
+	分类：<a href="<?=base_url()?>eggs/">全部</a> || <a href="<?=base_url()?>eggs/classid/1">分享</a> || <a href="<?=base_url()?>eggs/classid/2">原创</a>
+	
+</div>
 <div class="container" id="ibox_box">
 	<?php foreach($ideas as $item):$n=1; ?>
 	<div class="ibox_shadow">

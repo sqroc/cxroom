@@ -268,7 +268,13 @@ class Projects_model extends CI_Model {
 	}
 
 	function showIdeas() {
-		$sql = "SELECT * FROM idea,user WHERE user.uid = idea.ideauid order by idea.ideaadddate desc limit 0,4";
+		$sql = "SELECT * FROM idea,user WHERE user.uid = idea.ideauid order by idea.ideaadddate desc limit 0,20";
+		$query = $this -> db -> query($sql);
+		return $query -> result();
+	}
+	
+	function showIdeasbyclass($ideaclass) {
+		$sql = "SELECT * FROM idea,user WHERE user.uid = idea.ideauid and ideaclass = ". $ideaclass ." order by idea.ideaadddate desc limit 0,20";
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
@@ -302,7 +308,24 @@ class Projects_model extends CI_Model {
 	}
 
 	function showIdeascomment() {
-		$sql = "SELECT * FROM idea order by idea.ideaadddate desc limit 0,4";
+		$sql = "SELECT * FROM idea order by idea.ideaadddate desc limit 0,20";
+		$query = $this -> db -> query($sql);
+		if ($query -> num_rows() <= 0) {
+			return NULL;
+		}
+		$ideaids = "";
+		foreach ($query->result() as $row) {
+			$ideaid = $row -> ideaid . '';
+			$ideaids .= ($ideaid . ',');
+		}
+		$ideaids = rtrim($ideaids, ',');
+		$sql = "SELECT * FROM idea_comments,user WHERE author_uid=user.uid and icommentideaid IN (" . $ideaids . ")";
+		$query = $this -> db -> query($sql);
+		return $query -> result();
+	}
+	
+	function showIdeascommentbyclass($ideaclass) {
+		$sql = "SELECT * FROM idea where ideaclass = ". $ideaclass ." order by idea.ideaadddate desc limit 0,20";
 		$query = $this -> db -> query($sql);
 		if ($query -> num_rows() <= 0) {
 			return NULL;

@@ -39,6 +39,41 @@ class Eggs extends CI_Controller {
 
 	}
 
+	public function classid() {
+		$sta = $this -> session -> userdata('user');
+		if (!isset($sta) || $sta != "login_ok") {
+			redirect('/eggs/homepage');
+		}
+
+		$data = array('title' => '创意街', 'js' => 'eggs_index.js');
+		$ideaclass = $this -> uri -> segment(3, 0);
+		$data['email'] = $this -> session -> userdata('email');
+		$data['username'] = $this -> session -> userdata('username');
+		$data['randvalue'] = rand(0, 10000000000);
+		$row = $this -> Users_model -> queryuser($data['email']);
+		$data['intro'] = $row -> intro;
+		$data['gender'] = $row -> gender;
+		$data['province'] = $row -> province;
+		$data['contact_email'] = $row -> contact_email;
+		$data['qq'] = $row -> qq;
+		$data['telphone'] = $row -> telphone;
+		$data['phone'] = $row -> phone;
+		$data['person_pic'] = $row -> person_pic;
+		$data['ideas'] = $this -> Projects_model -> showIdeasbyclass($ideaclass);
+		$data['ideascomment'] = $this -> Projects_model -> showIdeascommentbyclass($ideaclass);
+		$data['username'] = $this -> session -> userdata('username');
+		$data['randvalue'] = rand(0, 10000000000);
+		$data['uid'] = $this -> session -> userdata('uid');
+		$data['eggcommentnum'] = $this -> Projects_model -> select_num_rowsforEggcomment();;
+		$data['eggnum'] = $this -> Projects_model -> select_num_rowsforEgg();
+		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
+		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
+		$data = array_merge($data, $this -> Common_model -> global_data());
+		$this -> load -> view('eggs/header.php', $data);
+		$this -> load -> view('eggs/index.php', $data);
+
+	}
+
 	public function api() {
 		$sta = $this -> session -> userdata('user');
 		if (!isset($sta) || $sta != "login_ok") {
