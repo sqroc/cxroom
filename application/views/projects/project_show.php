@@ -95,25 +95,26 @@
 		<div class="box_tab" id="box_tab_news" style="display:none;">
 			
 			<ul class="newslist">
+				<?php foreach($projectmessage as $item): ?>
 				<li>
 					<div class="author_pic">
-						<img src="http://localhost/ci/images/user_head/head_default.gif" /> 
+						<img src="<?=base_url()?><?=$item->person_pic?>" />
 					</div>
 					<div class="msg_box">
 						<div class="new">
-							<span class="name"><a href="">创新小天使</a> : </span>
-							这只是我们技术人员的一段测试文字，抱歉给您带来了视觉干扰。我们会在近期推出项目多人维护更新功能，请关注。
+							<span class="name"><a href="<?= base_url() ?>/user_space/uid/<?=$item->uid?>"><?=$item->username?></a> : </span>
+							<?=$item->pmcontent?>
 					
 						</div>
 						<div class="new_info">
-							<span class="date">第1天</span>
-							<span class="reply write_reply"><a href="javascript:void(0)">评论(0)</a></span>
+							<span class="date">第<? $nowtime = time();echo ceil(($nowtime-$itemReply->pmdate)/(60*60*24));?>天</span>
+							<span class="reply write_reply"><a href="javascript:void(0)">评论(<?=$item->replynum?>)</a></span>
 							
 						</div>
 					
 					</div>
 				</li>
-				
+				<?php endforeach; ?>			
 			</ul>
 		</div>
 		<div class="box_tab content" id="box_tab_intro" >

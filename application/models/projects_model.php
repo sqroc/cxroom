@@ -100,7 +100,8 @@ class Projects_model extends CI_Model {
 						$rolestr = "role_" . $i;
 						$data3['uid'] = $this -> input -> post($memberstr);
 						$data3['role'] = $this -> input -> post($rolestr);
-						$data3['pid'] = $this -> input -> post('pid'); ;
+						$data3['pid'] = $this -> input -> post('pid');
+						;
 						if ($this -> db -> insert('promember', $data3)) {
 
 						} else {
@@ -127,6 +128,13 @@ class Projects_model extends CI_Model {
 
 	function showProjectsRecommend() {
 		$sql = "SELECT * FROM project,proclass,project_recommend where project_recommend.pid = project.pid and proclass.pclassid = project.pclassid order by project_recommend.pid desc limit 0,3 ";
+		$query = $this -> db -> query($sql);
+		return $query -> result();
+	}
+
+	//空间动态
+	function getproject_message($pid, $offset, $num) {
+		$sql = "SELECT * FROM project_message,user WHERE project_message.auid = user.uid and  project_message.pid = " . $pid . " order by project_message.promid desc limit " . $offset . "," . $num;
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
@@ -209,6 +217,11 @@ class Projects_model extends CI_Model {
 		return $query -> num_rows();
 	}
 
+	function select_num_rowsforproject_message($pid) {
+		$query = $this -> db -> query("SELECT promid FROM project_message WHERE pid = " . $pid);
+		return $query -> num_rows();
+	}
+
 	function select_num_rowsforEggcomment() {
 		$query = $this -> db -> query("SELECT icommentid FROM idea_comments");
 		return $query -> num_rows();
@@ -272,9 +285,9 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
-	
+
 	function showIdeasbyclass($ideaclass) {
-		$sql = "SELECT * FROM idea,user WHERE user.uid = idea.ideauid and ideaclass = ". $ideaclass ." order by idea.ideaadddate desc limit 0,20";
+		$sql = "SELECT * FROM idea,user WHERE user.uid = idea.ideauid and ideaclass = " . $ideaclass . " order by idea.ideaadddate desc limit 0,20";
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
@@ -323,9 +336,9 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
-	
+
 	function showIdeascommentbyclass($ideaclass) {
-		$sql = "SELECT * FROM idea where ideaclass = ". $ideaclass ." order by idea.ideaadddate desc limit 0,20";
+		$sql = "SELECT * FROM idea where ideaclass = " . $ideaclass . " order by idea.ideaadddate desc limit 0,20";
 		$query = $this -> db -> query($sql);
 		if ($query -> num_rows() <= 0) {
 			return NULL;
@@ -865,6 +878,71 @@ class Projects_model extends CI_Model {
 	function projecttotal() {
 		$query = $this -> db -> query("SELECT * FROM  project");
 		return $query -> num_rows();
+	}
+
+	/**
+	 * 增加项目动态
+	 */
+	function addProjectmessage() {
+
+		$data['pid'] = $this -> input -> post('pid');
+		$data['auid'] = $this -> session -> userdata('uid');
+		$data['pmcontent'] = $this -> input -> post('pmcontent');
+		$data['replynum'] = 0;
+		$data['pmdate'] = time();
+		if ($data['pid'] != NULL) {
+			if ($this -> db -> insert('project_message', $data)) {
+				/*增加消息通知
+				 $row = $this -> Projects_model -> showProjectsByPid($this -> input -> post('pid'));
+				 $data2['itemname'] = $row -> name;
+				 $data2['snsitemid'] = $row -> pid;
+				 $data2['senduid'] = $this -> session -> userdata('uid');
+				 $data2['recuid'] = $row -> uid;
+				 $data2['content'] = $this -> input -> post('comment_content');
+				 $data2['type'] = "projectcomment";
+				 $data2['senddate'] = time();
+
+				 if ($data2['senduid'] == $data2['recuid']) {
+				 return TRUE;
+				 }
+				 if ($this -> db -> insert('snsnotice', $data2)) {
+				 return TRUE;
+				 } else {
+				 return FALSE;
+				 }*/
+				return TRUE;
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+	}
+
+	/**
+	 * 增加项目动态评论
+	 */
+	function addProjectmessage_reply() {
+
+		$data['promid'] = $this -> input -> post('promid');
+		$data['reuid'] = $this -> session -> userdata('uid');
+		$data['pmrecontent'] = $this -> input -> post('pmrecontent');
+		$data['redate'] = time();
+		if ($data['pid'] != NULL) {
+			if ($this -> db -> insert('project_message', $data)) {
+
+				$this -> db -> where('promid', $data['promid']);
+				if ($this -> db -> set('replynum', 'replynum+1', false) -> update('project_message')) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
 	}
 
 }

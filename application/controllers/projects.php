@@ -6,7 +6,7 @@ class Projects extends CI_Controller {
 
 	public function index() {
 		$sta = $this -> session -> userdata('user');
-		$data = array('title' => '项目园-创新空间', 'css' => 'project_home.css', 'js' => 'projects_home.js', );
+		$data = array('title' => '创业园-创新空间', 'css' => 'project_home.css', 'js' => 'projects_home.js', );
 		if (!isset($sta) || $sta != "login_ok") {
 			redirect('/projects/homepage');
 		} else {
@@ -159,7 +159,7 @@ class Projects extends CI_Controller {
         $data['title'] = $data['project'] -> name."-项目主页-创新空间";
 		//分页配置开始
 		$config['base_url'] = base_url() . 'projects/home/' . $this -> uri -> segment(3, 0) . '/';
-		$config['total_rows'] = $this -> Messages_model -> getpcommentnumber($pid);
+		$config['total_rows'] = $this -> Projects_model -> select_num_rowsforproject_message($this -> uri -> segment(3, 0));
 		$config['per_page'] = 5;
 		$config['uri_segment'] = 4;
 		$config['full_tag_open'] = '<ul>';
@@ -182,6 +182,7 @@ class Projects extends CI_Controller {
 		$config['num_tag_close'] = '</li>';
 		$this -> pagination -> initialize($config);
 		//分页配置结束
+		$data['projectmessage'] = $this -> Projects_model -> getproject_message($this -> uri -> segment(3, 0),$this -> uri -> segment(4, 0), $config['per_page']);
 		$row = $this -> Users_model -> queryuser($this -> session -> userdata('email'));
 		$data['person_pic'] = $row -> person_pic;
 		//$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
@@ -215,7 +216,7 @@ class Projects extends CI_Controller {
 		$data['commentNumber'] = $this -> Messages_model -> getpcommentnumber($pid);
         $data['title'] = $data['project'] -> name."-项目主页-创新空间";
 		//分页配置开始
-		$config['base_url'] = base_url() . 'projects/home/' . $this -> uri -> segment(3, 0) . '/';
+		$config['base_url'] = base_url() . 'projects/project_comments/' . $this -> uri -> segment(3, 0) . '/';
 		$config['total_rows'] = $this -> Messages_model -> getpcommentnumber($pid);
 		$config['per_page'] = 5;
 		$config['uri_segment'] = 4;
@@ -317,6 +318,28 @@ class Projects extends CI_Controller {
 			echo json_encode(array("state" => "no"));
 
 		}
+	}
+	
+	public function addProjectmessage() {
+		if ($this -> Projects_model -> addProjectmessage()) {
+			echo json_encode(array("state" => "ok"));
+
+		} else {
+			echo json_encode(array("state" => "no"));
+
+		}
+
+	}
+	
+	public function addProjectmessage_reply() {
+		if ($this -> Projects_model -> addProjectmessage_reply()) {
+			echo json_encode(array("state" => "ok"));
+
+		} else {
+			echo json_encode(array("state" => "no"));
+
+		}
+
 	}
 
 }
