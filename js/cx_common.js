@@ -10,7 +10,18 @@ function remove_n(str){
 	str = str.replace(reg," ");
 	return str; 
 }
+//去除空格
+function l_trim(s) { 
+ 	return s.replace(/(^\s*)/g, ''); 
+}
 
+function r_trim(s) { 
+	return s.replace(/(\s*$)/g, ''); 
+}
+
+function clear_trim(s){ 
+	return r_trim(l_trim(s));  
+}
 //hovepop
 function t_hoverpop(father, content){
     var f = father;
@@ -99,7 +110,7 @@ function userinfo(){
 		var parent = $(this);
 		timer = setTimeout(function(){		
 			t_hoverpop(parent, temp2);
-			var url = BASE_URL + 'user_space/userinfo_api/' + parent.attr('id');
+			var url = BASE_URL + 'user_space/userinfo_api/' + parent.attr('rel');
 			$.getJSON(url, function(json){
 				var c = "";
 				
@@ -171,4 +182,33 @@ function warm_dialog(tag, msg){
 function hide_warm_dialog(){
 	$('#warm_dialog').fadeOut();
 	$('#warm_dialog').remove();
+}
+
+//poplistmenu
+function t_popmenu(father, content, width){	
+	var f = father;
+	var i = f.attr('id');
+	var f_h = f.height();
+    var top = f.offset().top;
+    var left = f.offset().left;
+     
+    if($('#t_slide_'+i).length == 0){
+    	$('body').append('<div class="t_slide_menu" id="t_slide_' + i + '" style="display:none;width:' + width + 'px;">' + content + '</div>');
+	    $('#t_slide_'+i).css({
+	    	'left'	: 	left,
+	    	'top' 	: 	top + f_h + 10
+	    }).slideDown('fast');		
+    } else {
+    	if($('#t_slide_'+i).css('display') == 'none'){
+    		$('#t_slide_'+i).slideDown('fast');	
+    	} else {
+    		$('#t_slide_'+i).slideUp('fast');	
+    	}
+    	
+    }
+    
+    
+    $('body').click(function(){
+    	$('.t_slide_menu').slideUp('fast');
+    });
 }

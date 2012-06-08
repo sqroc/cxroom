@@ -119,7 +119,7 @@ $(document).ready(function(){
 		var noticeid  =  $(this).attr('id');
 		var url = "<?=base_url()?>space/messages/updatenoticeread";
 			$.post(url, {
-			noticeid : noticeid,
+			noticeid : noticeid
 			},
 			function(data) {
 				if(data.state == 'ok') {
@@ -133,7 +133,7 @@ $(document).ready(function(){
 	function updateread(obj){
 		var url = "<?=base_url()?>space/messages/updatenoticeread";
 			$.post(url, {
-			noticeid : obj,
+			noticeid : obj
 			},
 			function(data) {
 				if(data.state == 'ok') {
@@ -149,7 +149,7 @@ $(document).ready(function(){
 		var noticeid = $(this).nextAll('.readed').attr('id');
 		var url = "<?=base_url()?>space/messages/updateallowfriend";
 			$.post(url, {
-			friendid : friendid,
+			friendid : friendid
 			},
 			function(data) {
 				if(data.state == 'ok') {
@@ -166,7 +166,7 @@ $(document).ready(function(){
 		var noticeid = $(this).nextAll('.readed').attr('id');
 		var url = "<?=base_url()?>space/messages/updateallowfriend2";
 			$.post(url, {
-			friendid : friendid,
+			friendid : friendid
 			},
 			function(data) {
 				if(data.state == 'ok') {

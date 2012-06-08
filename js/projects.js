@@ -1,22 +1,4 @@
 ///////////////////////////////////
-//动画
-$(document).ready(function(){
-	$('.ptabs').children().click(function(){
-	
-		var id = $(this).attr('id').split('_')[2];
-		var type = $(this).parent().parent().attr('id');
-		var id_content = type + '_' + id;
-		
-		$(this).parent().children().removeClass('current').addClass('normal');
-		$(this).addClass('current');
-		
-		$(this).parent().parent().children('.pcontent').css('display','none');
-		$('#' + type + '_' + id).css('display','block');
-		
-	});
-	
-});
-
 $(document).ready(function(){
 	$('.small_button').hover(function() {
 		$(this).removeClass('small_button').addClass('small_button_hover');
@@ -30,43 +12,22 @@ $(document).ready(function(){
 		$(this).removeClass('close_dialog_hover').addClass('close_dialog');
 	});
 	
-	$('.pmenu').children().children('li').hover(function(){
-		$(this).css('background','#f9f9f9');
-	}, function(){
-		$(this).css('background','#f2f2f2');
-	});
+	tabs();
 	
 });
 
-window.onscroll = function() {
-	var left = document.getElementById('move_menu').offsetLeft;
-	var top = document.documentElement.scrollTop || document.body.scrollTop;
-	if(top > 100) {
-		$('#move_menu').css({"position":'fixed', "left":left, "top":0});
-		
-	} else {
-		document.getElementById('move_menu').style.cssText = "position:relative;margin-top:0px";
-	}
+function tabs(){
+	$('.tab').click(function(){
+		t = $(this);
+		id = t.attr('id');
+		$('.tab').removeClass('current').addClass('normal');
+		t.addClass('current');
+		$('.box_tab').css('display', 'none');
+		$('#box_'+id).css('display', 'block');
+	});
 }
 
-//////////////
-//warm dialog
-
-function warm_dialog(tag, msg){
-	var left = $('body').width()/2-160;
-	var top = $(window).height()/2-80;
-	//alert(top)
-	$('body').append('<div id="warm_dialog" style="display:none;"><div class="box"><div id="t_content"><p></p></div></div></div>');
-	$('#t_content').html(msg).addClass(tag);
-	$('#warm_dialog').css({"left":left,"top":top}).fadeIn();
-	setTimeout(hide_warm_dialog,3000);
-}
-
-function hide_warm_dialog(){
-	$('#warm_dialog').fadeOut();
-}
-
-///////////////
+//var top = document.documentElement.scrollTop || document.body.scrollTop;
 //dialog
 $(document).ready(function(){
 		$('#send_msg').click(function(){
@@ -106,9 +67,6 @@ $(document).ready(function(){
 
 /////////////////////////////
 //comments and reply
-
-
-
 function check_content(tag){
 	var content;
 	if(tag=='reply'){
@@ -147,13 +105,6 @@ function add_comment(tag, content){
 	}
 
 }
-//support <br>
-function add_br(str){
-	var reg = new RegExp("\n","g"); 
-	str = str.replace(reg,"<br>");
-	return str; 
-}
-
 //move dialog
 $(document).ready(function(){
 	var _move=false;

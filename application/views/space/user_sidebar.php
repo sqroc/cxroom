@@ -36,11 +36,11 @@
 			</div>
 		</div>
 		
-		
+		<!--
 		<div class="sidebar_title">
 			<h3>新鲜创意</h3> <span><a href="<?=base_url()?>eggs">查看更多»</a></span>
 		</div>
-	
+		
 		<div class="new ideas"><img src="<?=base_url()?>images/common/loading.gif" /></div>
 		<div class="new ideas"><img src="<?=base_url()?>images/common/loading.gif" /></div>
 		<div class="new ideas"><img src="<?=base_url()?>images/common/loading.gif" /></div>
@@ -65,7 +65,7 @@
 			
 			});
 		</script>
-		
+		-->
 			
 		<div class="infobox">
 			<h3 class="side_title close">创业词条</h3>

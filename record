@@ -1,3 +1,26 @@
+2012.06.08
+CREATE TABLE  `innovation`.`project_message` (
+`promid` INT NOT NULL AUTO_INCREMENT ,
+`pid` INT NOT NULL ,
+`auid` INT NOT NULL ,
+`pmcontent` TEXT NOT NULL ,
+`pmdate` INT( 10 ) NOT NULL ,
+`replynum` INT NOT NULL ,
+PRIMARY KEY (  `promid` )
+) ENGINE = INNODB
+
+
+CREATE TABLE  `innovation`.`project_message_reply` (
+`pmrid` INT NOT NULL AUTO_INCREMENT ,
+`promid` INT NOT NULL ,
+`reuid` INT NOT NULL ,
+`pmrecontent` TEXT NOT NULL ,
+`redate` INT( 10 ) NOT NULL ,
+PRIMARY KEY (  `pmrid` )
+) ENGINE = INNODB
+
+
+
 2012.06.06
 ALTER TABLE  `idea` ADD  `ideaclass` INT( 10 ) NOT NULL DEFAULT  '1';
 

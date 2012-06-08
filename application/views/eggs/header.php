@@ -97,4 +97,39 @@ $(document).ready(function(){
 	</div>
 </div><!--#header_bg-->
 <div class="header_shadow"></div>
-
+<div class="clear"></div>
+<div class="container top_shadow">
+	<div class="egg_good">
+		
+		<div class="good_box good_c0">
+			<div class="angle"></div>
+			<div class="egg_info">
+				
+				收录创意 <span><?=$eggnum?></span> 个<br /> 
+				献计献策 <span><?=$eggcommentnum?></span> 条
+			</div>
+		</div>
+		<div class="good_box good_c2">
+			<div class="hot">
+				<h3>焦<br/>点<br/>创<br/>意</h3>
+				<p>
+					在这个什么都要电的时代
+？看看大家如何奇思妙想解决充电问题!
+				</p>
+			</div>
+		</div>
+		<div class="good_box good_c3">
+			<ul class="hot_list">
+				<li><a href="http://www.cxroom.com/eggs/topic/37">移动设备绿色充电</a></li>
+				<li><a href="http://www.cxroom.com/eggs/topic/41">接蛋 移动设备绿色充电</a></li>
+			</ul>
+		</div>
+		<div class="good_box good_c4">
+			<div class="new_egg">
+				<a href="<?=base_url()?>eggs/new_topic"> </a>
+				<p class="new_intro">脑子越用越活，创意越说越多！</p>	
+			</div>			
+		</div>
+		<div class="clear0"></div>
+	</div>
+</div>

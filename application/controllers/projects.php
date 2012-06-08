@@ -6,7 +6,7 @@ class Projects extends CI_Controller {
 
 	public function index() {
 		$sta = $this -> session -> userdata('user');
-		$data = array('title' => '项目列表-创新空间', 'css' => 'projects_list.css', 'js' => 'projects.js', );
+		$data = array('title' => '项目园-创新空间', 'css' => 'project_home.css', 'js' => 'projects_home.js', );
 		if (!isset($sta) || $sta != "login_ok") {
 			redirect('/projects/homepage');
 		} else {
@@ -16,7 +16,7 @@ class Projects extends CI_Controller {
 			//分页配置开始
 			$config['base_url'] = base_url() . 'projects/projectlist/';
 			$config['total_rows'] = $this -> Projects_model -> select_num_rows();
-			$config['per_page'] = 6;
+			$config['per_page'] = 8;
 			$config['uri_segment'] = 3;
 			$config['full_tag_open'] = '<ul>';
 			$config['full_tag_close'] = '</ul>';
@@ -54,9 +54,9 @@ class Projects extends CI_Controller {
 		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
 		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
 		$this -> load -> view('header', $data);
-		$this -> load -> view('projects/project_list');
-		$this -> load -> view('projects/project_sidebar');
-		$this -> load -> view('footer');
+		$this -> load -> view('projects/project_home');
+		//$this -> load -> view('projects/project_sidebar');
+		$this -> load -> view('footer2');
 	}
 
 	public function homepage() {
@@ -138,7 +138,64 @@ class Projects extends CI_Controller {
 
 	public function home() {
 		$sta = $this -> session -> userdata('user');
-		$data = array('title' => '项目主页-创新空间', 'css' => 'projects.css', 'js' => 'projects.js', );
+		$data = array('title' => '项目主页-创新空间', 'css' => 'project_show.css', 'js' => 'projects_show.js', );
+		if (!isset($sta) || $sta != "login_ok") {
+			redirect('/login');
+		} else {
+			$data['email'] = $this -> session -> userdata('email');
+			$data['username'] = $this -> session -> userdata('username');
+			$user = $this -> Users_model -> queryuser_byuid($this -> session -> userdata('uid'));
+			$data['userpic'] = $user -> person_pic;
+			$data['uid'] = $this -> session -> userdata('uid');
+			$data['randvalue'] = rand(0, 10000000000);
+			$data['project'] = $this -> Projects_model -> showProjectsByPid($this -> uri -> segment(3, 0));
+			$nowtime = time();
+			$days = ceil(($nowtime - $data['project'] -> adddate) / (60 * 60 * 24));
+			$data['days'] = $days;
+			$data['prousers'] = $this -> Projects_model -> showUsersByPid($this -> uri -> segment(3, 0));
+		}
+		$pid = $data['project'] -> pid;
+		$data['commentNumber'] = $this -> Messages_model -> getpcommentnumber($pid);
+        $data['title'] = $data['project'] -> name."-项目主页-创新空间";
+		//分页配置开始
+		$config['base_url'] = base_url() . 'projects/home/' . $this -> uri -> segment(3, 0) . '/';
+		$config['total_rows'] = $this -> Messages_model -> getpcommentnumber($pid);
+		$config['per_page'] = 5;
+		$config['uri_segment'] = 4;
+		$config['full_tag_open'] = '<ul>';
+		$config['full_tag_close'] = '</ul>';
+		$config['first_link'] = '第一页';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['last_link'] = '最后一页';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		$config['next_link'] = '下一页';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_link'] = '上一页';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="current_page">';
+		$config['cur_tag_close'] = '</li>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$this -> pagination -> initialize($config);
+		//分页配置结束
+		$row = $this -> Users_model -> queryuser($this -> session -> userdata('email'));
+		$data['person_pic'] = $row -> person_pic;
+		//$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
+		//$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
+		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
+		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
+		$this -> load -> view('header', $data);
+		$this -> load -> view('projects/project_show');
+		$this -> load -> view('footer2');
+	}
+
+	public function project_comments() {
+		$sta = $this -> session -> userdata('user');
+		$data = array('title' => '项目主页-创新空间', 'css' => 'project_show.css', 'js' => 'projects.js', );
 		if (!isset($sta) || $sta != "login_ok") {
 			redirect('/login');
 		} else {
@@ -186,13 +243,13 @@ class Projects extends CI_Controller {
 		$data['person_pic'] = $row -> person_pic;
 		$data['comment'] = $this -> Messages_model -> showPCommentsByLimitByUid($this -> uri -> segment(4, 0), $config['per_page'], $pid);
 		$data['commentReply'] = $this -> Messages_model -> getpcommentReply($pid);
-		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
-		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
+		//$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
+		//$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
 		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
 		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
 		$this -> load -> view('header', $data);
-		$this -> load -> view('projects/project_index');
-		$this -> load -> view('footer');
+		$this -> load -> view('projects/comments');
+		$this -> load -> view('footer2');
 	}
 
 	public function works() {

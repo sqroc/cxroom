@@ -8,6 +8,7 @@
 <link href="<?=base_url()?>style/common.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url()?>style/<?=$css ?>" rel="stylesheet" type="text/css" />
 <script src="<?=base_url()?>js/jquery.js" type="text/javascript"></script>
+<script src="<?=base_url()?>js/cx_common.js" type="text/javascript"></script>
 <?php
 if(isset($js)):
 ?>
@@ -24,6 +25,10 @@ $(document).ready(function(){
 	});
 });
 </script>
+<script type="text/javascript">
+	var BASE_URL = '<?=base_url()?>';
+</script>
+
 </head>
 <body>
 

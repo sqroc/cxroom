@@ -1,43 +1,28 @@
-<div class="clear"></div>
-<div class="container top_shadow">
-	<div class="egg_good">
-		
-		<div class="good_box good_c0">
-			<div class="angle"></div>
-			<div class="egg_info">
-				
-				收录创意 <span><?=$eggnum?></span> 个<br /> 
-				献计献策 <span><?=$eggcommentnum?></span> 条
-			</div>
-		</div>
-		<div class="good_box good_c2">
-			<div class="hot">
-				<h3>焦<br/>点<br/>创<br/>意</h3>
-				<p>
-					在这个什么都要电的时代
-？看看大家如何奇思妙想解决充电问题!
-				</p>
-			</div>
-		</div>
-		<div class="good_box good_c3">
-			<ul class="hot_list">
-				<li><a href="http://www.cxroom.com/eggs/topic/37">移动设备绿色充电</a></li>
-				<li><a href="http://www.cxroom.com/eggs/topic/41">接蛋 移动设备绿色充电</a></li>
-			</ul>
-		</div>
-		<div class="good_box good_c4">
-			<div class="new_egg">
-				<a href="<?=base_url()?>eggs/new_topic"> </a>
-				<p class="new_intro">脑子越用越活，创意越说越多！</p>	
-			</div>			
-		</div>
-		<div class="clear0"></div>
-	</div>
-</div>
-<div>
-	分类：<a href="<?=base_url()?>eggs/">全部</a> || <a href="<?=base_url()?>eggs/classid/1">分享</a> || <a href="<?=base_url()?>eggs/classid/2">原创</a>
+
+<div class="container cate_tab">
+	<ul>
+		<li id="all"><a href="<?=base_url()?>eggs/">全 部</a></li>
+		<li id="share"><a href="<?=base_url()?>eggs/classid/1">分 享</a></li>
+		<li id="own"><a href="<?=base_url()?>eggs/classid/2">原 创</a></li>
+		<li><a href="<?=base_url()?>eggs/attentioneggs">收 藏</a></li>
+	</ul>
 	
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	var url = window.location.href;
+	var reg_share = /1/;
+	var reg_own = /2/;
+	
+	if(reg_share.test(url)){
+		$('#share').find('a').addClass('acurrent');
+	} else if(reg_own.test(url)) {
+		$('#own').find('a').addClass('acurrent');
+	} else {
+		$('#all').find('a').addClass('acurrent');
+	}
+});
+</script>
 <div class="container" id="ibox_box">
 	<?php foreach($ideas as $item):$n=1; ?>
 	<div class="ibox_shadow">
