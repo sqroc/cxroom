@@ -20,8 +20,10 @@ function add_reply(){
 		var t = $(this);
 		var f = t.parent().parent();
 		var r = f.find('.reply_box');
+		var promid = $(this).attr('id');
 		if(r.length <= 0){
-			f.append('<div class="reply_box"><div class="reply_text"><textarea name="reply_content" class="textbox"></textarea><span id="sendreply" class="sendbutton little_button">发布评论</span></div><div class="reply_info"></div></div>');	
+			var s = '<div class="reply_box"><div class="reply_text"><textarea name="reply_content" id="reply_content" class="textbox"></textarea><span class="sendpm sendbutton little_button" id="' + promid +'">发布评论</span></div><div class="reply_info"></div></div>';
+			f.append(s);	
 			f.find('.reply_info').html('');
 			send_reply();
 		} else if(f.find('.reply_box').css('display') == 'none'){
@@ -29,7 +31,6 @@ function add_reply(){
 		} else {
 			r.css('display', 'none');
 		}
-		
 	});
 }
 

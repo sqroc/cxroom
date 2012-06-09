@@ -928,8 +928,8 @@ class Projects_model extends CI_Model {
 		$data['reuid'] = $this -> session -> userdata('uid');
 		$data['pmrecontent'] = $this -> input -> post('pmrecontent');
 		$data['redate'] = time();
-		if ($data['pid'] != NULL) {
-			if ($this -> db -> insert('project_message', $data)) {
+		if ($data['promid'] != NULL) {
+			if ($this -> db -> insert('project_message_reply', $data)) {
 
 				$this -> db -> where('promid', $data['promid']);
 				if ($this -> db -> set('replynum', 'replynum+1', false) -> update('project_message')) {
@@ -943,6 +943,17 @@ class Projects_model extends CI_Model {
 		} else {
 			return FALSE;
 		}
+	}
+	
+	
+	/*
+	 * 获得对应id的空间动态评论
+	 */
+	function getProjectmessage_reply() {
+		$promid = $this -> input -> get('promid');
+		$sql = "SELECT * FROM  project_message_reply,user  where user.uid=project_message_reply.reuid and project_message_reply.promid=" . $promid;
+		$query = $this -> db -> query($sql);
+		return $query->result();
 	}
 
 }

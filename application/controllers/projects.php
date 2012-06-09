@@ -341,6 +341,14 @@ class Projects extends CI_Controller {
 		}
 
 	}
+	
+	public function getProjectmessage_reply() {
+		$data = $this -> Projects_model -> getProjectmessage_reply();
+		echo json_encode($data);
+
+	}
+	
+	
 
 }
 ?>

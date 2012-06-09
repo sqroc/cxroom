@@ -14,8 +14,8 @@
 		</div>
 		<div class="tabs">
 			<ul class="menu">
-				<li id="tab_news" class="tab normal">动态</li>
-				<li id="tab_intro" class="tab current">简介</li>
+				<li id="tab_news" class="tab current">动态</li>
+				<li id="tab_intro" class="tab normal">简介</li>
 				<?php if(!empty($project->talentcontent)): ?>
 				<li id="tab_talent" class="tab normal">招募</li>
 				<? endif;?>
@@ -86,13 +86,28 @@
 			});
 			
 			function send_reply(){
-				$('#sendreply').click(function(){
-					alert('sending');
-					//ajax part
+				$('.sendpm').click(function(){
+					
+			//ajax
+			var pmrecontent  =  add_br( $("#reply_content").attr("value") );
+			
+			var promid  = $(this).attr('id');
+			var url = "<?=base_url()?>projects/addProjectmessage_reply";
+			$.post(url, {
+			pmrecontent : pmrecontent,
+			promid : promid
+			},
+			function(data) {
+				if(data.state == 'ok') {
+					alert('评论成功!');
+				} else {
+					alert("回复评论失败，请检查网络后重试！");
+				}
+			}, "json");
 				});
 			}
 		</script>	
-		<div class="box_tab" id="box_tab_news" style="display:none;">
+		<div class="box_tab" id="box_tab_news">
 			
 			<ul class="newslist">
 				<?php foreach($projectmessage as $item): ?>
@@ -107,8 +122,8 @@
 					
 						</div>
 						<div class="new_info">
-							<span class="date">第<? $nowtime = time();echo ceil(($nowtime-$itemReply->pmdate)/(60*60*24));?>天</span>
-							<span class="reply write_reply"><a href="javascript:void(0)">评论(<?=$item->replynum?>)</a></span>
+							<span class="date">第<? $nowtime = time();echo ceil(($nowtime-$item->pmdate)/(60*60*24));?>天</span>
+							<span class="reply write_reply" id="<?=$item->promid?>"><a href="javascript:void(0)">评论(<?=$item->replynum?>)</a></span>
 							
 						</div>
 					
@@ -116,8 +131,11 @@
 				</li>
 				<?php endforeach; ?>			
 			</ul>
+			<div class="pages">
+					<?php echo $this->pagination->create_links();?>
+			</div>
 		</div>
-		<div class="box_tab content" id="box_tab_intro" >
+		<div class="box_tab content" id="box_tab_intro" style="display:none;">
 			<?= $project->pintro?>
 		</div>
 		<div class="box_tab content" id="box_tab_talent" style="display:none">
