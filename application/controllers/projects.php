@@ -348,7 +348,10 @@ class Projects extends CI_Controller {
 
 	}
 	
-	
+	public function getMyjoinpro(){
+		$data = $this -> Projects_model -> showJoinProjectIndex();
+		echo json_encode($data);
+	}
 
 }
 ?>

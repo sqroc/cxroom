@@ -1,6 +1,4 @@
-<div class="container">
-	<div class="space_line"></div>
-</div>
+
 <div id="space_footer">
 	<div class="l_f">
 		<p>

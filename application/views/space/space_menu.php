@@ -1,6 +1,4 @@
-<div class="container" style="margin-top:20px;">
-	<div class="space_shadow_top"></div>
-</div>
+
 <!--第二行 主体-->
 <div class="container" id="space_container" style="overflow:hidden;">
 	<div class="menubox fl">
@@ -49,8 +47,11 @@
 			
 		
 			<li class="func"><a href="<?=base_url() ?>/user_info">修改资料</a></li>
-			<li class="codestyle"><a href="<?=base_url() ?>/space/space_codelist">我的邀请码</a></li>
-			<li style="border-bottom:none;"><a href="<?=base_url() ?>help">申请认证</a></li>
+			
+		</ul>
+		<ul class="lmenu" style="border-top:1px #e1e1e1 solid;">
+			<li class="invite"><a href="<?=base_url() ?>/space/space_codelist">我的邀请码</a></li>
+			<li class="cc"><a href="<?=base_url() ?>help">申请认证</a></li>
 		</ul>
 	</div>
 	

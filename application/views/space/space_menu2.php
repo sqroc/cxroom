@@ -1,6 +1,4 @@
-<div class="container" style="margin-top:20px;">
-	<div class="space_shadow_top"></div>
-</div>
+
 <!--第二行 主体-->
 <div class="container" id="space_container" style="overflow:hidden;">
 	<div class="menubox fl">
@@ -33,6 +31,7 @@
 			</ul>
 			
 			
+			
 		</div>
 		<ul class="lmenu">
 			<li class="find"><a href="<?=base_url() ?>user_space/uid/<?=$uid ?>">Ta的客厅</a></li>
@@ -43,6 +42,10 @@
 				<li class="home"><a href="<?=base_url() ?>/user_space">回我的书房</a></li>
 			
 		</ul>
+		<ul class="lmenu" style="border-top:1px #e1e1e1 solid;">
+				
+				<li class="cc"><a href="<?=base_url() ?>help">申请认证</a></li>
+			</ul>
 	</div>
 	
 <script type="text/javascript">

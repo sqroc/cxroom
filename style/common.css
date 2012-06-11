@@ -19,7 +19,7 @@ h3{font-size:13px;}
 .clear0{overflow:hidden;height:0px;width:100%;clear:both;}
 img{border:0;}
 input,textarea{background:url(../images/bg_input.png) no-repeat 0 0;border:1px #ccc solid;}
-p{margin:0;padding:0;line-height:22px;}
+p{margin:0;padding:0;line-height:22px;word-break:break-all}
 form{margin:0;}
 
 
@@ -60,13 +60,13 @@ header
     .mycount .my_avatar{float:right;border:1px #e1e1e1 solid;background:#fff;padding:2px;margin:8px 0 0 0;width:36px;}
     .mycount .mymenu{width:240px;float:right;}
     .mycount .mymenu li{float:left;line-height:60px;padding:0 0 0 10px;position:relative;}
-    .mycount .mymenu .droptab{padding:0 30px 0 15px;cursor:pointer;z-index:998;background:url(../images/common/icons_dialog.png) no-repeat 48px -223px;z-index:9999;}
+    .mycount .mymenu .droptab{padding:0 30px 0 15px;cursor:pointer;z-index:99999;background:url(../images/common/icons_dialog.png) no-repeat 48px -223px;z-index:9999;}
     .mycount .mymenu .my_cur{border:1px #999 solid;_border-top:none;border-bottom:none;background:#fff;padding:0 29px 0 14px;
                      -moz-box-shadow: 0px 2px 3px #908B8B;
                     -webkit-box-shadow: 0px 2px 3px #908B8B;
                     box-shadow: 0px 2px 3px #908B8B;background:url(../images/common/icons_dialog.png) no-repeat 48px -223px;
     }
-    .mycount .mymenu .droptab .dropmenu{position:absolute;z-index:999;top:60px;left:-1px;width:110px;background:#fff;border:1px #908B8B solid;border-top:1px #ccc solid;padding:0;
+    .mycount .mymenu .droptab .dropmenu{position:absolute;z-index:999999;top:60px;left:-1px;width:110px;background:#fff;border:1px #908B8B solid;border-top:1px #ccc solid;padding:0;
                                  -moz-box-shadow: 0px 2px 3px #908B8B;
     -webkit-box-shadow: 0px 2px 3px #908B8B;
     box-shadow: 0px 2px 3px #908B8B; filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#e1e1e1');
@@ -132,7 +132,7 @@ footer
     #warm_dialog .box #t_bottom .submit{width:100px;height:30px;line-height:30px;background:#66CC00;border:1px #669900 solid;padding:0;float:right;margin:5px 5px 0 0;}
 
 /*hover pop*/
-.preview{position:absolute;z-index:9999;right:0px;top:30px;width:340px;padding:5px;background:url(../images/common/opacity_bg.png) 0 0;border-radius:4px;}
+.preview{position:absolute;z-index:99;right:0px;top:30px;width:340px;padding:5px;background:url(../images/common/opacity_bg.png) 0 0;border-radius:4px;}
     .preview .a_l_t,.a_r_t{width:21px;height:17px;background:url(../images/common/opacity_arrow.png) no-repeat 0 0;}
     .preview .a_l_b,.a_r_b{width:21px;height:17px;background:url(../images/common/opacity_arrow2.png) no-repeat 0 0;}
     .preview .a_l_t{position:absolute;left:30px;top:-11px;}

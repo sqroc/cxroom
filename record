@@ -1,3 +1,53 @@
+2012.6.11
+CREATE TABLE  `innovation`.`project_pay` (
+`ppayid` INT NOT NULL AUTO_INCREMENT ,
+`pid` INT NOT NULL ,
+`nowvalue` DECIMAL( 10, 2 ) NOT NULL ,
+`wantvalue` DECIMAL( 10, 2 ) NOT NULL ,
+`finishdate` INT( 10 ) NOT NULL ,
+`againnum` INT( 5 ) NOT NULL ,
+PRIMARY KEY (  `ppayid` )
+) ENGINE = INNODB
+
+CREATE TABLE  `innovation`.`project_payorder` (
+`ppoid` INT NOT NULL AUTO_INCREMENT ,
+`pid` INT NOT NULL ,
+`uid` INT NOT NULL ,
+`payvalue` DECIMAL( 10, 2 ) NOT NULL ,
+`adddate` INT( 10 ) NOT NULL ,
+`type` VARCHAR( 100 ) NOT NULL ,
+`orderstate` VARCHAR( 100 ) NOT NULL ,
+`isfinish` TINYINT( 1 ) NOT NULL ,
+PRIMARY KEY (  `ppoid` )
+) ENGINE = INNODB
+
+CREATE TABLE  `innovation`.`project_pay_notgetitem` (
+`pjnid` INT NOT NULL AUTO_INCREMENT ,
+`pid` INT NOT NULL ,
+`ppoid` INT NOT NULL ,
+`reason` TEXT NOT NULL ,
+`uid` INT NOT NULL ,
+`adddate` INT( 10 ) NOT NULL ,
+PRIMARY KEY (  `pjnid` )
+) ENGINE = INNODB
+
+CREATE TABLE  `innovation`.`project_pay_explain` (
+`ppexid` INT NOT NULL AUTO_INCREMENT ,
+`ppoid` INT NOT NULL ,
+`pid` INT NOT NULL ,
+`pjnid` INT NOT NULL ,
+`uid` INT NOT NULL ,
+`reason` TEXT NOT NULL ,
+`picurl` VARCHAR( 250 ) NOT NULL ,
+`adddate` INT( 10 ) NOT NULL ,
+PRIMARY KEY (  `ppexid` )
+) ENGINE = INNODB
+
+
+ALTER TABLE  `promember` ADD  `email` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;
+
+
+
 2012.06.08
 CREATE TABLE  `innovation`.`project_message` (
 `promid` INT NOT NULL AUTO_INCREMENT ,

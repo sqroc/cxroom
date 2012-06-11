@@ -206,7 +206,9 @@ function t_popmenu(father, content, width){
     	}
     	
     }
-    
+    $('.t_slide_menu').click(function(){
+    	return false;
+    });
     
     $('body').click(function(){
     	$('.t_slide_menu').slideUp('fast');

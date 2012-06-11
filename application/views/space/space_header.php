@@ -81,8 +81,9 @@ if(isset($js)):
 	</div>
 </div><!--#header_bg-->
 <div class="header_shadow"></div>
-
-<div class="container" id="hi" style="margin-top:20px;">
+<div class="clear"></div>
+<!--
+<div class="container" id="hi">
 	<div class="dear">
 		<p style="float:left;">亲! 由于网站正在测试完善阶段，如发现bug或者有好的建议，请移步 <a href="http://www.cxroom.com/eggs/topic/33">创新空间捉虫虫</a> 反馈给我们，感谢支持！</p><span id="closebug" style="float:right;margin-right:10px;cursor:pointer;">关闭</span>
 	</div>
@@ -94,5 +95,5 @@ if(isset($js)):
 		});
 	});
 	
-</script>
+</script>-->
 	

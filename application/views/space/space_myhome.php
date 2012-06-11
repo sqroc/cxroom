@@ -5,59 +5,53 @@
 			var user_name = '<?=$userreply->username ?>';	
 		</script>
 		<script src="<?=base_url()?>js/space_myhome.js" type="text/javascript"></script>
-		<div class="user_info">
-			<h2><?=$username ?><?php if($ctype == 1):?>
-								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
-							<?php elseif($ctype == 2):?>
-								<img src="<?=base_url()?>images/c/c_team_little.gif" />
-							<?php else:?>
-								
-							<?php endif;?></h2>
-							<!--
-			<span class="user_mess">
-				
-					知名指数
-			</span>
-			<span class="user_score">
-				<?=$clickdata->click?>
-			</span>-->
-			<div class="talk">
-				<a class="btn grey"  href="<?= base_url() ?>/user_space/uid/<?=$userreply->uid?>" title="看看我的客厅">我的客厅</a>
-			</div>
-		</div>
 		
-		<div class="short_intro" style="padding:4px 4px 0 4px;">
-			<div class="j"></div>
-			
-			
+		
+		<div class="text_center">
+			<div class="text_top">
+				<h2 id="t_h">发条短信给好友 分享讨论你们的创意</h2>
+				<div class="r">
+					<a href="<?= base_url() ?>/user_space/uid/<?=$userreply->uid?>">我的客厅</a>
+				</div>
+			</div>		
 			<input type="hidden" name="uid" id="msg_getter" value=""/>
 			<input type="hidden" name="egg_id" id="eid" value="" />
 			<input type="hidden" name="egg_name" id="ename" value="" />
 			<input type="hidden" name="egg_pic" id="epic" value="" />
+			<input type="hidden" name="pid" id="pid" value="" />
 			<textarea rows="4"  name="comment_content" class="text" id="reply_content2"></textarea>
 			<div class="text_bottom">
 			
-				<span class="check_tab check_tab_on" id="share">分享创意</span>
-				<span class="check_tab" id="weixin">发微信</span>
-				<span class="check_tab" id="towho">发送给0人</span>
-				<span class="check_tab" id="myf" style="padding-left:0;"><a href="javascript:void(0)">选择</a></span>
+				<span class="check_tab ct check_tab_on" id="weixin" style="margin-left:0;">聊天</span>
+				<span class="check_tab ct" id="share">分享</span>
+				<span class="list_tab" id="s_list" style="display:none;"> </span>
+				<span class="check_tab ct" id="new">广播</span>
+				<span class="list_tab" id="n_list" style="display:none;"> </span>
+				<span class="check_tab" id="myf" style="padding-left:0;"><a href="javascript:void(0)">发给0位好友</a></span>
+				<!--
 				<span class="check_tab" id="all" style="padding-left:0;display:none;"><a href="javascript:void(0)">全选</a></span>
-				<div class="little_button" id="send_reply2">马上分享</div>
+				-->
+				<div class="little_button" id="send_reply2">马上发布</div>
 			</div>
-			<div id="friends_list" style="display:none;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
-			<div id="attention_eggs" style="display:none;"><img src="<?=base_url()?>images/common/loading.gif" /></div>
-		</div>
+			
+			
+		</div><!--textc-->
 		<script type="text/javascript">
 			var flag_friends = true;
-			var flag_share = true;
-			var flag_weixin = false;
+			var flag_share = false;
+			var flag_weixin = true;
+			var flag_new = false;
+			var share_url = '<?=base_url()?>space/space_projectlist/attentioneggs_api';
+			var new_url = '<?=base_url()?>projects/getMyjoinpro';
+			var aim = "";
 			
 			$(document).ready(function(){
-				share("<?=base_url()?>space/space_projectlist/attentioneggs_api");
+			
 				
 				$('#myf').click(function(){
 					$('#attention_eggs').css('display', 'none');
 					$('#all').css('display', 'block');
+					var temp = "";
 					if(flag_friends){
 						var url = "<?=base_url()?>space/space_userlist/myfriends_api";
 						$.getJSON(url, function(json){
@@ -65,16 +59,16 @@
 							flag_friends = false;
 							var n = json.length;
 							var i;
-							var temp = "";
+							
 							for(i=0; i<n; i++){
-								temp += '<li id=\"' + json[i].uid + '\" class=\"unselect\">' + json[i].name + '</li>'; 
+								temp += '<li id=\"' + json[i].uid + '\" class=\"ff unselect\" rel="unselect">' + json[i].name + '</li>'; 
 							}
-							$('#friends_list').html('<ul>' + temp + '</ul>');
-							$('#friends_list').css('display', 'block');
+							
+							t_popmenu($('#myf'), '<div id="friends_list"><ul>' + temp + '</ul></div>', 200);
 							add_one();
 						});
 					} else {
-						$('#friends_list').css('display', 'block');
+						t_popmenu($('#myf'), '<div id="friends_list"><ul>' + temp + '</ul></div>', 200);
 					}
 					return false;
 				});
@@ -88,17 +82,10 @@
 					return false;
 				});
 				
-				$('body').click(function(){
-					$('#friends_list').css('display', 'none');
-					$('#attention_eggs').css('display', 'none');
-					$('#all').css('display', 'none');
-				});
+				$('#s_list').click(function(){return false;});
+				$('#n_list').click(function(){return false;});
 				
-				$('#share').hover(function(){
-					$(this).text('换个创意');
-				}, function(){
-					$(this).text('分享创意');
-				});
+				
 				
 				tab_on();
 			
@@ -229,10 +216,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" rel="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a>
+						<span class="name"><a class="user_hover" rel="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a>
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -257,10 +244,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" rel="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" rel="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -285,10 +272,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" rel="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" rel="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -313,10 +300,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" rel="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a>
+						<span class="name"><a class="user_hover" rel="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a>
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -341,10 +328,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" rel="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" rel="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -369,10 +356,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" rel="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" rel="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -397,10 +384,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" rel="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" rel="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -425,10 +412,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" rel="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" rel="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -453,10 +440,10 @@
 				<li>
 				<div class="notice_box">
 					<div class="n_avatar">
-						<img class="user_hover" id="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
+						<img class="user_hover" rel="<?=$item->uid?>" src="<?=base_url()?><?=$item->person_pic ?>" /> 
 					</div>
 					<div class="n_msg">
-						<span class="name"><a class="user_hover" id="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
+						<span class="name"><a class="user_hover" rel="<?=$item->uid?>" href="<?=base_url()?>user_space/uid/<?=$item->uid?>"><?=$item->username ?></a> 
 							<?php if($item->ctype == 1):?>
 								<img src="<?=base_url()?>images/c/c_personal_little.gif" />
 							<?php elseif($item->ctype == 2):?>
@@ -596,19 +583,20 @@ $(document).ready(function() {
 //发送消息
 $(document).ready(function() {
 	$('#send_reply2').click(function() {
-		if($('#msg_getter').val()==""){
+		if(!flag_new && $('#msg_getter').val()==""){
 			warm_dialog('no', '请选择接受信息的好友');
 			return;
 		}
-		
+		var f = $('#send_reply2');
 		if(check_content('message')) {
-			$(this).val('正在发送');
+			$(this).html('<img src="<?=base_url()?>images/common/loading.gif" />');
 			//ajax
 			var content2  =  $("#reply_content2").attr("value");
 			var otheruid  =  $("#msg_getter").attr("value");
 			var egg_id = $('#eid').val();
 			var egg_name = $('#ename').val();
 			var egg_pic = $('#epic').val();
+			var pid = $('#pid').val();
 			
 			if(flag_weixin){
 				
@@ -619,11 +607,12 @@ $(document).ready(function() {
 				},
 				function(data) {
 					if(data.state == 'ok') {
-						warm_dialog('ok', '微信成功发送！');
-						$('#send_reply2').val('发送微信');
+						warm_dialog('ok', '短信成功发送！');
+						$("#reply_content2").val("");
+						f.text('马上发送');
 					} else {
 						warm_dialog('no', '发送失败，请检查网络后重新发送！');
-						$('#send_reply2').val('发送微信');
+						
 					}
 				}, "json");
 			}
@@ -640,11 +629,30 @@ $(document).ready(function() {
 				function(data) {
 					if(data.state == 'ok') {
 						warm_dialog('ok', '分享成功！');
-						$('#send_reply2').val('马上分享');
+						$("#reply_content2").val("");
+						f.text('马上发送');
 					} else {
 						warm_dialog('no', '分享失败，请检查网络后重新发送！');
-						$('#send_reply2').val('马上分享');
+						
 					}
+				}, "json");
+			}
+			
+			if(flag_new){
+				var url = "<?=base_url()?>projects/addProjectmessage";
+				$.post(url, {
+					pid	: pid,
+					pmcontent : content2	
+				},
+				function(data){
+					if(data.state == 'ok') {
+						warm_dialog('ok', '发布成功！');
+						$("#reply_content2").val("");
+						f.text('马上发送');
+					} else {
+						warm_dialog('no', '发布失败，请检查网络后重新发送！');
+						
+					}	
 				}, "json");
 			}
 	
