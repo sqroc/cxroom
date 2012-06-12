@@ -28,7 +28,9 @@ class Projects_model extends CI_Model {
 				$new_id_number = $this -> db -> insert_id();
 				$data2['pid'] = $new_id_number;
 				if ($hiddennum == 1) {
-					$data2['uid'] = $this -> input -> post('member_1');
+					$data2['email'] = $this -> input -> post('member_1');
+					$data2['uid'] = $this -> Users_model -> queryuser_byemail($data2['email']);
+				
 					if (isset($data2['uid'])) {
 						$data2['role'] = $this -> input -> post('role_1');
 						if ($this -> db -> insert('promember', $data2)) {
@@ -38,10 +40,11 @@ class Projects_model extends CI_Model {
 						}
 					}
 				} else {
-					for ($i = 1; $i <= $hiddennum; $i++) {
+					for ($i = 1; $i <= $hiddennum-1; $i++) {
 						$memberstr = "member_" . $i;
 						$rolestr = "role_" . $i;
-						$data2['uid'] = $this -> input -> post($memberstr);
+						$data2['email'] = $this -> input -> post($memberstr);
+						$data2['uid'] = $this -> Users_model -> queryuser_byemail($data2['email']);
 						$data2['role'] = $this -> input -> post($rolestr);
 						if ($this -> db -> insert('promember', $data2)) {
 

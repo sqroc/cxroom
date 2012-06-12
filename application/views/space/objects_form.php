@@ -185,7 +185,7 @@
 					<div id="members">
 						<div id="mem_mess">	
 							
-						<input name="member_1" type="input" value="<?=$email?>">
+						<input name="member_1" type="input" disabled="true" value="<?=$email?>">
 						担任角色:<select name="role_1">
 							<option>创始人</option>
 							<option>技术员</option>

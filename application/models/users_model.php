@@ -314,6 +314,15 @@ class Users_model extends CI_Model {
 			return $row;
 		}
 	}
+	
+	function queryuser_byemail($email) {
+		$data['contact_email'] = $email;
+		$sql = "SELECT * FROM user WHERE contact_email = ? ";
+		$query = $this -> db -> query($sql, $data);
+		foreach ($query->result() as $row) {
+			return $row->uid;
+		}
+	}
 
 	function checkmail() {
 
