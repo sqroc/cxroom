@@ -7,11 +7,14 @@
 	<div class="p_menu">
 		<ul>
 			<li><a href="<?=base_url()?>space/objects_form">发布一个项目</a></li>
-			<li class="normal mypro" id="p1"><a href="javascript:void(0)">我参加的项目</a></li>
-			<li class="normal mypro" id="p2"><a href="javascript:void(0)">我收藏的项目</a></li>
+			<!--
+			<li class="normal mypro" id="p1">我参加的项目</li>
+			<li class="normal mypro" id="p2">我收藏的项目</li>
+			-->
 		</ul>
 		<script type="text/javascript">
-			var mypro = '<?php if($myjoinpro == NULL){echo "你没有参加项目";} foreach($myjoinpro as $item): ?><li><a href="<?=base_url() ?>/projects/home/<?=$item->pid?>" title="<?=$item->name?>"><?=$item->name?></a></li><?php endforeach; ?>';
+			//var mypro = '<?php if($myjoinpro == NULL){echo "你没有参加项目";} foreach($myjoinpro as $item): ?><li><a href="<?=base_url() ?>/projects/home/<?=$item->pid?>" title="<?=$item->name?>"><?=$item->name?></a></li><?php endforeach; ?>';
+			var mypro = '<a href="http://www.baidu.com/">fsd</a>';
 			var myfavpro = '<?php if($myattentionpro == NULL){echo "你没有收藏项目";}foreach($myattentionpro as $item): ?><li><a href="<?=base_url() ?>/projects/home/<?=$item->pid?>" title="<?=$item->name?>"><?=$item->name?></a></li><?php endforeach; ?>';
 		</script>
 	</div>

@@ -193,6 +193,64 @@ class Projects extends CI_Controller {
 		$this -> load -> view('projects/project_show');
 		$this -> load -> view('footer2');
 	}
+	
+	public function ourblog() {
+		$sta = $this -> session -> userdata('user');
+		$data = array('title' => '创新空间的微博-创新空间', 'css' => 'project_show.css', 'js' => 'projects_show.js', );
+		if (!isset($sta) || $sta != "login_ok") {
+			redirect('/login');
+		} else {
+			$data['email'] = $this -> session -> userdata('email');
+			$data['username'] = $this -> session -> userdata('username');
+			$user = $this -> Users_model -> queryuser_byuid($this -> session -> userdata('uid'));
+			$data['userpic'] = $user -> person_pic;
+			$data['uid'] = $this -> session -> userdata('uid');
+			$data['randvalue'] = rand(0, 10000000000);
+			$data['project'] = $this -> Projects_model -> showProjectsByPid(47);
+			$nowtime = time();
+			$days = ceil(($nowtime - $data['project'] -> adddate) / (60 * 60 * 24));
+			$data['days'] = $days;
+			$data['prousers'] = $this -> Projects_model -> showUsersByPid(47);
+		}
+		$pid = $data['project'] -> pid;
+		$data['commentNumber'] = $this -> Messages_model -> getpcommentnumber($pid);
+        $data['title'] = $data['project'] -> name."-项目主页-创新空间";
+		//分页配置开始
+		$config['base_url'] = base_url() . 'projects/ourblog' ;
+		$config['total_rows'] = $this -> Projects_model -> select_num_rowsforproject_message(11);
+		$config['per_page'] = 5;
+		$config['uri_segment'] = 4;
+		$config['full_tag_open'] = '<ul>';
+		$config['full_tag_close'] = '</ul>';
+		$config['first_link'] = '第一页';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['last_link'] = '最后一页';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		$config['next_link'] = '下一页';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_link'] = '上一页';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="current_page">';
+		$config['cur_tag_close'] = '</li>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$this -> pagination -> initialize($config);
+		//分页配置结束
+		$data['projectmessage'] = $this -> Projects_model -> getproject_message(47,$this -> uri -> segment(3, 0), $config['per_page']);
+		$row = $this -> Users_model -> queryuser($this -> session -> userdata('email'));
+		$data['person_pic'] = $row -> person_pic;
+		//$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
+		//$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
+		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
+		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
+		$this -> load -> view('header', $data);
+		$this -> load -> view('admin/blog');
+		$this -> load -> view('footer2');
+	}
 
 	public function project_comments() {
 		$sta = $this -> session -> userdata('user');

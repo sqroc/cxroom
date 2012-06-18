@@ -22,6 +22,7 @@
 					项目名称:<span>*</span>
 				</div>
 				<div class="item_info">
+				
 					<input name="name" type="input" class="w300">
 					<br>
 					<span class="help">请填写你的项目名称，只能包含字母，中文。</span>
@@ -54,7 +55,7 @@
 				<div class="item_info">
 					<input type="text" id="url" value="" name="path_logo"/><input type="button" id="image" class="button" value="选择图片" />
 					<br>
-					<span class="help">上传长宽比为2:1的图像可获得最佳浏览效果。</span>
+					<span class="help">上传一张漂亮的logo赚足眼球。</span>
 				
 				</div>
 			</div>	
@@ -159,7 +160,7 @@
 					});
 				</script> 
 				<div class="help_notice">
-					请填写详细的项目介绍，你也可以插入图片和flash视频，只有具有完整介绍的项目才能通过审核。
+					请填写详细的项目介绍和项目需求，你也可以插入图片和flash视频，只有具有完整介绍的项目才能通过审核。
 				</div>	
 				<div class="item"> 
 					<div class="label">	
@@ -169,6 +170,46 @@
 						<textarea name="pintro" style="width:810px;height:500px;visibility:hidden;"></textarea> 
 					
 					</div> 
+				</div>	
+				<div class="item">
+					<div class="label">
+						项目需求:
+					</div>
+					<div class="item_info">
+						<ul class="select" id="needed">
+							<li>要推广</li>
+							<li>找人才</li>
+							<li>其他需求</li>
+						</ul>
+						<input name="talenttitle" type="hidden" id="input_needed" class="w300">
+					
+						
+						
+					</div>
+				</div>
+				<script> 
+					var editor;
+					KindEditor.ready(function(K) {
+					editor = K.create('textarea[name="talentcontent"]', {
+					resizeType : 1,
+					allowPreviewEmoticons : false,
+					allowImageUpload : true,
+					items : [
+						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+						});
+					});
+				</script> 
+					
+				<div class="item" id="needcontent" style="display:none;">
+					<div class="label">	
+						详细说明:<span>*</span>
+					</div>
+					<div class="item_info">
+						<textarea name="talentcontent" style="width:810px;height:300px;visibility:hidden;"></textarea>
+						<span class="help" id="textspan"></span>
+					</div>
 				</div>	
 		</div>
 	
@@ -185,7 +226,7 @@
 					<div id="members">
 						<div id="mem_mess">	
 							
-						<input name="member_1" type="input" disabled="true" value="<?=$email?>">
+						<input name="member_1" type="input" value="<?=$email?>">
 						担任角色:<select name="role_1">
 							<option>创始人</option>
 							<option>技术员</option>
@@ -220,48 +261,36 @@
 		<!---------step4-------------->
 		<div class="step_box" id="step_4" style="display:none;">
 			<div class="help_notice">
-				项目要找人？或者有其他需求？赶快填写需求公告吧。暂时没有也可以跳过，你在以后依旧可以补充。
+				你可以通过募资获得项目资金，建议设置多档位的回报可以满足更多人的需求，回报方式可以是多样的，如产品预购，独特的感谢方式等。
 			</div>
 			<div class="item">
 				<div class="label">
-					文件标题:<span>*</span>
+					资金总额:
 				</div>
 				<div class="item_info">
-					<input name="talenttitle" type="input" class="w300">
-					<!--
-					<input name="date" type="hidden" >
-					-->
-					<br>
-					<span class="help">请输入标题，一个响亮明了的标题可以吸引更多人的关注。</span>
-					
-					
+				
+					<input name="" class="w50" type="text"> 元
+								
 				</div>
 			</div>
-								
-			<script> 
-				var editor;
-				KindEditor.ready(function(K) {
-				editor = K.create('textarea[name="talentcontent"]', {
-				resizeType : 1,
-				allowPreviewEmoticons : false,
-				allowImageUpload : true,
-				items : [
-					'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-					'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-					'insertunorderedlist', '|', 'emoticons', 'image', 'link']
-					});
-				});
-			</script> 
-				
 			<div class="item">
-				<div class="label">	
-					文件内容:<span>*</span>
+				<div class="label">
+					募资天数:
 				</div>
 				<div class="item_info">
-					<textarea name="talentcontent" style="width:810px;height:300px;visibility:hidden;"></textarea>
-					<span class="help" id="textspan"></span>
+				
+					<input name="" class="w50" type="text"> 天
+								
 				</div>
-			</div>	
+			</div>
+			<div id="inv_list">
+				<input type="hidden" name="inv_count" value="0" />
+				
+			</div>
+			<div class="add_inv">
+				<input type="button" id="add_inv" class="button" style="width:100px;" value="增加一个支持" />
+			</div>
+				
 		</div>
 		
 		<div style="display:none;">
@@ -274,8 +303,7 @@
 					
 					<br>
 					<span class="help">请输入标题，一个响亮明了的标题可以吸引更多人的关注。</span>
-				
-					
+						
 				</div>
 			</div>			
 						

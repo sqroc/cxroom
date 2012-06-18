@@ -51,6 +51,24 @@
 
     .item .item_info .w300{width:300px;}
     .item .item_info .help{color:#999;line-height:30px;text-align:left;padding:0;}
-    
 
-    
+    .w50{width:50px;}
+    .inv_item{margin:20px 20px 20px 110px;clear:both;border:1px #eee solid;overflow:hidden;}
+        .inv_item{}
+        .inv_item .form{float:left;width:480px;padding:10px 0;}
+        .inv_item .form .inv_info{width:100%;clear:both;padding:10px 0;overflow:hidden;}
+        .inv_item .form .inv_info .inv_label{float:left;width:70px;height:28px;padding-left:10px;line-height:28px;text-align:center;}
+        .inv_item .form .inv_info .inv_input{float:right;width:390px;}
+        .inv_item .form .inv_info .inv_input textarea{width:360px;height:80px;}
+        .inv_item .pre_invest{float:right;width:340px;background:#F2F8DE;border-left:1px #DEEFB6 solid;height:240px;}   
+        .inv_item .pre_invest .inv_title{font-size:18px;margin:20px;}
+        .inv_item .pre_invest .inv_title span{}
+        .inv_item .pre_invest .inv_sup{margin:0 20px;}
+        .inv_item .pre_invest .inv_content{margin:20px;} 
+        
+    .add_inv{margin:20px 20px 20px 110px;}
+
+    .select{}
+        .select li{padding:5px 10px;border:2px #f2f2f2 solid;display:inline;margin-right:20px;color:#999;cursor:pointer;}
+        .select li:hover{border:2px #66CC00 solid;}
+        .select .selected{border:2px #66CC00 solid;color:#444;}

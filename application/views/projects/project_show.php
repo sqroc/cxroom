@@ -14,10 +14,10 @@
 		</div>
 		<div class="tabs">
 			<ul class="menu">
-				<li id="tab_news" class="tab current">动态</li>
-				<li id="tab_intro" class="tab normal">简介</li>
+				<li id="tab_news" class="tab <?php if($projectmessage != NULL){echo 'current';}else{echo 'normal';} ?>">动态</li>
+				<li id="tab_intro" class="tab <?php if($projectmessage == NULL){echo 'current';}else{echo 'normal';} ?>">简介</li>
 				<?php if(!empty($project->talentcontent)): ?>
-				<li id="tab_talent" class="tab normal">招募</li>
+				<li id="tab_talent" class="tab normal"><?=$project->talenttitle?></li>
 				<? endif;?>
 				<?php if(!empty($project->investcontent)): ?>
 				<li id="tab_invest" class="tab normal">募资</li>
@@ -88,30 +88,30 @@
 			function send_reply(){
 				$('.sendpm').click(function(){
 					
-			//ajax
-			var pmrecontent  =  add_br( $("#reply_content").attr("value") );
-			
-			var promid  = $(this).attr('id');
-			var url = "<?=base_url()?>projects/addProjectmessage_reply";
-			$.post(url, {
-			pmrecontent : pmrecontent,
-			promid : promid
-			},
-			function(data) {
-				if(data.state == 'ok') {
-					alert('评论成功!');
-				} else {
-					alert("回复评论失败，请检查网络后重试！");
-				}
-			}, "json");
+					//ajax
+					var pmrecontent  =  add_br( $("#reply_content").attr("value") );
+					
+					var promid  = $(this).attr('id');
+					var url = "<?=base_url()?>projects/addProjectmessage_reply";
+					$.post(url, {
+					pmrecontent : pmrecontent,
+					promid : promid
+					},
+					function(data) {
+						if(data.state == 'ok') {
+							warm_dialog('ok', '评论成功!');
+						} else {
+							warm_dialog('no', "回复评论失败，请检查网络后重试！");
+						}
+					}, "json");
 				});
 			}
 		</script>	
-		<div class="box_tab" id="box_tab_news">
+		<div class="box_tab" id="box_tab_news" style="display:<?php if($projectmessage == NULL){echo 'none';}else{echo 'block';} ?>;">
 			
 			<ul class="newslist">
 				<?php foreach($projectmessage as $item): ?>
-				<li>
+				<li id="<?=$item->promid?>">
 					<div class="author_pic">
 						<img src="<?=base_url()?><?=$item->person_pic?>" />
 					</div>
@@ -122,7 +122,7 @@
 					
 						</div>
 						<div class="new_info">
-							<span class="date">第<? $nowtime = time();echo ceil(($nowtime-$item->pmdate)/(60*60*24));?>天</span>
+							<span class="date"><? $nowtime = time();echo ceil(($nowtime-$item->pmdate)/(60*60*24));?>天前</span>
 							<span class="reply write_reply" id="<?=$item->promid?>"><a href="javascript:void(0)">评论(<?=$item->replynum?>)</a></span>
 							
 						</div>
@@ -135,7 +135,7 @@
 					<?php echo $this->pagination->create_links();?>
 			</div>
 		</div>
-		<div class="box_tab content" id="box_tab_intro" style="display:none;">
+		<div class="box_tab content" id="box_tab_intro" style="display:<?php if($projectmessage == NULL){echo 'block';}else{echo 'none';} ?>;">
 			<?= $project->pintro?>
 		</div>
 		<div class="box_tab content" id="box_tab_talent" style="display:none">

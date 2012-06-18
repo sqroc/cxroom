@@ -23,11 +23,11 @@
 			</div>
 			
 			<div class="places green_r text_r" style="left:180px;top:80px;">
-				<a href="<?=base_url() ?>projects" title="创业园">创业园</a>
+				<a href="<?=base_url() ?>projects" title="项目窝">创业园</a>
 			</div>
 			
 			<div class="places red_r text_r" style="left:250px;top:170px;">
-				<a href="<?=base_url() ?>eggs" title="创意街">创意街</a>
+				<a href="<?=base_url() ?>eggs" title="创意蛋">创意街</a>
 			</div>
 			<div class="preview">
 				<div class="arrow"></div>
@@ -114,7 +114,7 @@
 			</div>
 			<div class="s_intro">
 				<p>
-				创业园位于城市最繁华的地段，作为创新城的创新心脏，这里汇聚了大量的潜力项目，每天都有无数的人来这里寻找机遇。
+				项目窝位于城市最繁华的地段，作为创新城的创新心脏，这里汇聚了大量的潜力项目，每天都有无数的人来这里寻找机遇。
 				</p>
 			</div>
 		</div>
@@ -124,7 +124,7 @@
 			</div>
 			<div class="s_intro">
 				<p>
-				创意街与创业园相邻，这里聚集了大量充满创新精神的年轻人，他们每天聚集在这里，探讨发现新的创意，并为创业园提供源源不断的动力。
+				创意蛋与项目窝相邻，这里聚集了大量充满创新精神的年轻人，他们每天聚集在这里，探讨发现新的创意，并为项目窝提供源源不断的动力。
 				</p>
 			</div>
 		</div>

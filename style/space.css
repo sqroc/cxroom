@@ -93,12 +93,7 @@ main body
 	.item .item_info .help{color:#999;line-height:30px;text-align:left;padding:0;}
 	
 	
-	.form_title{margin:20px 0 20px 0;clear:both;background:url(../images/cate/bg_project_index.png) repeat-x 0 -97px;border-left:1px #ccc solid;height:36px;overflow:hidden;}
-	.form_title span{font-weight:bold;color:#666;display:block;border-top:1px #ccc solid;border-right:1px #ccc solid;width:120px;text-align:center;}
-	.form_title .normal{background:url(../images/cate/bg_project_index.png) repeat-x 0 -151px #ECECEC;line-height:34px;height:34px;}
-	.form_title .current{height:36px;background:#fff;border-bottom:1px #fff solid;line-height:36px;background:url(../images/cate/bg_project_index.png) repeat-x 0 -201px;}
-	.form_title span a{color:#666;text-decoration:none;}
-	
+
 	
 	/*for index*/
 	#mymess, #skills, .spacecol,.user_info,.short_intro{margin:20px 20px 0 20px;}
@@ -127,7 +122,8 @@ main body
         .text{width:546px;height:60px;border:1px #ccc solid;background:#fff;font-size:14px;border-radius:2px;}
         .text_top{width:100%;overflow:hidden;padding-bottom:10px;}
         .text_top h2{float:left;font-size:16px;font-weight:normal;font-family:'MicroSoft YaHei', SimHei}
-        .text_top .r{float:right;width:100px;text-align:right;}
+        .text_top .r{float:right;width:180px;text-align:right;color:#e1e1e1;}
+
         .text_bottom{width:100%;padding:5px 0 0 0;overflow:hidden;font-size:14px;}
         .text_bottom .check_tab{cursor:pointer;display:block;float:left;height:22px;line-height:22px;padding:2px 5px 2px 20px;margin-left:10px;}
         .text_bottom .check_tab_on{cursor:pointer;}
@@ -237,6 +233,11 @@ main body
 	.userinfo #photo .header_photo{width:36px;border:1px #e1e1e1 solid;padding:2px;}
 	.userinfo .pic_form{margin:20px;}
 	.userinfo .pic_form .select{margin-left:10px;padding:4px;}
+	
+	.form_title{margin:20px 20px 20px 0px;clear:both;background:url(../images/cate/bg_project_index.png) repeat-x 0 -97px;border-left:1px #ccc solid;height:36px;overflow:hidden;}
+    .form_title span{cursor:pointer;font-weight:bold;color:#666;display:block;border-top:1px #ccc solid;border-right:1px #ccc solid;width:120px;text-align:center;}
+    .form_title .normal{background:url(../images/cate/bg_project_index.png) repeat-x 0 -151px #ECECEC;line-height:34px;height:34px;}
+    .form_title .current{height:36px;background:#fff;border-bottom:1px #fff solid;line-height:36px;background:url(../images/cate/bg_project_index.png) repeat-x 0 -201px;}
 	
 	
 	

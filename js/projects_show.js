@@ -29,7 +29,7 @@ function add_reply(){
 			send_reply();
 			var url = BASE_URL + 'projects/getProjectmessage_reply';
 			$.get(url, {
-					promid : mid,
+					promid : mid
 			}, function(data){
 				var tmp = "";
 				var c = ""	;

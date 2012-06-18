@@ -31,9 +31,10 @@
 			<div class="new_egg">
 				<a href="<?=base_url()?>eggs/new_topic"> </a>
 			</div>
+			<!--
 			<div class="new_project">
 				<a href="<?=base_url()?>space/objects_form"> </a>
-			</div>
+			</div>-->
 		</div>
 		
 		<!--
@@ -66,7 +67,7 @@
 			});
 		</script>
 		-->
-			
+			<!--
 		<div class="infobox">
 			<h3 class="side_title close">创业词条</h3>
 			<div class="slidebox">
@@ -79,7 +80,7 @@
 				</p>
 				
 			</div>
-		</div>
+		</div>-->
 	
 		<div class="infobox" id="pcontact">
 			<h3 class="side_title close">联系方式</h3>

@@ -11,6 +11,7 @@
 			<div class="text_top">
 				<h2 id="t_h">发条短信给好友 分享讨论你们的创意</h2>
 				<div class="r">
+					<a href="<?= base_url() ?>/projects/ourblog">创新空间的动态</a> | 
 					<a href="<?= base_url() ?>/user_space/uid/<?=$userreply->uid?>">我的客厅</a>
 				</div>
 			</div>		

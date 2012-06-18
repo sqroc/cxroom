@@ -12,6 +12,8 @@ $(document).ready(function(){
 	blur_logo();
 	blur_ad();
 	blur_aim();
+	select();
+	add_inv();
 });
 
 function next(){
@@ -192,5 +194,72 @@ function pass(obj, msg){
 	var s = obj.nextAll('span');
 	s.css('color', '#999');
 	s.text(msg);
+}
+
+function select(){
+	$('.select li').click(function(){
+		$('.select li').removeClass('selected');
+		$(this).addClass('selected');
+		var val = $(this).text();
+		var id = $(this).parent().attr('id');
+		$('#input_' + id).val(val);
+		$('#needcontent').css('display', 'block');
+	});
+}
+
+//
+function add_inv(){
+	$('#add_inv').click(function(){
+		add_invest();
+	});
+}
+
+var inv_n = 1;
+function  add_invest(){
+	//input name定义
+	var name_money = "money";
+	var name_limit = "limit";
+	var name_gift = "gift";
+	
+	var tmp_form = inv_form({
+		"money"		: 		name_money + inv_n,
+		"limit"		: 		name_limit + inv_n,
+		"gift"		: 		name_gift + inv_n		
+	}); 
+	
+	var tmp_pre = inv_pre();
+	var tmp = '<div class="inv_item">' + tmp_form + tmp_pre + '</div>';
+	
+	$('input[name="inv_count"]').val(inv_n);
+	inv_n++;
+	
+	$('#inv_list').append(tmp);
+	inv_change();
+}
+
+function inv_form(items){
+	
+	var tmp1 = '<div class="inv_info"><div class="inv_label">支持金额:</div><div class="inv_input"><input type="text" class="w50 m" name="' + items.money + '" value=""/> 元</div></div>';
+	var tmp2 = '<div class="inv_info"><div class="inv_label">上限人数:</div><div class="inv_input"><input type="text" class="w50 l" name="' + items.limit + '" value=""/> 人</div></div>';
+	var tmp3 = '<div class="inv_info"><div class="inv_label">支持回馈:</div><div class="inv_input"><textarea class="inv_text" name="' + items.gift + '"></textarea></div></div>';
+	return '<div class="form">' + tmp1 + tmp2 + tmp3 + '</div>';
+}
+
+function inv_pre(){
+	return '<div class="pre_invest"><div class="inv_title">支持 <span>0</span> 元</div><div class="inv_sup">支持 <span>0</span> 人 剩余 <span>0</span> 个名额</div><div class="inv_content"><p>回馈内容</p></div></div><div class="clear0"></div>';
+}
+
+function inv_change(){
+	$('.inv_text').keyup(function(){
+	
+		var f = $(this).parents('.inv_item');
+		var c = f.find('textarea').val();
+		var m = f.find('.m').val();
+		var l = f.find('.l').val();
+		
+		f.find('.inv_content').html('<p>' + c + '</p>');
+		f.find('.inv_title').find('span').text(m);
+		f.find('.inv_sup').find('span:last').text(l);
+	});
 }
 
