@@ -269,7 +269,7 @@
 				</div>
 				<div class="item_info">
 				
-					<input name="" class="w50" type="text"> 元
+					<input name="wantvalue" class="w50" type="text"> 元
 								
 				</div>
 			</div>
@@ -279,7 +279,7 @@
 				</div>
 				<div class="item_info">
 				
-					<input name="" class="w50" type="text"> 天
+					<input name="finishdate" class="w50" type="text"> 天
 								
 				</div>
 			</div>

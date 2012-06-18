@@ -1,3 +1,16 @@
+2012.6.18
+CREATE TABLE  `innovation`.`project_paylist` (
+`pplistid` INT NOT NULL AUTO_INCREMENT ,
+`pid` INT NOT NULL ,
+`supportvalue` DECIMAL( 10, 2 ) NOT NULL ,
+`pnum` INT NOT NULL ,
+`backcontent` TEXT NOT NULL ,
+PRIMARY KEY (  `pplistid` )
+) ENGINE = INNODB
+
+
+
+
 2012.6.11
 CREATE TABLE  `innovation`.`project_pay` (
 `ppayid` INT NOT NULL AUTO_INCREMENT ,

@@ -7,6 +7,7 @@ class Projects_model extends CI_Model {
 	function add($attach, $logopic) {
 		$data['uid'] = $this -> session -> userdata('uid');
 		$data['name'] = $this -> input -> post('name');
+		$inv_count = $this -> input -> post('inv_count');
 		$data['isgetmember'] = $this -> input -> post('isgetmember');
 		$data['isinvest'] = $this -> input -> post('isinvest');
 		$data['pclassid'] = $this -> input -> post('pclassid');
@@ -30,7 +31,7 @@ class Projects_model extends CI_Model {
 				if ($hiddennum == 1) {
 					$data2['email'] = $this -> input -> post('member_1');
 					$data2['uid'] = $this -> Users_model -> queryuser_byemail($data2['email']);
-				
+
 					if (isset($data2['uid'])) {
 						$data2['role'] = $this -> input -> post('role_1');
 						if ($this -> db -> insert('promember', $data2)) {
@@ -40,7 +41,7 @@ class Projects_model extends CI_Model {
 						}
 					}
 				} else {
-					for ($i = 1; $i <= $hiddennum-1; $i++) {
+					for ($i = 1; $i <= $hiddennum - 1; $i++) {
 						$memberstr = "member_" . $i;
 						$rolestr = "role_" . $i;
 						$data2['email'] = $this -> input -> post($memberstr);
@@ -52,6 +53,32 @@ class Projects_model extends CI_Model {
 							return FALSE;
 						}
 					}
+				}
+				if ($inv_count > 0) {
+					for ($i = 1; $i <= $inv_count; $i++) {
+						$money = "money" . $i;
+						$limit = "limit" . $i;
+						$gift = "gift" . $i;
+						$datapaylist['pid'] = $new_id_number;
+						$datapaylist['supportvalue'] = $this -> input -> post($money);
+						$datapaylist['pnum'] = $this -> input -> post($limit);
+						$datapaylist['backcontent'] = $this -> input -> post($gift);
+						if ($this -> db -> insert('project_paylist', $datapaylist)) {
+
+						} else {
+							return FALSE;
+						}
+					}
+				}
+				$datapay['pid'] = $new_id_number;
+				$datapay['wantvalue'] = $this -> input -> post('wantvalue');
+				$daynum = $this -> input -> post('finishdate');
+				$finishdate2 = time() + ($daynum * 24 * 60 * 60);
+				$datapay['finishdate'] = $finishdate2;
+				if ($this -> db -> insert('project_pay', $datapay)) {
+
+				} else {
+					return FALSE;
 				}
 				//创新度+50
 				$this -> db -> where('uid', $this -> session -> userdata('uid'));
@@ -947,8 +974,7 @@ class Projects_model extends CI_Model {
 			return FALSE;
 		}
 	}
-	
-	
+
 	/*
 	 * 获得对应id的空间动态评论
 	 */
@@ -956,7 +982,7 @@ class Projects_model extends CI_Model {
 		$promid = $this -> input -> get('promid');
 		$sql = "SELECT * FROM  project_message_reply,user  where user.uid=project_message_reply.reuid and project_message_reply.promid=" . $promid;
 		$query = $this -> db -> query($sql);
-		return $query->result();
+		return $query -> result();
 	}
 
 }
