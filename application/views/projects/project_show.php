@@ -148,9 +148,10 @@
 		
 	</div>
 	<div class="right_box">
+		<!--
 		<div class="inte no">
 			点亮的为专访项目
-		</div>
+		</div>-->
 		<div class="clap">
 			<ul>
 				<li><span class="num"><?= $days?></span>天数</li>
@@ -159,16 +160,30 @@
 				<!--<li><span class="num">12</span>人加入</li>-->
 			</ul>
 		</div>
-		<div class="line">
-				
+		<!--
+		<div class="line">		
 			<div class="p_line">
-				<div class="inside time<?php echo ceil($days/100);?>" style="width:<?php echo $days%100;?>%;"></div>
-			</div>
-			
-			<div class="p_line hot_line">
-				<div class="inside hot" style="width:<?php echo $project->applaudnumber / $days *100;?>%;"></div>
-			</div>
+				<div class="inside time1" style="width:50%;"></div>
+			</div>			
 		</div>
+		
+		<div class="invest_info">
+			支持累计￥500 (50%)<br />
+			剩余30天
+		</div>
+		<div class="invest_box">
+			<div class="inv_title">支持￥200</div>
+			<div class="inv_sup">剩余20个名额</div>
+			<div class="inv_content">入片尾感谢名单并且可以获得视频加密下载链接。（请留下您的邮件地址）</div>
+			<div class="inv_button">支持￥20</div>
+		</div>
+		<div class="invest_box">
+			<div class="inv_title">支持￥200</div>
+			<div class="inv_sup">剩余20个名额</div>
+			<div class="inv_content">支持回馈内容</div>
+			<div class="inv_button">支持￥4238</div>
+		</div>
+		-->
 		<div class="side_title">
 			团队成员
 		</div>
