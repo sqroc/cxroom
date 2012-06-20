@@ -160,30 +160,26 @@
 				<!--<li><span class="num">12</span>人加入</li>-->
 			</ul>
 		</div>
-		<!--
+
 		<div class="line">		
 			<div class="p_line">
-				<div class="inside time1" style="width:50%;"></div>
+				<div class="inside time1" style="width:<?= ($project_pay[0]->nowvalue)/($project_pay[0]->wantvalue)*100 ?>%;"></div>
 			</div>			
 		</div>
 		
 		<div class="invest_info">
-			支持累计￥500 (50%)<br />
-			剩余30天
+			支持累计￥<?= $project_pay[0]->nowvalue?> (<?= ($project_pay[0]->nowvalue)/($project_pay[0]->wantvalue)*100 ?>%)<br />
+			剩余<? echo ceil(($project_pay[0]->finishdate - time()) / (60 * 60 * 24));?>天
 		</div>
+		<?php foreach($project_paylist as $item): ?>
 		<div class="invest_box">
-			<div class="inv_title">支持￥200</div>
-			<div class="inv_sup">剩余20个名额</div>
-			<div class="inv_content">入片尾感谢名单并且可以获得视频加密下载链接。（请留下您的邮件地址）</div>
-			<div class="inv_button">支持￥20</div>
+			<div class="inv_title">支持￥<?=$item->supportvalue?></div>
+			<div class="inv_sup">剩余<?=($item->pnum - $item->getnum)?>个名额</div>
+			<div class="inv_content"><?=$item->backcontent?></div>
+			<div class="inv_button">支持￥<?=$item->supportvalue?></div>
 		</div>
-		<div class="invest_box">
-			<div class="inv_title">支持￥200</div>
-			<div class="inv_sup">剩余20个名额</div>
-			<div class="inv_content">支持回馈内容</div>
-			<div class="inv_button">支持￥4238</div>
-		</div>
-		-->
+		<?php endforeach; ?>
+		
 		<div class="side_title">
 			团队成员
 		</div>

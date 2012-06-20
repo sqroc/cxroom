@@ -130,8 +130,7 @@ class Projects_model extends CI_Model {
 						$rolestr = "role_" . $i;
 						$data3['uid'] = $this -> input -> post($memberstr);
 						$data3['role'] = $this -> input -> post($rolestr);
-						$data3['pid'] = $this -> input -> post('pid');
-						;
+						$data3['pid'] = $this -> input -> post('pid'); ;
 						if ($this -> db -> insert('promember', $data3)) {
 
 						} else {
@@ -981,6 +980,21 @@ class Projects_model extends CI_Model {
 	function getProjectmessage_reply() {
 		$promid = $this -> input -> get('promid');
 		$sql = "SELECT * FROM  project_message_reply,user  where user.uid=project_message_reply.reuid and project_message_reply.promid=" . $promid;
+		$query = $this -> db -> query($sql);
+		return $query -> result();
+	}
+
+	/*
+	 * 获得对应pid的项目支付统计
+	 */
+	function getproject_pay($pid) {
+		$sql = "SELECT * FROM  project_pay where pid=" . $pid;
+		$query = $this -> db -> query($sql);
+		return $query -> result();
+	}
+
+	function getproject_paylist($pid) {
+		$sql = "SELECT * FROM  project_paylist where pid=" . $pid;
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}

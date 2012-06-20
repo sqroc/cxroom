@@ -1,3 +1,8 @@
+2012.6.20
+
+ALTER TABLE  `project_paylist` ADD  `getnum` INT NOT NULL ;
+
+
 2012.6.18
 CREATE TABLE  `innovation`.`project_paylist` (
 `pplistid` INT NOT NULL AUTO_INCREMENT ,

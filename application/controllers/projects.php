@@ -189,6 +189,10 @@ class Projects extends CI_Controller {
 		//$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
 		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
 		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
+		
+		//支付相关
+		$data['project_pay'] =  $this -> Projects_model -> getproject_pay($pid);
+		$data['project_paylist'] =  $this -> Projects_model -> getproject_paylist($pid);
 		$this -> load -> view('header', $data);
 		$this -> load -> view('projects/project_show');
 		$this -> load -> view('footer2');
