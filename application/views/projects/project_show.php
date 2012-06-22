@@ -160,7 +160,7 @@
 				<!--<li><span class="num">12</span>人加入</li>-->
 			</ul>
 		</div>
-
+		
 		<div class="line">		
 			<div class="p_line">
 				<div class="inside time1" style="width:<?= ($project_pay[0]->nowvalue)/($project_pay[0]->wantvalue)*100 ?>%;"></div>
@@ -171,15 +171,16 @@
 			支持累计￥<?= $project_pay[0]->nowvalue?> (<?= ($project_pay[0]->nowvalue)/($project_pay[0]->wantvalue)*100 ?>%)<br />
 			剩余<? echo ceil(($project_pay[0]->finishdate - time()) / (60 * 60 * 24));?>天
 		</div>
+	
 		<?php foreach($project_paylist as $item): ?>
 		<div class="invest_box">
 			<div class="inv_title">支持￥<?=$item->supportvalue?></div>
 			<div class="inv_sup">剩余<?=($item->pnum - $item->getnum)?>个名额</div>
 			<div class="inv_content"><?=$item->backcontent?></div>
-			<div class="inv_button">支持￥<?=$item->supportvalue?></div>
+			<div class="inv_button" id="<?=$item->pplistid?>" title="<?=$item->supportvalue?>">支持￥<?=$item->supportvalue?></div>
 		</div>
 		<?php endforeach; ?>
-		
+	
 		<div class="side_title">
 			团队成员
 		</div>
@@ -197,4 +198,44 @@
 		
 	</div><!--rightbox-->
 </div>
+<script type="text/javascript">
+//invest
+function do_invest(){
+	$('.inv_button').click(function(){
+		var payvalue = $(this).attr('title');
+		var pplistid = $(this).attr('id');
+		var url = "<?=base_url()?>projects/projectpay";
+		$.post(url, {
+			payvalue : payvalue
+		},
+		function(data) {
+				if(data.state == 'ok') {
+					pop_dialog('支付提示', '您的账户余额充值，请确认支付！', function(){
+						var pid = <?=$projectpid ?>;
+						var url = "<?=base_url()?>projects/projectpayit";
+						$.post(url, {
+							pid : pid,
+							payvalue : payvalue,
+							pplistid : pplistid
+						},
+						function(data) {
+							if(data.state == 'ok') {
+								alert('支付成功！');
+							}else{
+								alert('支付失败，请及时与网站客服联系了解详情！');
+							}
+						}, "json");	
+						});
+					
+				} else {
+					pop_dialog('支付提示', '您的账户余额不足，请充值后再进行投资。<a href="<?=base_url()?>space/payment" target="_blank">点此充值</a>', function(){
+						alert('请您先充值后再进行支付！');
+						});
+				}
+			}, "json");
+		
+	});
+}
 
+
+</script>	

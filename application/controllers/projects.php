@@ -54,7 +54,7 @@ class Projects extends CI_Controller {
 		$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
 		$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
 		$this -> load -> view('header', $data);
-		$this -> load -> view('projects/project_home');
+		$this -> load -> view('projects/home');
 		//$this -> load -> view('projects/project_sidebar');
 		$this -> load -> view('footer2');
 	}
@@ -155,6 +155,7 @@ class Projects extends CI_Controller {
 			$data['prousers'] = $this -> Projects_model -> showUsersByPid($this -> uri -> segment(3, 0));
 		}
 		$pid = $data['project'] -> pid;
+		$data['projectpid'] = $data['project'] -> pid;
 		$data['commentNumber'] = $this -> Messages_model -> getpcommentnumber($pid);
         $data['title'] = $data['project'] -> name."-项目主页-创新空间";
 		//分页配置开始
@@ -413,6 +414,22 @@ class Projects extends CI_Controller {
 	public function getMyjoinpro(){
 		$data = $this -> Projects_model -> showJoinProjectIndex();
 		echo json_encode($data);
+	}
+	
+	public function projectpay() {
+		if ($this -> Projects_model -> projectpay()) {
+			echo json_encode(array("state" => "ok"));
+		} else {
+			echo json_encode(array("state" => "no"));
+		}
+	}
+	
+	public function projectpayit() {
+		if ($this -> Projects_model -> projectpayit()) {
+			echo json_encode(array("state" => "ok"));
+		} else {
+			echo json_encode(array("state" => "no"));
+		}
 	}
 
 }

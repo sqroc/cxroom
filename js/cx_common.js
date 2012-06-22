@@ -193,7 +193,8 @@ function t_popmenu(father, content, width){
     var left = f.offset().left;
      
     if($('#t_slide_'+i).length == 0){
-    	$('body').append('<div class="t_slide_menu" id="t_slide_' + i + '" style="display:none;width:' + width + 'px;">' + content + '</div>');
+    	$('body').append('<div class="t_slide_menu" id="t_slide_' + i + '" style="display:none;width:' + width + 'px;"></div>');
+    	$('#t_slide_' + i).html(content);
 	    $('#t_slide_'+i).css({
 	    	'left'	: 	left,
 	    	'top' 	: 	top + f_h + 10
@@ -213,4 +214,31 @@ function t_popmenu(father, content, width){
     $('body').click(function(){
     	$('.t_slide_menu').slideUp('fast');
     });
+}
+//popdialog
+function pop_dialog(title, content, func){
+	var tmp_top = '<div class="box_top"><span class="replyto">' + title + '</span><span class="pop_cancel close_dialog"></span></div>';
+	var tmp_bottom = '<div class="item_box"><div class="little_button_g pop_cancel">取 消</div><div class="little_button pop_ok">确 定</div><div class="clear0"></div></div>';
+	var tmp = '<div class="pop_dialog"><div class="box">'+tmp_top+'<div class="content">'+content+'</div>'+tmp_bottom+'</div></div>';
+	$('body').append(tmp);
+	
+	var h = $(document).height();
+	var t = document.documentElement.scrollTop || document.body.scrollTop;
+	var top = $(window).height()/2-80;
+	
+	$('.pop_dialog').css('height', h).find('.box').css('margin-top', t + top);
+	
+	$('#pop_cancel').click(function(){
+		$('.pop_dialog').remove();
+	});
+	
+	$('.pop_cancel').click(function(){
+		$('.pop_dialog').remove();
+	});
+	
+	$('.pop_ok').click(function(){
+		func();
+		$('.pop_dialog').remove();
+	});
+
 }

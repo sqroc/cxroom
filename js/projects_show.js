@@ -2,6 +2,7 @@ $(document).ready(function(){
 	tabs();
 	userinfo();
 	add_reply();
+	do_invest();
 })
 
 function tabs(){
@@ -83,3 +84,5 @@ function check_content(content){
 		return true;
 	}
 }
+
+

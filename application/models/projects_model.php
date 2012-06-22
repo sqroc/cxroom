@@ -998,6 +998,51 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
+	
+	function projectpay() {
+		$payvalue = $this -> input -> post('payvalue');
+		$uid = $this -> session -> userdata('uid');
+		$sql = "SELECT * FROM  money where uid=" . $uid;
+		$query = $this -> db -> query($sql);
+		foreach ($query->result() as $row) {
+			if($row->value> $payvalue){
+				return TRUE;
+			}else{
+				return FALSE;
+			}
+		}
+		
+	}
+	
+	//项目支付
+	function projectpayit() {
+		$payvalue = $this -> input -> post('payvalue');
+		$data['pid'] = $this -> input -> post('pid');
+		$data['pplistid'] = $this -> input -> post('pplistid');
+		$data['uid'] = $this -> session -> userdata('uid');
+		$this -> db -> where('uid', $data['uid']);
+		if ($this -> db -> set('value', 'value-'.$payvalue, false) -> update('money')) {
+			$this -> db -> where('pid', $data['pid']);
+			$this -> db -> set('nowvalue', 'nowvalue+'.$payvalue, false) -> update('project_pay');
+			$this -> db -> where('pplistid', $data['pplistid']);
+			$this -> db -> set('getnum', 'getnum+1', false) -> update('project_paylist');
+			//增加支付订单记录
+			$dataorder['pid'] = $data['pid'];
+			$dataorder['uid'] = $data['uid'];
+			$dataorder['payvalue'] = $payvalue;
+			$dataorder['adddate'] = time();
+			$dataorder['orderstate'] = '0';
+			$dataorder['isfinish'] = 0;
+			if ($this -> db -> insert('project_payorder', $dataorder)) {
+				return TRUE;
+			}else{
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+		
+	}
 
 }
 ?>
