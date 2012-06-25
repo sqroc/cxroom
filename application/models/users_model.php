@@ -211,7 +211,7 @@ class Users_model extends CI_Model {
 			return FALSE;
 		}
 	}
-	
+
 	//add by tgoooo
 	function add_c_byuid() {
 		$data['ctype'] = $this -> input -> post('ctype');
@@ -271,7 +271,7 @@ class Users_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
-	
+
 	//调用全部好友add by tgoooo
 	function querymyuser() {
 		$uid = $this -> session -> userdata('uid');
@@ -314,13 +314,13 @@ class Users_model extends CI_Model {
 			return $row;
 		}
 	}
-	
+
 	function queryuser_byemail($email) {
 		$data['contact_email'] = $email;
 		$sql = "SELECT * FROM user WHERE contact_email = ? ";
 		$query = $this -> db -> query($sql, $data);
 		foreach ($query->result() as $row) {
-			return $row->uid;
+			return $row -> uid;
 		}
 	}
 
@@ -396,7 +396,7 @@ class Users_model extends CI_Model {
 			return $row;
 		}
 	}
-	
+
 	function queryusernineask_byuid($uid) {
 		$data['uid'] = $uid;
 		$sql = "SELECT * FROM question WHERE uid = ? ";
@@ -405,7 +405,7 @@ class Users_model extends CI_Model {
 			return $row;
 		}
 	}
-	
+
 	function queryuservalue_byuid($uid) {
 		$data['uid'] = $uid;
 		$sql = "SELECT * FROM money WHERE uid = ? ";
@@ -414,13 +414,57 @@ class Users_model extends CI_Model {
 			return $row;
 		}
 	}
-	
+
 	function queryuserpoint_byuid($uid) {
 		$data['uid'] = $uid;
 		$sql = "SELECT * FROM point WHERE uid = ? ";
 		$query = $this -> db -> query($sql, $data);
 		foreach ($query->result() as $row) {
 			return $row;
+		}
+	}
+
+	/*
+	 * 认证提交审核
+	 */
+	function checkauth() {
+		$data['realname'] = $this -> input -> post('realname');
+		$data['email'] = $this -> input -> post('email');
+		$data['object'] = $this -> input -> post('object');
+		$data['intro'] = $this -> input -> post('intro');
+		$data['uid'] = $this -> session -> userdata('uid');
+		$data['adddate'] = time();
+		$data['isallow'] = 0;
+		if ($this -> db -> insert('authentication', $data)) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
+	function select_num_rowsAll_auth() {
+		$query = $this -> db -> query("SELECT * FROM authentication");
+		return $query -> num_rows();
+	}
+
+	function showAuthsByLimitAll($offset, $num) {
+		$sql = "SELECT * FROM authentication order by authid desc limit " . $offset . "," . $num;
+		$query = $this -> db -> query($sql);
+		return $query -> result();
+	}
+	
+	function auth_allow($authid) {
+		$data['isallow'] = 1;
+		$where = "authid = '" . $authid . "'";
+		$str = $this -> db -> update_string('authentication', $data, $where);
+		if ($authid != NULL) {
+			if ($this -> db -> query($str)) {
+				return TRUE;
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
 		}
 	}
 

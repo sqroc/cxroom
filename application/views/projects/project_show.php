@@ -160,7 +160,7 @@
 				<!--<li><span class="num">12</span>人加入</li>-->
 			</ul>
 		</div>
-		
+		<?php if ($project_paylist != NULL): ?>
 		<div class="line">		
 			<div class="p_line">
 				<div class="inside time1" style="width:<?= ($project_pay[0]->nowvalue)/($project_pay[0]->wantvalue)*100 ?>%;"></div>
@@ -180,7 +180,7 @@
 			<div class="inv_button" id="<?=$item->pplistid?>" title="<?=$item->supportvalue?>">支持￥<?=$item->supportvalue?></div>
 		</div>
 		<?php endforeach; ?>
-	
+	<?php endif; ?>
 		<div class="side_title">
 			团队成员
 		</div>

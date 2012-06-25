@@ -1,3 +1,20 @@
+2012.6.25
+CREATE TABLE  `innovation`.`authentication` (
+`authid` INT NOT NULL AUTO_INCREMENT ,
+`email` VARCHAR( 255 ) NOT NULL ,
+`realname` VARCHAR( 50 ) NOT NULL ,
+`object` VARCHAR( 50 ) NOT NULL ,
+`intro` TEXT NOT NULL ,
+`adddate` INT( 10 ) NOT NULL ,
+`isallow` TINYINT( 1 ) NOT NULL ,
+PRIMARY KEY (  `authid` )
+) ENGINE = INNODB
+
+ALTER TABLE  `authentication` ADD  `uid` INT NOT NULL ;
+
+
+
+
 2012.6.20
 
 ALTER TABLE  `project_paylist` ADD  `getnum` INT NOT NULL ;

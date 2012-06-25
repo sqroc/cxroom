@@ -101,7 +101,7 @@ class Cx_admin extends CI_Controller {
 		}
 
 	}
-	
+
 	public function project_rec_delete() {
 		$pid = $this -> uri -> segment(4, 0);
 		if ($this -> Projects_model -> project_rec_delete($pid)) {
@@ -119,7 +119,7 @@ class Cx_admin extends CI_Controller {
 		}
 
 	}
-	
+
 	public function project_rec() {
 		$pid = $this -> uri -> segment(4, 0);
 		if ($this -> Projects_model -> project_rec($pid)) {
@@ -397,7 +397,7 @@ class Cx_admin extends CI_Controller {
 		$this -> load -> view('admin/admin_article_add');
 		//$this->load->view('footer');
 	}
-	
+
 	public function article_edit() {
 		$sta = $this -> session -> userdata('admin');
 		$data = array();
@@ -428,7 +428,7 @@ class Cx_admin extends CI_Controller {
 			$this -> load -> view("wrong", $data);
 		}
 	}
-	
+
 	public function article_update() {
 		$sta = $this -> session -> userdata('admin');
 		$data = array();
@@ -447,8 +447,7 @@ class Cx_admin extends CI_Controller {
 			$this -> load -> view("wrong", $data);
 		}
 	}
-	
-	
+
 	public function code_list() {
 		$sta = $this -> session -> userdata('admin');
 		$data = array();
@@ -456,12 +455,12 @@ class Cx_admin extends CI_Controller {
 			redirect('admin/cx_admin');
 		}
 		$data['codes'] = $this -> Users_model -> code_list();
-		
+
 		$this -> load -> view('admin/admin_header', $data);
 		$this -> load -> view('admin/admin_codes');
 		//$this->load->view('footer');
 	}
-	
+
 	public function createcodes() {
 		$sta = $this -> session -> userdata('admin');
 		$data = array();
@@ -480,7 +479,7 @@ class Cx_admin extends CI_Controller {
 			$this -> load -> view("wrong", $data);
 		}
 	}
-	
+
 	public function add_msg() {
 		$sta = $this -> session -> userdata('admin');
 		$data = array();
@@ -494,7 +493,7 @@ class Cx_admin extends CI_Controller {
 			$this -> load -> view('admin/admin_msg_add');
 		}
 	}
-	
+
 	//add by tgoooo
 	public function c_add() {
 		$sta = $this -> session -> userdata('admin');
@@ -503,12 +502,12 @@ class Cx_admin extends CI_Controller {
 			redirect('admin/cx_admin');
 		}
 		//$data['codes'] = $this -> Users_model -> code_list();
-		
+
 		$this -> load -> view('admin/admin_header', $data);
 		$this -> load -> view('admin/admin_c_add');
 		//$this->load->view('footer');
 	}
-	
+
 	//add by tgoooo
 	public function c_add_func() {
 		$sta = $this -> session -> userdata('admin');
@@ -527,6 +526,63 @@ class Cx_admin extends CI_Controller {
 			$data = array('title' => '友情提示', 'warm' => '发生错误！', 'pic' => 'wrong.gif');
 			$this -> load -> view("wrong", $data);
 		}
+	}
+
+	public function authentication_list() {
+		$sta = $this -> session -> userdata('admin');
+		$data = array();
+		if (!isset($sta) || $sta != "login_ok") {
+			redirect('admin/cx_admin');
+		} else {
+
+		}
+		//分页配置开始
+		$config['base_url'] = base_url() . 'admin/cx_admin/authentication_list/';
+		$config['total_rows'] = $this -> Users_model -> select_num_rowsAll_auth();
+		$config['per_page'] = 5;
+		$config['uri_segment'] = 4;
+		$config['full_tag_open'] = '<ul>';
+		$config['full_tag_close'] = '</ul>';
+		$config['first_link'] = '第一页';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['last_link'] = '最后一页';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		$config['next_link'] = '下一页';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_link'] = '上一页';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="current_page">';
+		$config['cur_tag_close'] = '</li>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$this -> pagination -> initialize($config);
+		//分页配置结束
+		$data['auths'] = $this -> Users_model -> showAuthsByLimitAll($this -> uri -> segment(4, 0), $config['per_page']);
+		$this -> load -> view('admin/admin_header', $data);
+		$this -> load -> view('admin/authentication');
+		//$this->load->view('footer');
+	}
+
+	public function auth_allow() {
+		$authid = $this -> uri -> segment(4, 0);
+		if ($this -> Users_model -> auth_allow($authid)) {
+			$data_notice['information'] = "认证审核通过！该页面将在三秒后自动跳转...";
+			$data_notice['url'] = base_url() . "/admin/cx_admin/authentication_list";
+			$data_notice['title'] = "提示信息";
+			$data_notice['mode'] = "yes";
+			$this -> load -> view('common_notice', $data_notice);
+		} else {
+			$data_notice['information'] = "认证审核失败！该页面将在三秒后自动跳转...";
+			$data_notice['url'] = base_url() . "/admin/cx_admin/authentication_list";
+			$data_notice['title'] = "提示信息";
+			$data_notice['mode'] = "no";
+			$this -> load -> view('common_notice', $data_notice);
+		}
+
 	}
 
 }

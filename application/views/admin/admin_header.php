@@ -102,6 +102,7 @@ function show_saying(){
 		<ul>
 			
 			<li class="bornone"><a href="<?=base_url()?>admin/cx_admin/code_list">邀请码管理</a>
+			<li class="bornone"><a href="<?=base_url()?>admin/cx_admin/authentication_list">用户认证审核</a>
 		
 		</ul>
 	</div>
