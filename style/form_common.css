@@ -3,6 +3,12 @@
     .steps .step{width:189px;height:100%;float:left;border-left:1px #FAF9F9 solid;}
     .steps .s_bor{border-right:1px #E2E0E0 solid;}
     .steps .s_cur{border-bottom:3px #85CF28 solid;height:77px}
+    
+.info_tabs{overflow:hidden;font-size:14px;cursor:pointer;}
+    .info_tabs ul{}
+    .info_tabs ul li{float:left;background:#f2f2f2;border:1px #eee solid;padding:20px 30px;
+                        margin-right:20px;}
+    .info_tabs ul .current{background:#fff;border-bottom:1px #fff solid;}
 
 .form_box{background:#fff;border:1px #eee solid;overflow:hidden;padding:30px 0;}
     .help_notice{margin:0 30px 15px 30px;border:1px #CEE1F6 solid;padding:10px 10px 10px 30px;

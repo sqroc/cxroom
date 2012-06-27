@@ -110,6 +110,7 @@ class Projects_model extends CI_Model {
 		$data['adddate'] = time();
 		$data['attach'] = $attach;
 		$data['logopic'] = $logopic;
+		$inv_count = $this -> input -> post('inv_count');
 		$str = $this -> db -> update_string('project', $data, $where);
 		if ($this -> input -> post('pid') != NULL) {
 			if ($this -> db -> query($str)) {
@@ -118,19 +119,21 @@ class Projects_model extends CI_Model {
 				$query = $this -> db -> query($sql, $data_11);
 				foreach ($query->result() as $row) {
 					$where2 = "pmid = '" . $row -> pmid . "'";
-					$data2['uid'] = $this -> input -> post('members_' . $row -> pmid);
+					$data2['email'] = $this -> input -> post('members_' . $row -> pmid);
+					$data2['uid'] = $this -> Users_model -> queryuser_byemail($data2['email']);
 					$data2['role'] = $this -> input -> post('roles_' . $row -> pmid);
 					$str2 = $this -> db -> update_string('promember', $data2, $where2);
 					$this -> db -> query($str2);
 				}
 				$hiddennum = $this -> input -> post('hiddennum');
-				if ($hiddennum > 0) {
-					for ($i = 1; $i <= $hiddennum; $i++) {
+				if ($hiddennum > 1) {
+					for ($i = 2; $i < $hiddennum; $i++) {
 						$memberstr = "member_" . $i;
 						$rolestr = "role_" . $i;
-						$data3['uid'] = $this -> input -> post($memberstr);
+						$data3['email'] = $this -> input -> post($memberstr);
+						$data3['uid'] = $this -> Users_model -> queryuser_byemail($data3['email']);
 						$data3['role'] = $this -> input -> post($rolestr);
-						$data3['pid'] = $this -> input -> post('pid'); ;
+						$data3['pid'] = $this -> input -> post('pid');
 						if ($this -> db -> insert('promember', $data3)) {
 
 						} else {
@@ -138,7 +141,22 @@ class Projects_model extends CI_Model {
 						}
 					}
 				}
+				if ($inv_count > 0) {
+					for ($i = 1; $i <= $inv_count; $i++) {
+						$money = "money" . $i;
+						$limit = "limit" . $i;
+						$gift = "gift" . $i;
+						$datapaylist['pid'] = $this -> input -> post('pid');
+						$datapaylist['supportvalue'] = $this -> input -> post($money);
+						$datapaylist['pnum'] = $this -> input -> post($limit);
+						$datapaylist['backcontent'] = $this -> input -> post($gift);
+						if ($this -> db -> insert('project_paylist', $datapaylist)) {
 
+						} else {
+							return FALSE;
+						}
+					}
+				}
 				return TRUE;
 			} else {
 				return FALSE;
@@ -397,6 +415,22 @@ class Projects_model extends CI_Model {
 		$sql = "SELECT * FROM promember,user WHERE promember.pid = ? and promember.uid = user.uid";
 		$query = $this -> db -> query($sql, $data);
 		return $query -> result();
+	}
+	
+	function showproject_paylistByPid($pid) {
+		$data['pid'] = $pid;
+		$sql = "SELECT * FROM project_paylist WHERE pid = ?";
+		$query = $this -> db -> query($sql, $data);
+		return $query -> result();
+	}
+
+	function showprojectpayByPid($pid) {
+		$data['pid'] = $pid;
+		$sql = "SELECT * FROM project_pay WHERE pid = ?";
+		$query = $this -> db -> query($sql, $data);
+		foreach ($query->result() as $row) {
+			return $row;
+		}
 	}
 
 	function project_delete($pid) {
@@ -998,22 +1032,22 @@ class Projects_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
-	
+
 	function projectpay() {
 		$payvalue = $this -> input -> post('payvalue');
 		$uid = $this -> session -> userdata('uid');
 		$sql = "SELECT * FROM  money where uid=" . $uid;
 		$query = $this -> db -> query($sql);
 		foreach ($query->result() as $row) {
-			if($row->value> $payvalue){
+			if ($row -> value > $payvalue) {
 				return TRUE;
-			}else{
+			} else {
 				return FALSE;
 			}
 		}
-		
+
 	}
-	
+
 	//项目支付
 	function projectpayit() {
 		$payvalue = $this -> input -> post('payvalue');
@@ -1021,9 +1055,9 @@ class Projects_model extends CI_Model {
 		$data['pplistid'] = $this -> input -> post('pplistid');
 		$data['uid'] = $this -> session -> userdata('uid');
 		$this -> db -> where('uid', $data['uid']);
-		if ($this -> db -> set('value', 'value-'.$payvalue, false) -> update('money')) {
+		if ($this -> db -> set('value', 'value-' . $payvalue, false) -> update('money')) {
 			$this -> db -> where('pid', $data['pid']);
-			$this -> db -> set('nowvalue', 'nowvalue+'.$payvalue, false) -> update('project_pay');
+			$this -> db -> set('nowvalue', 'nowvalue+' . $payvalue, false) -> update('project_pay');
 			$this -> db -> where('pplistid', $data['pplistid']);
 			$this -> db -> set('getnum', 'getnum+1', false) -> update('project_paylist');
 			//增加支付订单记录
@@ -1035,13 +1069,13 @@ class Projects_model extends CI_Model {
 			$dataorder['isfinish'] = 0;
 			if ($this -> db -> insert('project_payorder', $dataorder)) {
 				return TRUE;
-			}else{
+			} else {
 				return FALSE;
 			}
 		} else {
 			return FALSE;
 		}
-		
+
 	}
 
 }

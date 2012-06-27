@@ -56,7 +56,7 @@ class Project_edit extends CI_Controller {
 			//redirect('/login');
 		}
 		$uid = $this -> session -> userdata('uid');
-		$data = array('title' => '项目基本信息', 'css' => 'space.css', );
+		$data = array('title' => '修改项目资料', 'css' => 'form_common.css', );
 		$data['email'] = $this -> session -> userdata('email');
 		$data['username'] = $this -> session -> userdata('username');
 		$data['randvalue'] = rand(0, 10000000000);
@@ -76,6 +76,8 @@ class Project_edit extends CI_Controller {
 		$pid = $this -> uri -> segment(4, 0);
 		$data['project'] = $this -> Projects_model -> showProjectsByPid($pid);
 		$data['prousers'] = $this -> Projects_model -> showUsersByPid($pid);
+		$data['project_pay'] = $this -> Projects_model -> showprojectpayByPid($pid);
+		$data['project_paylist'] = $this -> Projects_model -> showproject_paylistByPid($pid);
 		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
 		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
 		$data['myprojectnumber'] = $this -> Projects_model -> select_num_rowsByUid();
@@ -90,11 +92,11 @@ class Project_edit extends CI_Controller {
 		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
 		$data = array_merge($data, $this -> Common_model -> global_data());
 		$this -> load -> view('space/space_header', $data);
-		$this -> load -> view('space/space_menu');
+		#$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/project_edit');
 		//$this -> load -> view('space/projects_form_notice');
 		//$this -> load -> view('space/user_sidebar');
-		$this -> load -> view('space/footer');
+		$this -> load -> view('footer2');
 	}
 
 	

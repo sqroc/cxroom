@@ -14,6 +14,7 @@ $(document).ready(function(){
 	blur_aim();
 	select();
 	add_inv();
+	info_tabs();
 });
 
 function next(){
@@ -263,3 +264,13 @@ function inv_change(){
 	});
 }
 
+//edit
+function info_tabs(){
+	$('.info_tabs>ul>li').click(function(){
+		var id = $(this).attr('id');
+		$('.info_tabs>ul>li').removeClass('current');
+		$(this).addClass('current');
+		$('.info_box').css('display', 'none');
+		$('#box_' + id).css('display', 'block');
+	});
+}
