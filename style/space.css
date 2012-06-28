@@ -228,10 +228,11 @@ main body
     .ask_item{}
     .ask_item textarea{width:490px;height:40px;text-align:left;}
 	
-	.userinfo #photo{margin:20px;}
-	.userinfo #photo .space_photo{width:110px;border:1px #e1e1e1 solid;padding:3px;}
-	.userinfo #photo .header_photo{width:36px;border:1px #e1e1e1 solid;padding:2px;}
-	.userinfo .pic_form{margin:20px;}
+	.userinfo #photo{margin:20px;float:right;width:120px;height:120px;}
+	.userinfo #photo .space_photo{}
+	
+	.userinfo .pic_form{margin:20px 0 0 20px;float:left;width:410px;}
+	.userinfo .pic_form img{}
 	.userinfo .pic_form .select{margin-left:10px;padding:4px;}
 	
 	.form_title{margin:20px 20px 20px 0px;clear:both;background:url(../images/cate/bg_project_index.png) repeat-x 0 -97px;border-left:1px #ccc solid;height:36px;overflow:hidden;}

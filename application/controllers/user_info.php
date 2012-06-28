@@ -40,7 +40,7 @@ class User_info extends CI_Controller {
 		$data['person_pic2'] = $row2 -> person_pic;
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
-		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
+		$data['mypointall'] = ($data['mypoint'] -> contributionnum * 0.55 + $data['mypoint'] -> activenum * 0.9 + $data['mypoint'] -> creativitynum * 0.65) / 10;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/user_info');
@@ -145,7 +145,7 @@ class User_info extends CI_Controller {
 		$data['person_pic2'] = $row2 -> person_pic;
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
-		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
+		$data['mypointall'] = ($data['mypoint'] -> contributionnum * 0.55 + $data['mypoint'] -> activenum * 0.9 + $data['mypoint'] -> creativitynum * 0.65) / 10;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/user_skills');
@@ -190,7 +190,7 @@ class User_info extends CI_Controller {
 		$data['person_pic2'] = $row2 -> person_pic;
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
-		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
+		$data['mypointall'] = ($data['mypoint'] -> contributionnum * 0.55 + $data['mypoint'] -> activenum * 0.9 + $data['mypoint'] -> creativitynum * 0.65) / 10;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/user_photo');
@@ -235,7 +235,7 @@ class User_info extends CI_Controller {
 		$data['person_pic2'] = $row2 -> person_pic;
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
-		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
+		$data['mypointall'] = ($data['mypoint'] -> contributionnum * 0.55 + $data['mypoint'] -> activenum * 0.9 + $data['mypoint'] -> creativitynum * 0.65) / 10;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/user_contact');
@@ -271,6 +271,36 @@ class User_info extends CI_Controller {
 				$data = array('title' => '友情提示', 'warm' => '对不起，由于某种原因本次信息更新失败了！您可以选择以下入口进入！', 'pic' => 'wrong.gif');
 				$this -> load -> view("wrong", $data);
 			}
+		}
+	}
+
+	public function do_upload_pic_advance() {
+
+		$full_path = $this -> input -> post('imageurl');
+		$real_path = $this -> input -> post('realurl');
+		$config2['image_library'] = 'gd2';
+		$config2['source_image'] = $real_path;
+		$config2['maintain_ratio'] = FALSE;
+		$config2['width'] = $this -> input -> post('w');
+		$config2['height'] = $this -> input -> post('h');
+		$config2['x_axis'] = $this -> input -> post('x');
+		$config2['y_axis'] = $this -> input -> post('y');
+
+		$this -> load -> library('image_lib', $config2);
+
+		if (!$this -> image_lib -> crop()) {
+			echo $this -> image_lib -> display_errors();
+			exit(1);
+		}
+		if ($this -> Users_model -> do_upload_pic($full_path)) {
+			$data_notice['information'] = "修改成功！该页面将在三秒后自动跳转...";
+			$data_notice['url'] = base_url() . "/user_info/photo";
+			$data_notice['title'] = "提示信息";
+			$data_notice['mode'] = "yes";
+			$this -> load -> view('common_notice', $data_notice);
+		} else {
+			$data = array('title' => '友情提示', 'warm' => '对不起，由于某种原因本次信息更新失败了！您可以选择以下入口进入！', 'pic' => 'wrong.gif');
+			$this -> load -> view("wrong", $data);
 		}
 	}
 
@@ -358,7 +388,7 @@ class User_info extends CI_Controller {
 		$data['username2'] = $this -> session -> userdata('username');
 		$data['nineaskinfo'] = $this -> Users_model -> queryusernineask_byuid($this -> session -> userdata('uid'));
 		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($this -> session -> userdata('uid'));
-		$data['mypointall'] =  ($data['mypoint']->contributionnum*0.55+$data['mypoint']->activenum*0.9+$data['mypoint']->creativitynum*0.65)/10;
+		$data['mypointall'] = ($data['mypoint'] -> contributionnum * 0.55 + $data['mypoint'] -> activenum * 0.9 + $data['mypoint'] -> creativitynum * 0.65) / 10;
 		$this -> load -> view('space/space_header', $data);
 		$this -> load -> view('space/space_menu');
 		$this -> load -> view('space/user_9ask');

@@ -1,10 +1,15 @@
 $(document).ready(function() {
-	auto_height();
+	
 	space_tabs();
 	preview();
 	pl();
 	userinfo();
 });
+
+window.onload = function(){
+	
+	auto_height();
+}
 
 function auto_height(){
 	$('#space_container').css('height', 'auto');

@@ -8,6 +8,7 @@
  */
 
 require_once 'JSON.php';
+require_once 'ThumbHandler.php';
 
 $php_path = dirname(__FILE__) . '/';
 $php_url = dirname($_SERVER['PHP_SELF']) . '/';
@@ -95,10 +96,16 @@ if (empty($_FILES) === false) {
 	}
 	@chmod($file_path, 0644);
 	$file_url = $save_url . $new_file_name;
+
+	if(!empty($_GET['cut']))
+	{
+		$t = new ThumbHandler($file_path,1,400,"",$file_path) ;
+		$t->outimage();
+	}
 	
 	header('Content-type: text/html; charset=UTF-8');
 	$json = new Services_JSON();
-	echo $json->encode(array('error' => 0, 'url' => $file_url));
+	echo $json->encode(array('error' => 0, 'url' => $file_url, 'realurl' => $file_path));
 	exit;
 }
 
