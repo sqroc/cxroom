@@ -31,7 +31,6 @@ class Projects_model extends CI_Model {
 				if ($hiddennum == 1) {
 					$data2['email'] = $this -> input -> post('member_1');
 					$data2['uid'] = $this -> Users_model -> queryuser_byemail($data2['email']);
-
 					if (isset($data2['uid'])) {
 						$data2['role'] = $this -> input -> post('role_1');
 						if ($this -> db -> insert('promember', $data2)) {
@@ -41,7 +40,7 @@ class Projects_model extends CI_Model {
 						}
 					}
 				} else {
-					for ($i = 1; $i <= $hiddennum - 1; $i++) {
+					for ($i = 1; $i <= $hiddennum; $i++) {
 						$memberstr = "member_" . $i;
 						$rolestr = "role_" . $i;
 						$data2['email'] = $this -> input -> post($memberstr);
