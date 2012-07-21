@@ -14,6 +14,17 @@ class Register extends CI_Controller {
 		$this -> load -> view('register');
 		$this -> load -> view('footer');
 	}
+	
+	public function guide() {
+		$data = array('title' => '用户注册向导', 'css' => 'reg_guide.css', 'js' => 'reg_guide.js');
+		$data['randvalue'] = rand(0, 10000000000);
+		$data['username'] = NULL;
+		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
+		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
+		$this -> load -> view('header', $data);
+		$this -> load -> view('reg/reg_step_1');
+		$this -> load -> view('footer2');
+	}
 
 	function reg() {
 		$flag = 1;
