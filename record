@@ -1,3 +1,24 @@
+2012.7.22
+ALTER TABLE  `user` CHANGE  `birthdate`  `birthdate` VARCHAR( 50 ) NULL DEFAULT NULL
+
+ALTER TABLE  `user` ADD  `city` VARCHAR( 50 ) NOT NULL ;
+
+ALTER TABLE  `user` ADD  `role` VARCHAR( 10 ) NOT NULL ,
+ADD  `aims` VARCHAR( 50 ) NOT NULL ;
+
+ALTER TABLE  `user` ADD  `siteurl` VARCHAR( 250 ) NOT NULL ,
+ADD  `weibo` VARCHAR( 250 ) NOT NULL ;
+
+
+CREATE TABLE  `innovation`.`user_detail` (
+`uid` INT NOT NULL ,
+`department` VARCHAR( 150 ) NOT NULL ,
+`post` VARCHAR( 150 ) NOT NULL ,
+`school` VARCHAR( 150 ) NOT NULL ,
+`major` VARCHAR( 150 ) NOT NULL
+) ENGINE = INNODB
+
+
 2012.6.25
 CREATE TABLE  `innovation`.`authentication` (
 `authid` INT NOT NULL AUTO_INCREMENT ,

@@ -53,6 +53,43 @@ class Users_model extends CI_Model {
 		}
 	}
 
+	function reg_guide_upload() {
+		$data['uid'] = $this -> input -> post('uid');
+		$data['province'] = $this -> input -> post('province');
+		$data['city'] = $this -> input -> post('city');
+		$data['birthdate'] = $this -> input -> post('Date_Year')."年".$this -> input -> post('birthday_m')."月";
+		$data['gender'] = $this -> input -> post('gender');
+		$data['role'] = $this -> input -> post('role');
+		$data['aims'] = rtrim($this -> input -> post('aims'), ",");
+		$data['intro'] = $this -> input -> post('intro');
+		$data['siteurl'] = $this -> input -> post('siteurl');
+		$data['weibo'] = $this -> input -> post('weibo');
+		$data['contact_email'] = $this -> input -> post('contact_email');
+		$data['qq'] = $this -> input -> post('qq');
+		$data['telphone'] = $this -> input -> post('telphone');
+		$data['phone'] = $this -> input -> post('phone');
+		
+		$data2['uid'] = $this -> input -> post('uid');
+		$data2['department'] = $this -> input -> post('department');
+		$data2['post'] = $this -> input -> post('post');
+		$data2['school'] = $this -> input -> post('school');
+		$data2['major'] = $this -> input -> post('major');
+		
+		
+		$where = "uid = '" . $this -> input -> post('uid') . "'";
+		$str = $this -> db -> update_string('user', $data, $where);
+		if ($this -> input -> post('uid') != NULL) {
+			if ($this -> db -> query($str)) {
+				$this -> db -> insert('user_detail', $data2);
+				return TRUE;
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+	}
+
 	function create_invite_code() {
 		$data3['code'] = md5(time() . rand());
 		$data3['uid'] = -1;
@@ -452,7 +489,7 @@ class Users_model extends CI_Model {
 		$query = $this -> db -> query($sql);
 		return $query -> result();
 	}
-	
+
 	function auth_allow($authid) {
 		$data['isallow'] = 1;
 		$where = "authid = '" . $authid . "'";
