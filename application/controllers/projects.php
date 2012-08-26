@@ -6,7 +6,7 @@ class Projects extends CI_Controller {
 
 	public function index() {
 		$sta = $this -> session -> userdata('user');
-		$data = array('title' => '创业园-创新空间', 'css' => 'project_home.css', 'js' => 'projects_home.js', );
+		$data = array('title' => '创业园-创新空间', 'css' => 'home_page.css', 'js' => 'projects_home.js', );
 		if (!isset($sta) || $sta != "login_ok") {
 			redirect('/projects/homepage');
 		} else {
@@ -81,7 +81,7 @@ class Projects extends CI_Controller {
 		$this -> load -> view('header', $data);
 		$this -> load -> view('projects/home');
 
-		$this -> load -> view('footer');
+		$this -> load -> view('footer2');
 	}
 
 	public function projectlist() {

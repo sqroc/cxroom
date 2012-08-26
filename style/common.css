@@ -163,12 +163,12 @@ footer
         
 /*popdialog*/
 .pop_dialog{text-align:center;position:absolute;width:100%;height:100%;border-radius:4px 4px;left:0;top:0;padding:6px;_padding:0;z-index:999;background:url(../images/space/bg_dialog.png) repeat 0 0;}
-    .pop_dialog .box{background:#fff;border:1px #000 solid;width:400px;margin:0 auto;}
+    .pop_dialog .box{background:#fff;border:1px #333 solid;width:400px;margin:0 auto;}
     .pop_dialog .box .box_top{text-align:left;padding-left:10px;height:30px;line-height:30px;background:url(../images/common/icons_dialog.png) repeat-x 0 -90px;border-bottom:1px #ccc solid;}
     .pop_dialog .box .box_top span{float:left;}
     .pop_dialog .box .box_top .close_dialog,.close_dialog_hover{cursor:pointer;float:right;margin:7px 10px 0 0;width:15px;height:15px;}
     .pop_dialog .box .box_top .close_dialog{background:url(../images/common/icons_dialog.png) no-repeat 0 -140px;}
     .pop_dialog .box .box_top .close_dialog:hover{background:url(../images/common/icons_dialog.png) no-repeat 0 -170px;float:right;}
-    .pop_dialog .box .content{padding:20px;clear:both;text-align:left;}
+    .pop_dialog .box .content{padding:10px;clear:both;text-align:left;}
     .pop_dialog .box .item_box{overflow:hidden;}
     .pop_dialog .box .item_box .little_button,.little_button_g{padding:0;float:right;margin-right:10px;margin-bottom:10px;border:none;}

@@ -1,0 +1,39 @@
+.talent_box{overflow:hidden;margin-top:20px;}
+
+.list_box{float:left;width:700px;background:#fff;border:1px #eee solid;}
+	.select_box{margin:20px;border-bottom:1px #eee solid;height:28px;}
+	.select_box .kind{margin-right:20px;color:#999;}
+	.select_box ul{display:inline;}
+	.select_box ul .selected{background:#8CC542;color:#fff;border-radius:2px;}
+	.select_box ul li{display:inline;margin-right:20px;padding:2px 4px;cursor:pointer;}
+	.select_box ul .title{color:#999;}
+	
+
+	#list{}
+	
+	.talent{width:100%;overflow:hidden;position:relative;}
+		.talent .tabs{position:absolute;right:20px;top:20px;color:#999;}
+		.talent .avatar{float:left;margin:20px 20px 0 20px;width:110px;height:110px;display:inline;}
+		.talent .avatar img{width:110px;height:110px;}
+		.info{float:right;margin:20px 20px 0 0;width:528px;display:inline;}
+		.info .name{font-size:18px;}
+		.info .about{color:#999;padding:10px 0;}
+		.info .intro{}
+		.skills{padding:10px 0;}
+		.skills ul{}
+		.skills ul li{display:inline;color:#999;margin-right:10px;}
+		
+	/*pages counter*/
+	.pages{padding:20px;overflow:hidden;clear:both;}
+	.pages ul{}
+	.pages ul li{float:left;padding:10px;margin-right:10px;cursor:pointer;}
+	.pages ul li:hover{background:#8CC542;color:#fff;}
+
+		
+
+.side_bar{width:258px;float:right;}
+	.cate_list{margin-top:20px;font-family: 'MicroSoft YaHei', SimHei;}
+	.cate_list li{padding:20px;margin-bottom:20px;background:#eee;border:1px #e1e1e1 solid;border-left:1px #ccc solid;font-size:16px;cursor:pointer;}
+	.cate_list li span{margin-left:20px;color:#999;font-size:14px;}
+	.cate_list .current{background:#8AC33A;border:1px #81B011 solid;border-left:1px #669B07 solid;color:#fff;}
+	.cate_list .current span{color:#669900}

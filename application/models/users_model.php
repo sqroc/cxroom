@@ -504,6 +504,36 @@ class Users_model extends CI_Model {
 			return FALSE;
 		}
 	}
+	
+	
+	function search_condition() {
+		$data['gender'] = $this -> input -> post('gender');
+		$data['role'] = $this -> input -> post('role');
+		$offset = 0;
+		$num = 10;
+		$where = ' WHERE user.uid = user_detail.uid';
+		$offset =  $this -> input -> post('offset');
+		$num =  $this -> input -> post('num');
+		if($data['gender']!=NULL){
+			$where .= " and gender = '" . $data['gender'] . "'";
+		}
+		if($data['role']!=NULL){
+			$where .= " and role = '" . $data['role'] . "'";
+		}
+		
+		$sql = "SELECT * FROM user,user_detail".$where." limit " . $offset . "," . $num;
+		$query = $this -> db -> query($sql);
+		$outdata = $query -> result();
+		$i = 0;
+		foreach ($outdata as $row) {
+			$sql = "SELECT * FROM userskill WHERE uid=".$row->uid;
+			$query = $this -> db -> query($sql);
+			$outdata[$i]->skills = $query -> result();
+			$i++;
+		}
+		return $outdata;
+		
+	}
 
 }
 ?>
