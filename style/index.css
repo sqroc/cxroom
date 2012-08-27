@@ -51,7 +51,7 @@ street
 	.introbox .intro .h_team{background:url(../images/icons_index.gif) no-repeat 4px -660px;}
 	.introbox .intro .h_pro{background:url(../images/icons_index.gif) no-repeat 4px -700px;}
 	.introbox .intro .h_talent{background:url(../images/icons_index.gif) no-repeat 4px -620px;}
-	.introbox .intro p{margin:0;padding:8px 4px;}
+	.introbox .intro p{margin:0;padding:8px 4px;line-height:16px;}
 
 .streets_box{width:647px;margin-top:40px;background:url(../images/bg_index_2.gif) no-repeat -250px -170px;}
 	.street{margin-left:34px;clear:both;padding:0;overflow:hidden;border:1px #fff solid;}

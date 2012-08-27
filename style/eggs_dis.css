@@ -16,7 +16,8 @@
 	.content ol{line-height:24px;}
 	.content ul{line-height:24px;}
 	.content h2{clear:both;border-bottom:1px #eee solid;padding:10px 0 15px 0;}
-	.content p{padding:10px 0 10px 0;font-size:14px;}
+	.content p{padding:10px 0 10px 0;font-size:14px;word-break:break-all;}
+	.content span{word-break:break-all;}
 	.content .summary{border:1px #e1e1e1 solid;padding:15px;background:url(../images/eggs/icons_egg.gif) no-repeat 600px -146px #f9f9f9;}
 	.list{border-top:1px #eee solid;padding-top:15px}
 		.list .person{padding:0 15px 15px 15px;}

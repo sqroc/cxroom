@@ -1,23 +1,28 @@
+body{background:url(../images/common/top_bg.jpg) repeat-x 0 65px;}
 input{background:none;padding:10px;}
 textarea{background:none;padding:10px;font-size:14px;}
+.reg_level{
+	filter:alpha(opacity=60);background:rgba(68, 184, 190, 0.6);
+	font-size:18px;height:48px;line-height:48px;font-family: 'MicroSoft YaHei', SimHei;text-align:center;width:600px;margin:0 auto;margin-top:40px;margin-bottom:20px;color:#fff;}
+
 .guide_button{float:left;width:177px;}
-    .guide_button #left_button{width:150px;height:63px;margin-top:100px;}
+    .guide_button #left_button{width:150px;height:63px;margin-top:160px;}
     .guide_button .lb{background:url(../images/common/icons_reg.png) no-repeat 0 0;}
     .guide_button .lbf{background:url(../images/common/icons_reg.png) no-repeat 0 -80px;}
     .guide_button .lbc{background:url(../images/common/icons_reg.png) no-repeat 0 -158px;}
-    .guide_button #right_button{width:150px;height:63px;margin-top:100px;margin-left:25px;}
+    .guide_button #right_button{width:150px;height:63px;margin-top:160px;margin-left:25px;}
     .guide_button .rb{background:url(../images/common/icons_reg.png) no-repeat 0 -240px;}
     .guide_button .rbf{background:url(../images/common/icons_reg.png) no-repeat 0 -320px;}
     .guide_button .rbc{background:url(../images/common/icons_reg.png) no-repeat 0 -398px;}
 
-.mid_box{width:600px;float:left;border:1px #eee solid;background:#fff;}
+.mid_box{width:600px;float:left;border:1px #eee solid;background:#fff;font-family: 'MicroSoft YaHei', SimHei;}
     .info_item{width:100%;clear:both;overflow:hidden;}
     .info_item input{width:200px;background:#fff;}
     .item_wrong{background:#FFFACD;border:1px #FFEC8B solid;}
     .mlr20{margin:0 20px;}
     .info_item .help{margin:20px;font-size:14px;color:#999;font-weight:normal;}
     .select_list{width:100%;}
-    .select_list li{cursor:pointer;float:left;margin-right:20px;border:2px #fff solid;padding:10px 20px;}
+    .select_list li{cursor:pointer;float:left;margin:5px 20px 5px 0;border:2px #fff solid;padding:10px 20px;}
     .select_list .selected{border:2px #AAD062 solid;position:relative;}
     .select_list .selected i{position:absolute;right:0;bottom:0;width:18px;height:18px;background:url(../images/common/icons_reg.png) no-repeat 0 -510px;}
     
@@ -30,3 +35,100 @@ textarea{background:none;padding:10px;font-size:14px;}
     .pic_form{margin:20px 0 20px 20px;float:left;width:410px;display:inline;}
     .pic_form img{}
     .pic_form .select{margin-left:10px;padding:4px;}
+    
+
+#choose-box-wrapper{
+		width: 652px;
+		background-color:#000;
+		filter:alpha(opacity=50);
+		background-color: rgba(0, 0, 0, 0.5);
+		padding:10px;
+		border-radius:5px;
+		display:none;
+	}
+	#choose-box{
+		border: 1px solid #333;
+		width:650px;
+		background-color:white;
+	}
+	#choose-box-title{
+		background:#669900;
+		color: white;
+		padding: 4px 10px 5px;
+		font-size: 14px;
+		font-weight: 700;
+		margin: 0;
+	}
+	#choose-box-title span{
+		font-family: Tahoma, Verdana, STHeiTi, simsun, sans-serif;
+	}
+
+	#choose-a-province, #choose-a-school{
+		margin:5px 8px 10px 8px;
+		border: 1px solid #C3C3C3;
+	}
+	#choose-a-province a{
+		display:inline-block;
+		height: 18px;
+		line-height: 18px;
+		color:#669900;
+		text-decoration: none;
+		font-size: 9pt;
+		font-family: Tahoma, Verdana, STHeiTi, simsun, sans-serif;
+		margin:2px 5px;
+		padding: 1px;
+		text-align: center;
+	}
+	#choose-a-province a:hover{
+		text-decoration:underline;
+		cursor:pointer;
+	}
+	#choose-a-province .choosen{
+		background-color: #669900;
+		color:white;
+	}
+	
+	#choose-a-school{
+		overflow-x: hidden;
+		overflow-y: auto;
+		height: 200px;
+	}
+	#choose-a-school a{
+		height: 18px;
+		line-height: 18px;
+		color:#669900;
+		text-decoration: none;
+		font-size: 9pt;
+		font-family: Tahoma, Verdana, STHeiTi, simsun, sans-serif;
+		float: left;
+		width: 160px;
+		margin: 4px 12px;
+		padding-left:10px;
+		background:url(http://pic002.cnblogs.com/images/2012/70278/2012072500060712.gif) no-repeat 0 9px;
+	}
+	#choose-a-school a:hover{
+		background-color:#669900;
+		color:white;
+		cursor:pointer;
+	}
+	
+	#choose-box-bottom{
+		background: #f5f5f5;
+		padding: 8px;
+		text-align: right;
+		border-top: 1px solid #CCC;
+		height:40px;
+	}
+	#choose-box-bottom input{
+		vertical-align: middle;
+		text-align: center;
+		background-color:#669900;
+		color:white;
+		border:1px #999 solid;
+		cursor: pointer;
+		width: 60px;
+		height: 25px;
+		margin-top: 6px;
+		margin-right: 6px;
+		padding:0;
+	}

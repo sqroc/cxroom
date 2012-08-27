@@ -35,6 +35,8 @@ left menu
 	.lmenu .invite{background:url(../images/common/icons.gif) no-repeat 15px -229px }
 	.lmenu .cc{background:url(../images/common/icons.gif) no-repeat 17px -188px }
 	
+	
+	
 	.point{width:100%;clear:both;height:40px;}
 	.point ul{margin:10px 0 0 10px;}
 	.point ul li{float:left;padding:0 10px 0 10px;width:44px;}
@@ -203,13 +205,13 @@ main body
 	
 	
 	/*pages counter*/
-	.pages{padding:10px 0;overflow:hidden;clear:both;}
+	.pages{padding:20px;overflow:hidden;clear:both;}
 	.pages ul{}
 	.pages ul li{float:left;;padding:0;margin-right:10px;border:1px #ccc solid;background:#fff}
 	.pages ul .current_page{background:#66CC00;border:1px #669900 solid;color:#fff;padding:3px 6px 3px 6px;}
 	.pages ul li a{padding:3px 6px 3px 6px;display:block;}
 	.m0{margin:0;}
-	
+
 	/*user information form*/
 	.userinfo .tablist{border-bottom:3px #85CF28 solid;height:30px;margin:20px 20px 0 20px;}
 	.userinfo .tablist li{float:left;width:100px;height:30px;line-height:30px;color:#999;text-align:center;}
