@@ -1,12 +1,18 @@
-<div class="header_shadow"></div>
-<div class="container" style="margin-top:40px;margin-bottom:40px;overflow:hidden;">
+<div class="container">
+	<div class="reg_level">
+		您当前的资料价值评级为<span>甲级</span>，可以查看<span>80%</span>的他人资料
+		
+	</div>
+</div>
+<div class="container" style="margin-bottom:40px;overflow:hidden;">
 	<div class="guide_button">
 		<div id="left_button" class="lbf">
 				
 		</div>
 	</div>
-
+	<!--
 	<input type="hidden" name="uid" id="uid" value="<?=$uid?>"/>
+	-->
 	<div class="mid_box">
 		<!--step1 base_info-->
 		<div class="step" id="step_1" style="display:none">
@@ -210,6 +216,80 @@
 		</div>
 		</div><!--step0-->
 		<div class="step" id="step_2" style="display:none;">
+		<script type="text/javascript" src="<?=base_url() ?>js/school.js"></script>
+		<script type="text/javascript">
+	//弹出窗口
+	function pop(){
+		//将窗口居中
+		makeCenter();
+
+		//初始化省份列表
+		initProvince();
+
+		//默认情况下, 给第一个省份添加choosen样式
+		$('[province-id="1"]').addClass('choosen');
+
+		//初始化大学列表
+		initSchool(1);
+	}
+	//隐藏窗口
+	function hide()
+	{
+		$('#choose-box-wrapper').css("display","none");
+	}
+
+	function initProvince()
+	{
+		//原先的省份列表清空
+		$('#choose-a-province').html('');
+		for(i=0;i<schoolList.length;i++)
+		{
+			$('#choose-a-province').append('<a class="province-item" province-id="'+schoolList[i].id+'">'+schoolList[i].name+'</a>');
+		}
+		//添加省份列表项的click事件
+		$('.province-item').bind('click', function(){
+				var item=$(this);
+				var province = item.attr('province-id');
+				var choosenItem = item.parent().find('.choosen');
+				if(choosenItem)
+					$(choosenItem).removeClass('choosen');
+				item.addClass('choosen');
+				//更新大学列表
+				initSchool(province);
+			}
+		);
+	}
+
+	function initSchool(provinceID)
+	{
+		//原先的学校列表清空
+		$('#choose-a-school').html('');
+		var schools = schoolList[provinceID-1].school;
+		for(i=0;i<schools.length;i++)
+		{
+			$('#choose-a-school').append('<a class="school-item" school-id="'+schools[i].id+'">'+schools[i].name+'</a>');
+		}
+		//添加大学列表项的click事件
+		$('.school-item').bind('click', function(){
+				var item=$(this);
+				var school = item.attr('school-id');
+				//更新选择大学文本框中的值
+				$('#school-name').val(item.text());
+				//关闭弹窗
+				hide();
+			}
+		);
+	}
+
+	function makeCenter()
+	{
+		$('#choose-box-wrapper').css("display","block");
+		$('#choose-box-wrapper').css("position","absolute");
+		$('#choose-box-wrapper').css("top", Math.max(0, (($(window).height() - $('#choose-box-wrapper').outerHeight()) / 2) + $(window).scrollTop()) + "px");
+		$('#choose-box-wrapper').css("left", Math.max(0, (($(window).width() - $('#choose-box-wrapper').outerWidth()) / 2) + $(window).scrollLeft()) + "px");
+	}
+
+  </script>
 		<div class="info_item info_item_bor">
 			<h3 class="help">简单的介绍一下自己，让大家了解你</h3>
 			<textarea class="w_i mlr20 i" id="ii" name="ii"></textarea>
@@ -223,9 +303,25 @@
 		
 		<div class="info_item info_item_bor">
 			<h3 class="help">就读院校 - 就读专业</h3>
-			<input class="mlr20" type="text" name="school" id="school"/> - <input class="mlr20" type="text" name="major" id="major"/>
+			<input class="mlr20" type="text" name="school" id="school-name" value="请选择大学" onclick="pop()"/> - <input class="mlr20" type="text" name="major" id="major"/>
+			
 		</div>
 		
+		<div id="choose-box-wrapper">
+		  <div id="choose-box">
+			<div id="choose-box-title">
+				<span>选择学校</span>
+			</div>
+			<div id="choose-a-province">
+			</div>
+			<div id="choose-a-school">
+			</div>
+			<div id="choose-box-bottom">
+				<input type="botton" onclick="hide()" value="关闭" />
+			</div>
+		  </div>
+		</div>
+			
 		<div class="info_item info_item_bor">
 			<h3 class="help">微博(请填写微博网址)</h3>
 			<input class="mlr20" type="text" name="weibo" id="weibo"/>
@@ -257,6 +353,8 @@
 										var url = K.formatUrl(data.url, 'absolute');
 										FLAG_RB = true;
 										FLAG_PAGE[0] = true;
+										enable_rb();
+										//$('jcrop-holder').remove();
 										K('#url').val(url);
 										$('#imageurl').val(url);
 										$('#realurl').val(data.realurl);
@@ -357,7 +455,9 @@
 									<input type="hidden" id="h" name="h" />
 									<input type="hidden" id="imageurl" name="imageurl" />
 									<input type="hidden" id="realurl" name="realurl" />
+									<!--
 									<input type="hidden" id="email" name="email" value="<?=$email?>"/>
+									-->
 									<br/>
 									<!--<input type="submit" value="上传头像" class="small_button" />-->
 								</form>
@@ -386,6 +486,113 @@
 				<input name="phone" id="phone" type="hidden"  value=""/>	
 			</div>
 		</div>	
+	
+		<div class="step" id="step_4" style="display:none;">
+			<div class="info_item info_item_bor">
+				<h3 class="help">选择一个擅长领域</h3>
+				<div class="mlr20">
+					<div id="field">
+						<input type="radio" name="field" value="0" />开发
+						<input type="radio" name="field" value="1" />设计
+						<input type="radio" name="field" value="2" />其他
+						
+					</div>
+					<script type="text/javascript">
+						$(document).ready(function(){
+							t_select('field', {
+								0		:		'开 发',
+								1		:		'设 计',
+								2		:		'其 他'
+							}, 'radio');
+							$('#ulfield').find('li').click(function(){
+								var tag = $(this).attr('rel');
+								
+								$('.sk').css('display', 'none');
+								$('.sk' + tag).fadeIn();
+								check_skills();
+							});
+						});
+						
+					</script>
+				</div>
+			</div>
+			
+			<div class="info_item info_item_bor sk sk0" style="display:none;">
+				<h3 class="help">选择擅长的开发技能（可多选）</h3>
+				<div class="mlr20">
+					<div id="skills_soft">
+						<input type="checkbox" name="soft" value="0" />网络开发
+						<input type="checkbox" name="soft" value="1" />游戏开发
+						<input type="checkbox" name="soft" value="2" />网页设计
+						<input type="checkbox" name="soft" value="3" />软件开发
+						<input type="checkbox" name="soft" value="4" />网站运营
+						<input type="checkbox" name="soft" value="5" />其他领域
+					</div>
+					<script type="text/javascript">
+						$(document).ready(function(){
+							t_select('skills_soft', {
+								0		:		'网络开发',
+								1		:		'游戏开发',
+								2		:		'网页设计',
+								3		:		'软件开发',
+								4		:		'网站运营',
+								5		:		'其他技能'
+							}, 'checkbox');
+						});
+					</script>
+				</div>
+			</div><!--#item-->
+			
+			<div class="info_item info_item_bor sk sk1" style="display:none;">
+				<h3 class="help">选择擅长的设计技能（可多选）</h3>
+				<div class="mlr20">
+					<div id="skills_design">
+						<input type="checkbox" name="design" value="0" />平面设计
+						<input type="checkbox" name="design" value="1" />工业设计
+						<input type="checkbox" name="design" value="2" />影视动画
+						<input type="checkbox" name="design" value="3" />交互设计
+						<input type="checkbox" name="design" value="4" />其他技能
+						
+					</div>
+					<script type="text/javascript">
+						$(document).ready(function(){
+							t_select('skills_design', {
+								0		:		'平面设计',
+								1		:		'工业设计',
+								2		:		'影视动画',
+								3		:		'交互设计',
+								4		:		'其他技能'
+							}, 'checkbox');
+						});
+					</script>
+				</div>
+			</div><!--#item-->
+			
+			<div class="info_item info_item_bor sk sk2" style="display:none;">
+				<h3 class="help">选择擅长的其他技能（可多选）</h3>
+				<div class="mlr20">
+					<div id="skills_other">
+						<input type="checkbox" name="other" value="0" />法律顾问
+						<input type="checkbox" name="other" value="1" />推广营销
+						<input type="checkbox" name="other" value="2" />财务管理
+						<input type="checkbox" name="other" value="3" />其他技能
+					
+					</div>
+					<script type="text/javascript">
+						$(document).ready(function(){
+							t_select('skills_other', {
+								0		:		'法律顾问',
+								1		:		'推广营销',
+								2		:		'财务管理',
+								3		:		'其他技能'
+							}, 'checkbox');
+						});
+					</script>
+				</div>
+			</div><!--#item-->
+			
+			
+		</div>
 	</div>
 	
 	<div class="guide_button">
