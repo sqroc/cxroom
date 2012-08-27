@@ -1,3 +1,7 @@
+<script type="text/javascript">
+	var USER_NAME = '<?=$username ?>';
+	var USER_ID = '<?=$uid ?>';
+</script>
 <div id="top_banner">
 	this is banner
 </div>

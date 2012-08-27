@@ -58,9 +58,14 @@ class talent extends CI_Controller {
 	}
 	
 	public function search_condition(){
-
+		
 		$data['userlists'] = $this -> Users_model -> search_condition();
-		$this -> load -> view('talent/list_user', $data);
+		if($data['userlists'] == NULL ||$data['userlists'] == ''){
+  			echo "nodata";
+		}else{
+			$this -> load -> view('talent/list_user', $data);	
+		}
+		
 	}
 	
 	

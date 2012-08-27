@@ -219,6 +219,69 @@ class User_space extends CI_Controller {
 
 	}
 
+	public function uid2() {
+		if ($this -> uri -> segment(3) === FALSE) {
+			$uid = 0;
+		} else {
+			$uid = $this -> uri -> segment(3);
+		}
+		$data = array('title' => '用户空间', 'css' => 'talent_homepage.css');
+		$row = $this -> Users_model -> queryuser_byuid($uid);
+		if ($this -> session -> userdata('uid') != NULL) {
+			$row2 = $this -> Users_model -> queryuser_byuid($this -> session -> userdata('uid'));
+		} else {
+			$row2 = NULL;
+		}
+		$this -> Users_model -> userclick($uid);
+		$data['nineaskinfo'] = $this -> Users_model -> queryusernineask_byuid($uid);
+		$data['clickdata'] = $this -> Users_model -> queryuserclick_byuid($uid);
+		$data['uid'] = $uid;
+		$data['intro'] = $row -> intro;
+		$data['gender'] = $row -> gender;
+		$data['province'] = $row -> province;
+		$data['contact_email'] = $row -> contact_email;
+		$data['qq'] = $row -> qq;
+		$data['telphone'] = $row -> telphone;
+		$data['phone'] = $row -> phone;
+		$data['person_pic'] = $row -> person_pic;
+		if ($row2 != NULL) {
+			$data['person_pic2'] = $row2 -> person_pic;
+		} else {
+
+		}
+
+		$data['username'] = $row -> username;
+		$data['ctype'] = $row -> ctype;
+		$data['cname'] = $row -> cname;
+		$data['username2'] = $this -> session -> userdata('username');
+		
+		$data['lab'] = $this -> Articles_model -> showLabsByRandOne();
+		$data['myskills'] = $this -> Users_model -> queryskillByOtherUid($uid);
+		$data['notice_footer'] = $this -> Articles_model -> show_article_notice_footer();
+		$data['help_footer'] = $this -> Articles_model -> show_article_help_footer();
+		$data['comment'] = $this -> Messages_model -> getcomment($uid);
+		$data['commentReply'] = $this -> Messages_model -> getcommentReply($uid);
+		$data['commentNumber'] = $this -> Messages_model -> getcommentnumber($uid);
+		$data['replyspace'] = 1;
+		if ($this -> session -> userdata('uid') != NULL) {
+			$data['userreply'] = $this -> Users_model -> queryuser_byuid($this -> session -> userdata('uid'));
+			$data['myprojectnumber'] = $this -> Projects_model -> select_num_rowsByUid();
+			$data['myattentionprojectnumber'] = $this -> Projects_model -> select_num_rowsByAttention();
+			$data['myfriendnumber'] = $this -> Users_model -> select_friends_num_rows($this -> session -> userdata('uid'));
+			$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
+			$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
+		}
+		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($uid);
+		$data['mypointall'] = ($data['mypoint'] -> contributionnum * 0.55 + $data['mypoint'] -> activenum * 0.9 + $data['mypoint'] -> creativitynum * 0.65) / 10;
+		$data['title'] = $row -> username . "的用户中心  - 创新空间";
+		$this -> load -> view('space/space_header', $data);
+		//$this -> load -> view('space/space_menu2');
+		//$this -> load -> view('space/space_home');
+		$this -> load -> view('talent/homepage');
+		$this -> load -> view('footer2');
+
+	}
+
 	public function aid() {
 		if ($this -> uri -> segment(3) === FALSE) {
 			$uid = 0;
