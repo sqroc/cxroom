@@ -13,11 +13,12 @@
 				<div class="pre_box">
 					
 					<ul class="article_list">
+						<!--
 					<?php    
 						$url = "http://lab.cxroom.com/api"; 
 						$contents = file_get_contents($url); 
 						echo $contents; 
-					?>    
+					?>    -->
 					</ul>
 				</div>
 			</div>
@@ -152,7 +153,9 @@
 	</div>
 	<div class="clear0"></div>
 </div>
-
+<div class="container" style="margin-top:20px;">
+	<img src="<?=base_url()?>images/banners/join_pro.png" />
+</div>
 <div class="container angle_c">
 	<div class="angle_box">
 		<div class="angle_info">

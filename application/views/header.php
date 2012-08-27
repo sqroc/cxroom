@@ -27,8 +27,9 @@ $(document).ready(function(){
 </script>
 <script type="text/javascript">
 	var BASE_URL = '<?=base_url()?>';
+	var USER_NAME = '<?=$username ?>';
+	var USER_ID = '<?=$uid ?>';
 </script>
-
 </head>
 <body>
 
