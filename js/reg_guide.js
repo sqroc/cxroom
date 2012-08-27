@@ -1,7 +1,7 @@
 var FLAG_LB = false;
 var FLAG_RB = false;
 var FLAG_CUR = 0;
-var FLAG_PAGE = [false, false, false, false]
+var FLAG_PAGE = [false, false, false, false, false]
 
 function enable_rb() {
 	if (FLAG_PAGE[FLAG_CUR]) {
@@ -117,11 +117,17 @@ function rclick() {
 		if (FLAG_RB) {
 			FLAG_CUR++;
 			var aims = '';
-			if (FLAG_CUR == 4) {
+			var skills = '';
+			if (FLAG_CUR == 5) {
 				var url = BASE_URL + "/register/reg_guide_upload";
 				$("input[name='aims']:checkbox:checked").each(function() {
 					aims += $(this).val()+',';
 				})
+				
+				$('#skill_list li').each(function(){
+					skills += $(this).find('.skill_type').val() + $(this).find('.skill').val() + ',';
+				});
+				
 				$.post(url, {
 					x : $("#x").attr("value"),
 					y : $("#y").attr("value"),
@@ -149,6 +155,7 @@ function rclick() {
 					telphone : $("#telphone").attr("value"),
 					phone : $("#phone").attr("value"),
 					uid : $("#uid").attr("value"),
+					skills : skills
 
 				}, function(data) {
 					if (data.state == 'ok') {
@@ -201,8 +208,24 @@ function check() {
 	if (FLAG_CUR == 3) {
 		check_contact();
 	}
+	if(FLAG_CUR == 4) {
+		check_skills();
+	}
 	enable_rb();
 	enable_lb();
+}
+
+function check_skills(){
+	if ($('input[name="field"]:checked').val() != null) {
+		
+		$('input[name="field"]').parents('.info_item').removeClass('item_wrong');
+		enable_rb();
+		//alert(FLAG_ROLE);
+	} else {
+		
+		$('input[name="field"]').parents('.info_item').addClass('item_wrong');
+		//alert(FLAG_ROLE);
+	}
 }
 
 function check_base() {
@@ -307,6 +330,8 @@ function pre_check() {
 		check_intro();
 		enable_rb();
 	});
+	
+	
 
 	$('input[name="contact_email"]').change(function() {
 		if (!check_mail($(this).val())) {
