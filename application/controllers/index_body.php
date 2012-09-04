@@ -34,5 +34,18 @@ class Index_body extends CI_Controller {
 		$this -> load -> view('footer');
 	}
 
+	public function index2() {
+		$data = array('css' => 'home.css', 'title' => '找人才-创新空间人', 'js' => 'talent_index.js');
+		$data['username'] = $this -> session -> userdata('username');
+		$data['email'] = $this -> session -> userdata('email');
+		$data = array_merge($data, $this -> Common_model -> global_data());
+		
+		
+		$this -> load -> view('header', $data);
+		$this -> load -> view('home');
+		$this -> load -> view('footer2');
+	}
+
+
 }
 ?>
