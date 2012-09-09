@@ -3,22 +3,63 @@ $(document).ready(function(){
 	target();
 	contact();
 	//test();
+	getmore();
 	
 })
+
+var FLAG_ALL = true;
+var FLAG_MORE = 9;
+
+function getmore(){
+	$('#getmore').click(function(){
+		var t = $(this);
+		$(this).text('加载中....');
+		var url = BASE_URL + "/talent/search_condition";
+		$.post(url, {
+			gender : $("input[name='g']:checked").val(),
+			role : $("input[name='role']:checked").val(),
+			offset : FLAG_MORE,
+			num : 9,
+
+		}, function(data) {
+			t.text('查看更多↓');
+			
+			if(data == 'nodata'){
+				warm_dialog('no', '抱歉，没有更多了');
+				
+			} else {
+				$('.list_container').append(data);	
+				FLAG_MORE += 9;
+			}
+			
+			
+		}, "html");
+	});
+}
 
 function test(obj){
 
 	$('#' + obj).click(function(){
 		var url = BASE_URL + "/talent/search_condition";
+		FLAG_ALL = false;
 		//alert('aa');
+		var gender = $("input[name='g']:checked").val();
+		var role = $("input[name='role']:checked").val();
+		
+		
 		$.post(url, {
-					gender : $("input[name='g']:checked").val(),
-					role : $("input[name='role']:checked").val(),
+					gender : gender,
+					role : role,
 					offset : 0,
 					num : 10,
 
 				}, function(data) {
-					$('#list').html(data);	
+					if(data != "nodata"){
+						$('#list').html(data);		
+					} else {
+						warm_dialog('no', '抱歉，当前条件下没有数据');
+					}
+					
 				}, "html");
 		
 	});

@@ -11,10 +11,7 @@
 
 				}, function(data) {
 					$('#list').html(data);	
-					hover_pop();
-					contact();
 				}, "html");
-				
 			});
 	</script>
 	<div class="list_box">
