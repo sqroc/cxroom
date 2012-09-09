@@ -351,6 +351,15 @@ class Users_model extends CI_Model {
 			return $row;
 		}
 	}
+	
+	function queryuserdetail_byuid($uid) {
+		$data['uid'] = $uid;
+		$sql = "SELECT * FROM user_detail WHERE uid = ? ";
+		$query = $this -> db -> query($sql, $data);
+		foreach ($query->result() as $row) {
+			return $row;
+		}
+	}
 
 	function queryuser_byemail($email) {
 		$data['contact_email'] = $email;

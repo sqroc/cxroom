@@ -1,0 +1,48 @@
+body{background:url(../images/common/top_bg.jpg) repeat-x 0 65px;}
+
+/*banner*/
+#banner{overflow:hidden;position:relative;height:200px;font-family: microsoft yahei,Arial, Helvetica, sans-serif;}
+	#banner #close_banner{position:absolute;right:0;top:5px;color:#fff;cursor:pointer;}
+
+.banner1{margin:0 auto;width:620px;height:140px;margin-top:30px;overflow:hidden;filter:alpha(opacity=60);background:rgba(68, 184, 190, 0.6);font-size:24px;}
+	.banner1 p{color:#176C70;line-height:34px;margin:20px 0 0 20px;}
+	.banner1 p a{color:#fff;}
+
+.shadow_box{position:relative;}
+	.shadow_box .lshadow,.rshadow{width:9px;height:151px;}
+	.shadow_box .lshadow{position:absolute;left:-9px;top:-8px;background:url(../images/common/box_shadow.png) no-repeat 0 -10px;}
+	.shadow_box .rshadow{position:absolute;right:-9px;top:-8px;background:url(../images/common/box_shadow.png) no-repeat 0 -170px;}
+	.shadow_box .tshadow{width:960px;height:12px;position:absolute;left:0px;top:-8px;background:url(../images/common/box_shadow.png) repeat-x 0 0;}
+
+.list_container{background:#fff;position:relative;overflow:hidden;font-family: microsoft yahei,Arial, Helvetica, sans-serif;}
+	
+	.talent_info{width:290px;height:276px;float:left;margin:40px 0 0 23px;display:inline;overflow:hidden;}
+	.talent_info .avatar,.intro,.skills,.more{width:100%;overflow:hidden;}
+	.talent_info .avatar{}
+	.talent_info .photo{float:left;width:60px;border:1px #eee solid;padding:3px;}
+	.talent_info .baseinfo{float:right;width:210px;}
+	.talent_info .name{font-size:16px;color:#669900;}
+	.talent_info .grey{color:#999;}
+	.talent_info .intro{padding:20px 0;height:100px;overflow:hidden;}
+	.talent_info .intro .intro_text{float:left;display:block;width:190px;border-top:1px #eee solid;padding:10px 0;position:relative;}
+	.talent_info .intro .intro_text .arrow{width:25px;height:15px;left:20px;top:-13px;position:absolute;background:url(../images/talent/icons_list.png) no-repeat 0 -200px;}
+	.talent_info .aims{float:right;display:block;width:90px;}
+	.talent_info .aims li{display:block;width:38px;height:38px;float:left;margin-left:5px;margin-bottom:5px;border:1px #e1e1e1 solid;border-bottom:2px #e1e1e1 solid;
+						border-radius:3px;color:#999;position:relative;}
+	.talent_info .aims .ab1{background:url(../images/talent/icons_list.png) no-repeat 10px -33px;}
+	.talent_info .aims .ab2{background:url(../images/talent/icons_list.png) no-repeat 10px -111px;}
+	.talent_info .aims .ab3{background:url(../images/talent/icons_list.png) no-repeat 10px 9px;}
+	.talent_info .aims .ab4{background:url(../images/talent/icons_list.png) no-repeat 10px -71px;}
+	.talent_info .aims li i{position:absolute;right:-3px;bottom:-3px;width:16px;height:16px;background:url(../images/talent/icons_list.png) no-repeat 0 -160px;}
+	.talent_info .aims li p{line-height:17px;text-align:left;margin:0;padding:2px 0 0 4px;}
+	.talent_info .skills{padding:0 0 20px 0;}
+	.talent_info .skills li{float:left;margin-right:5px;padding:5px 8px;border-radius:2px;}
+	.talent_info .skills .skill{background:#e1e1e1;}
+	.talent_info .skills .respect{background:#669900;color:#fff;}
+	.talent_info .more{color:#999;}
+	.talent_info .more a{}
+	
+	
+#getmore{cursor:pointer;border:1px #eee solid;border-bottom:2px #e1e1e1 solid;font-size:18px;text-align:center;padding:10px 0;margin:40px 0;font-family: microsoft yahei,Arial, Helvetica, sans-serif;
+		color:#999;}
+#getmore:hover{border:1px #e1e1e1 solid;border-bottom:2px #ccc solid;color:#333;}
