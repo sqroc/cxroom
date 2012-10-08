@@ -265,6 +265,78 @@ class Eggs extends CI_Controller {
 		}
 	}
 
+
+	public function topic2() {
+		$sta = $this -> session -> userdata('user');
+		if (!isset($sta) || $sta != "login_ok") {
+			$ideaid = $this -> uri -> segment(3, 0);
+			$data = array('title' => '创意街', 'css' => 'topic.css', 'js' => 'topic.js');
+			$data['ideaattention'] = $this -> Projects_model -> showIdeaattention($ideaid);
+			$data['ideacontribute'] = $this -> Projects_model -> showIdeacontribute($ideaid);
+			$data['ideajoin'] = $this -> Projects_model -> showIdeajoin($ideaid);
+			$data['comment1'] = $this -> Projects_model -> showcomment($ideaid, 1);
+			$data['comment2'] = $this -> Projects_model -> showcomment($ideaid, 2);
+			$data['comment3'] = $this -> Projects_model -> showcomment($ideaid, 3);
+			$data['commentReply1'] = $this -> Projects_model -> showreply($ideaid, 1);
+			$data['commentReply2'] = $this -> Projects_model -> showreply($ideaid, 2);
+			$data['commentReply3'] = $this -> Projects_model -> showreply($ideaid, 3);
+			$data['idea'] = $this -> Projects_model -> showIdeaByPid($ideaid);
+			$data['title'] = $data['idea'] -> ideaname . "  -创意街";
+			$data['totalsupport'] = $data['idea'] -> supportnumber + $data['idea'] -> criticizenumber + $data['idea'] -> neutralnumber;
+			if ($data['totalsupport'] == 0) {
+				$data['totalsupport'] = 1;
+			}
+			$data = array_merge($data, $this -> Common_model -> global_data());
+			$data['eggcommentnum'] = $this -> Projects_model -> select_num_rowsforEggcomment();
+			$data['eggnum'] = $this -> Projects_model -> select_num_rowsforEgg();
+			$this -> load -> view('cx_header.php', $data);
+			$this -> load -> view('topic/topic.php', $data);
+			$this -> load -> view('cx_footer.php', $data);
+		} else {
+			$ideaid = $this -> uri -> segment(3, 0);
+			$data = array('title' => '创意街', 'css' => 'topic.css', 'js' => 'topic.js');
+			$data['ideaattention'] = $this -> Projects_model -> showIdeaattention($ideaid);
+			$data['ideacontribute'] = $this -> Projects_model -> showIdeacontribute($ideaid);
+			$data['ideajoin'] = $this -> Projects_model -> showIdeajoin($ideaid);
+			$data['comment1'] = $this -> Projects_model -> showcomment($ideaid, 1);
+			$data['comment2'] = $this -> Projects_model -> showcomment($ideaid, 2);
+			$data['comment3'] = $this -> Projects_model -> showcomment($ideaid, 3);
+			$data['commentReply1'] = $this -> Projects_model -> showreply($ideaid, 1);
+			$data['commentReply2'] = $this -> Projects_model -> showreply($ideaid, 2);
+			$data['commentReply3'] = $this -> Projects_model -> showreply($ideaid, 3);
+			$data['idea'] = $this -> Projects_model -> showIdeaByPid($ideaid);
+			$data['title'] = $data['idea'] -> ideaname . "  -创意街";
+			$data['email'] = $this -> session -> userdata('email');
+			$data['username'] = $this -> session -> userdata('username');
+			$data['randvalue'] = rand(0, 10000000000);
+			$row = $this -> Users_model -> queryuser($data['email']);
+			$data['intro'] = $row -> intro;
+			$data['gender'] = $row -> gender;
+			$data['province'] = $row -> province;
+			$data['contact_email'] = $row -> contact_email;
+			$data['qq'] = $row -> qq;
+			$data['telphone'] = $row -> telphone;
+			$data['phone'] = $row -> phone;
+			$data['person_pic'] = $row -> person_pic;
+			$data['totalsupport'] = $data['idea'] -> supportnumber + $data['idea'] -> criticizenumber + $data['idea'] -> neutralnumber;
+			if ($data['totalsupport'] == 0) {
+				$data['totalsupport'] = 1;
+			}
+			$data['username'] = $this -> session -> userdata('username');
+			$data['randvalue'] = rand(0, 10000000000);
+			
+			$data['uid'] = $this -> session -> userdata('uid');
+			$data['unreadnotice'] = $this -> Messages_model -> getunreadNoticenumber($this -> session -> userdata('uid'));
+			$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
+			$data['eggcommentnum'] = $this -> Projects_model -> select_num_rowsforEggcomment();
+			$data['eggnum'] = $this -> Projects_model -> select_num_rowsforEgg();
+			$data = array_merge($data, $this -> Common_model -> global_data());
+			$this -> load -> view('cx_header.php', $data);
+			$this -> load -> view('topic/topic.php', $data);
+			$this -> load -> view('cx_footer.php', $data);
+		}
+	}
+
 	//api
 	public function topic_api() {
 		$sta = $this -> session -> userdata('user');

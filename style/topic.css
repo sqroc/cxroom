@@ -1,0 +1,33 @@
+#dragwidth{margin-top:20px;width:960px;overflow:hidden;overflow:hidden;cursor:pointer;}
+#dragleft{width:537px;float:left;height:100%;overflow:hidden;border:1px #e1e1e1 solid;background:#fff;}
+	
+#dragright{width:420px;float:right;height:100%;}
+	#tabs{}	
+	#comments{margin:15px;}
+	
+	.t_title{border-bottom:1px #ccc solid;position:relative;padding:0 0 0 95px;height:90px;background:url(../images/common/grey_x.png) repeat-x 0 0;}
+	.t_title h2{clear:both;color:#444;font-size:18px;font-weight:normal;line-height:44px;}
+	.t_title ul{clear:both;}
+	.t_title ul li{float:left;margin-right:10px;padding:2px 7px;}
+	.t_title .counter{width:80px;height:100%;position:absolute;left:0;top:0;background:url(../images/common/drag.png) no-repeat 28px -154px #8AC33A;border-right:1px #669933 solid;border-bottom:1px #669933 solid;color:#fff;text-align:center;
+	}
+	.t_title .counter span{font-size:18px;display:block;padding:50px 0 8px 0;}
+	
+	#share{clear:both;padding:15px 15px 0 15px;overflow:hidden;margin-left:6px;}
+	.t_content{padding:15px;margin-left:21px;background:#333;color:#fff;border-radius:5px;position:relative;}
+	.t_content .arrow{position:absolute;left:-11px;top:40px;width:11px;height:22px;background:url(../images/common/drag.png) no-repeat 0 -80px;}
+	#comment{margin-left:6px;padding:15px 2px 15px 15px;}
+	.col_title{padding:35px 0 15px 0;border-bottom:1px #e1e1e1 solid;height:20px;margin-left:21px;}
+		.col_title h2{float:left;}
+		.col_title span{margin-left:20px;float:right;}
+		.col_title span a{color:#999;}
+	.goods{padding:15px 0 15px 15px;margin-left:6px;}
+		
+		.goods ul{}
+		.goods ul li{border-bottom:1px #eee solid;padding-top:15px;}
+		.goods ul li h3{font-weight:normal;}
+		.goods ul li h3 span{background:#CC0000;color:#fff;border-radius:4px;margin-left:15px;padding:2px 5px;}
+		.goods ul li p{}
+
+#draghandle{position:fixed;left:350px;top:50px;background:#8AC33A;width:21px;height:34px;background:url(../images/common/drag.png) no-repeat 0 -34px;cursor:pointer;}
+#draghandle:hover{background:url(../images/common/drag.png) no-repeat 0 0;}

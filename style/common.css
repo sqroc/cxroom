@@ -6,7 +6,7 @@ author:tgoooo
 /*
 common
 ***********/
-body{color:#444;font-size:13px;font-family:Verdana,Helvetica,Arial,sans-serif;text-align:center;margin:0;background:#fff;}
+body{color:#444;font-size:13px;font-family:Verdana,Helvetica,Arial,sans-serif;text-align:center;margin:0;background:url(../images/common/body_bg2.png) 0 0;}
 ul{list-style-type:none;margin:0;padding:0}
 a{text-decoration:none;}
 a:link{color:#669900;}
