@@ -233,10 +233,15 @@ class User_space extends CI_Controller {
 			$row2 = NULL;
 		}
 		$this -> Users_model -> userclick($uid);
+		$data['aims_arr'] = explode(",", $row -> aims) ;
 		$data['nineaskinfo'] = $this -> Users_model -> queryusernineask_byuid($uid);
 		$data['clickdata'] = $this -> Users_model -> queryuserclick_byuid($uid);
 		$data['uid'] = $uid;
 		$data['intro'] = $row -> intro;
+		$data['role'] = $row -> role;
+		$data['age'] = $row -> birthdate;
+		$data['siteurl'] = $row -> siteurl;
+		$data['weibo'] = $row -> weibo;
 		$data['gender'] = $row -> gender;
 		$data['province'] = $row -> province;
 		$data['contact_email'] = $row -> contact_email;
@@ -272,6 +277,7 @@ class User_space extends CI_Controller {
 			$data['unreadmessage'] = $this -> Messages_model -> getunreadMessagenumber($this -> session -> userdata('uid'));
 		}
 		$data['mypoint'] = $this -> Users_model -> queryuserpoint_byuid($uid);
+		$data['userdetail'] = $this -> Users_model -> queryuserdetail_byuid($uid);
 		$data['mypointall'] = ($data['mypoint'] -> contributionnum * 0.55 + $data['mypoint'] -> activenum * 0.9 + $data['mypoint'] -> creativitynum * 0.65) / 10;
 		$data['title'] = $row -> username . "的用户中心  - 创新空间";
 		$this -> load -> view('space/space_header', $data);

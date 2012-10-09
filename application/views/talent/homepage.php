@@ -34,9 +34,12 @@
 			<ul>
 				<li class="b1"><a href="javascript:void(0)" id="add_friend">关注我</a></li>
 				<li class="b1"><a href="javascript:void(0)" id="send_msg">联系我</a></li>
-				<li class="b2"><a href="">我的微博</a></li>
-				<li class="b2"><a href="">个人网站</a></li>
-				
+				<?php if($weibo != '' && $weibo!=0):?>
+				<li class="b2"><a href="<?=$weibo?>">我的微博</a></li>
+				<?php endif;?>
+				<?php if($siteurl != '' && $siteurl!=0):?>
+				<li class="b2"><a href="<?=$siteurl?>">个人网站</a></li>
+				<?php endif;?>
 			</ul>
 		</div>
 		
@@ -193,7 +196,7 @@
 				<?php else: ?>
 					女
 				<?php endif; ?>
-				23岁
+				<?=date("Y")-$age ?>岁
 				</p>
 		</div>
 		<div class="tag1 c4">
@@ -203,16 +206,51 @@
 		</div>
 		<div class="tag2 c5">
 			<ul class="l1">
+				<?php if ($role == 0): ?>
+					<li>从业者</li>
+				<?php endif; ?>
+				<?php if ($role == 1): ?>
+					<li>在校生</li>
+				<?php endif; ?>
+				<?php if ($role == 2): ?>
+					<li>创业者</li>
+				<?php endif; ?>
+				<?php if ($role == 3): ?>
+					<li>投资人</li>
+				<?php endif; ?>
 				
-				<li>在校生</li>
-				<li>浙江工业大学-信息学院</li>
+				
+				<?php if (isset($userdetail->department)): ?>
+					<li><?=$userdetail->department?>-<?=$userdetail->post?></li>
+				
+				<?php else: ?>
+					<li>暂无公司信息</li>
+				<?php endif; ?>
+				<?php if (isset($userdetail->school)): ?>
+					<li><?=$userdetail->school?>-<?=$userdetail->major?></li>
+				
+				<?php else: ?>
+						<li>暂无学校信息</li>
+				<?php endif; ?>
 			</ul>
 			
 		</div>
 		<div class="tag2 c6">
 			<ul class="l1">
-				<li>有项目找人才</li>
-				<li>有才能 找工作</li>
+				<?php foreach($aims_arr as $item): ?>
+				<?php if ($item == 0): ?>
+					<li>有项目 找人才</li>
+				<?php endif; ?>
+				<?php if ($item == 1): ?>
+					<li>有项目 找投资</li>
+				<?php endif; ?>
+				<?php if ($item == 2): ?>
+					<li>有才能 找工作</li>
+				<?php endif; ?>
+				<?php if ($item == 3): ?>
+					<li>结识好友</li>
+				<?php endif; ?>
+				<?php endforeach; ?>
 				
 			</ul>
 		</div>

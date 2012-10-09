@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+body{background:url(../images/common/top_bg.png) repeat-x 0 65px;}
+=======
 body{background:url(../images/common/top_bg.jpg) repeat-x 0 65px;}
+>>>>>>> 2b0bb3aae27817f757fffc412bcf5696c5b1f385
 .main_col{background:#fff;overflow:hidden;padding:20px 0;font-family: 'MicroSoft YaHei', SimHei;border-top:2px #379297 solid;}
 
 .left_col{float:left;width:120px;margin-left:20px;display:inline;}

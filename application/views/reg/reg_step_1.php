@@ -197,7 +197,7 @@
 			<div class="mlr20">
 				<div id="aim">
 					<input type="checkbox" name="aims" value="0" />有项目 找人才
-					<input type="checkbox" name="aims" value="1" />有项目 找资
+					<input type="checkbox" name="aims" value="1" />有项目 找投资
 					<input type="checkbox" name="aims" value="2" />有才能 找工作
 					<input type="checkbox" name="aims" value="3" />结识好友
 				</div>
